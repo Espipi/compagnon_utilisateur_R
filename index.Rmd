@@ -1,0 +1,31 @@
+--- 
+title: "Le companion de l'utilisateur R"
+author: "Vezy Rémi"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+output:
+  bookdown::gitbook: default
+  bookdown::pdf_book: default
+description: "Ce livre à pour objectif d'enseigner le language R et son environmenent en très peu de temps."
+---
+
+# Prérequis {#prere}
+
+Ce livre à pour objectif de vous enseigner le plus rapidement possible comment utiliser R et son environement (RStudio, Rmarkdown, plotly...) pour la science des données. Ainsi, chaque chapitre peut être lu indépendemment des autres, pour que vous puissez aller droit à l'essentiel lorsque vous en avez besoin. Bien sûr, je vous recommande fortement de lire ou au moins de survoler le livre une première fois afin de vous faire gagner du temps par la suite. Pour donner un exemple, même si l'utilisation de plotly ne demande pas explicitement de savoir utiliser les pipes (tubes), leur utilisation ne rendra l'apprentissage que plus rapide. 
+
+**R** peut aussi être utilisé seul mais je vous recommande fortement l'utilisation de l'IDE [RStudio](https://www.rstudio.com/) car il dispose d'un large panel d'outils rendant l'utilisation de R plus facile. RStudio est gratuit et libre, et la dernière version du logiciel est disponible [ici](https://www.rstudio.com/products/rstudio/#Desktop). Un tutorial d'installation sera décrit en introduction.
+
+Ce livre est entièrement écrit grâce à RStudio et au package R **bookdown**. Vous pouvez donc vous-même télécharger **bookdown** et m'aider à l'écriture du livre en utilisant le lien [Github](). Pour cela, il vous suffit d'exécuter la commande suivante depuis la console **R**:
+
+```{r eval=FALSE}
+devtools::install_github("rstudio/bookdown")
+```
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
