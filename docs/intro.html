@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Le companion de l’utilisateur R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Le companion de l’utilisateur R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
+  <meta name="github-repo" content="VEZY/companion_utilisateur_R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Le companion de l’utilisateur R" />
+  
+  <meta name="twitter:description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
+  
+
+<meta name="author" content="Vezy Rémi">
+
+
+<meta name="date" content="2017-02-26">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prérequis</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#oui-mais-cest-quoi-r"><i class="fa fa-check"></i><b>2.2</b> Oui, mais c’est quoi R?</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#pourquoi-r"><i class="fa fa-check"></i><b>2.3</b> Pourquoi R?</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Le companion de l’utilisateur R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Chapitre 2</span> Introduction</h1>
+<div id="installation" class="section level2">
+<h2><span class="header-section-number">2.1</span> Installation</h2>
+<p>Comme dit précédemment dans le prérequis <a href="index.html#prere">1</a>, nous utiliserons <strong>R</strong> depuis <strong>RStudio</strong>, qui est un formidable environnement de développement. Il permet plusieurs choses qui seraient possibles mais plus fastidieuses depuis <strong>R</strong> seul:<br />
+* Le fenêtrage: avoir dans une même fenêtre ses scripts, la console R, les graphiques, les fichiers, les packages chargés et disponibles, l’aide, ainsi que l’environnement et l’historique des commandes<br />
+* Le travail en projet, que je vous décris plus tard<br />
+* Un débugger<br />
+* Un profiler<br />
+* Une gestion du contrôle de version (GIT/SVN)</p>
+<p>Avant de commencer donc, il vous faudra installer R et RStudio. R est téléchargeable depuis le site du <a href="https://www.r-project.org/">R-project</a>. Il vous suffit de cliquer sur “download R”, de choisir votre mirroir, qui est le dépôt depuis lequel vous allez le télécharger (si vous avez un doute, prenez n’importe lequel en France), et enfin de cliquer sur “Download R for [votre système d’exploitation]”. Une fois téléchargé, installez-le comme n’importe quel programme.</p>
+</div>
+<div id="oui-mais-cest-quoi-r" class="section level2">
+<h2><span class="header-section-number">2.2</span> Oui, mais c’est quoi R?</h2>
+<p>R est un language de programmation dérivé du language S. Un language de programmation est ce qui permet à l’homme (le développeur ou l’utilisateur) de communiquer avec un ordinateur. En effet, les ordinateurs communiquent avec le language binaire, qui n’est composé que de 0 et de 1. Ces 0 et 1 sont agregés par “mots” pour construire des instructions. Par exemple, <code>01010010</code> veut dire <strong>R</strong> en binaire. Difficile de communiquer comme ça, dans un sens comme dans l’autre. Les languages de programmation nous servent en quelque sorte de language commun. Il en existe de nombreux, qui s’utilisent différemments. Je ne m’étendrais pas là-dessus ici, ce n’est pas le but. Mais vous pouvez retenir une chose ici: R vous sert d’outil de communication pour contrôler votre ordinateur, et lui demander d’exécuter des opérations à votre place.</p>
+<p>Je pourrais aussi ajouter que R est un language orienté objet, et un language fonctionnel. Ce sont deux paradigmes qui sont devenus très populaires et sont implémentés dans de nombreux languages informatiques (C++, Java, Python…). Le premier tourne autour de l’idée de classes et d’objets. Prenons par exemple une machine à café. Une cafetière est appelé un <code>objet</code>, qui est de <code>classe</code> cafetière. Mais le nom cafetière est parfois imprécis employé seul, car il en existe plusieurs sortes. Il y a des machines à expresso, des cafetières Italiennes, des cafetières à percolation, des cafetières à piston et j’en passe. Toutes représentent le même <code>objet</code> de <code>classe</code> cafetière. On les différenciera donc par une sous-classe -le type de cafetière-, qui partagera les attribus de la classe supérieure “cafetière”, mais qui se différencieront par d’autres attribus qu’ils n’auront pas en commun. Il existe trois différents systèmes objets orientés dans R: les S3, les S4 et les RC (Reference Classes). Ils découlent de la longue histoire du language R, qui prends ses racines en 1976, quatres ans seulement après l’invention du language orienté objet. Je décris plus en détails ces systèmes dans un autre chapitre du livre. J’ai aussi dit que R est un language fonctionnel, ce qui est entièrement lié au paradigme du language orienté objet. Il faut savoir qur R traite tout comme un objet, y compris les fonctions. Ce fonctionnement à de nombreux avantages, dont celui de pouvoir assigner une fonction à un objet, ou bien une fonction à une autre fonction. Si vous voulez avoir plus d’informations sur ce paragraphe, je vous recommande fortement de jeter un coup d’oeil au MOOC dont il est fortement inspiré, <a href="https://www.coursera.org/learn/advanced-r">Advanced R programming</a> de l’Université Johns-Hopkins (en anglais).</p>
+<p>Lorsqu’on débute en informatique, il arrive très souvent de penser que la machine est bête car elle ne comprends pas ce que l’on veut lui dire. On lui envoi une commande, et elle nous renvoi une erreur ou un avertissement. Si vous oubliez une virgule ou une parenthèse, le mieux qu’il puisse vous arriver est que le language reconnaisse votre erreur et qu’il vous la dise. En effet, un ordinateur n’est bête, ni intelligent. Il ne fait qu’exécuter ce que vous lui demandez. Il vous faudra donc être plus clair que jamais dans votre communication. Et par ça, je veux dire qu’il vous faudra devenir un vrai nazi de la grammaire. Une seule faute d’orthographe, et vous appelez une variable différente de celle que vous pensiez. Une seule parenthèse manquante, et votre code risque d’éxecuter une portion qu’il ne fallait pas. J’insiste beaucoup sur cette partie car vous verrez que la communication avec un ordinateur est parfois très frustante au début. Mais il faudra vous y faire, et vous rendre compte que <strong>vous</strong> et vous seuls faites des erreurs, et que c’est vous qui contrôlez l’ordinateur et non pas le contraire.</p>
+</div>
+<div id="pourquoi-r" class="section level2">
+<h2><span class="header-section-number">2.3</span> Pourquoi R?</h2>
+<p>Voilà une grande question, à laquelle on peut répondre de plusieurs façons. Pour commencer, on peut se demander pourquoi utiliser un language de programmation plutôt qu’un outil a priori plus simple ? Utiliser un logiciel comme Excel ou <a href="http://www.openoffice.us.com/openoffice-calc.php">Calc</a> permet par exemple de visualiser ses données, effectuer des calculs, et même faire des graphiques. Alors où est l’intérêt de se compliquer la tâche pour le même résultat ? La réponse tient en deux mots: l’<strong>automatisation</strong>, et la <strong>reproductibilité</strong>.<br />
+En effet, un language de programmation permet à son utilisateur d’automatiser une tâche par la description de processus, de procédures et donc d’algorithmes par l’écriture de code informatique.<br />
+Mais rien de tel qu’un bon exemple pour étayer ses propos:</p>
+<p>Imaginez donc que l’on vous envoi les mêmes données chaque semaine sous la forme de plusieurs fichiers texte, et que vous deviez effectuer des opérations arithmétiques sur certains chiffres, puis calculer quelques statistiques, et enfin envoyer des graphiques récapitulatif différents à Kevin de la compta, Amar du pôle communication ou Amandine votre patrone. Si vous utilisez Excel, vous devrez répéter chaque semaine la même procédure, inlassablement. D’abord vous devrez remplir votre tableur avec les données de chaque fichier, puis appliquer vos formules aux colonnes ou aux lignes concernées, faire plusieurs graphiques, et les envoyer à vos collègues. Peu de place pour l’imaginaire. Maintenant, en utilisant un language de programmation vous avez la possibilité de coder une seule fois un script qui fera tout ceci à votre place, et même bien plus, autant de fois que vous le désirez, instantanément. Ainsi, l’auteur d’un code aura une tâche bien précise en tête, qu’il s’efforcera d’écrire sous la forme d’un script qui contiendra la ou les tâches, et qu’il pourra réexécuter autant de fois que nécessaire, sur son propre ordinateur, ou n’importe lequel. Voici qu’une machine à remplassé la pénibilité de votre travail. Vous pouvez maintenant vous concentrer sur autre chose (d’autres dossiers en attente, la dernière série Netflix, ou la paix dans le monde que sais-je?).</p>
+<p>Oui mais pourquoi R ? N’existe-t-il pas d’autres languages ?<br />
+Si, bien d’autres. Il existe des languages pour à peu près tout. Il y a des languages généralistes comme C++, FORTRAN, JAVA ou encore PERL, des languages spécialisés comme HTML ou CSS, des languages compilés, des languages interprétés… Mais les languages qui nous intéressent ici sont les languages pour la science des données. Et sur ce créneau c’est la même chose, le choix est très large: SAS, Pyhton, R, Matlab, STATISTICA… Alors, pourquoi R ?? D’abord, R est gratuit, open-source, et utilisable sur Winows, Mac-OS et Linux. Ces trois arguments éliminent déjà beaucoup de concurrents sauf Pyhton, qui est considéré aujourd’hui comme la seule alternative à R. En quelques points, voici les avantages de R :</p>
+<ul>
+<li>R devient petit à petit la <em>lingua franca</em> de la science des données, poussé par une énorme communauté de développeurs, toujours grandissante.<br />
+</li>
+<li>Le nombre de packages disponibles et la généricité du language, qui permettent de faire tout ce que l’on veut, des statistiques, du machine-learning, de l’édition web… Il y a cette phrase à propos de R que j’aime beaucoup: il n’y a pas de ‘est-ce que l’on peut’ avec R, mais seulement des ‘comment fait-on’. Elle résume à peu près le potentiel de ce language.<br />
+</li>
+<li>R est beaucoup utilisé par les académiciens, ce qui en fait un outil toujours à la pointe des nouveaux développements.<br />
+</li>
+<li>La documentation et l’aide. Dans R, chaque fonction d’un package à sa propre documentation standardisée. De par sa grande communauté, il existe aussi de nombreuses ressources comme des livres, des tutoriels youtube, des questions/réponses sur internet.<br />
+</li>
+<li>R permet de faire de belles figures, de la plus simple à la plus complexe (intéractivité, D3.js, statistiques…).<br />
+</li>
+<li>L’interpréteur. R est un language interprété, c’est à dire qu’il n’y a pas besoin de compiler un programme pour l’exécuter. Cela peut avoir plusieurs inconvénients, comme la rapidité d’éxécution. Mais avoir la possibilité de taper sa commande dans l’intérpréteur et d’obtenir la sortie directement est un grand avantage pour pouvoir coder vite (e.g. débuger, accéder aux valeurs instantanément…) et donc d’arriver à des résultats rapidements.<br />
+</li>
+<li>La communication. R dispose de plusieurs packages (Rmarkdown, knitr, bookdown, shiny…) permettant la production de documents automatisée intégrant des figures, du code et bien d’autres choses.</li>
+</ul>
+<p>Figures and tables with captions will be placed in <code>figure</code> and <code>table</code> environments, respectively.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))
+<span class="kw">plot</span>(pressure, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:nice-fig"></span>
+<img src="Le_companion_des_utilisateurs_R_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
+<p class="caption">
+Figure 2.1: Here is a nice figure!
+</p>
+</div>
+<p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="intro.html#fig:nice-fig">2.1</a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="intro.html#tab:nice-tab">2.1</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(
+  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,
+  <span class="dt">booktabs =</span> <span class="ot">TRUE</span>
+)</code></pre></div>
+<table>
+<caption><span id="tab:nice-tab">Table 2.1: </span>Here is a nice table!</caption>
+<thead>
+<tr class="header">
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.6</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.7</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.6</td>
+<td align="right">3.4</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.0</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.4</td>
+<td align="right">2.9</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.8</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.3</td>
+<td align="right">3.0</td>
+<td align="right">1.1</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.8</td>
+<td align="right">4.0</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.7</td>
+<td align="right">4.4</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.3</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.7</td>
+<td align="right">3.8</td>
+<td align="right">1.7</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.5</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+</tbody>
+</table>
+<p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package <span class="citation">[@R-bookdown]</span> in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">[@xie2015]</span>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
