@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Le companion de l’utilisateur R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Le companion de l’utilisateur R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
+  <meta name="github-repo" content="VEZY/companion_utilisateur_R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Le companion de l’utilisateur R" />
+  
+  <meta name="twitter:description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
+  
+
+<meta name="author" content="Vezy Rémi">
+
+
+<meta name="date" content="2017-03-13">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="intro.html">
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prérequis</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#oui-mais-cest-quoi-r"><i class="fa fa-check"></i><b>2.2</b> Oui, mais c’est quoi R?</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#pourquoi-r"><i class="fa fa-check"></i><b>2.3</b> Pourquoi R?</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#apprendre-r-et-trouver-de-laide"><i class="fa fa-check"></i><b>2.4</b> Apprendre R et trouver de l’aide</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
+<li class="chapter" data-level="3.1" data-path="Premiers.html"><a href="Premiers.html#ouvrir-un-projet-rstudio"><i class="fa fa-check"></i><b>3.1</b> Ouvrir un projet RStudio</a></li>
+<li class="chapter" data-level="3.2" data-path="Premiers.html"><a href="Premiers.html#organiser-son-projet"><i class="fa fa-check"></i><b>3.2</b> Organiser son projet</a></li>
+<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#creer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script R</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Le companion de l’utilisateur R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Premiers" class="section level1">
+<h1><span class="header-section-number">Chapitre 3</span> Premiers pas</h1>
+<div id="ouvrir-un-projet-rstudio" class="section level2">
+<h2><span class="header-section-number">3.1</span> Ouvrir un projet RStudio</h2>
+<p>Pour commencer vous allez apprendre à créer votre premier projet RStudio. Travailler en projet est l’essence même du travail sous RStudio car cela apporte de nombreux avantages. En effet, un projet RStudio est un dossier contenant un projet quelconque, qui se doit être le plus indépendant possible. En effet, celui-ci contiendra toutes les étapes dont vous aurez besoin pour réaliser votre projet: les données, les scripts R ou autre, les logiciels tiers, les résultats intermédiaires et finaux, ainsi que les communications. Il est important de bien prendre connaissance de cette partie car elle conditionne de nombreuses étapes qui suivent. Croyez-moi, travailler en projet est une merveille dès qu’on a bien compris comment ça marche.</p>
+<p>Avant tout, je vous conseille de créer un dossier général nommé “R_Projects” sur votre ordinateur dans un emplacement de votre choix (qui pourra contenir beaucoup de données).<br />
+Ensuite, pour commencer un projet, ouvrez RStudio, et cliquez sur File/New Project/New Directory/Empty project:</p>
+<p>Ici, RStudio vous demande un nom de projet et un emplacement dans lequel ranger votre projet. Le nom de projet doit toujours être court mais le plus explicite possible, tout en évitant les caractères spéciaux (&amp;/%-) ou les espaces (remplacez-les par “_“). Ensuite, cliquer sur browse puis choisissez l’emplacement de votre dossier R_Projects si vous l’avez déjà crée (fortement recommandé). Pour notre exemple, on nommera notre projet”Premiers_Pas_R“, et on le rangera dans le dossier”C:/R_Projects&quot; comme suit:<br />
+<img src="Images/01-New_Project.png" width="319" /><img src="Images/02-New_Directory.png" width="268" /><img src="Images/03-Empty_Project.png" width="267" /><img src="Images/04-New_Project.png" width="266" /></p>
+<p>Tada ! Vous venez de créer un projet RStudio. Maintenant il ne manque plus qu’à travailler.</p>
+</div>
+<div id="organiser-son-projet" class="section level2">
+<h2><span class="header-section-number">3.2</span> Organiser son projet</h2>
+<p>Un des avantages des projets est le fait que RStudio défini automatiquement le répertoire de travail à la racine du projet. Le répertoire de travail est le chemin du dossier dans lequel est situé votre projet. Dans mon exemple, celui-ci est “C:/R_Projects/Premiers_Pas_R”. Dans R, on peut modifier le répertoire de travail manuellement en utilisant la commande <code>setwd</code>. Par exemple, si je ne veux travailler que dans mon dossier code, je pourrais utiliser la commande:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;02-Code/&quot;</span>)</code></pre></div>
+<p>Le répertoire de travail sert à spécifier des chemins d’accès relatifs. En effet, pour lire un fichier qui se situe dans le répertoire <code>01-DATA</code>, il existe deux façons de le faire.<br />
+Soit en spécifiant le chemin complet, depuis la racine du disque :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fichier=<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;C:/R_Projects/01-DATA/fichier.txt&quot;</span>)</code></pre></div>
+<p>Soit en utilisant un chemin relatif par rapport au projet :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fichier=<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;01-DATA/fichier.txt&quot;</span>)</code></pre></div>
+<p>Cela peut paraître trivial à première vue, mais cette astuce devient très pratique lorsque les chemins deviennent longs (pensez aux chemins de la vie réelle, comme “C:/Users/username/Desktop/Docs_R/Simulations/22-01-1990/test/test2”), ou lorsque l’on partage des scripts entre collègues (pas besoin de modifier les chemins lorsqu’on passe son projet). Pour voir quel est votre répertoire de travail, vous pouvez soit le trouver écrit en haut de la console, soit simplement tapper la commande suivante:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()</code></pre></div>
+<p>Maintenant que le répertoire de travail n’a plus de secret pour vous, nous allons l’organiser. Pour mieux comprendre comment un projet s’organise, il faut d’abord l’ouvrir dans le gestionnaire de fichiers. Pour ouvrir la fenêtre contenant le projet, vous pouvez cliquer sur More/Show Floder in New Window comme suit :<br />
+<img src="Images/05-Show_Floder.png" width="940" /></p>
+<p>Vous allez donc voir apparaître le dossier du projet dans une nouvelle fenêtre. Il n’y a rien de très intéressant à l’intérieur du projet pour l’instant: le fichier Premiers_Pas_R.Rproj et un dossier caché “.Rproj.user” (sa visibilité n’est absolument pas requise). Les fichiers .Rproj servent à ouvrir RStudio avec les paramètres du projet. Lorsque vous voulez ré-ouvrir votre projet après l’avoir quitté, il vous faudra double-cliquer sur ce fichier. Maintenant nous allons commencer à pré-organiser ce dossier. Personnellement j’aime créer une suite de dossiers numérotés dans lesquels je range des fichiers triés selon l’avancée du projet comme ceci:</p>
+<p><img src="Images/06-Rproj.png" width="100" /></p>
+<p>Le premier dossier 01-DATA contient toutes les données de départ dont à besoin le projet. Il peut s’agir d’images, de fichiers textes ou de tableurs, il seront tous présents dans ce dossier.<br />
+Le second dossier 02-Code contient tous les scripts pour R ou pour tout autre logiciel, numérotés eux aussi dans l’ordre d’éxécution. En général je regroupe aussi les fonctions utilisées dans les scripts dans un seul et même script R appelé 0-Fonctions, que j’appelle ensuite depuis les autres scripts. Si vous ne comprenez rien à la phrase précédente, ne vous en faites pas nous aborderons les fonctions très vite (référence chapitre fonctions).<br />
+Le troisième dossier 03-Resultats est le dossier qui contient tous les résultats, intermédiaires ou finaux. il peut s’agir de figures, de données, de modèles ou tout autre résultat du projet.<br />
+Enfin, le dernier dossier 04-Communications est un dossier contenant les communications sur le projet. En effet, RStudio permet l’édition de documents pdf, word et html afin de faciliter la communication. Ce livre est d’ailleurs écrit avec Rstudio. Nous parlerons des communications dans le chapitre (mettre référence chapitre communications).<br />
+Je vous incite à créer ces 4 dossiers vides à chaque fois que vous créez un nouveau projet Rstudio. Vous pouvez le faire soit manuellement, soit en utilisant la commande ci-dessous:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(<span class="dt">X =</span> <span class="kw">list</span>(<span class="st">&quot;01-DATA&quot;</span>,<span class="st">&quot;02-Code&quot;</span>,<span class="st">&quot;03-Resultats&quot;</span>,<span class="st">&quot;04-Communications&quot;</span>), <span class="dt">FUN =</span> dir.create)</code></pre></div>
+<p>Attention, avant d’exécuter la commande précédente veuillez vous assurer d’avoir ouvert le projet dans RStudio, et donc que votre répertoire de travail soit bien à la source du projet !</p>
+</div>
+<div id="creer-un-script-r" class="section level2">
+<h2><span class="header-section-number">3.3</span> Créer un script R</h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

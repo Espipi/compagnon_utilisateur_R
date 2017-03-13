@@ -26,7 +26,7 @@
 <meta name="author" content="Vezy Rémi">
 
 
-<meta name="date" content="2017-02-26">
+<meta name="date" content="2017-03-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
   
   
 <link rel="prev" href="index.html">
-
+<link rel="next" href="Premiers.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -105,6 +105,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#oui-mais-cest-quoi-r"><i class="fa fa-check"></i><b>2.2</b> Oui, mais c’est quoi R?</a></li>
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#pourquoi-r"><i class="fa fa-check"></i><b>2.3</b> Pourquoi R?</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#apprendre-r-et-trouver-de-laide"><i class="fa fa-check"></i><b>2.4</b> Apprendre R et trouver de l’aide</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
+<li class="chapter" data-level="3.1" data-path="Premiers.html"><a href="Premiers.html#ouvrir-un-projet-rstudio"><i class="fa fa-check"></i><b>3.1</b> Ouvrir un projet RStudio</a></li>
+<li class="chapter" data-level="3.2" data-path="Premiers.html"><a href="Premiers.html#organiser-son-projet"><i class="fa fa-check"></i><b>3.2</b> Organiser son projet</a></li>
+<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#creer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script R</a></li>
 </ul></li>
 </ul>
 
@@ -164,6 +170,14 @@ Si, bien d’autres. Il existe des languages pour à peu près tout. Il y a des 
 </li>
 <li>La communication. R dispose de plusieurs packages (Rmarkdown, knitr, bookdown, shiny…) permettant la production de documents automatisée intégrant des figures, du code et bien d’autres choses.</li>
 </ul>
+<p>Le principal inconvénient de R est qu’il peut être lent si l’on utilise certains paradigmes pour coder, comme par exemple l’utilisation de boucles <code>for</code>, qui sont pourtant très utilisées dans d’autres languages. Ceci-dit R peut facilement être optimisé pour la rapidité si l’on connaît les bons outils. Ces outils et ses méthodes d’écritures seront détaillés dans le chapitre sur l’optimisation des codes R (mettre ref une fois chapitre existant).</p>
+<p>Enfin, au bout du compte, on peut dire que ce qui compte vraiment n’est pas le choix du language de programmation, mais plutôt ce que vous voulez en faire. Car le meilleur outil est l’outil que vous métrisez. Donc si vous voulez vous lancer dans l’apprentissage de R (ou de Python, ou de C++), lancez vous à fond, apprenez les possibilités qu’offre le language, utilisez-les pour des choses qui vous tiennent à coeur, et alors vous pourrez en faire ce que vous voudrez.</p>
+</div>
+<div id="apprendre-r-et-trouver-de-laide" class="section level2">
+<h2><span class="header-section-number">2.4</span> Apprendre R et trouver de l’aide</h2>
+<p>Apprendre un language de programmation peut être long. La vitesse à laquelle on apprend un language par rapport à l’expérience peut se représenter grâce à une courbe d’apprentissage. Il se trouve que la courbe d’apprentissage de R n’est pas facile à déterminer, car bien souvent les personnes qui commencent ce language n’ont aucune connaissance des bases en informatique. Cependant R est un language qui dispose de nombreuses ressources d’aides sur différents formats, l’aide de R, mais aussi les livres, blogs, MOOCs, ou autres sites Q&amp;A. Pour faciliter votre apprentissage je ne peux que vous recommander de vous forcer à apprendre un peu tous les jours.<br />
+Pour se faire, vous pouvez commencer par vous abonner à la liste de diffusion du blog <a href="https://www.r-bloggers.com/">R-bloggers</a>, qui est un méta-blog regroupant plusieurs centaines de blogs en une seule et unique source. Vous pourrez trouver tout ce dont vous avez besoin, comme des tutoriels ou des news sur les sorties de packages. Ensuite, lorsque vous recherchez une information, vous pouvez aller faire un tour sur le site <a href="http://stackoverflow.com/questions/tagged/r">stackoverflow</a>, qui est un site qui propose un système de question-réponse très au point, permettant le vote des meilleures réponses, ainsi que ses pages de <a href="http://stackoverflow.com/documentation/r/topics">documentations</a> proposant des exemples ou des tutoriels autour du language R. Enfin, une façon de trouver plus vite des réponses à ses questions est d’utiliser le moteur de recherche <a href="https://duckduckgo.com/">DuckDuckGo</a> que j’affectionne particulièrement car il propose en haut de page la réponse la mieux notée du premier site Q&amp;A qu’il trouve, avec le code associé. Celà permet très souvent de ne même pas avoir besoin d’entrer sur un site pour obtenir une réponse à sa question. Testez vous-même en suivant <a href="https://duckduckgo.com/?q=R+ggpot+mutliple+time-series&amp;t=ffab&amp;ia=qa">ce lien</a> pour un exemple sur comment faire un graphique comprennant plusieurs graphiques de séries temporelles. De plus, ce moteur de recherche est un des seuls qui ne vous piste pas. Aussi dois-je préciser qu’il ne s’agit pas ici de publicité mais seulement de préférence personnelle.</p>
+<p>Bien sûr, la première aide à consulter avant toute est celle donnée par défaut dans chaque package. Pour y accéder sous RStudio, il vous suffit de surligner (double-cliquer) le nom de la fonction, et d’appuyer sur la touche <code>F1</code> de votre clavier. Vous pouvez aussi passer par la console de R en tappant <code>?nom_de_la_fonction</code> (ou <code>help(nom_de_la_fonction)</code>), ou encore tapper directement le nom de la fonction dans la barre de recherche de l’onglet “help” dans la fenêtre de droite.</p>
 <p>Figures and tables with captions will be placed in <code>figure</code> and <code>table</code> environments, respectively.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))
 <span class="kw">plot</span>(pressure, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</code></pre></div>
@@ -341,8 +355,8 @@ Figure 2.1: Here is a nice figure!
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Premiers.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
