@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Le compagnon de l’utilisateur R</title>
+  <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps.">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Le compagnon de l’utilisateur R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
+  <meta name="github-repo" content="VEZY/compagnon_utilisateur_R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Le compagnon de l’utilisateur R" />
+  
+  <meta name="twitter:description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
+  
+
+<meta name="author" content="Vezy Rémi">
+
+
+<meta name="date" content="2017-06-04">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="Premiers.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prérequis</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#oui-mais-cest-quoi-r"><i class="fa fa-check"></i><b>2.2</b> Oui, mais c’est quoi R?</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#pourquoi-r"><i class="fa fa-check"></i><b>2.3</b> Pourquoi R?</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#apprendre-r-et-trouver-de-laide"><i class="fa fa-check"></i><b>2.4</b> Apprendre R et trouver de l’aide</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
+<li class="chapter" data-level="3.1" data-path="Premiers.html"><a href="Premiers.html#ouvrir-un-projet-rstudio"><i class="fa fa-check"></i><b>3.1</b> Ouvrir un projet RStudio</a></li>
+<li class="chapter" data-level="3.2" data-path="Premiers.html"><a href="Premiers.html#organise_project"><i class="fa fa-check"></i><b>3.2</b> Organiser son projet</a></li>
+<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#creer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script R</a></li>
+<li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#creer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="Premiers.html"><a href="Premiers.html#objet-unique"><i class="fa fa-check"></i><b>3.4.1</b> Objet unique</a></li>
+<li class="chapter" data-level="3.4.2" data-path="Premiers.html"><a href="Premiers.html#vecteur"><i class="fa fa-check"></i><b>3.4.2</b> Vecteur</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a><ul>
+<li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-donnees"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="Structures.html"><a href="Structures.html#les-characteres-character"><i class="fa fa-check"></i><b>4.1.1</b> Les charactères (character)</a></li>
+<li class="chapter" data-level="4.1.2" data-path="Structures.html"><a href="Structures.html#les-doubles-double"><i class="fa fa-check"></i><b>4.1.2</b> Les doubles (double)</a></li>
+<li class="chapter" data-level="4.1.3" data-path="Structures.html"><a href="Structures.html#entiers"><i class="fa fa-check"></i><b>4.1.3</b> Les entiers (integer)</a></li>
+<li class="chapter" data-level="4.1.4" data-path="Structures.html"><a href="Structures.html#les-booleens-boolean-or-logical"><i class="fa fa-check"></i><b>4.1.4</b> Les booléens (boolean or logical)</a></li>
+<li class="chapter" data-level="4.1.5" data-path="Structures.html"><a href="Structures.html#en-bonus-les-facteurs-factors"><i class="fa fa-check"></i><b>4.1.5</b> En bonus, les facteurs (factors)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="Structures.html"><a href="Structures.html#transform_datatype"><i class="fa fa-check"></i><b>4.2</b> Les transformations</a></li>
+<li class="chapter" data-level="4.3" data-path="Structures.html"><a href="Structures.html#les-structures-de-donnees"><i class="fa fa-check"></i><b>4.3</b> Les Structures de données</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="Structures.html"><a href="Structures.html#vecteurs"><i class="fa fa-check"></i><b>4.3.1</b> Vecteurs</a></li>
+<li class="chapter" data-level="4.3.2" data-path="Structures.html"><a href="Structures.html#matrices"><i class="fa fa-check"></i><b>4.3.2</b> Matrices</a></li>
+<li class="chapter" data-level="4.3.3" data-path="Structures.html"><a href="Structures.html#tableaux"><i class="fa fa-check"></i><b>4.3.3</b> Tableaux</a></li>
+<li class="chapter" data-level="4.3.4" data-path="Structures.html"><a href="Structures.html#listes"><i class="fa fa-check"></i><b>4.3.4</b> Listes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="Structures.html"><a href="Structures.html#index-et-test"><i class="fa fa-check"></i><b>4.4.1</b> Index et Test</a></li>
+<li class="chapter" data-level="4.4.2" data-path="Structures.html"><a href="Structures.html#remplacer"><i class="fa fa-check"></i><b>4.4.2</b> Remplacer</a></li>
+<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#sous-diviser"><i class="fa fa-check"></i><b>4.4.3</b> sous-diviser</a></li>
+<li class="chapter" data-level="4.4.4" data-path="Structures.html"><a href="Structures.html#concatenation"><i class="fa fa-check"></i><b>4.4.4</b> Concaténation</a></li>
+<li class="chapter" data-level="4.4.5" data-path="Structures.html"><a href="Structures.html#transformation"><i class="fa fa-check"></i><b>4.4.5</b> Transformation</a></li>
+<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#transposition"><i class="fa fa-check"></i><b>4.4.6</b> Transposition</a></li>
+<li class="chapter" data-level="4.4.7" data-path="Structures.html"><a href="Structures.html#sous-divisier"><i class="fa fa-check"></i><b>4.4.7</b> Sous-divisier</a></li>
+<li class="chapter" data-level="4.4.8" data-path="Structures.html"><a href="Structures.html#mutliplication"><i class="fa fa-check"></i><b>4.4.8</b> Mutliplication</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="Structures.html"><a href="Structures.html#autres-chapitres"><i class="fa fa-check"></i><b>4.5</b> autres chapitres:</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Le compagnon de l’utilisateur R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Structures" class="section level1">
+<h1><span class="header-section-number">Chapitre 4</span> Structures et types de données</h1>
+<p>Il existe plusieurs types de données dans R, et différentes façons de les manipuler en découle. Le type de structure ou d’objet utilisé dépendra principalement de la nature de l’information à y stocker et des manipulations que l’on veut effectuer dessus. Trois principaux types de données et quatre principales structures sont utilisées régulièrement dans R.</p>
+<div id="les-types-de-donnees" class="section level2">
+<h2><span class="header-section-number">4.1</span> Les types de données</h2>
+<p>Les principaux types de données sont:<br />
+* les charactères <code>c(&quot;character&quot;,&quot;another one&quot;)</code><br />
+* les doubles <code>c(1.5,2.248,3.01)</code><br />
+* les entiers <code>c(1,2,3)</code><br />
+* les booléens <code>c(TRUE,FALSE)</code><br />
+Il existe aussi d’autres types, dérivés ou non des types précédents comme les dates <code>as.POSIXct(c(&quot;1990-01-01&quot;,&quot;2017-06-03&quot;))</code>, les complexes, ou les “raw” (séquences de bits), qui ne seront pas discutés tout de suite.<br />
+Il est à noter que chaque type de données contient sa propre marque pour un manque de données: le NA (not applicable: non applicable).</p>
+<div id="les-characteres-character" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Les charactères (character)</h3>
+<p>Les charactères (character) peuvent prendre n’importe quelle forme (même celle d’un chiffre), et comporter n’importe quel charactère, même un espace. Pour créer un charactère, il suffit de le déclarer entre guillemets <code>&quot;</code> (ou <code>'</code>) comme ceci: <code>&quot;character&quot;</code>. Ils peuvent être composés d’un seul charactère <code>&quot;a&quot;</code>, de plusieurs <code>&quot;abc&quot;</code>, ou même d’une phrase <code>&quot;ceci est un seul charactère&quot;</code>. Pour créer un vecteur de plusieurs charactères, il faut utiliser la fonction <code>c()</code> comme nous l’avons déjà vu: <code>c(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;)</code>. Voici un exemple incluant une déclaration et un test :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> &quot;a&quot;</span>       <span class="co"># a est un double</span>
+a</code></pre></div>
+<pre><code>## [1] &quot;a&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.character</span>(a)  <span class="co"># teste si a est un charactère (retourne TRUE si la condition est vraie)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="les-doubles-double" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Les doubles (double)</h3>
+<p>Les doubles sont des nombres décimaux. Ils sont le type de données que vous utiliserez probablement le plus souvent. Pour les déclarer, rien de plus simple, il suffit d’écrire votre chiffre, puis de l’utiliser comme bon vous semble. Voici un petit exemple :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="fl">1.56</span>       <span class="co"># a est un double</span>
+a*<span class="fl">83.550</span>      <span class="co"># il peut être multiplié par un autre double</span></code></pre></div>
+<pre><code>## [1] 130.338</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.double</span>(a)  <span class="co"># teste si a est un double (équivalent à is.numeric())</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Les doubles ont en plus d’autres valeurs possibles qui correspondent plutôt à des erreurs de calculs ou de précision: * le NaN, qui signifie Not a Number (= Pas un nombre). Qui est souvent le résultat d’une opération mathématique interdite, comme un logarithe ou une racine carrée d’un nombre négatif.<br />
+* le -Inf et le Inf, qui sont le résultat d’une opération mathématique qui ne peut pas être calculée car trop grande ou trop petite.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(-<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] NaN</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span>^<span class="dv">89999</span></code></pre></div>
+<pre><code>## [1] Inf</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">-<span class="dv">10</span>^<span class="dv">89999</span></code></pre></div>
+<pre><code>## [1] -Inf</code></pre>
+<p>Pour bien comprendre ce type d’erreurs, et comment ils sont utilisés par R, vous devez d’abord comprendre comment un ordinateur perçoit les doubles . Je comprends que ce type d’information puisse moins vous intéresser, mais je pense fermement que vous devez connaître ceci avant de passer à la suite. Cependant, vous pouvez sauter le paragraphe qui suit pour une première lecture, et aller directement à <a href="Structures.html#entiers">Les entiers (integer)</a>.</p>
+<p>Cette partie peut vous paraître difficile et éloignée du sujet de prime abord, mais vous verrez par la suite à quel point elle peut être importante lors de certains calculs.<br />
+Si vous lisez ce livre depuis un navigateur avec une connexion internet, je vous renvoi à l’article wikipédia sur le sujet <a href="https://fr.wikipedia.org/wiki/Virgule_flottante">en français</a> ou celui <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">en anglais</a> encore plus complet, sinon, je vais vous faire ici un petit résumé simplifié :</p>
+<p>En informatique, un double est un type de donnée utilisé pour représenter les nombres décimaux (nombre à virgule). Comme un ordinateur utilise des suites de bits (0 ou 1) pour fonctionner, il doit représenter les nombres décimaux avec une précision donnée, c’est à dire un nombre de bits donné pour représenter un nombre. Nous les humains faisons de même. En effet, pour écrire en décimal le nombre pi, nous n’écrirons certainement pas tous les chiffres après la virgule (je vous en met au défi), mais en feront une approximation. Parfois nous écrirons 3.14 pour aller très vite, parfois lorsque la précision s’impose nous écrirons 3.141593 (ou plus). Comme un ordinateur ne peut pas savoir à l’avance avec quelle précision nous voulons travailler, nous lui imposont une précision fixe, qui aujourd’hui est le format double précision (d’où le nom de double) 64 bits de la norme (<a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>). Ces nombres sont représentés grâce à trois informations: le signe du nombre s (- ou +), la mantisse m (~les chiffres du nombre) et un exposant e (entier relatif qui donne la position de la virgule dans la mantisse, ce qui donne le nom de virgule flottante). Il s’agit un peu d’un équivalent de la notation scientifique. Un nombre peut donc être représenté comme ceci<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> :<br />
+<img src="Images/07-Mantisse_exposant_fr.png" width="201" /></p>
+<p>En double précision, ces trois informations ensemble ne doivent pas dépasser 64 bits. L’encodage est donc divisé comme suit: 1 bit pour le signe, 11 bits pour l’exposant et 52 bits pour la mantisse, ce qui donne 53 bits de précision, donc environ 16 chiffres significatifs. Si vous avez bien compris comment les doubles sont encodés, alors vous aurez compris que R peut donc représenter des nombres avec beaucoup de précision, mais pas avec une précision infinie.<br />
+Que vous ayez bien compris ou non, retenez ces deux conclusion:</p>
+<p>1- La précision n’est pas infinie:<br />
+<strong>Il est important de toujours garder en tête que la précision des calculs dans R n’est pas infinie</strong>, et donc que sous certaines conditions R peut présenter un comportement non valide mathématiquement, comme par exemple lors d’une soustraction de nombres extrêmement proches de zéro comme suit :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span>^-<span class="dv">325-10</span>^-<span class="dv">324</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>Comme vous pouvez le voir R retourne 0, ce qui est faux. Un calcul de cette précision peut paraître superflu mais ce genre d’erreur peut s’accumuler de calculs en calculs et devenir bien plus grande par la suite.<br />
+Bien sûr, il est très rare d’utiliser de telles précisions, et les erreurs engendrées n’auront aucun impact réel sur vos calculs. Pour l’exemple, voici un autre calcul très précis, que R peut gérer (si votre ordinateur le permet) :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span>^-<span class="dv">324-10</span>^-<span class="dv">323</span></code></pre></div>
+<pre><code>## [1] -9.881313e-324</code></pre>
+<p>NB: pour voir quel degré de précision votre ordinateur (et R) peut gérer, vous pouvez regarder le contenu de l’objet <code>.Machine</code> dans la console de R.</p>
+<p>2- La précision en informatique = chiffres significatifs<br />
+Il faut retenir que <strong>les grands nombres ont moins de chiffres après la virgule</strong>. En effet, la précision en informatique se réfère aux chiffres significatifs, c’est à dire au nombre de chiffres que comporte un nombre au <strong>total</strong> (avant ou après la virgule). Ceci est différent de la “précision décimale”, qui se réfère au nombre de chiffres après la virgule.<br />
+Comme la précision ne change pas avec le nombre considéré, plus un nombre est grand (positif ou négatif), moins on peut représenter de chiffres après sa virgule. En effet, 0.003 comporte 4 chiffres, dont 3 après la virgule. 3000 comporte 4 chiffres aussi, mais aucun après la virgule. Ils ont la même précision arithmétique au sens de chiffres significatifs (4), mais pas au sens de “précision décimale” qui donnerait 3000.0000 pour une précision de 4.<br />
+Regardez par vous même, on voit que R est capable de calculer ceci :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="dv">10</span>^-<span class="dv">324-10</span>^-<span class="dv">323</span>
+<span class="co"># On teste si &quot;a&quot; est différent de 0:</span>
+a!=<span class="dv">0</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>(a est bien différent de 0)</p>
+<p>Mais il ne pourra pas calculer ceci :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="dv">1-10</span>^-<span class="dv">323</span>
+<span class="co"># On teste si &quot;a&quot; est différent de 1:</span>
+a!=<span class="dv">1</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>(a est considéré égal à 1, donc la soustraction <code>1-10^-323</code> n’est même pas prise en compte)</p>
+<p>On peu aussi noter que même si R arrive à utiliser des nombres avec de grandes précisions, celui-ci arrondi souvent le résultat lorsqu’il l’affiche dans la console. Pour voir un nombre complet, on peut utliser la fonction <code>print()</code> avec son argument <code>digits</code>, qui donne le nombre de décimale voulues, comme ceci:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="dv">1</span>+<span class="st"> </span><span class="fl">2.2e-14</span>,<span class="dt">digits =</span> <span class="dv">22</span>)</code></pre></div>
+<pre><code>## [1] 1.000000000000022</code></pre>
+<p>Enfin, si la précision vous importe vraiment et que vous devez utilisez des chiffres plus précis que la double précision, vous pouvez jeter un oeil au package <code>Rmpfr</code> et le package <code>Brobdingnag</code>.</p>
+</div>
+<div id="entiers" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> Les entiers (integer)</h3>
+<p>En informatique, les entiers sont des entiers relatifs (nombre avec signe). Pour être différenciés des doubles, les entiers (integer) sont déclarés suivis de la lettre <code>L</code> comme suit :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span>1L
+b=<span class="st"> </span>24L
+c=<span class="st"> </span>-500L
+<span class="kw">paste</span>(a,b,c)</code></pre></div>
+<pre><code>## [1] &quot;1 24 -500&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.integer</span>(a) <span class="co"># teste si a est un entier</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="les-booleens-boolean-or-logical" class="section level3">
+<h3><span class="header-section-number">4.1.4</span> Les booléens (boolean or logical)</h3>
+<p>Les booléens sont des nombres logiques, aussi appelés variable d’état. Les booléens ont deux valeurs possibles uniquement, <code>TRUE</code> (vrai) et <code>FALSE</code> (faux).<br />
+Dans R <code>T</code> est un raccourci pour <code>TRUE</code>, et <code>F</code> un raccourci pour <code>FALSE</code>. Voici comment déclarer et tester un booléen :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="ot">TRUE</span>
+b=<span class="st"> </span>T          <span class="co"># équivalent de a</span>
+c=<span class="st"> </span><span class="ot">FALSE</span>
+d=<span class="st"> </span>F          <span class="co"># équivalent de c</span>
+<span class="kw">is.logical</span>(a) <span class="co"># teste si a est un booléen</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="en-bonus-les-facteurs-factors" class="section level3">
+<h3><span class="header-section-number">4.1.5</span> En bonus, les facteurs (factors)</h3>
+<p>Les facteurs sont un type de données un peu spéciaux. Ils permettent d’utiliser des catégories de données dans une même variable. On peut prendre l’exemple d’une personne qui regarde de quelle couleur sont les voitures qui passent devant son entrée, s’il relève 3 voitures rouges, deux bleues et quatre blanches, alors on peut dire que nous avons trois catégories de couleurs de voitures: rouge, bleue, blanche. Pour déclarer ceci dans R, nous ferions comme suit :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">couleurs=<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;bleue&quot;</span>,<span class="st">&quot;bleue&quot;</span>,<span class="st">&quot;blanche&quot;</span>,<span class="st">&quot;blanche&quot;</span>,<span class="st">&quot;blanche&quot;</span>,<span class="st">&quot;blanche&quot;</span>))
+couleurs          <span class="co"># nous avons un vecteur de charactères, et R reconnait automatiquement les 3 catégories (levels) </span></code></pre></div>
+<pre><code>## [1] rouge   rouge   rouge   bleue   bleue   blanche blanche blanche blanche
+## Levels: blanche bleue rouge</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(couleurs)  <span class="co"># using the function levels() to return them</span></code></pre></div>
+<pre><code>## [1] &quot;blanche&quot; &quot;bleue&quot;   &quot;rouge&quot;</code></pre>
+<p>Les facteurs sont souvent utilisés dans d’autres fonctions comme pour les graphiques ou les modèles. En général, il est préférable d’éviter leur utilisation et de leur préférer un autre type de donnée, à moins d’en avoir un réel besoin.</p>
+</div>
+</div>
+<div id="transform_datatype" class="section level2">
+<h2><span class="header-section-number">4.2</span> Les transformations</h2>
+<p>R est un language extrèmement maléable, si bien qu’oil existe des “ponts” entre les types de données. On pourra donc très facilement transformer un type de données en un autre dans certains cas.<br />
+1- integer vers double : il s’agit de la transformation la plus facile. R ne requiert aucun préalable à cette transformation, si bien que celle-ci se fait sans même y réfléchir:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span>1L           <span class="co"># a est déclaré comme un entier égal à 1</span>
+<span class="kw">is.integer</span>(a)   <span class="co"># a est bien considéré comme un entier</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b=<span class="st"> </span>a*<span class="fl">2.5</span>        <span class="co"># on multiplie a par un double et on le stocke dans b</span>
+<span class="kw">is</span>(b)           <span class="co"># b est lui-même un double</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot; &quot;vector&quot;</code></pre>
+<p>2- double to integer L’inverse n’est pas aussi simple et doit se faire en utilisant une fonction de <code>R</code> semblable à la fonction de test (<code>is.integer</code>) que nous avons déjà vu : <code>as.integer</code>. En voici un exemple :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">2.5</span>,<span class="fl">3.8</span>)   <span class="co"># a est déclaré comme un double</span>
+<span class="kw">is.double</span>(a)      <span class="co"># a est bien considéré comme un double</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b=<span class="st"> </span><span class="kw">as.integer</span>(a)  <span class="co"># on force a à devenir un entier</span>
+<span class="kw">is</span>(b)             <span class="co"># b est maintenant un entier (R à tronqué le chiffre)</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;             &quot;numeric&quot;             &quot;vector&quot;             
+## [4] &quot;data.frameRowLabels&quot;</code></pre>
+<p>3- double (ou integer) to character: Cette transformation est aussi assez simple et peut se faire en utilisant la fonction <code>as.character</code> :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">2.5</span>,<span class="fl">3.8</span>)     <span class="co"># a est déclaré comme un double</span>
+<span class="kw">is.double</span>(a)        <span class="co"># a est bien considéré comme un double</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b=<span class="st"> </span><span class="kw">as.character</span>(a)  <span class="co"># on force a à devenir un character</span>
+b                   <span class="co"># b est maintenant un charactère (notez les guillemets qui entourent chaque chiffre)</span></code></pre></div>
+<pre><code>## [1] &quot;2&quot;   &quot;2.5&quot; &quot;3.8&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is</span>(b)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;           &quot;vector&quot;              &quot;data.frameRowLabels&quot;
+## [4] &quot;SuperClassMethod&quot;</code></pre>
+<p>3- character to double (ou integer) : Comme vous l’avez deviné, cette transformation peut se faire grâce à la fonction <code>as.double</code>. Cependant, il faut être très prudent lorsque l’on fait une transformation dans ce sens, car R peut parfois prendre des décisions que l’on attendais pas lorsque l’on travaille avec des facteurs.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>)   <span class="co"># a est déclaré comme un vecteur de 3 charactères</span>
+<span class="kw">is.character</span>(a)     <span class="co"># a est bien considéré comme un charactère</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b=<span class="st"> </span><span class="kw">as.double</span>(a)     <span class="co"># on force a à devenir un double</span>
+b                   <span class="co"># b est une version de a en double</span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is</span>(b)</code></pre></div>
+<pre><code>## [1] &quot;numeric&quot; &quot;vector&quot;</code></pre>
+<p>Maintenant un exemple avec des facteurs, qui peuvent donner des résultats inattendus lorsqu’ils sont composés de charactères comportant des chiffres et des lettres :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;3&quot;</span>))   <span class="co"># a est déclaré comme un facteur de logueur 3</span>
+b=<span class="st"> </span><span class="kw">as.numeric</span>(a)            <span class="co"># on force a à devenir un double</span>
+b                           <span class="co"># b est bien un double, mais le résultat est quelque peu déroutant</span></code></pre></div>
+<pre><code>## [1] 1 3 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is</span>(b)</code></pre></div>
+<pre><code>## [1] &quot;numeric&quot; &quot;vector&quot;</code></pre>
+<p>Comme on peut le voir, la transformation est déroutante : le “3” du facteur est devenu un 2, et le “a” un 3. Pour comprendre ce qu’il s’est passé, il faut savoir que pour transformer un facteur en numérique, R prends les catégories comme des charactères, puis les trie alphanumériquement (i.e. de 0 à 9 puis de A à Z), puis alloue l’index de chaque catégorie comme nouvelle valeur. Donc ici R à décidé de l’ordre suivant dans les catégories : “1”&lt;“3”&lt;“a”, puis leur à alloué un index : “1”=1, “3”=2, “a”=3, et a remplacé les valeurs de chaque catégorie par son index pour que “1”,“a”,“3” devienne 1,3,2. Ce type d’erreur peut être évité en utilisant la combinaison de fonctions suivantes :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;3&quot;</span>))   <span class="co"># a est déclaré comme un facteur de logueur 3</span>
+b=<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">levels</span>(a))[a] <span class="co"># on force a à devenir un double</span></code></pre></div>
+<pre><code>## Warning: NAs introduits lors de la conversion automatique</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b                           <span class="co"># b est bien un double, le résultat est bon, et le charactère &quot;a&quot; est transformé en NA.</span></code></pre></div>
+<pre><code>## [1]  1 NA  3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is</span>(b)</code></pre></div>
+<pre><code>## [1] &quot;numeric&quot; &quot;vector&quot;</code></pre>
+<p>Maintenant que vous connaissez mieux les charactères, les doubles, les entiers, et les booléens, vous allez voir comment les organiser dans des structures de données qui vous permettront de les stocker dans des objets plus ou moins complexes.</p>
+</div>
+<div id="les-structures-de-donnees" class="section level2">
+<h2><span class="header-section-number">4.3</span> Les Structures de données</h2>
+<p>R met à disposition de ses utilisateurs quatre grands types de structures de données plus ou moins liées : les vecteurs, les matrices, les tableaux et les listes.</p>
+<div id="vecteurs" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Vecteurs</h3>
+<p>Nous avons déjà vu un premier exemple de vecteurs dans le chapitre précédent (<a href="Premiers.html#Premiers">Premiers pas</a>), qui introduisait la fabrication d’un vecteur contenant des chiffres. Les vecteurs sont une structure de données à une dimension, c’est à dire qu’il s’agit d’une suite de données rangées en “ligne”. Un vecteur ne peut contenir qu’un seul type de données (charactère, booléen…) à la fois. Si l’on construit un vecteur avec plusieurs types de données consécutifs, ils sont alors transformés de la même façon que nous avons vu les tranformations précédement dans <a href="Structures.html#transform_datatype">Les transformations</a>. Il est à retenir que <strong>R</strong> essaye toujours de prendre le types de donnée qui gardera le plus d’information. Par exemple un mélange de charactères et de doubles sera transformé en charactère pour ne pas perdre l’information des charactères (qui seraient transformés en NA autrement).</p>
+</div>
+<div id="matrices" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Matrices</h3>
+</div>
+<div id="tableaux" class="section level3">
+<h3><span class="header-section-number">4.3.3</span> Tableaux</h3>
+</div>
+<div id="listes" class="section level3">
+<h3><span class="header-section-number">4.3.4</span> Listes</h3>
+</div>
+</div>
+<div id="manipuler-les-structures" class="section level2">
+<h2><span class="header-section-number">4.4</span> Manipuler les structures</h2>
+<div id="index-et-test" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Index et Test</h3>
+<p>Index commence à 1 Index vecteurs [1], matrices/tableaux [1,] et listes [[,1]] ou [1] ou [[1]] Indexer plusieurs éléments: - selon numéro de l’index lignes/colonnes [1:10], [,1:10] - selon condition [c(T,T,F,T)] (test)</p>
+</div>
+<div id="remplacer" class="section level3">
+<h3><span class="header-section-number">4.4.2</span> Remplacer</h3>
+<p>objet[Index]= 2 objet[1:10]= 21:30</p>
+</div>
+<div id="sous-diviser" class="section level3">
+<h3><span class="header-section-number">4.4.3</span> sous-diviser</h3>
+</div>
+<div id="concatenation" class="section level3">
+<h3><span class="header-section-number">4.4.4</span> Concaténation</h3>
+</div>
+<div id="transformation" class="section level3">
+<h3><span class="header-section-number">4.4.5</span> Transformation</h3>
+<p>Transformer un charactère en numerique et vice et versa. Transformer une matrice en tableau.</p>
+</div>
+<div id="transposition" class="section level3">
+<h3><span class="header-section-number">4.4.6</span> Transposition</h3>
+</div>
+<div id="sous-divisier" class="section level3">
+<h3><span class="header-section-number">4.4.7</span> Sous-divisier</h3>
+<p>Indexer depuis un vecteur Découper un tableau en listes avec split</p>
+</div>
+<div id="mutliplication" class="section level3">
+<h3><span class="header-section-number">4.4.8</span> Mutliplication</h3>
+<p>Chapitres d’après: ## Fonctions Disons que vous êtes en voyage au Brésil, où la monnaie est le Real, mais comme vous êtes habitué à payer Euro, vous aimeriez pouvoir convertir entre les deux simplement.</p>
+<p>A l’heure où cette version du livre à été mis à jour pour la dernière fois, 1 Euro (€) valait 3.6598 Reals (R$)<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. Grâce à R, vous pouvez calculer cela très facilement en créant un objet contenant la conversion :</p>
+</div>
+</div>
+<div id="autres-chapitres" class="section level2">
+<h2><span class="header-section-number">4.5</span> autres chapitres:</h2>
+<p>05- manipulations: %in%, ==, |, &amp;, || et &amp;&amp;, %*%, etc… 06- dates 07- charactères (utiliser les charctères, chercher un charactère, remplacer,…) 08- Fonctions et environnement</p>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p><a href="https://commons.wikimedia.org/wiki/File:Mantisse_exposant_fr.svg?uselang=fr">Source de l’image</a><a href="Structures.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>données <a href="https://fr.finance.yahoo.com/">Yahoo Finance</a> téléchargées grâce à la fonction <code>getQuote</code> du package <code>quantmod</code><a href="Structures.html#fnref4">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Premiers.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

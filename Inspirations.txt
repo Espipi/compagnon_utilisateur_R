@@ -1,0 +1,5 @@
+
+Technical Foundations of Informatics (avec R):
+https://info201-s17.github.io/book/index.html
+
+http://r4ds.had.co.nz/explore-intro.html

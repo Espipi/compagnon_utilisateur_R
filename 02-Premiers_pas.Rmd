@@ -16,7 +16,7 @@ knitr::include_graphics(c("Images/01-New_Project.png","Images/02-New_Directory.p
 
 Tada ! Vous venez de créer un projet RStudio. Maintenant il ne manque plus qu'à travailler.  
   
-## Organiser son projet  
+## Organiser son projet {#organise_project}
   
 Un des avantages des projets est le fait que RStudio défini automatiquement le répertoire de travail à la racine du projet. Le répertoire de travail est le chemin du dossier dans lequel est situé votre projet. Dans mon exemple, celui-ci est "C:/R_Projects/Premiers_Pas_R". Dans R, on peut modifier le répertoire de travail manuellement en utilisant la commande `setwd`. Par exemple, si je ne veux travailler que dans mon dossier code, je pourrais utiliser la commande:  
 ```{r wd, eval=FALSE}
@@ -66,4 +66,93 @@ Attention, avant d'exécuter la commande précédente veuillez vous assurer d'av
   
 ## Créer un script R
   
+R est un language intérprété, c'est à dire qu'il interprête (exécute) vos commandes en temps réel. Vous pouvez dès à présent intéragir avec R dans l'onglet *console* de RStudio, qui se trouve en bas à gauche. Vous pouvez par exemple taper la commande suivante:  
+```{r commande simple, eval=FALSE}
+1+3
+```
+  
+R vous retournera alors le résultat du calcul juste après votre commande :  
+```{r commande simple resultat, echo=FALSE}
+1+3
+```
 
+On vient donc de voir que **R** peut être utilisé comme une calculatrice, mais celui à bien plus à offrir. En effet, vous pouvez par exemple créer des objets que **R** sauvera dans la mémoire vive^[R fonctionne exclusivement avec la mémoire vive (ajouter renvoi vers chapitre optimiser R)] durant toute votre session^[voir définition [wikipédia](https://fr.wikipedia.org/wiki/Session_(informatique))].  
+Voici un premier exemple assez simple et concret: 
+vous êtes partis en mission avec votre collègue qui a payé la totalité des frais. Pour le rembourser vous avez noté toutes les dépenses: 53.26€ de trajet, 108.30€ de repas, et 145.50€ pour la nuitée. Vous devez donc sommer toutes les dépenses et diviser par deux le total pour connaître votre part, comme ceci: 
+```{r}
+(53.26+108.30+145.50)/2
+```
+Maintenant, si vous partez régulièrement ensemble, il peut être pratique de garder une trace de chaque élément, avec quelques explications pour chacune. Pour celà, il vous suffit de créer un script R. Un script est en fait simplement un fichier texte qui présente l'extension `.R` au lieu de `.txt`. Ce fichier sert de support pour l'écriture de commandes R.  
+Pour créer votre premier script R, cliquez sur fichier (file) -> nouveau fichier (New File) -> R script, ou alors en utilisant le raccourci clavier (`ctrl+shit+N`).  
+RStudio va alors ouvrir un script vierge sans titre et non sauvegardé. La première chose à faire est d'écrire un titre. Bien sûr vous ne voulez pas que R exécute le titre ou les commantaires. Pour celà, vous devez lui indiquer que la ligne que vous insérez ne doit pas être interprétée en commençant la ligne par un `#`. Voici un exemple, la première ligne est un commentaire, R ne l'interprète pas, alors que la seconde oui:   
+```{r}
+# 2+3
+5+6
+```
+Comme vous pouvez le voir R retourne 11, qui est le résultat de la deuxième ligne.  
+Vous pouvez donc écrire votre titre de la même façon, sans que R ne s'en préoccupe:  
+```{r}
+# Script R pour remboursement des frais:
+
+# Lundi 24/04/2017: 53.26€ de trajet, 108.30€ de repas, et 145.50€ pour la nuitée
+(53.26+108.30+145.50)/2 # Vous pouvez aussi taper un comentaire après une ligne de commande
+```
+Pour éxécuter une ligne de commande (i.e. envoyer une ligne à R) depuis votre script, il vous suffit d'utiliser le raccourcis clavier `ctrl+r`, ou d'utiliser le bouton "run" dans la barre en haut de votre script. 
+
+Vous pouvez maintenant enregistrer votre script en cliquant sur Fichier (File) -> Enregistrer sous (save as), ou par le raccourci clavier `Ctrl+s`. Ensuite vous devrez nommer votre script, et je vous encourage fortement à l'enregistrer dans le dossier `02-Code` si vous avez suivi le précédent point: [Organiser son projet]. 
+
+
+
+## Créer des objets et les manipuler
+  
+### Objet unique  
+Maintenant que vous savez utiliser les calculs sous R et les commenter, vous allez voir comment simplifier vos scripts et vos calculs grâce à la création d'objets.  
+Pour reprendre l'exemple précédent, nous allons créer plusieurs objet qui déterminent chacun une dépense : 
+```{r}
+Trajet= 53.26
+repas= 108.30
+hotel= 145.50
+```
+Cette écriture est très intuitive car elle ressemble à celle que l'on écrirait sur un bout de papier. Ce qui est intéressant avec R, c'est que celui-ci enregistre la valeur associée à chaque objet, ainsi, si on éxécute le nom de l'objet, R nous retournera sa valeur :
+```{r}
+Trajet
+```
+On peut maintenant utiliser des opération mathématiques directement sur nos objets, comme l'addition:
+```{r}
+Trajet+repas+hotel
+```
+Et même assigner ce nouveau résultat à un nouvel objet, appelé pour l'occasion `Depenses_07_Avril`, qui contient les dépenses du 07 du mois d'avril:  
+```{r}
+Depenses_07_Avril= Trajet+repas+hotel
+```
+Notez bien la structure du code : l'objet `Depenses_07_Avril` est suivi d'un `=`, puis chaque nombre est additionné un à un. Ainsi, R fait d'abord le calcul de l'addition des objets à droite, puis assigne le résultat à l'objet nouvellement créé. On peut maintenant demander à R la valeur des dépenses :
+```{r}
+Depenses_07_Avril
+```
+  
+
+### Vecteur
+
+La manière précédente est intéressante, mais ne permet malheureusement pas de garder une trace du calcul dans l'objet. En effet, `Depenses_07_Avril` ne contient que la somme des dépenses de la journée, mais pas leur détail. Pour se faire, nous pouvons créer un vecteur contenant chaque dépense de la journée :
+```{r}
+Depenses_07_Avril= c(Trajet,repas,hotel)
+Depenses_07_Avril
+```
+
+Notez bien la structure du code ci-dessus. Chaque dépense est séparée par une virgule, et le tout est mis entre parenthèses précédées d'un `c`. Il est important de bien comprendre ce qu'il se passe ici. Pour faire court, nous avons créé un vecteur comportant trois nombres : 53.26, 108.30 et 145.50 rangés des objets appelés Trajet,repas et hotel repsectivement, puis nous les avons assignés à un nouvel objet `Depenses_07_Avril`. Maintenant, `Depenses_07_Avril` ne contient plus la somme de chaque dépense, mais chacune de leur valeur. En réalité, nous avons utilisé ici deux fonctions: la fonction d'assignation `=`, et la fonction de coercion `c`. Nous avons déjà vu la première, qui sert à assigner une ou des valeurs à un objet. La seconde quand à elle permet de concaténer plusieurs éléments en un seul objet qui  sera un vecteur. Une vecteur est donc une suite de valeurs indépendantes.
+L'avantage d'un vecteur est de garder chaque valeur, et de pouvoir opérer des opérations mathématiques sur l'objet entier. Par exemple, si on veut obtenir la somme des dépenses de la journée, on pourra utiliser la fonction associée `sum`:
+```{r}
+Depenses_07_Avril= c(Trajet,repas,hotel)
+sum(Depenses_07_Avril)
+```
+Cette fonction additione tous les éléments du vecteur.  
+Les opérations mathématiques usuelles ont toutes leurs propres fonctions:
+```{r}
+sum(Depenses_07_Avril)  # somme des éléments
+mean(Depenses_07_Avril) # moyenne des éléments
+Depenses_07_Avril*2     # multiplication de chaque élément par 2
+Depenses_07_Avril/2     # division de chaque élément par 2
+Depenses_07_Avril%%2    # modulo 2 de la divison (retourne le reste de la division par deux)
+```
+
+D'autres objets plus complexes existent dans R, comme les matrices, les tableaux, ou les listes. Ils seront détaillés dans le prochain chapitre.

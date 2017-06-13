@@ -5,20 +5,19 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Le companion de l’utilisateur R</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <title>Le compagnon de l’utilisateur R</title>
   <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps.">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Le companion de l’utilisateur R" />
+  <meta property="og:title" content="Le compagnon de l’utilisateur R" />
   <meta property="og:type" content="book" />
   
   
   <meta property="og:description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
-  <meta name="github-repo" content="VEZY/companion_utilisateur_R" />
+  <meta name="github-repo" content="VEZY/compagnon_utilisateur_R" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Le companion de l’utilisateur R" />
+  <meta name="twitter:title" content="Le compagnon de l’utilisateur R" />
   
   <meta name="twitter:description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
   
@@ -26,7 +25,7 @@
 <meta name="author" content="Vezy Rémi">
 
 
-<meta name="date" content="2017-03-13">
+<meta name="date" content="2017-06-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,7 +34,6 @@
   
 
 <link rel="next" href="intro.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -94,6 +92,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
+
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
@@ -109,8 +108,39 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
 <li class="chapter" data-level="3.1" data-path="Premiers.html"><a href="Premiers.html#ouvrir-un-projet-rstudio"><i class="fa fa-check"></i><b>3.1</b> Ouvrir un projet RStudio</a></li>
-<li class="chapter" data-level="3.2" data-path="Premiers.html"><a href="Premiers.html#organiser-son-projet"><i class="fa fa-check"></i><b>3.2</b> Organiser son projet</a></li>
+<li class="chapter" data-level="3.2" data-path="Premiers.html"><a href="Premiers.html#organise_project"><i class="fa fa-check"></i><b>3.2</b> Organiser son projet</a></li>
 <li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#creer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script R</a></li>
+<li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#creer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="Premiers.html"><a href="Premiers.html#objet-unique"><i class="fa fa-check"></i><b>3.4.1</b> Objet unique</a></li>
+<li class="chapter" data-level="3.4.2" data-path="Premiers.html"><a href="Premiers.html#vecteur"><i class="fa fa-check"></i><b>3.4.2</b> Vecteur</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a><ul>
+<li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-donnees"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="Structures.html"><a href="Structures.html#les-characteres-character"><i class="fa fa-check"></i><b>4.1.1</b> Les charactères (character)</a></li>
+<li class="chapter" data-level="4.1.2" data-path="Structures.html"><a href="Structures.html#les-doubles-double"><i class="fa fa-check"></i><b>4.1.2</b> Les doubles (double)</a></li>
+<li class="chapter" data-level="4.1.3" data-path="Structures.html"><a href="Structures.html#entiers"><i class="fa fa-check"></i><b>4.1.3</b> Les entiers (integer)</a></li>
+<li class="chapter" data-level="4.1.4" data-path="Structures.html"><a href="Structures.html#les-booleens-boolean-or-logical"><i class="fa fa-check"></i><b>4.1.4</b> Les booléens (boolean or logical)</a></li>
+<li class="chapter" data-level="4.1.5" data-path="Structures.html"><a href="Structures.html#en-bonus-les-facteurs-factors"><i class="fa fa-check"></i><b>4.1.5</b> En bonus, les facteurs (factors)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="Structures.html"><a href="Structures.html#transform_datatype"><i class="fa fa-check"></i><b>4.2</b> Les transformations</a></li>
+<li class="chapter" data-level="4.3" data-path="Structures.html"><a href="Structures.html#les-structures-de-donnees"><i class="fa fa-check"></i><b>4.3</b> Les Structures de données</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="Structures.html"><a href="Structures.html#vecteurs"><i class="fa fa-check"></i><b>4.3.1</b> Vecteurs</a></li>
+<li class="chapter" data-level="4.3.2" data-path="Structures.html"><a href="Structures.html#matrices"><i class="fa fa-check"></i><b>4.3.2</b> Matrices</a></li>
+<li class="chapter" data-level="4.3.3" data-path="Structures.html"><a href="Structures.html#tableaux"><i class="fa fa-check"></i><b>4.3.3</b> Tableaux</a></li>
+<li class="chapter" data-level="4.3.4" data-path="Structures.html"><a href="Structures.html#listes"><i class="fa fa-check"></i><b>4.3.4</b> Listes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="Structures.html"><a href="Structures.html#index-et-test"><i class="fa fa-check"></i><b>4.4.1</b> Index et Test</a></li>
+<li class="chapter" data-level="4.4.2" data-path="Structures.html"><a href="Structures.html#remplacer"><i class="fa fa-check"></i><b>4.4.2</b> Remplacer</a></li>
+<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#sous-diviser"><i class="fa fa-check"></i><b>4.4.3</b> sous-diviser</a></li>
+<li class="chapter" data-level="4.4.4" data-path="Structures.html"><a href="Structures.html#concatenation"><i class="fa fa-check"></i><b>4.4.4</b> Concaténation</a></li>
+<li class="chapter" data-level="4.4.5" data-path="Structures.html"><a href="Structures.html#transformation"><i class="fa fa-check"></i><b>4.4.5</b> Transformation</a></li>
+<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#transposition"><i class="fa fa-check"></i><b>4.4.6</b> Transposition</a></li>
+<li class="chapter" data-level="4.4.7" data-path="Structures.html"><a href="Structures.html#sous-divisier"><i class="fa fa-check"></i><b>4.4.7</b> Sous-divisier</a></li>
+<li class="chapter" data-level="4.4.8" data-path="Structures.html"><a href="Structures.html#mutliplication"><i class="fa fa-check"></i><b>4.4.8</b> Mutliplication</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="Structures.html"><a href="Structures.html#autres-chapitres"><i class="fa fa-check"></i><b>4.5</b> autres chapitres:</a></li>
 </ul></li>
 </ul>
 
@@ -121,7 +151,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Le companion de l’utilisateur R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Le compagnon de l’utilisateur R</a>
           </h1>
         </div>
 
@@ -130,9 +160,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Le companion de l’utilisateur R</h1>
+<h1 class="title">Le compagnon de l’utilisateur R</h1>
 <h4 class="author"><em>Vezy Rémi</em></h4>
-<h4 class="date"><em>2017-03-13</em></h4>
+<h4 class="date"><em>2017-06-04</em></h4>
 </div>
 <div id="prere" class="section level1">
 <h1><span class="header-section-number">Chapitre 1</span> Prérequis</h1>
@@ -148,8 +178,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
         </div>
       </div>
 
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>

@@ -1,5 +1,5 @@
 --- 
-title: "Le companion de l'utilisateur R"
+title: "Le compagnon de l'utilisateur R"
 author: "Vezy Rémi"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -7,7 +7,7 @@ documentclass: book
 output:
   bookdown::gitbook: default
   bookdown::pdf_book: default
-github-repo: VEZY/companion_utilisateur_R
+github-repo: VEZY/compagnon_utilisateur_R
 description: "Ce livre à pour objectif d'enseigner le language R et son environmenent en très peu de temps."
 ---
 

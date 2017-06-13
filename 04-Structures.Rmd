@@ -1,0 +1,258 @@
+# Structures et types de données{#Structures}  
+
+Il existe plusieurs types de données dans R, et différentes façons de les manipuler en découle. Le type de structure ou d'objet utilisé dépendra principalement de la nature de l'information à y stocker et des manipulations que l'on veut effectuer dessus.
+Trois principaux types de données et quatre principales structures sont utilisées régulièrement dans R.  
+
+## Les types de données
+
+Les principaux types de données sont:  
+* les charactères `c("character","another one")`  
+* les doubles `c(1.5,2.248,3.01)`  
+* les entiers `c(1,2,3)`  
+* les booléens `c(TRUE,FALSE)`  
+Il existe aussi d'autres types, dérivés ou non des types précédents comme les dates `as.POSIXct(c("1990-01-01","2017-06-03"))`, les complexes, ou les "raw" (séquences de bits), qui ne seront pas discutés tout de suite.  
+Il est à noter que chaque type de données contient sa propre marque pour un manque de données: le NA (not applicable: non applicable).
+
+### Les charactères (character) 
+Les charactères (character) peuvent prendre n'importe quelle forme (même celle d'un chiffre), et comporter n'importe quel charactère, même un espace. Pour créer un charactère, il suffit de le déclarer entre guillemets `"` (ou `'`) comme ceci: `"character"`. Ils peuvent être composés d'un seul charactère `"a"`, de plusieurs `"abc"`, ou même d'une phrase `"ceci est un seul charactère"`. Pour créer un vecteur de plusieurs charactères, il faut utiliser la fonction `c()` comme nous l'avons déjà vu: `c("a","b","c")`. Voici un exemple incluant une déclaration et un test : 
+```{r exemple character, echo=TRUE, message=FALSE, warning=FALSE}
+a= "a"       # a est un double
+a
+is.character(a)  # teste si a est un charactère (retourne TRUE si la condition est vraie)
+```
+  
+### Les doubles (double)  
+Les doubles sont des nombres décimaux. Ils sont le type de données que vous utiliserez probablement le plus souvent. Pour les déclarer, rien de plus simple, il suffit d'écrire votre chiffre, puis de l'utiliser comme bon vous semble. Voici un petit exemple :  
+```{r exemple double, echo=TRUE, message=FALSE, warning=FALSE}
+a= 1.56       # a est un double
+a*83.550      # il peut être multiplié par un autre double
+is.double(a)  # teste si a est un double (équivalent à is.numeric())
+```
+Les doubles ont en plus d'autres valeurs possibles qui correspondent plutôt à des erreurs de calculs ou de précision:
+* le NaN, qui signifie Not a Number (= Pas un nombre). Qui est souvent le résultat d'une opération mathématique interdite, comme un logarithe ou une racine carrée d'un nombre négatif.  
+* le -Inf et le Inf, qui sont le résultat d'une opération mathématique qui ne peut pas être calculée car trop grande ou trop petite.
+```{r exemple double2, echo=TRUE, message=FALSE, warning=FALSE}
+log(-1)
+10^89999
+-10^89999
+```  
+  
+
+Pour bien comprendre ce type d'erreurs,  et comment ils sont utilisés par R, vous devez d'abord comprendre comment un ordinateur perçoit les doubles . Je comprends que ce type d'information puisse moins vous intéresser, mais je pense fermement que vous devez connaître ceci avant de passer à la suite. Cependant, vous pouvez sauter le paragraphe qui suit pour une première lecture, et aller directement à [Les entiers (integer)].  
+
+Cette partie peut vous paraître difficile et éloignée du sujet de prime abord, mais vous verrez par la suite à quel point elle peut être importante lors de certains calculs.  
+Si vous lisez ce livre depuis un navigateur avec une connexion internet, je vous renvoi à l'article wikipédia sur le sujet [en français](https://fr.wikipedia.org/wiki/Virgule_flottante) ou celui [en anglais](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) encore plus complet, sinon, je vais vous faire ici un petit résumé simplifié :  
+
+En informatique, un double est un type de donnée utilisé pour représenter les nombres décimaux (nombre à virgule). Comme un ordinateur utilise des suites de bits (0 ou 1)  pour fonctionner, il doit représenter les nombres décimaux avec une précision donnée, c'est à dire un nombre de bits donné pour représenter un nombre. Nous les humains faisons de même. En effet, pour écrire en décimal le nombre pi, nous n'écrirons certainement pas tous les chiffres après la virgule (je vous en met au défi), mais en feront une approximation. Parfois nous écrirons 3.14 pour aller très vite, parfois lorsque la précision s'impose nous écrirons 3.141593 (ou plus). Comme un ordinateur ne peut pas savoir à l'avance avec quelle précision nous voulons travailler, nous lui imposont une précision fixe, qui aujourd'hui est le format double précision (d'où le nom de double) 64 bits de la norme ([IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754)). Ces nombres sont représentés grâce à trois informations: le signe du nombre s (- ou +), la mantisse m (~les chiffres du nombre) et un exposant e (entier relatif qui donne la position de la virgule dans la mantisse, ce qui donne le nom de virgule flottante). Il s'agit un peu d'un équivalent de la notation scientifique.
+Un nombre peut donc être représenté comme ceci^[[Source de l'image](https://commons.wikimedia.org/wiki/File:Mantisse_exposant_fr.svg?uselang=fr)] :  
+```{r double precision, echo=FALSE}
+knitr::include_graphics("Images/07-Mantisse_exposant_fr.png")
+```
+
+En double précision, ces trois informations ensemble ne doivent pas dépasser 64 bits. L'encodage est donc divisé comme suit: 
+1 bit pour le signe, 11 bits pour l'exposant et 52 bits pour la mantisse, ce qui donne 53 bits de précision, donc environ 16 chiffres significatifs. Si vous avez bien compris comment les doubles sont encodés, alors vous aurez compris que R peut donc représenter des nombres avec beaucoup de précision, mais pas avec une précision infinie.     
+Que vous ayez bien compris ou non, retenez ces deux conclusion:  
+
+1- La précision n'est pas infinie:  
+**Il est important de toujours garder en tête que la précision des calculs dans R n'est pas infinie**, et donc que sous certaines conditions R peut présenter un comportement non valide mathématiquement, comme par exemple lors d'une soustraction de nombres extrêmement proches de zéro comme suit :
+```{r double precision2}
+10^-325-10^-324
+```
+Comme vous pouvez le voir R retourne 0, ce qui est faux. Un calcul de cette précision peut paraître superflu mais ce genre d'erreur peut s'accumuler de calculs en calculs et devenir bien plus grande par la suite.  
+Bien sûr, il est très rare d'utiliser de telles précisions, et les erreurs engendrées n'auront aucun impact réel sur vos calculs. Pour l'exemple, voici un autre calcul très précis, que R peut gérer (si votre ordinateur le permet) :  
+```{r double precision3}
+10^-324-10^-323
+```
+NB: pour voir quel degré de précision votre ordinateur (et R) peut gérer, vous pouvez regarder le contenu de l'objet `.Machine` dans la console de R.  
+
+2- La précision en informatique = chiffres significatifs  
+Il faut retenir que **les grands nombres ont moins de chiffres après la virgule**. En effet, la précision en informatique se réfère aux chiffres significatifs, c'est à dire au nombre de chiffres que comporte un nombre au **total** (avant ou après la virgule). Ceci est différent de la "précision décimale", qui se réfère au nombre de chiffres après la virgule.  
+Comme la précision ne change pas avec le nombre considéré, plus un nombre est grand (positif ou négatif), moins on peut représenter de chiffres après sa virgule. En effet, 0.003 comporte 4 chiffres, dont 3 après la virgule. 3000 comporte 4 chiffres aussi, mais aucun après la virgule. Ils ont la même précision arithmétique au sens de chiffres significatifs (4), mais pas au sens de "précision décimale" qui donnerait 3000.0000 pour une précision de 4.  
+Regardez par vous même, on voit que R est capable de calculer ceci : 
+```{r double precision4}
+a= 10^-324-10^-323
+# On teste si "a" est différent de 0:
+a!=0
+```
+(a est bien différent de 0)
+
+Mais il ne pourra pas calculer ceci :
+```{r double precision5}
+a= 1-10^-323
+# On teste si "a" est différent de 1:
+a!=1
+```
+(a est considéré égal à 1, donc la soustraction `1-10^-323` n'est même pas prise en compte)  
+
+On peu aussi noter que même si R arrive à utiliser des nombres avec de grandes précisions, celui-ci arrondi souvent le résultat lorsqu'il l'affiche dans la console. Pour voir un nombre complet, on peut utliser la fonction `print()` avec son argument `digits`, qui donne le nombre de décimale voulues, comme ceci:
+```{r double precision6}
+print(1+ 2.2e-14,digits = 22)
+```
+
+Enfin, si la précision vous importe vraiment et que vous devez utilisez des chiffres plus précis que la double précision, vous pouvez jeter un oeil au package `Rmpfr` et le package `Brobdingnag`.  
+
+
+### Les entiers (integer) {#entiers}  
+En informatique, les entiers sont des entiers relatifs (nombre avec signe). Pour être différenciés des doubles, les entiers (integer) sont déclarés suivis de la lettre `L` comme suit :
+```{r integers}
+a= 1L
+b= 24L
+c= -500L
+paste(a,b,c)
+is.integer(a) # teste si a est un entier
+```
+
+### Les booléens (boolean or logical)  
+Les booléens sont des nombres logiques, aussi appelés variable d'état. Les booléens ont deux valeurs possibles uniquement, `TRUE` (vrai) et `FALSE` (faux).  
+Dans R `T` est un raccourci pour `TRUE`, et `F` un raccourci pour `FALSE`.
+Voici comment déclarer et tester un booléen :
+```{r booleans}
+a= TRUE
+b= T          # équivalent de a
+c= FALSE
+d= F          # équivalent de c
+is.logical(a) # teste si a est un booléen
+```
+
+### En bonus, les facteurs (factors)  
+Les facteurs sont un type de données un peu spéciaux. Ils permettent d'utiliser des catégories de données dans une même variable. On peut prendre l'exemple d'une personne qui regarde de quelle couleur sont les voitures qui passent devant son entrée, s'il relève 3 voitures rouges, deux bleues et quatre blanches, alors on peut dire que nous avons trois catégories de couleurs de voitures: rouge, bleue, blanche. Pour déclarer ceci dans R, nous ferions comme suit :  
+```{r double precision8}
+couleurs= factor(c("rouge","rouge","rouge","bleue","bleue","blanche","blanche","blanche","blanche"))
+couleurs          # nous avons un vecteur de charactères, et R reconnait automatiquement les 3 catégories (levels) 
+levels(couleurs)  # using the function levels() to return them
+```
+Les facteurs sont souvent utilisés dans d'autres fonctions comme pour les graphiques ou les modèles. En général, il est préférable d'éviter leur utilisation et de leur préférer un autre type de donnée, à moins d'en avoir un réel besoin.  
+
+
+## Les transformations {#transform_datatype}  
+R est un language extrèmement maléable, si bien qu'oil existe des "ponts" entre les types de données. On pourra donc très facilement transformer un type de données en un autre dans certains cas.  
+1- integer vers double : il s'agit de la transformation la plus facile. R ne requiert aucun préalable à cette transformation, si bien que celle-ci se fait sans même y réfléchir:  
+```{r integer to double}
+a= 1L           # a est déclaré comme un entier égal à 1
+is.integer(a)   # a est bien considéré comme un entier
+b= a*2.5        # on multiplie a par un double et on le stocke dans b
+is(b)           # b est lui-même un double
+```
+  
+2- double to integer
+L'inverse n'est pas aussi simple et doit se faire en utilisant une fonction de `R` semblable à la fonction de test (`is.integer`) que nous avons déjà vu : `as.integer`. En voici un exemple : 
+```{r double to integer}
+a= c(2,2.5,3.8)   # a est déclaré comme un double
+is.double(a)      # a est bien considéré comme un double
+b= as.integer(a)  # on force a à devenir un entier
+is(b)             # b est maintenant un entier (R à tronqué le chiffre)
+```
+  
+3- double (ou integer) to character:
+Cette transformation est aussi assez simple et peut se faire en utilisant la fonction `as.character` :
+```{r double to character}
+a= c(2,2.5,3.8)     # a est déclaré comme un double
+is.double(a)        # a est bien considéré comme un double
+b= as.character(a)  # on force a à devenir un character
+b                   # b est maintenant un charactère (notez les guillemets qui entourent chaque chiffre)
+is(b)
+```
+
+3- character to double (ou integer) :
+Comme vous l'avez deviné, cette transformation peut se faire grâce à la fonction `as.double`. Cependant, il faut être très prudent lorsque l'on fait une transformation dans ce sens, car R peut parfois prendre des décisions que l'on attendais pas lorsque l'on travaille avec des facteurs. 
+```{r character to double}
+a= c("1","2","3")   # a est déclaré comme un vecteur de 3 charactères
+is.character(a)     # a est bien considéré comme un charactère
+b= as.double(a)     # on force a à devenir un double
+b                   # b est une version de a en double
+is(b)
+```
+  
+Maintenant un exemple avec des facteurs, qui peuvent donner des résultats inattendus lorsqu'ils sont composés de charactères comportant des chiffres et des lettres :  
+```{r factor to double}
+a= factor(c("1","a","3"))   # a est déclaré comme un facteur de logueur 3
+b= as.numeric(a)            # on force a à devenir un double
+b                           # b est bien un double, mais le résultat est quelque peu déroutant
+is(b)
+```
+Comme on peut le voir, la transformation est déroutante : le "3" du facteur est devenu un 2, et le "a" un 3. Pour comprendre ce qu'il s'est passé, il faut savoir que pour transformer un facteur en numérique, R prends les catégories comme des charactères, puis les trie alphanumériquement (i.e. de 0 à 9 puis de A à Z), puis alloue l'index de chaque catégorie comme nouvelle valeur. Donc ici R à décidé de l'ordre suivant dans les catégories : "1"<"3"<"a", puis leur à alloué un index :  "1"=1, "3"=2, "a"=3, et a remplacé les valeurs de chaque catégorie par son index pour que "1","a","3" devienne 1,3,2.
+Ce type d'erreur peut être évité en utilisant la combinaison de fonctions suivantes :
+```{r factor to double2}
+a= factor(c("1","a","3"))   # a est déclaré comme un facteur de logueur 3
+b= as.numeric(levels(a))[a] # on force a à devenir un double
+b                           # b est bien un double, le résultat est bon, et le charactère "a" est transformé en NA.
+is(b)
+```
+
+Maintenant que vous connaissez mieux les charactères, les doubles, les entiers, et les booléens, vous allez voir comment les organiser dans des structures de données qui vous permettront de les stocker dans des objets plus ou moins complexes.  
+
+## Les Structures de données  
+
+R met à disposition de ses utilisateurs quatre grands types de structures de données plus ou moins liées : les vecteurs, les matrices, les tableaux et les listes.  
+
+### Vecteurs  
+
+Nous avons déjà vu un premier exemple de vecteurs dans le chapitre précédent ([Premiers pas]), qui introduisait la fabrication d'un vecteur contenant des chiffres.
+Les vecteurs sont une structure de données à une dimension, c'est à dire qu'il s'agit d'une suite de données rangées en "ligne". Un vecteur ne peut contenir qu'un seul type de données (charactère, booléen...) à la fois. Si l'on construit un vecteur avec plusieurs types de données consécutifs, ils sont alors transformés de la même façon que nous avons vu les tranformations précédement dans [Les transformations]. Il est à retenir que **R** essaye toujours de prendre le types de donnée qui gardera le plus d'information. Par exemple un mélange de charactères et de doubles sera transformé en charactère pour ne pas perdre l'information des charactères (qui seraient transformés en NA autrement). 
+
+### Matrices
+
+
+### Tableaux
+
+### Listes
+
+
+
+## Manipuler les structures
+
+### Index et Test
+Index commence à 1
+Index vecteurs [1], matrices/tableaux [1,] et listes [[,1]] ou [1] ou [[1]]
+Indexer plusieurs éléments:
+- selon numéro de l'index lignes/colonnes [1:10], [,1:10]
+- selon condition [c(T,T,F,T)] (test)
+
+### Remplacer
+objet[Index]= 2
+objet[1:10]= 21:30
+
+### sous-diviser
+
+
+
+### Concaténation
+
+### Transformation
+
+Transformer un charactère en numerique et vice et versa. 
+Transformer une matrice en tableau.
+
+### Transposition
+
+### Sous-divisier 
+
+Indexer depuis un vecteur
+Découper un tableau en listes avec split
+
+### Mutliplication
+
+
+
+Chapitres d'après: 
+## Fonctions
+Disons que vous êtes en voyage au Brésil, où la monnaie est le Real, mais comme vous êtes habitué à payer Euro, vous aimeriez pouvoir convertir entre les deux simplement.
+```{r currency, echo=FALSE, message=FALSE, warning=FALSE}
+currencyfunc= function(){
+  library(quantmod)
+  EURO_To_BRL= getQuote(paste0("EUR", "BRL", "=X"))[,2]
+  EURO_To_BRL
+}
+```
+
+A l'heure où cette version du livre à été mis à jour pour la dernière fois, 1 Euro (€) valait `r currencyfunc()` Reals (R$)^[données [Yahoo Finance](https://fr.finance.yahoo.com/) téléchargées grâce à la fonction `getQuote` du package `quantmod`]. 
+Grâce à R, vous pouvez calculer cela très facilement en créant un objet contenant la conversion :
+
+
+
+##autres chapitres:
+
+05- manipulations: %in%, ==, |, &, || et &&, %*%, etc...
+06- dates 
+07- charactères (utiliser les charctères, chercher un charactère, remplacer,...)
+08- Fonctions et environnement

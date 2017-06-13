@@ -5,20 +5,19 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Le companion de l’utilisateur R</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <title>Le compagnon de l’utilisateur R</title>
   <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps.">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Le companion de l’utilisateur R" />
+  <meta property="og:title" content="Le compagnon de l’utilisateur R" />
   <meta property="og:type" content="book" />
   
   
   <meta property="og:description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
-  <meta name="github-repo" content="VEZY/companion_utilisateur_R" />
+  <meta name="github-repo" content="VEZY/compagnon_utilisateur_R" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Le companion de l’utilisateur R" />
+  <meta name="twitter:title" content="Le compagnon de l’utilisateur R" />
   
   <meta name="twitter:description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
   
@@ -26,7 +25,7 @@
 <meta name="author" content="Vezy Rémi">
 
 
-<meta name="date" content="2017-03-13">
+<meta name="date" content="2017-06-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,8 +33,7 @@
   
   
 <link rel="prev" href="intro.html">
-
-
+<link rel="next" href="Structures.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -94,6 +92,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
+
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
@@ -109,8 +108,39 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
 <li class="chapter" data-level="3.1" data-path="Premiers.html"><a href="Premiers.html#ouvrir-un-projet-rstudio"><i class="fa fa-check"></i><b>3.1</b> Ouvrir un projet RStudio</a></li>
-<li class="chapter" data-level="3.2" data-path="Premiers.html"><a href="Premiers.html#organiser-son-projet"><i class="fa fa-check"></i><b>3.2</b> Organiser son projet</a></li>
+<li class="chapter" data-level="3.2" data-path="Premiers.html"><a href="Premiers.html#organise_project"><i class="fa fa-check"></i><b>3.2</b> Organiser son projet</a></li>
 <li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#creer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script R</a></li>
+<li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#creer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="Premiers.html"><a href="Premiers.html#objet-unique"><i class="fa fa-check"></i><b>3.4.1</b> Objet unique</a></li>
+<li class="chapter" data-level="3.4.2" data-path="Premiers.html"><a href="Premiers.html#vecteur"><i class="fa fa-check"></i><b>3.4.2</b> Vecteur</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a><ul>
+<li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-donnees"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="Structures.html"><a href="Structures.html#les-characteres-character"><i class="fa fa-check"></i><b>4.1.1</b> Les charactères (character)</a></li>
+<li class="chapter" data-level="4.1.2" data-path="Structures.html"><a href="Structures.html#les-doubles-double"><i class="fa fa-check"></i><b>4.1.2</b> Les doubles (double)</a></li>
+<li class="chapter" data-level="4.1.3" data-path="Structures.html"><a href="Structures.html#entiers"><i class="fa fa-check"></i><b>4.1.3</b> Les entiers (integer)</a></li>
+<li class="chapter" data-level="4.1.4" data-path="Structures.html"><a href="Structures.html#les-booleens-boolean-or-logical"><i class="fa fa-check"></i><b>4.1.4</b> Les booléens (boolean or logical)</a></li>
+<li class="chapter" data-level="4.1.5" data-path="Structures.html"><a href="Structures.html#en-bonus-les-facteurs-factors"><i class="fa fa-check"></i><b>4.1.5</b> En bonus, les facteurs (factors)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="Structures.html"><a href="Structures.html#transform_datatype"><i class="fa fa-check"></i><b>4.2</b> Les transformations</a></li>
+<li class="chapter" data-level="4.3" data-path="Structures.html"><a href="Structures.html#les-structures-de-donnees"><i class="fa fa-check"></i><b>4.3</b> Les Structures de données</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="Structures.html"><a href="Structures.html#vecteurs"><i class="fa fa-check"></i><b>4.3.1</b> Vecteurs</a></li>
+<li class="chapter" data-level="4.3.2" data-path="Structures.html"><a href="Structures.html#matrices"><i class="fa fa-check"></i><b>4.3.2</b> Matrices</a></li>
+<li class="chapter" data-level="4.3.3" data-path="Structures.html"><a href="Structures.html#tableaux"><i class="fa fa-check"></i><b>4.3.3</b> Tableaux</a></li>
+<li class="chapter" data-level="4.3.4" data-path="Structures.html"><a href="Structures.html#listes"><i class="fa fa-check"></i><b>4.3.4</b> Listes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="Structures.html"><a href="Structures.html#index-et-test"><i class="fa fa-check"></i><b>4.4.1</b> Index et Test</a></li>
+<li class="chapter" data-level="4.4.2" data-path="Structures.html"><a href="Structures.html#remplacer"><i class="fa fa-check"></i><b>4.4.2</b> Remplacer</a></li>
+<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#sous-diviser"><i class="fa fa-check"></i><b>4.4.3</b> sous-diviser</a></li>
+<li class="chapter" data-level="4.4.4" data-path="Structures.html"><a href="Structures.html#concatenation"><i class="fa fa-check"></i><b>4.4.4</b> Concaténation</a></li>
+<li class="chapter" data-level="4.4.5" data-path="Structures.html"><a href="Structures.html#transformation"><i class="fa fa-check"></i><b>4.4.5</b> Transformation</a></li>
+<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#transposition"><i class="fa fa-check"></i><b>4.4.6</b> Transposition</a></li>
+<li class="chapter" data-level="4.4.7" data-path="Structures.html"><a href="Structures.html#sous-divisier"><i class="fa fa-check"></i><b>4.4.7</b> Sous-divisier</a></li>
+<li class="chapter" data-level="4.4.8" data-path="Structures.html"><a href="Structures.html#mutliplication"><i class="fa fa-check"></i><b>4.4.8</b> Mutliplication</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="Structures.html"><a href="Structures.html#autres-chapitres"><i class="fa fa-check"></i><b>4.5</b> autres chapitres:</a></li>
 </ul></li>
 </ul>
 
@@ -121,7 +151,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Le companion de l’utilisateur R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Le compagnon de l’utilisateur R</a>
           </h1>
         </div>
 
@@ -140,7 +170,7 @@ Ensuite, pour commencer un projet, ouvrez RStudio, et cliquez sur File/New Proje
 <img src="Images/01-New_Project.png" width="319" /><img src="Images/02-New_Directory.png" width="268" /><img src="Images/03-Empty_Project.png" width="267" /><img src="Images/04-New_Project.png" width="266" /></p>
 <p>Tada ! Vous venez de créer un projet RStudio. Maintenant il ne manque plus qu’à travailler.</p>
 </div>
-<div id="organiser-son-projet" class="section level2">
+<div id="organise_project" class="section level2">
 <h2><span class="header-section-number">3.2</span> Organiser son projet</h2>
 <p>Un des avantages des projets est le fait que RStudio défini automatiquement le répertoire de travail à la racine du projet. Le répertoire de travail est le chemin du dossier dans lequel est situé votre projet. Dans mon exemple, celui-ci est “C:/R_Projects/Premiers_Pas_R”. Dans R, on peut modifier le répertoire de travail manuellement en utilisant la commande <code>setwd</code>. Par exemple, si je ne veux travailler que dans mon dossier code, je pourrais utiliser la commande:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;02-Code/&quot;</span>)</code></pre></div>
@@ -165,17 +195,94 @@ Je vous incite à créer ces 4 dossiers vides à chaque fois que vous créez un 
 </div>
 <div id="creer-un-script-r" class="section level2">
 <h2><span class="header-section-number">3.3</span> Créer un script R</h2>
+<p>R est un language intérprété, c’est à dire qu’il interprête (exécute) vos commandes en temps réel. Vous pouvez dès à présent intéragir avec R dans l’onglet <em>console</em> de RStudio, qui se trouve en bas à gauche. Vous pouvez par exemple taper la commande suivante:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1+3</span></code></pre></div>
+<p>R vous retournera alors le résultat du calcul juste après votre commande :</p>
+<pre><code>## [1] 4</code></pre>
+<p>On vient donc de voir que <strong>R</strong> peut être utilisé comme une calculatrice, mais celui à bien plus à offrir. En effet, vous pouvez par exemple créer des objets que <strong>R</strong> sauvera dans la mémoire vive<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> durant toute votre session<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.<br />
+Voici un premier exemple assez simple et concret: vous êtes partis en mission avec votre collègue qui a payé la totalité des frais. Pour le rembourser vous avez noté toutes les dépenses: 53.26€ de trajet, 108.30€ de repas, et 145.50€ pour la nuitée. Vous devez donc sommer toutes les dépenses et diviser par deux le total pour connaître votre part, comme ceci:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="fl">53.26+108.30+145.50</span>)/<span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 153.53</code></pre>
+<p>Maintenant, si vous partez régulièrement ensemble, il peut être pratique de garder une trace de chaque élément, avec quelques explications pour chacune. Pour celà, il vous suffit de créer un script R. Un script est en fait simplement un fichier texte qui présente l’extension <code>.R</code> au lieu de <code>.txt</code>. Ce fichier sert de support pour l’écriture de commandes R.<br />
+Pour créer votre premier script R, cliquez sur fichier (file) -&gt; nouveau fichier (New File) -&gt; R script, ou alors en utilisant le raccourci clavier (<code>ctrl+shit+N</code>).<br />
+RStudio va alors ouvrir un script vierge sans titre et non sauvegardé. La première chose à faire est d’écrire un titre. Bien sûr vous ne voulez pas que R exécute le titre ou les commantaires. Pour celà, vous devez lui indiquer que la ligne que vous insérez ne doit pas être interprétée en commençant la ligne par un <code>#</code>. Voici un exemple, la première ligne est un commentaire, R ne l’interprète pas, alors que la seconde oui:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 2+3</span>
+<span class="dv">5+6</span></code></pre></div>
+<pre><code>## [1] 11</code></pre>
+<p>Comme vous pouvez le voir R retourne 11, qui est le résultat de la deuxième ligne.<br />
+Vous pouvez donc écrire votre titre de la même façon, sans que R ne s’en préoccupe:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Script R pour remboursement des frais:</span>
+
+<span class="co"># Lundi 24/04/2017: 53.26€ de trajet, 108.30€ de repas, et 145.50€ pour la nuitée</span>
+(<span class="fl">53.26+108.30+145.50</span>)/<span class="dv">2</span> <span class="co"># Vous pouvez aussi taper un comentaire après une ligne de commande</span></code></pre></div>
+<pre><code>## [1] 153.53</code></pre>
+<p>Pour éxécuter une ligne de commande (i.e. envoyer une ligne à R) depuis votre script, il vous suffit d’utiliser le raccourcis clavier <code>ctrl+r</code>, ou d’utiliser le bouton “run” dans la barre en haut de votre script.</p>
+<p>Vous pouvez maintenant enregistrer votre script en cliquant sur Fichier (File) -&gt; Enregistrer sous (save as), ou par le raccourci clavier <code>Ctrl+s</code>. Ensuite vous devrez nommer votre script, et je vous encourage fortement à l’enregistrer dans le dossier <code>02-Code</code> si vous avez suivi le précédent point: <a href="Premiers.html#organise_project">Organiser son projet</a>.</p>
+</div>
+<div id="creer-des-objets-et-les-manipuler" class="section level2">
+<h2><span class="header-section-number">3.4</span> Créer des objets et les manipuler</h2>
+<div id="objet-unique" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Objet unique</h3>
+<p>Maintenant que vous savez utiliser les calculs sous R et les commenter, vous allez voir comment simplifier vos scripts et vos calculs grâce à la création d’objets.<br />
+Pour reprendre l’exemple précédent, nous allons créer plusieurs objet qui déterminent chacun une dépense :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Trajet=<span class="st"> </span><span class="fl">53.26</span>
+repas=<span class="st"> </span><span class="fl">108.30</span>
+hotel=<span class="st"> </span><span class="fl">145.50</span></code></pre></div>
+<p>Cette écriture est très intuitive car elle ressemble à celle que l’on écrirait sur un bout de papier. Ce qui est intéressant avec R, c’est que celui-ci enregistre la valeur associée à chaque objet, ainsi, si on éxécute le nom de l’objet, R nous retournera sa valeur :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Trajet</code></pre></div>
+<pre><code>## [1] 53.26</code></pre>
+<p>On peut maintenant utiliser des opération mathématiques directement sur nos objets, comme l’addition:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Trajet+repas+hotel</code></pre></div>
+<pre><code>## [1] 307.06</code></pre>
+<p>Et même assigner ce nouveau résultat à un nouvel objet, appelé pour l’occasion <code>Depenses_07_Avril</code>, qui contient les dépenses du 07 du mois d’avril:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril=<span class="st"> </span>Trajet+repas+hotel</code></pre></div>
+<p>Notez bien la structure du code : l’objet <code>Depenses_07_Avril</code> est suivi d’un <code>=</code>, puis chaque nombre est additionné un à un. Ainsi, R fait d’abord le calcul de l’addition des objets à droite, puis assigne le résultat à l’objet nouvellement créé. On peut maintenant demander à R la valeur des dépenses :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril</code></pre></div>
+<pre><code>## [1] 307.06</code></pre>
+</div>
+<div id="vecteur" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Vecteur</h3>
+<p>La manière précédente est intéressante, mais ne permet malheureusement pas de garder une trace du calcul dans l’objet. En effet, <code>Depenses_07_Avril</code> ne contient que la somme des dépenses de la journée, mais pas leur détail. Pour se faire, nous pouvons créer un vecteur contenant chaque dépense de la journée :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril=<span class="st"> </span><span class="kw">c</span>(Trajet,repas,hotel)
+Depenses_07_Avril</code></pre></div>
+<pre><code>## [1]  53.26 108.30 145.50</code></pre>
+<p>Notez bien la structure du code ci-dessus. Chaque dépense est séparée par une virgule, et le tout est mis entre parenthèses précédées d’un <code>c</code>. Il est important de bien comprendre ce qu’il se passe ici. Pour faire court, nous avons créé un vecteur comportant trois nombres : 53.26, 108.30 et 145.50 rangés des objets appelés Trajet,repas et hotel repsectivement, puis nous les avons assignés à un nouvel objet <code>Depenses_07_Avril</code>. Maintenant, <code>Depenses_07_Avril</code> ne contient plus la somme de chaque dépense, mais chacune de leur valeur. En réalité, nous avons utilisé ici deux fonctions: la fonction d’assignation <code>=</code>, et la fonction de coercion <code>c</code>. Nous avons déjà vu la première, qui sert à assigner une ou des valeurs à un objet. La seconde quand à elle permet de concaténer plusieurs éléments en un seul objet qui sera un vecteur. Une vecteur est donc une suite de valeurs indépendantes. L’avantage d’un vecteur est de garder chaque valeur, et de pouvoir opérer des opérations mathématiques sur l’objet entier. Par exemple, si on veut obtenir la somme des dépenses de la journée, on pourra utiliser la fonction associée <code>sum</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril=<span class="st"> </span><span class="kw">c</span>(Trajet,repas,hotel)
+<span class="kw">sum</span>(Depenses_07_Avril)</code></pre></div>
+<pre><code>## [1] 307.06</code></pre>
+<p>Cette fonction additione tous les éléments du vecteur.<br />
+Les opérations mathématiques usuelles ont toutes leurs propres fonctions:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(Depenses_07_Avril)  <span class="co"># somme des éléments</span></code></pre></div>
+<pre><code>## [1] 307.06</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(Depenses_07_Avril) <span class="co"># moyenne des éléments</span></code></pre></div>
+<pre><code>## [1] 102.3533</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril*<span class="dv">2</span>     <span class="co"># multiplication de chaque élément par 2</span></code></pre></div>
+<pre><code>## [1] 106.52 216.60 291.00</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril/<span class="dv">2</span>     <span class="co"># division de chaque élément par 2</span></code></pre></div>
+<pre><code>## [1] 26.63 54.15 72.75</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril%%<span class="dv">2</span>    <span class="co"># modulo 2 de la divison (retourne le reste de la division par deux)</span></code></pre></div>
+<pre><code>## [1] 1.26 0.30 1.50</code></pre>
+<p>D’autres objets plus complexes existent dans R, comme les matrices, les tableaux, ou les listes. Ils seront détaillés dans le prochain chapitre.</p>
 
 </div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>R fonctionne exclusivement avec la mémoire vive (ajouter renvoi vers chapitre optimiser R)<a href="Premiers.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>voir définition <a href="https://fr.wikipedia.org/wiki/Session_(informatique)">wikipédia</a><a href="Premiers.html#fnref2">↩</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="intro.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
-
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Structures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
