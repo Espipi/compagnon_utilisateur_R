@@ -17,7 +17,7 @@ Ce livre à pour objectif de vous enseigner le plus rapidement possible comment 
 
 **R** peut aussi être utilisé seul mais je vous recommande fortement l'utilisation de l'IDE [RStudio](https://www.rstudio.com/) car il dispose d'un large panel d'outils rendant l'utilisation de R plus facile. RStudio est gratuit et libre, et la dernière version du logiciel est disponible [ici](https://www.rstudio.com/products/rstudio/#Desktop). Un tutorial d'installation sera décrit en introduction.
 
-Ce livre est entièrement écrit grâce à RStudio et au package R **bookdown**. Vous pouvez donc vous-même télécharger **bookdown** et m'aider à l'écriture du livre en utilisant le lien [Github](). Pour cela, il vous suffit d'exécuter la commande suivante depuis la console **R**:
+Ce livre est entièrement écrit grâce à RStudio et aux packages R **bookdown** [@R-bookdown] et **knitr** [@xie2015]. Vous pouvez donc vous-même télécharger **bookdown** et m'aider à l'écriture du livre en utilisant le lien [Github](). Pour cela, il vous suffit d'exécuter la commande suivante depuis la console **R**:
 
 ```{r eval=FALSE}
 devtools::install_github("rstudio/bookdown")

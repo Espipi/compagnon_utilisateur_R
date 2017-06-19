@@ -25,7 +25,7 @@
 <meta name="author" content="Vezy Rémi">
 
 
-<meta name="date" content="2017-06-04">
+<meta name="date" content="2017-06-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -109,11 +109,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
 <li class="chapter" data-level="3.1" data-path="Premiers.html"><a href="Premiers.html#ouvrir-un-projet-rstudio"><i class="fa fa-check"></i><b>3.1</b> Ouvrir un projet RStudio</a></li>
 <li class="chapter" data-level="3.2" data-path="Premiers.html"><a href="Premiers.html#organise_project"><i class="fa fa-check"></i><b>3.2</b> Organiser son projet</a></li>
-<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#creer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script R</a></li>
+<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#creer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script <strong>R</strong></a></li>
 <li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#creer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="Premiers.html"><a href="Premiers.html#objet-unique"><i class="fa fa-check"></i><b>3.4.1</b> Objet unique</a></li>
 <li class="chapter" data-level="3.4.2" data-path="Premiers.html"><a href="Premiers.html#vecteur"><i class="fa fa-check"></i><b>3.4.2</b> Vecteur</a></li>
 </ul></li>
+<li class="chapter" data-level="3.5" data-path="Premiers.html"><a href="Premiers.html#introduction-aux-fonctions-aux-packages-et-a-laide"><i class="fa fa-check"></i><b>3.5</b> Introduction aux fonctions, aux packages et à l’aide</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a><ul>
 <li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-donnees"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a><ul>
@@ -132,7 +133,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="Structures.html"><a href="Structures.html#index-et-test"><i class="fa fa-check"></i><b>4.4.1</b> Index et Test</a></li>
-<li class="chapter" data-level="4.4.2" data-path="Structures.html"><a href="Structures.html#remplacer"><i class="fa fa-check"></i><b>4.4.2</b> Remplacer</a></li>
+<li class="chapter" data-level="4.4.2" data-path="Structures.html"><a href="Structures.html#remplacer-assigner"><i class="fa fa-check"></i><b>4.4.2</b> Remplacer, assigner</a></li>
 <li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#sous-diviser"><i class="fa fa-check"></i><b>4.4.3</b> sous-diviser</a></li>
 <li class="chapter" data-level="4.4.4" data-path="Structures.html"><a href="Structures.html#concatenation"><i class="fa fa-check"></i><b>4.4.4</b> Concaténation</a></li>
 <li class="chapter" data-level="4.4.5" data-path="Structures.html"><a href="Structures.html#transformation"><i class="fa fa-check"></i><b>4.4.5</b> Transformation</a></li>
@@ -162,13 +163,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="header">
 <h1 class="title">Le compagnon de l’utilisateur R</h1>
 <h4 class="author"><em>Vezy Rémi</em></h4>
-<h4 class="date"><em>2017-06-04</em></h4>
+<h4 class="date"><em>2017-06-18</em></h4>
 </div>
 <div id="prere" class="section level1">
 <h1><span class="header-section-number">Chapitre 1</span> Prérequis</h1>
 <p>Ce livre à pour objectif de vous enseigner le plus rapidement possible comment utiliser R et son environement (RStudio, Rmarkdown, plotly…) pour la science des données. Ainsi, chaque chapitre peut être lu indépendemment des autres, pour que vous puissez aller droit à l’essentiel lorsque vous en avez besoin. Bien sûr, je vous recommande fortement de lire ou au moins de survoler le livre une première fois afin de vous faire gagner du temps par la suite. Pour donner un exemple, même si l’utilisation de plotly ne demande pas explicitement de savoir utiliser les pipes (tubes), leur utilisation ne rendra l’apprentissage que plus rapide.</p>
 <p><strong>R</strong> peut aussi être utilisé seul mais je vous recommande fortement l’utilisation de l’IDE <a href="https://www.rstudio.com/">RStudio</a> car il dispose d’un large panel d’outils rendant l’utilisation de R plus facile. RStudio est gratuit et libre, et la dernière version du logiciel est disponible <a href="https://www.rstudio.com/products/rstudio/#Desktop">ici</a>. Un tutorial d’installation sera décrit en introduction.</p>
-<p>Ce livre est entièrement écrit grâce à RStudio et au package R <strong>bookdown</strong>. Vous pouvez donc vous-même télécharger <strong>bookdown</strong> et m’aider à l’écriture du livre en utilisant le lien <a href="">Github</a>. Pour cela, il vous suffit d’exécuter la commande suivante depuis la console <strong>R</strong>:</p>
+<p>Ce livre est entièrement écrit grâce à RStudio et aux packages R <strong>bookdown</strong> <span class="citation">[@R-bookdown]</span> et <strong>knitr</strong> <span class="citation">[@xie2015]</span>. Vous pouvez donc vous-même télécharger <strong>bookdown</strong> et m’aider à l’écriture du livre en utilisant le lien <a href="">Github</a>. Pour cela, il vous suffit d’exécuter la commande suivante depuis la console <strong>R</strong>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;rstudio/bookdown&quot;</span>)</code></pre></div>
 
 </div>

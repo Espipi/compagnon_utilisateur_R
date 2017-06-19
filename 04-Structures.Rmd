@@ -16,7 +16,7 @@ Il est à noter que chaque type de données contient sa propre marque pour un ma
 ### Les charactères (character) 
 Les charactères (character) peuvent prendre n'importe quelle forme (même celle d'un chiffre), et comporter n'importe quel charactère, même un espace. Pour créer un charactère, il suffit de le déclarer entre guillemets `"` (ou `'`) comme ceci: `"character"`. Ils peuvent être composés d'un seul charactère `"a"`, de plusieurs `"abc"`, ou même d'une phrase `"ceci est un seul charactère"`. Pour créer un vecteur de plusieurs charactères, il faut utiliser la fonction `c()` comme nous l'avons déjà vu: `c("a","b","c")`. Voici un exemple incluant une déclaration et un test : 
 ```{r exemple character, echo=TRUE, message=FALSE, warning=FALSE}
-a= "a"       # a est un double
+a= "a"       # a est un charactère
 a
 is.character(a)  # teste si a est un charactère (retourne TRUE si la condition est vraie)
 ```
@@ -173,7 +173,7 @@ is(b)
 Comme on peut le voir, la transformation est déroutante : le "3" du facteur est devenu un 2, et le "a" un 3. Pour comprendre ce qu'il s'est passé, il faut savoir que pour transformer un facteur en numérique, R prends les catégories comme des charactères, puis les trie alphanumériquement (i.e. de 0 à 9 puis de A à Z), puis alloue l'index de chaque catégorie comme nouvelle valeur. Donc ici R à décidé de l'ordre suivant dans les catégories : "1"<"3"<"a", puis leur à alloué un index :  "1"=1, "3"=2, "a"=3, et a remplacé les valeurs de chaque catégorie par son index pour que "1","a","3" devienne 1,3,2.
 Ce type d'erreur peut être évité en utilisant la combinaison de fonctions suivantes :
 ```{r factor to double2}
-a= factor(c("1","a","3"))   # a est déclaré comme un facteur de logueur 3
+a= factor(c("1","a","3"))   # a est déclaré comme un facteur de longueur 3
 b= as.numeric(levels(a))[a] # on force a à devenir un double
 b                           # b est bien un double, le résultat est bon, et le charactère "a" est transformé en NA.
 is(b)
@@ -183,34 +183,125 @@ Maintenant que vous connaissez mieux les charactères, les doubles, les entiers,
 
 ## Les Structures de données  
 
-R met à disposition de ses utilisateurs quatre grands types de structures de données plus ou moins liées : les vecteurs, les matrices, les tableaux et les listes.  
+R met à disposition de ses utilisateurs quatre grands types de structures de données plus ou moins liées: les vecteurs, les matrices, les tableaux et les listes.  
 
 ### Vecteurs  
 
 Nous avons déjà vu un premier exemple de vecteurs dans le chapitre précédent ([Premiers pas]), qui introduisait la fabrication d'un vecteur contenant des chiffres.
-Les vecteurs sont une structure de données à une dimension, c'est à dire qu'il s'agit d'une suite de données rangées en "ligne". Un vecteur ne peut contenir qu'un seul type de données (charactère, booléen...) à la fois. Si l'on construit un vecteur avec plusieurs types de données consécutifs, ils sont alors transformés de la même façon que nous avons vu les tranformations précédement dans [Les transformations]. Il est à retenir que **R** essaye toujours de prendre le types de donnée qui gardera le plus d'information. Par exemple un mélange de charactères et de doubles sera transformé en charactère pour ne pas perdre l'information des charactères (qui seraient transformés en NA autrement). 
+Les vecteurs sont une structure de données à une dimension, c'est à dire qu'il s'agit d'une suite de données rangées en "ligne". Un vecteur ne peut contenir qu'un seul type de données à la fois (charactère, booléen...). Si l'on construit un vecteur avec plusieurs types de données consécutifs, ils sont alors transformés de la même façon que nous avons vu les tranformations précédement dans [Les transformations]. Il est à retenir que **R** essaye toujours de prendre le types de donnée qui gardera le plus d'information. Par exemple un mélange de charactères et de doubles sera transformé en charactère pour ne pas perdre l'information des charactères (qui seraient transformés en NA autrement).  
+Il existe plusieurs moyens de créer un vecteur. Tous ont un avantage associé, et seront utilisés en fonction du contexte:  
+- en utilisant as.vector pour créer un vecteur de la taille désirée, que l'on remplira par la suite. Comme les vecteurs ne peuvent contenir qu'un seul type de données, il faut déclarer le type dès la création grâce à l'argument "mode". Les différents modes sont  "logical" (= booléen), "integer" (= entier), "numeric" (= double), "complex" (= complexe), "character" (= charactère) and "raw" (= bits). Voici un exemple de vecteur numérique: 
+```{r vecteur}
+a= vector(mode = "numeric", length = 10)   # a est un vecteur de longueur 10
+a
+```
 
-### Matrices
+### Matrices  
+Une matrice est en tout point semblable à un vecteur, sauf qu'elle comporte deux dimensions, il s'agit là d'une matrice dans son sens mathématique. Comme les vecteurs, les matrices ne peuvent contenir qu'un seul type de données. Voici un exemple de création de matrice:
+```{r matrix}
+matrix(data = 1:9, nrow = 3)   # une matrice
+```
+La fonction `matrix` est très utile car on peut choisir le nombre de lignes et/ou de colonnes voulues, ainsi que le sens de remplissage des données avec l'argument `by.row`. La fonction `matrix` est un très bon utilitaire pour construire des structures 2D vides notemment, comme suit:  
+```{r matrix2}
+matrix(data = NA, nrow = 8, ncol=2)   # une matrice 8*2 comportant la valeur NA
+```
+Une matrice peut aussi comporter une seule colonne, ou une seule ligne.
+
+### Tableaux  
+Il existe deux types de tableaux dans R: `array` et `data.frame`.  
+Le premier est rarement utilisé. Il s'agit ni plus ni moins d'un vecteur à n dimensions (englobe donc vecteur et matrices).
+```{r array}
+array(data = 1:9, dim = 9)   # un array tel un vecteur
+array(data = 1:9, dim = c(3,3))   # un array tel une matrice 3*3
+array(data = 1:9, dim = c(3,3,2))   # un array tel une liste de 2 matrices de 3*3 (dimension 3)
+```
+
+Le second -le `data.frame`- est peut-être la structure la plus utilisée dans R. Cette structure représente le sens commun que l'on se fait d'un tableau. Structurellement, le `data.frame` se présente donc comme un tableau comportant un nombre défini de colonnes et de lignes. Chaque colonne comporte le même nombre de lignes. Dans **R**, un `data.frame` est une liste de vecteurs de même longueur. Le plus grand avantage du `data.frame` est que chaque colonne peut contenir un type de donnée différent.
+```{r data.frame}
+data.frame(a= c("Jour 1", "Jour 2", "Jour 3"), b=c(40, 50, 45))   # un data.frame
+```
+Les `data.frame` sont utilisés par la grande majorité des fonctions dans R.  
+
+### Listes  
+Les listes (`list`) sont aussi un type de structure très important dans R. Il faut penser la liste comme étant au `data.frame` ce qu'est l'`array` à la matrice. Il s'agit d'un `data.frame` de dimension n.
+On peut mettre n'importe quel type de données de n'importe quelle taille dans une liste, même une autre liste (= nested list).
+```{r list}
+list(a= c("Jour 1", "Jour 2", "Jour 3"), b=c(40, 50, 45), c= 1, d= list(1:3, 8:4, "a"))   # une liste
+```
+Les listes sont un peu complexe à appréhender mais sont certainement le type de structure le plus maléable, et finalement le plus simple à travailler.
+Il est à noter que le `data.frame` est en fait une liste de vecteurs. On peut donc remplir l'une de ses colonnes par une liste, mais ce type d'utilisation est plutôt déconseillé dans un premier temps car il limite l'utilisation de fonctions spéciales adaptées aux `data.frame`, mais aussi à celles adaptées aux listes.  
 
 
-### Tableaux
-
-### Listes
-
-
-
-## Manipuler les structures
+## Manipuler les structures  
+La manipulation des structures se fait en accord avec les spécificités de chacunes.
 
 ### Index et Test
-Index commence à 1
-Index vecteurs [1], matrices/tableaux [1,] et listes [[,1]] ou [1] ou [[1]]
-Indexer plusieurs éléments:
-- selon numéro de l'index lignes/colonnes [1:10], [,1:10]
-- selon condition [c(T,T,F,T)] (test)
+La manipulation la plus courante est l'indexage. En d'autres termes, il s'agit là de récupérer les valeurs d'une structure en fonction de sa position, de son nom ou d'une condition.
+L'index se fait le plus souvent en utilisant la fonction `[`, appelée fonction `extract`. Par exemple, pour récupérer la troisième valeur d'un vecteur, on utilisera la fonction comme suit: `a[3]`. Il est à noter que l'indexage se fait à partir de 1, car la première valeur du vecteur est en position 1. Cela peut porter à confusion pour les utilisateurs venant d'autres languages de programmation tels que Python, qui indexe à partir de 0. Une autre particularité de R est l'utilisation du `-` comme un **sauf**. Donc `a[-3]` récupèrera le vecteur `a` sauf sa troisième valeur. Lorsque l'on a plus de une dimension (e.g. matrice ou data.frame), on sépare l'index de chaque dimension par une virgule (e.g. [ligne,colonne]). Pour récupérer les objets d'une liste, on utilisera la fonction `[[`. On peut aussi indexer un vecteur par le nom de son objet comme suit `a["nom de l'objet"]` mais aussi en testant une condition comme ceci `a[c(T,T,F)]`.
+Une deuxième fonction que l'on peut utiliser pour le `data.frame` et la `list` est la fonction `$`. Celle-ci indexe les colonnes du premier et les objets du second par leur nom.
 
-### Remplacer
-objet[Index]= 2
-objet[1:10]= 21:30
+- Vecteur
+```{r}
+a= c(10:15) # a est un vecteur numérique de 10 à 20.
+a[3]        # on veut récupérer la troisième valeur du vecteur a
+a[c(1,5,3)] # on veut récupérer la 1e, la 5e et la 3e valeur de a
+a[-1]       # on veut récupérer toutes les valeurs de a sauf la première.
+a[c(T,F,F,T,T)] # on veut récupérer toutes les valeurs de a sauf la 2e et 3e valeur qui sont refusées par le FALSE (F).
+```
+
+- matrice:
+```{r}
+a= matrix(10:21, nrow= 3) # a est une matrice
+a[3,]                     # on veut récupérer la troisième ligne entière
+a[c(1,3), 1]              # on veut récupérer la 1e et la 3e ligne, mais seulement la 1e colonne
+a[-1,-2]                  # on veut récupérer toutes les lignes sauf la 1e et toutes les colonnes sauf la 2e
+```
+
+- data.frame
+```{r}
+a= data.frame(Num= c(1:10), Prix= c(11:20)) # a est un data.frame
+a[3,]         # comme sur les matrices, on veut récupérer la troisième ligne entière
+a[c(1,3), 1]  # on veut récupérer la 1e et la 3e ligne, mais seulement la 1e colonne
+a[-1,-2]      # on veut récupérer toutes les lignes sauf la 1e et toutes les colonnes sauf la 2e
+a$Prix        # on veut récupérer la deuxième colonne par son nom avec la fonction `$`.
+a["Num"]      # on veut récupérer la 1e colonne par son nom avec la fonction `[`
+```
+
+- liste
+```{r}
+a= list(Num= c(1:3), Prix= c(11:13), Id_et_serie= list(Id= c(1,1,1), serie= c(2,2,2)), Classe= data.frame(a=1:3,b=1:3)) # a est un data.frame
+a[1:2]        # on veut récupérer une liste des 1er et 2nd objets de la liste
+a[[1]]        # on veut récupérer les valeurs du 1er objet de la liste
+a[-1]         # on veut récupérer une liste de tous les objets de la liste sauf le 1er
+a[[3]][1]     # on veut récupérer les valeurs du premier objet de la liste en 3e position de la liste a.
+a[[4]][,1]    # on veut récupérer les valeurs de la 1e colonne du data.frame en 4e position de la liste a.
+a$Classe[,1]  # on mélange l'utilisation des deux fonctions `$` et `[` pour faire de même
+a$Prix        # on veut récupérer les valeurs de l'objet nommé Prix
+a$Id_et_serie$serie # on veut récupérer les valeurs de l'objet nommé serie dans l'objet nommé Id_et_serie
+a[c("Num","Classe")]# on veut récupérer le 1er et 4e objets de la liste a
+```
+
+Donc pour résumer, l'indexage commence à 1, et l'index se fait comme suit: vecteurs [i], matrices/tableaux [i,j] et listes [[i,j]] ou [1] ou [[1]]
+Pour indexer plusieurs éléments:  
+- selon numéro de l'index lignes/colonnes [1:10], [,1:10]  
+- selon condition test [c(T,T,F,T)]  
+
+### Remplacer, assigner
+
+Il est possible de remplacer des valeurs dans une structure en spécifiant l'index de la valeur à remplacer et lui ré-assignant une nouvelle valeur :
+```{r}
+a= c(10:15) # a est un vecteur numérique de 10 à 20.
+a[3]        # la troisième valeur de a est de 12
+# On remplace sa valeur par 5:
+a[3]= 5     
+a           # La 3e valeur est modifiée à 5
+# Attention, si on remplace une valeur par un autre type de données, cela peut changer le type de tout le vecteur:
+a[1]= "a"   
+a           # a a été modifié en charactere
+# On peut aussi modifier plusieurs valeurs à la fois:
+a[1:3]= 5
+a
+```
 
 ### sous-diviser
 
@@ -233,8 +324,7 @@ Découper un tableau en listes avec split
 ### Mutliplication
 
 
-
-Chapitres d'après: 
+Chapitres suivants: 
 ## Fonctions
 Disons que vous êtes en voyage au Brésil, où la monnaie est le Real, mais comme vous êtes habitué à payer Euro, vous aimeriez pouvoir convertir entre les deux simplement.
 ```{r currency, echo=FALSE, message=FALSE, warning=FALSE}

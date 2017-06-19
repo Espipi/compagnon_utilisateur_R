@@ -52,24 +52,3 @@ Apprendre un language de programmation peut être long. La vitesse à laquelle o
 Pour se faire, vous pouvez commencer par vous abonner à la liste de diffusion du blog [R-bloggers](https://www.r-bloggers.com/), qui est un méta-blog regroupant plusieurs centaines de blogs en une seule et unique source. Vous pourrez trouver tout ce dont vous avez besoin, comme des tutoriels ou des news sur les sorties de packages. Ensuite, lorsque vous recherchez une information, vous pouvez aller faire un tour sur le site [stackoverflow](http://stackoverflow.com/questions/tagged/r), qui est un site qui propose un système de question-réponse très au point, permettant le vote des meilleures réponses, ainsi que ses pages de [documentations](http://stackoverflow.com/documentation/r/topics) proposant des exemples ou des tutoriels autour du language R. Enfin, une façon de trouver plus vite des réponses à ses questions est d'utiliser le moteur de recherche [DuckDuckGo](https://duckduckgo.com/) que j'affectionne particulièrement car il propose en haut de page la réponse la mieux notée du premier site Q&A qu'il trouve, avec le code associé. Celà permet très souvent de ne même pas avoir besoin d'entrer sur un site pour obtenir une réponse à sa question. Testez vous-même en suivant [ce lien](https://duckduckgo.com/?q=R+ggpot+mutliple+time-series&t=ffab&ia=qa) pour un exemple sur comment faire un graphique comprennant plusieurs graphiques de séries temporelles. De plus, ce moteur de recherche est un des seuls qui ne vous piste pas. Aussi dois-je préciser qu'il ne s'agit pas ici de publicité mais seulement de préférence personnelle.       
 
 Bien sûr, la première aide à consulter avant toute est celle donnée par défaut dans chaque package. Pour y accéder sous RStudio, il vous suffit de surligner (double-cliquer) le nom de la fonction, et d'appuyer sur la touche `F1` de votre clavier. Vous pouvez aussi passer par la console de R en tappant `?nom_de_la_fonction` (ou `help(nom_de_la_fonction)`), ou encore tapper directement le nom de la fonction dans la barre de recherche de l'onglet "help" dans la fenêtre de droite.  
-
-
-
-
-Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
-
-```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
-```
-
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
-
-```{r nice-tab, tidy=FALSE}
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
-
-You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
