@@ -209,13 +209,13 @@ a
 ```
 
 * En utilisant la fonction `c()`, qui concatène ses arguments :
-```{r vecteur}
+```{r}
 a= c(1,10,8)
 a
 ```
 
 * En utilisant d'autres fonction comme `seq()`, `rep()`, `:` etc... :
-```{r vecteur}
+```{r}
 a= seq(from = 1, to = 10, by = 1)
 a= rep(x = 0, times= 10)
 a= rnorm(n = 10, mean = 1, sd = 2)
@@ -356,14 +356,14 @@ vec
 
 ```{r}
 a= matrix(data= 1:9, nrow = 3)
-b= matrix(data= 10:19, nrow = 3)
+b= matrix(data= 10:18, nrow = 3)
 mat_c= cbind(a,b)
 mat_c
 ```
 
 ```{r}
 a= matrix(data= 1:9, nrow = 3)
-b= matrix(data= 10:19, nrow = 3)
+b= matrix(data= 10:18, nrow = 3)
 mat_r= rbind(a,b)
 mat_r
 ```

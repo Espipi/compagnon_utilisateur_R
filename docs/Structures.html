@@ -134,12 +134,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="Structures.html"><a href="Structures.html#index-et-test"><i class="fa fa-check"></i><b>4.4.1</b> Index et Test</a></li>
 <li class="chapter" data-level="4.4.2" data-path="Structures.html"><a href="Structures.html#remplacer-assigner"><i class="fa fa-check"></i><b>4.4.2</b> Remplacer, assigner</a></li>
-<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#sous-diviser"><i class="fa fa-check"></i><b>4.4.3</b> sous-diviser</a></li>
-<li class="chapter" data-level="4.4.4" data-path="Structures.html"><a href="Structures.html#concatenation"><i class="fa fa-check"></i><b>4.4.4</b> Concaténation</a></li>
-<li class="chapter" data-level="4.4.5" data-path="Structures.html"><a href="Structures.html#transformation"><i class="fa fa-check"></i><b>4.4.5</b> Transformation</a></li>
-<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#transposition"><i class="fa fa-check"></i><b>4.4.6</b> Transposition</a></li>
-<li class="chapter" data-level="4.4.7" data-path="Structures.html"><a href="Structures.html#sous-divisier"><i class="fa fa-check"></i><b>4.4.7</b> Sous-divisier</a></li>
-<li class="chapter" data-level="4.4.8" data-path="Structures.html"><a href="Structures.html#mutliplication"><i class="fa fa-check"></i><b>4.4.8</b> Mutliplication</a></li>
+<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#concatenation"><i class="fa fa-check"></i><b>4.4.3</b> Concaténation</a></li>
+<li class="chapter" data-level="4.4.4" data-path="Structures.html"><a href="Structures.html#transformation"><i class="fa fa-check"></i><b>4.4.4</b> Transformation</a></li>
+<li class="chapter" data-level="4.4.5" data-path="Structures.html"><a href="Structures.html#transposition"><i class="fa fa-check"></i><b>4.4.5</b> Transposition</a></li>
+<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#sous-divisier"><i class="fa fa-check"></i><b>4.4.6</b> Sous-divisier</a></li>
+<li class="chapter" data-level="4.4.7" data-path="Structures.html"><a href="Structures.html#mutliplication"><i class="fa fa-check"></i><b>4.4.7</b> Mutliplication</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="Structures.html"><a href="Structures.html#autres-chapitres"><i class="fa fa-check"></i><b>4.5</b> autres chapitres:</a></li>
 </ul></li>
@@ -315,7 +314,7 @@ b                   </code></pre></div>
 <p><code>b</code> est maintenant un charactère (notez les guillemets qui entourent chaque chiffre)</p>
 <ol start="4" style="list-style-type: decimal">
 <li>character to double (ou integer) :<br />
-Comme vous l’avez deviné, cette transformation peut se faire grâce à la fonction <code>as.double</code>. Cependant, il faut être très prudent lorsque l’on fait une transformation dans ce sens, car R peut parfois prendre des décisions que l’on attendais pas lorsque l’on travaille avec des facteurs.</li>
+Comme vous l’avez deviné, cette transformation peut se faire grâce à la fonction <code>as.double</code>. Cependant, il faut être très prudent lorsque l’on fait une transformation dans ce sens, car R peut parfois présenter des comportements inattendus.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>)   <span class="co"># a est déclaré comme un vecteur de 3 charactères</span>
 <span class="kw">is.character</span>(a)     <span class="co"># a est bien considéré comme un charactère</span></code></pre></div>
@@ -323,8 +322,6 @@ Comme vous l’avez deviné, cette transformation peut se faire grâce à la fon
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b=<span class="st"> </span><span class="kw">as.double</span>(a)     <span class="co"># on force a à devenir un double</span>
 b                   <span class="co"># b est une version de a en double</span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is</span>(b)</code></pre></div>
-<pre><code>## [1] &quot;numeric&quot; &quot;vector&quot;</code></pre>
 <p>Maintenant un exemple avec des facteurs, qui peuvent donner des résultats inattendus lorsqu’ils sont composés de charactères comportant des chiffres et des lettres :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;3&quot;</span>))   <span class="co"># a est déclaré comme un facteur de logueur 3</span>
 b=<span class="st"> </span><span class="kw">as.numeric</span>(a)            <span class="co"># on force a à devenir un double</span>
@@ -336,10 +333,9 @@ b                           <span class="co"># b est bien un double, mais le ré
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;3&quot;</span>))   <span class="co"># a est déclaré comme un facteur de longueur 3</span>
 b=<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">levels</span>(a))[a] <span class="co"># on force a à devenir un double</span></code></pre></div>
 <pre><code>## Warning: NAs introduits lors de la conversion automatique</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b                           <span class="co"># b est bien un double, le résultat est bon, et le charactère &quot;a&quot; est transformé en NA.</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b                           </code></pre></div>
 <pre><code>## [1]  1 NA  3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is</span>(b)</code></pre></div>
-<pre><code>## [1] &quot;numeric&quot; &quot;vector&quot;</code></pre>
+<p><code>b</code> est bien un double, le résultat est bon, et le charactère “a” est transformé en <code>NA</code>.</p>
 <p>Maintenant que vous connaissez mieux les charactères, les doubles, les entiers, et les booléens, vous allez voir comment les organiser dans des structures de données qui vous permettront de les stocker dans des objets plus ou moins complexes.</p>
 </div>
 <div id="les-structures-de-donnees" class="section level2">
@@ -348,21 +344,35 @@ b=<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">l
 <div id="vecteurs" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> Vecteurs</h3>
 <p>Nous avons déjà vu un premier exemple de vecteurs dans le chapitre précédent (<a href="Premiers.html#Premiers">Premiers pas</a>), qui introduisait la fabrication d’un vecteur contenant des chiffres. Les vecteurs sont une structure de données à une dimension, c’est à dire qu’il s’agit d’une suite de données rangées en “ligne”. Un vecteur ne peut contenir qu’un seul type de données à la fois (charactère, booléen…). Si l’on construit un vecteur avec plusieurs types de données consécutifs, ils sont alors transformés de la même façon que nous avons vu les tranformations précédement dans <a href="Structures.html#transform_datatype">Les transformations</a>. Il est à retenir que <strong>R</strong> essaye toujours de prendre le types de donnée qui gardera le plus d’information. Par exemple un mélange de charactères et de doubles sera transformé en charactère pour ne pas perdre l’information des charactères (qui seraient transformés en NA autrement).<br />
-Il existe plusieurs moyens de créer un vecteur. Tous ont un avantage associé, et seront utilisés en fonction du contexte:<br />
-- en utilisant as.vector pour créer un vecteur de la taille désirée, que l’on remplira par la suite. Comme les vecteurs ne peuvent contenir qu’un seul type de données, il faut déclarer le type dès la création grâce à l’argument “mode”. Les différents modes sont “logical” (= booléen), “integer” (= entier), “numeric” (= double), “complex” (= complexe), “character” (= charactère) and “raw” (= bits). Voici un exemple de vecteur numérique:</p>
+Il existe plusieurs moyens de créer un vecteur. Tous ont un avantage associé, et seront utilisés en fonction du contexte:</p>
+<ul>
+<li>En utilisant as.vector pour créer un vecteur de la taille désirée, que l’on remplira par la suite. Comme les vecteurs ne peuvent contenir qu’un seul type de données, il faut déclarer le type dès la création grâce à l’argument “mode”. Les différents modes sont <code>logical</code> (= booléen), <code>integer</code> (= entier), <code>numeric</code> (= double), <code>complex</code> (= complexe), <code>character</code> (= charactère) and <code>raw</code> (= bits). Voici un exemple de vecteur numérique:</li>
+</ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode =</span> <span class="st">&quot;numeric&quot;</span>, <span class="dt">length =</span> <span class="dv">10</span>)   <span class="co"># a est un vecteur de longueur 10</span>
 a</code></pre></div>
 <pre><code>##  [1] 0 0 0 0 0 0 0 0 0 0</code></pre>
+<ul>
+<li>En utilisant la fonction <code>c()</code>, qui concatène ses arguments :</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">8</span>)
+a</code></pre></div>
+<pre><code>## [1]  1 10  8</code></pre>
+<ul>
+<li>En utilisant d’autres fonction comme <code>seq()</code>, <code>rep()</code>, <code>:</code> etc… :</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">1</span>)
+a=<span class="st"> </span><span class="kw">rep</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">times=</span> <span class="dv">10</span>)
+a=<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">1</span>, <span class="dt">sd =</span> <span class="dv">2</span>)</code></pre></div>
 </div>
 <div id="matrices" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> Matrices</h3>
-<p>Une matrice est en tout point semblable à un vecteur, sauf qu’elle comporte deux dimensions, il s’agit là d’une matrice dans son sens mathématique. Comme les vecteurs, les matrices ne peuvent contenir qu’un seul type de données. Voici un exemple de création de matrice:</p>
+<p>Une matrice est très semblable à un vecteur, sauf qu’elle comporte deux dimensions, il s’agit là d’une matrice dans son sens mathématique. Comme les vecteurs, les matrices ne peuvent contenir qu’un seul type de données. Voici un exemple de création de matrice:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)   <span class="co"># une matrice</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    4    7
 ## [2,]    2    5    8
 ## [3,]    3    6    9</code></pre>
-<p>La fonction <code>matrix</code> est très utile car on peut choisir le nombre de lignes et/ou de colonnes voulues, ainsi que le sens de remplissage des données avec l’argument <code>by.row</code>. La fonction <code>matrix</code> est un très bon utilitaire pour construire des structures 2D vides notemment, comme suit:</p>
+<p>La fonction <code>matrix</code> est très utile car on peut choisir le nombre de lignes et/ou de colonnes, ainsi que le sens de remplissage des données avec l’argument <code>by.row</code>. La fonction <code>matrix</code> est un très bon utilitaire pour construire des structures 2D vides notemment, comme suit:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="ot">NA</span>, <span class="dt">nrow =</span> <span class="dv">8</span>, <span class="dt">ncol=</span><span class="dv">2</span>)   <span class="co"># une matrice 8*2 comportant la valeur NA</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   NA   NA
@@ -400,7 +410,7 @@ Le premier est rarement utilisé. Il s’agit ni plus ni moins d’un vecteur à
 ## [1,]    1    4    7
 ## [2,]    2    5    8
 ## [3,]    3    6    9</code></pre>
-<p>Le second -le <code>data.frame</code>- est peut-être la structure la plus utilisée dans R. Cette structure représente le sens commun que l’on se fait d’un tableau. Structurellement, le <code>data.frame</code> se présente donc comme un tableau comportant un nombre défini de colonnes et de lignes. Chaque colonne comporte le même nombre de lignes. Dans <strong>R</strong>, un <code>data.frame</code> est une liste de vecteurs de même longueur. Le plus grand avantage du <code>data.frame</code> est que chaque colonne peut contenir un type de donnée différent.</p>
+<p>Le second, le <code>data.frame</code>, est peut-être la structure la plus utilisée dans R. Cette structure représente le sens commun que l’on se fait d’un tableau. Structurellement, le <code>data.frame</code> se présente donc comme un tableau comportant un nombre défini de colonnes et de lignes. Chaque colonne comporte le même nombre de lignes. Dans <strong>R</strong>, un <code>data.frame</code> est une liste de vecteurs de même longueur. Le plus grand avantage du <code>data.frame</code> est que chaque colonne peut contenir un type de donnée différent.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data.frame</span>(<span class="dt">a=</span> <span class="kw">c</span>(<span class="st">&quot;Jour 1&quot;</span>, <span class="st">&quot;Jour 2&quot;</span>, <span class="st">&quot;Jour 3&quot;</span>), <span class="dt">b=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">45</span>))   <span class="co"># un data.frame</span></code></pre></div>
 <pre><code>##        a  b
 ## 1 Jour 1 40
@@ -411,7 +421,7 @@ Le premier est rarement utilisé. Il s’agit ni plus ni moins d’un vecteur à
 <div id="listes" class="section level3">
 <h3><span class="header-section-number">4.3.4</span> Listes</h3>
 <p>Les listes (<code>list</code>) sont aussi un type de structure très important dans R. Il faut penser la liste comme étant au <code>data.frame</code> ce qu’est l’<code>array</code> à la matrice. Il s’agit d’un <code>data.frame</code> de dimension n. On peut mettre n’importe quel type de données de n’importe quelle taille dans une liste, même une autre liste (= nested list).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list</span>(<span class="dt">a=</span> <span class="kw">c</span>(<span class="st">&quot;Jour 1&quot;</span>, <span class="st">&quot;Jour 2&quot;</span>, <span class="st">&quot;Jour 3&quot;</span>), <span class="dt">b=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">45</span>), <span class="dt">c=</span> <span class="dv">1</span>, <span class="dt">d=</span> <span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">8</span><span class="op">:</span><span class="dv">4</span>, <span class="st">&quot;a&quot;</span>))   <span class="co"># une liste</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list</span>(<span class="dt">a=</span> <span class="kw">c</span>(<span class="st">&quot;Jour 1&quot;</span>, <span class="st">&quot;Jour 2&quot;</span>, <span class="st">&quot;Jour 3&quot;</span>), <span class="dt">b=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">45</span>), <span class="dt">c=</span> <span class="dv">1</span>, <span class="dt">d=</span> <span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">8</span><span class="op">:</span><span class="dv">4</span>, <span class="st">&quot;a&quot;</span>))</code></pre></div>
 <pre><code>## $a
 ## [1] &quot;Jour 1&quot; &quot;Jour 2&quot; &quot;Jour 3&quot;
 ## 
@@ -438,7 +448,7 @@ Le premier est rarement utilisé. Il s’agit ni plus ni moins d’un vecteur à
 <p>La manipulation des structures se fait en accord avec les spécificités de chacunes.</p>
 <div id="index-et-test" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> Index et Test</h3>
-<p>La manipulation la plus courante est l’indexage. En d’autres termes, il s’agit là de récupérer les valeurs d’une structure en fonction de sa position, de son nom ou d’une condition. L’index se fait le plus souvent en utilisant la fonction <code>[</code>, appelée fonction <code>extract</code>. Par exemple, pour récupérer la troisième valeur d’un vecteur, on utilisera la fonction comme suit: <code>a[3]</code>. Il est à noter que l’indexage se fait à partir de 1, car la première valeur du vecteur est en position 1. Cela peut porter à confusion pour les utilisateurs venant d’autres languages de programmation tels que Python, qui indexe à partir de 0. Une autre particularité de R est l’utilisation du <code>-</code> comme un <strong>sauf</strong>. Donc <code>a[-3]</code> récupèrera le vecteur <code>a</code> sauf sa troisième valeur. Lorsque l’on a plus de une dimension (e.g. matrice ou data.frame), on sépare l’index de chaque dimension par une virgule (e.g. [ligne,colonne]). Pour récupérer les objets d’une liste, on utilisera la fonction <code>[[</code>. On peut aussi indexer un vecteur par le nom de son objet comme suit <code>a[&quot;nom de l'objet&quot;]</code> mais aussi en testant une condition comme ceci <code>a[c(T,T,F)]</code>. Une deuxième fonction que l’on peut utiliser pour le <code>data.frame</code> et la <code>list</code> est la fonction <code>$</code>. Celle-ci indexe les colonnes du premier et les objets du second par leur nom.</p>
+<p>La manipulation la plus courante est l’indexage. En d’autres termes, il s’agit là de récupérer les valeurs d’une structure en fonction de sa position, de son nom ou d’une condition. L’index se fait le plus souvent en utilisant la fonction <code>[</code>, appelée fonction <code>extract</code>. Par exemple, pour récupérer la troisième valeur d’un vecteur, on utilisera la fonction comme suit: <code>a[3]</code>. Il est à noter que l’indexage se fait à partir de 1, car la première valeur du vecteur est en position 1. Cela peut porter à confusion pour les utilisateurs venant d’autres languages de programmation tels que Python, qui indexe à partir de 0. Une autre particularité de R est l’utilisation du <code>-</code> comme un <strong>sauf</strong>. Donc <code>a[-3]</code> récupèrera le vecteur <code>a</code> sauf sa troisième valeur. Lorsque l’on a plus d’une dimension (e.g. matrice ou data.frame), on sépare l’index de chaque dimension par une virgule (e.g. [ligne,colonne]). Pour récupérer les objets d’une liste, on utilisera la fonction <code>[[</code>. On peut aussi indexer un vecteur par le nom de son objet comme suit <code>a[&quot;nom de l'objet&quot;]</code> mais aussi en testant une condition comme ceci <code>a[c(T,T,F)]</code>. Une deuxième fonction que l’on peut utiliser pour le <code>data.frame</code> et la <code>list</code> est la fonction <code>$</code>. Celle-ci indexe les colonnes du premier et les objets du second par leur nom.</p>
 <ul>
 <li>Vecteur</li>
 </ul>
@@ -537,9 +547,12 @@ a[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]  
 ## 1 1 1
 ## 2 2 2
 ## 3 3 3</code></pre>
-<p>Donc pour résumer, l’indexage commence à 1, et l’index se fait comme suit: vecteurs [i], matrices/tableaux [i,j] et listes [[i,j]] ou [1] ou [[1]] Pour indexer plusieurs éléments:<br />
-- selon numéro de l’index lignes/colonnes [1:10], [,1:10]<br />
-- selon condition test [c(T,T,F,T)]</p>
+<p>Donc pour résumer, l’indexage commence à 1, et l’index se fait comme suit: vecteurs [i], matrices/tableaux [i,j] et listes [[i,j]] ou [1] ou [[1]] Pour indexer plusieurs éléments:</p>
+<ul>
+<li>selon numéro de l’index lignes/colonnes [1:10], [,1:10]<br />
+</li>
+<li>selon condition test [c(T,T,F,T)]</li>
+</ul>
 </div>
 <div id="remplacer-assigner" class="section level3">
 <h3><span class="header-section-number">4.4.2</span> Remplacer, assigner</h3>
@@ -560,27 +573,55 @@ a           <span class="co"># a a été modifié en charactere</span></code></p
 a</code></pre></div>
 <pre><code>## [1] &quot;5&quot;  &quot;5&quot;  &quot;5&quot;  &quot;13&quot; &quot;14&quot; &quot;15&quot;</code></pre>
 </div>
-<div id="sous-diviser" class="section level3">
-<h3><span class="header-section-number">4.4.3</span> sous-diviser</h3>
-</div>
 <div id="concatenation" class="section level3">
-<h3><span class="header-section-number">4.4.4</span> Concaténation</h3>
+<h3><span class="header-section-number">4.4.3</span> Concaténation</h3>
+<p>On peut aussi concaténer les différentes structures de données:</p>
+<ul>
+<li>vecteur, en utilisant la fonction <code>c()</code> :</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
+b=<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>)
+vec=<span class="st"> </span><span class="kw">c</span>(a,b)
+vec</code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10  2  8</code></pre>
+<ul>
+<li>matrice/data.frame en utilisant <code>rbind</code> pour concatener par lignes, <code>cbind</code> pour concatener par colonnes :</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data=</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)
+b=<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data=</span> <span class="dv">10</span><span class="op">:</span><span class="dv">18</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)
+mat_c=<span class="st"> </span><span class="kw">cbind</span>(a,b)
+mat_c</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
+## [1,]    1    4    7   10   13   16
+## [2,]    2    5    8   11   14   17
+## [3,]    3    6    9   12   15   18</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data=</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)
+b=<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data=</span> <span class="dv">10</span><span class="op">:</span><span class="dv">18</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)
+mat_r=<span class="st"> </span><span class="kw">rbind</span>(a,b)
+mat_r</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+## [4,]   10   13   16
+## [5,]   11   14   17
+## [6,]   12   15   18</code></pre>
 </div>
 <div id="transformation" class="section level3">
-<h3><span class="header-section-number">4.4.5</span> Transformation</h3>
+<h3><span class="header-section-number">4.4.4</span> Transformation</h3>
 <p>Transformer un charactère en numerique et vice et versa. Transformer une matrice en tableau.</p>
 </div>
 <div id="transposition" class="section level3">
-<h3><span class="header-section-number">4.4.6</span> Transposition</h3>
+<h3><span class="header-section-number">4.4.5</span> Transposition</h3>
 </div>
 <div id="sous-divisier" class="section level3">
-<h3><span class="header-section-number">4.4.7</span> Sous-divisier</h3>
+<h3><span class="header-section-number">4.4.6</span> Sous-divisier</h3>
 <p>Indexer depuis un vecteur Découper un tableau en listes avec split</p>
 </div>
 <div id="mutliplication" class="section level3">
-<h3><span class="header-section-number">4.4.8</span> Mutliplication</h3>
+<h3><span class="header-section-number">4.4.7</span> Mutliplication</h3>
 <p>Chapitres suivants: ## Fonctions Disons que vous êtes en voyage au Brésil, où la monnaie est le Real, mais comme vous êtes habitué à payer Euro, vous aimeriez pouvoir convertir entre les deux simplement.</p>
-<p>A l’heure où cette version du livre à été mis à jour pour la dernière fois, 1 Euro (€) valait 4.208833 Reals (R$)<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. Grâce à R, vous pouvez calculer cela très facilement en créant un objet contenant la conversion :</p>
+<p>A l’heure où cette version du livre à été mis à jour pour la dernière fois, 1 Euro (€) valait 4.2110953 Reals (R$)<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. Grâce à R, vous pouvez calculer cela très facilement en créant un objet contenant la conversion :</p>
 </div>
 </div>
 <div id="autres-chapitres" class="section level2">
