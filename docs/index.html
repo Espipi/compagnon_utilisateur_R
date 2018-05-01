@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Le compagnon de l’utilisateur R</title>
   <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Le compagnon de l’utilisateur R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Vezy Rémi">
 
 
-<meta name="date" content="2017-06-18">
+<meta name="date" content="2018-05-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -163,14 +163,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="header">
 <h1 class="title">Le compagnon de l’utilisateur R</h1>
 <h4 class="author"><em>Vezy Rémi</em></h4>
-<h4 class="date"><em>2017-06-18</em></h4>
+<h4 class="date"><em>2018-05-01</em></h4>
 </div>
 <div id="prere" class="section level1">
 <h1><span class="header-section-number">Chapitre 1</span> Prérequis</h1>
 <p>Ce livre à pour objectif de vous enseigner le plus rapidement possible comment utiliser R et son environement (RStudio, Rmarkdown, plotly…) pour la science des données. Ainsi, chaque chapitre peut être lu indépendemment des autres, pour que vous puissez aller droit à l’essentiel lorsque vous en avez besoin. Bien sûr, je vous recommande fortement de lire ou au moins de survoler le livre une première fois afin de vous faire gagner du temps par la suite. Pour donner un exemple, même si l’utilisation de plotly ne demande pas explicitement de savoir utiliser les pipes (tubes), leur utilisation ne rendra l’apprentissage que plus rapide.</p>
 <p><strong>R</strong> peut aussi être utilisé seul mais je vous recommande fortement l’utilisation de l’IDE <a href="https://www.rstudio.com/">RStudio</a> car il dispose d’un large panel d’outils rendant l’utilisation de R plus facile. RStudio est gratuit et libre, et la dernière version du logiciel est disponible <a href="https://www.rstudio.com/products/rstudio/#Desktop">ici</a>. Un tutorial d’installation sera décrit en introduction.</p>
 <p>Ce livre est entièrement écrit grâce à RStudio et aux packages R <strong>bookdown</strong> <span class="citation">[@R-bookdown]</span> et <strong>knitr</strong> <span class="citation">[@xie2015]</span>. Vous pouvez donc vous-même télécharger <strong>bookdown</strong> et m’aider à l’écriture du livre en utilisant le lien <a href="">Github</a>. Pour cela, il vous suffit d’exécuter la commande suivante depuis la console <strong>R</strong>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;rstudio/bookdown&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rstudio/bookdown&quot;</span>)</code></pre></div>
 
 </div>
             </section>
@@ -190,17 +190,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",

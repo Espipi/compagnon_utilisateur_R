@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Le compagnon de l’utilisateur R</title>
   <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Le compagnon de l’utilisateur R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Vezy Rémi">
 
 
-<meta name="date" content="2017-06-18">
+<meta name="date" content="2018-05-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -165,80 +165,89 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Il existe plusieurs types de données dans R, et différentes façons de les manipuler en découle. Le type de structure ou d’objet utilisé dépendra principalement de la nature de l’information à y stocker et des manipulations que l’on veut effectuer dessus. Trois principaux types de données et quatre principales structures sont utilisées régulièrement dans R.</p>
 <div id="les-types-de-donnees" class="section level2">
 <h2><span class="header-section-number">4.1</span> Les types de données</h2>
-<p>Les principaux types de données sont:<br />
-* les charactères <code>c(&quot;character&quot;,&quot;another one&quot;)</code><br />
-* les doubles <code>c(1.5,2.248,3.01)</code><br />
-* les entiers <code>c(1,2,3)</code><br />
-* les booléens <code>c(TRUE,FALSE)</code><br />
+<p>Les principaux types de données sont:</p>
+<ul>
+<li>les charactères <code>c(&quot;character&quot;,&quot;another one&quot;)</code><br />
+</li>
+<li>les doubles <code>c(1.5,2.248,3.01)</code><br />
+</li>
+<li>les entiers <code>c(1,2,3)</code><br />
+</li>
+<li>les booléens <code>c(TRUE,FALSE)</code><br />
 Il existe aussi d’autres types, dérivés ou non des types précédents comme les dates <code>as.POSIXct(c(&quot;1990-01-01&quot;,&quot;2017-06-03&quot;))</code>, les complexes, ou les “raw” (séquences de bits), qui ne seront pas discutés tout de suite.<br />
-Il est à noter que chaque type de données contient sa propre marque pour un manque de données: le NA (not applicable: non applicable).</p>
+Il est à noter qu’un manque de donnée se note généralement <code>NA</code> (= not applicable: non applicable) ou bien <code>NULL</code> par exemple pour un vecteur ou une liste de longueur nulle (i.e. vide). Il existe un type de <code>NA</code> pour chaque type de données : <code>NA_character_</code>, <code>NA_real_</code>, <code>NA_integer_</code> et <code>NA_complex_</code>, mais l’utilisateur n’a généralement pas en soucier, car <strong>R</strong> applique automatiquement le type de <code>NA</code> associé au type de donnée.</li>
+</ul>
 <div id="les-characteres-character" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Les charactères (character)</h3>
 <p>Les charactères (character) peuvent prendre n’importe quelle forme (même celle d’un chiffre), et comporter n’importe quel charactère, même un espace. Pour créer un charactère, il suffit de le déclarer entre guillemets <code>&quot;</code> (ou <code>'</code>) comme ceci: <code>&quot;character&quot;</code>. Ils peuvent être composés d’un seul charactère <code>&quot;a&quot;</code>, de plusieurs <code>&quot;abc&quot;</code>, ou même d’une phrase <code>&quot;ceci est un seul charactère&quot;</code>. Pour créer un vecteur de plusieurs charactères, il faut utiliser la fonction <code>c()</code> comme nous l’avons déjà vu: <code>c(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;)</code>. Voici un exemple incluant une déclaration et un test :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> &quot;a&quot;</span>       <span class="co"># a est un charactère</span>
 a</code></pre></div>
 <pre><code>## [1] &quot;a&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.character</span>(a)  <span class="co"># teste si a est un charactère (retourne TRUE si la condition est vraie)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.character</span>(a)  <span class="co"># on teste si a est un charactère (retourne TRUE si la condition est vraie)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="les-doubles-double" class="section level3">
 <h3><span class="header-section-number">4.1.2</span> Les doubles (double)</h3>
 <p>Les doubles sont des nombres décimaux. Ils sont le type de données que vous utiliserez probablement le plus souvent. Pour les déclarer, rien de plus simple, il suffit d’écrire votre chiffre, puis de l’utiliser comme bon vous semble. Voici un petit exemple :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="fl">1.56</span>       <span class="co"># a est un double</span>
-a*<span class="fl">83.550</span>      <span class="co"># il peut être multiplié par un autre double</span></code></pre></div>
+a<span class="op">*</span><span class="fl">83.550</span>      <span class="co"># il peut être multiplié par un autre double</span></code></pre></div>
 <pre><code>## [1] 130.338</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.double</span>(a)  <span class="co"># teste si a est un double (équivalent à is.numeric())</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.double</span>(a)  <span class="co"># on teste si a est un double (équivalent de is.numeric())</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>Les doubles ont en plus d’autres valeurs possibles qui correspondent plutôt à des erreurs de calculs ou de précision: * le NaN, qui signifie Not a Number (= Pas un nombre). Qui est souvent le résultat d’une opération mathématique interdite, comme un logarithe ou une racine carrée d’un nombre négatif.<br />
-* le -Inf et le Inf, qui sont le résultat d’une opération mathématique qui ne peut pas être calculée car trop grande ou trop petite.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(-<span class="dv">1</span>)</code></pre></div>
+<p>Les doubles ont en plus d’autres valeurs possibles qui correspondent plutôt à des erreurs de calculs ou de précision:</p>
+<ul>
+<li>le <code>NaN</code>, qui signifie Not a Number (= Pas un nombre). Qui est souvent le résultat d’une opération mathématique interdite, comme un logarithme ou une racine carrée d’un nombre négatif.<br />
+</li>
+<li>le <code>-Inf</code> et le <code>Inf</code>, qui sont le résultat d’une opération mathématique qui ne peut pas être calculée car trop grande ou trop petite. Exemple :</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="op">-</span><span class="dv">1</span>)</code></pre></div>
 <pre><code>## [1] NaN</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span>^<span class="dv">89999</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span><span class="op">^</span><span class="dv">89999</span></code></pre></div>
 <pre><code>## [1] Inf</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">-<span class="dv">10</span>^<span class="dv">89999</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">-</span><span class="dv">10</span><span class="op">^</span><span class="dv">89999</span></code></pre></div>
 <pre><code>## [1] -Inf</code></pre>
-<p>Pour bien comprendre ce type d’erreurs, et comment ils sont utilisés par R, vous devez d’abord comprendre comment un ordinateur perçoit les doubles . Je comprends que ce type d’information puisse moins vous intéresser, mais je pense fermement que vous devez connaître ceci avant de passer à la suite. Cependant, vous pouvez sauter le paragraphe qui suit pour une première lecture, et aller directement à <a href="Structures.html#entiers">Les entiers (integer)</a>.</p>
+<p>Pour bien comprendre ce type d’erreurs, et comment ils sont utilisés par R, vous devez d’abord comprendre comment un ordinateur perçoit les doubles. Je comprends que ce type d’information puisse moins vous intéresser, mais je pense fermement que vous devez connaître ceci avant de passer à la suite. Cependant, vous pouvez sauter le paragraphe qui suit pour une première lecture, et aller directement à <a href="Structures.html#entiers">Les entiers (integer)</a>.</p>
 <p>Cette partie peut vous paraître difficile et éloignée du sujet de prime abord, mais vous verrez par la suite à quel point elle peut être importante lors de certains calculs.<br />
-Si vous lisez ce livre depuis un navigateur avec une connexion internet, je vous renvoi à l’article wikipédia sur le sujet <a href="https://fr.wikipedia.org/wiki/Virgule_flottante">en français</a> ou celui <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">en anglais</a> encore plus complet, sinon, je vais vous faire ici un petit résumé simplifié :</p>
-<p>En informatique, un double est un type de donnée utilisé pour représenter les nombres décimaux (nombre à virgule). Comme un ordinateur utilise des suites de bits (0 ou 1) pour fonctionner, il doit représenter les nombres décimaux avec une précision donnée, c’est à dire un nombre de bits donné pour représenter un nombre. Nous les humains faisons de même. En effet, pour écrire en décimal le nombre pi, nous n’écrirons certainement pas tous les chiffres après la virgule (je vous en met au défi), mais en feront une approximation. Parfois nous écrirons 3.14 pour aller très vite, parfois lorsque la précision s’impose nous écrirons 3.141593 (ou plus). Comme un ordinateur ne peut pas savoir à l’avance avec quelle précision nous voulons travailler, nous lui imposont une précision fixe, qui aujourd’hui est le format double précision (d’où le nom de double) 64 bits de la norme (<a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>). Ces nombres sont représentés grâce à trois informations: le signe du nombre s (- ou +), la mantisse m (~les chiffres du nombre) et un exposant e (entier relatif qui donne la position de la virgule dans la mantisse, ce qui donne le nom de virgule flottante). Il s’agit un peu d’un équivalent de la notation scientifique. Un nombre peut donc être représenté comme ceci<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> :<br />
-<img src="Images/07-Mantisse_exposant_fr.png" width="201" /></p>
+Si vous lisez ce livre depuis un navigateur avec une connexion internet, je vous renvoie à l’article wikipédia sur le sujet <a href="https://fr.wikipedia.org/wiki/Virgule_flottante">en français</a> ou celui <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">en anglais</a> encore plus complet, sinon, je vais vous faire ici un petit résumé simplifié.</p>
+<p>En informatique, un double est un type de donnée utilisé pour représenter les nombres décimaux (nombre à virgule). Comme un ordinateur utilise des suites de bits (0 ou 1) pour fonctionner, il doit représenter les nombres décimaux avec une précision donnée, c’est à dire un nombre de bits donné pour représenter un nombre. Nous les humains faisons de même. En effet, pour écrire en décimale le nombre pi, nous n’écrirons certainement pas tous les chiffres après la virgule (je vous met au défi), mais nous en feront plutôt une approximation. Parfois nous écrirons 3.14 pour aller très vite, parfois lorsque la précision s’impose nous écrirons 3.141593 (ou plus). Comme un ordinateur ne peut pas savoir à l’avance avec quelle précision nous voulons travailler, nous lui imposons une précision fixe, qui aujourd’hui est le format double précision (d’où le nom de double) 64 bits de la norme (<a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>). Ces nombres sont représentés grâce à trois informations: le signe du nombre <code>s</code> (- ou +), la mantisse <code>m</code> (~les chiffres du nombre) et un exposant <code>e</code> (entier relatif qui donne la position de la virgule dans la mantisse, ce qui donne le nom de virgule flottante). Il s’agit un peu d’un équivalent de la notation scientifique. Un nombre peut donc être représenté comme ceci<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> :<br />
+<img src="Images/07-Mantisse_exposant_fr.png" /><!-- --></p>
 <p>En double précision, ces trois informations ensemble ne doivent pas dépasser 64 bits. L’encodage est donc divisé comme suit: 1 bit pour le signe, 11 bits pour l’exposant et 52 bits pour la mantisse, ce qui donne 53 bits de précision, donc environ 16 chiffres significatifs. Si vous avez bien compris comment les doubles sont encodés, alors vous aurez compris que R peut donc représenter des nombres avec beaucoup de précision, mais pas avec une précision infinie.<br />
 Que vous ayez bien compris ou non, retenez ces deux conclusion:</p>
 <p>1- La précision n’est pas infinie:<br />
 <strong>Il est important de toujours garder en tête que la précision des calculs dans R n’est pas infinie</strong>, et donc que sous certaines conditions R peut présenter un comportement non valide mathématiquement, comme par exemple lors d’une soustraction de nombres extrêmement proches de zéro comme suit :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span>^-<span class="dv">325-10</span>^-<span class="dv">324</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span><span class="op">^-</span><span class="dv">325</span><span class="op">-</span><span class="dv">10</span><span class="op">^-</span><span class="dv">324</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>Comme vous pouvez le voir R retourne 0, ce qui est faux. Un calcul de cette précision peut paraître superflu mais ce genre d’erreur peut s’accumuler de calculs en calculs et devenir bien plus grande par la suite.<br />
 Bien sûr, il est très rare d’utiliser de telles précisions, et les erreurs engendrées n’auront aucun impact réel sur vos calculs. Pour l’exemple, voici un autre calcul très précis, que R peut gérer (si votre ordinateur le permet) :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span>^-<span class="dv">324-10</span>^-<span class="dv">323</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span><span class="op">^-</span><span class="dv">324</span><span class="op">-</span><span class="dv">10</span><span class="op">^-</span><span class="dv">323</span></code></pre></div>
 <pre><code>## [1] -9.881313e-324</code></pre>
 <p>NB: pour voir quel degré de précision votre ordinateur (et R) peut gérer, vous pouvez regarder le contenu de l’objet <code>.Machine</code> dans la console de R.</p>
 <p>2- La précision en informatique = chiffres significatifs<br />
 Il faut retenir que <strong>les grands nombres ont moins de chiffres après la virgule</strong>. En effet, la précision en informatique se réfère aux chiffres significatifs, c’est à dire au nombre de chiffres que comporte un nombre au <strong>total</strong> (avant ou après la virgule). Ceci est différent de la “précision décimale”, qui se réfère au nombre de chiffres après la virgule.<br />
 Comme la précision ne change pas avec le nombre considéré, plus un nombre est grand (positif ou négatif), moins on peut représenter de chiffres après sa virgule. En effet, 0.003 comporte 4 chiffres, dont 3 après la virgule. 3000 comporte 4 chiffres aussi, mais aucun après la virgule. Ils ont la même précision arithmétique au sens de chiffres significatifs (4), mais pas au sens de “précision décimale” qui donnerait 3000.0000 pour une précision de 4.<br />
 Regardez par vous même, on voit que R est capable de calculer ceci :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="dv">10</span>^-<span class="dv">324-10</span>^-<span class="dv">323</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="dv">10</span><span class="op">^-</span><span class="dv">324</span><span class="op">-</span><span class="dv">10</span><span class="op">^-</span><span class="dv">323</span>
 <span class="co"># On teste si &quot;a&quot; est différent de 0:</span>
-a!=<span class="dv">0</span></code></pre></div>
+a<span class="op">!=</span><span class="dv">0</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>(a est bien différent de 0)</p>
 <p>Mais il ne pourra pas calculer ceci :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="dv">1-10</span>^-<span class="dv">323</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="dv">10</span><span class="op">^-</span><span class="dv">323</span>
 <span class="co"># On teste si &quot;a&quot; est différent de 1:</span>
-a!=<span class="dv">1</span></code></pre></div>
+a<span class="op">!=</span><span class="dv">1</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>(a est considéré égal à 1, donc la soustraction <code>1-10^-323</code> n’est même pas prise en compte)</p>
 <p>On peu aussi noter que même si R arrive à utiliser des nombres avec de grandes précisions, celui-ci arrondi souvent le résultat lorsqu’il l’affiche dans la console. Pour voir un nombre complet, on peut utliser la fonction <code>print()</code> avec son argument <code>digits</code>, qui donne le nombre de décimale voulues, comme ceci:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="dv">1</span>+<span class="st"> </span><span class="fl">2.2e-14</span>,<span class="dt">digits =</span> <span class="dv">22</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="dv">1</span><span class="op">+</span><span class="st"> </span><span class="fl">2.2e-14</span>,<span class="dt">digits =</span> <span class="dv">22</span>)</code></pre></div>
 <pre><code>## [1] 1.000000000000022</code></pre>
-<p>Enfin, si la précision vous importe vraiment et que vous devez utilisez des chiffres plus précis que la double précision, vous pouvez jeter un oeil au package <code>Rmpfr</code> et le package <code>Brobdingnag</code>.</p>
+<p>Enfin, si la précision vous importe vraiment et que vous devez utiliser des chiffres plus précis que la double précision, vous pouvez jeter un oeil au package <code>Rmpfr</code> et le package <code>Brobdingnag</code>.</p>
 </div>
 <div id="entiers" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Les entiers (integer)</h3>
 <p>En informatique, les entiers sont des entiers relatifs (nombre avec signe). Pour être différenciés des doubles, les entiers (integer) sont déclarés suivis de la lettre <code>L</code> comme suit :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span>1L
 b=<span class="st"> </span>24L
-c=<span class="st"> </span>-500L
+c=<span class="st"> </span><span class="op">-</span>500L
 <span class="kw">paste</span>(a,b,c)</code></pre></div>
 <pre><code>## [1] &quot;1 24 -500&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.integer</span>(a) <span class="co"># teste si a est un entier</span></code></pre></div>
@@ -258,44 +267,56 @@ d=<span class="st"> </span>F          <span class="co"># équivalent de c</span>
 <div id="en-bonus-les-facteurs-factors" class="section level3">
 <h3><span class="header-section-number">4.1.5</span> En bonus, les facteurs (factors)</h3>
 <p>Les facteurs sont un type de données un peu spéciaux. Ils permettent d’utiliser des catégories de données dans une même variable. On peut prendre l’exemple d’une personne qui regarde de quelle couleur sont les voitures qui passent devant son entrée, s’il relève 3 voitures rouges, deux bleues et quatre blanches, alors on peut dire que nous avons trois catégories de couleurs de voitures: rouge, bleue, blanche. Pour déclarer ceci dans R, nous ferions comme suit :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">couleurs=<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;bleue&quot;</span>,<span class="st">&quot;bleue&quot;</span>,<span class="st">&quot;blanche&quot;</span>,<span class="st">&quot;blanche&quot;</span>,<span class="st">&quot;blanche&quot;</span>,<span class="st">&quot;blanche&quot;</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">couleurs=<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;bleue&quot;</span>,<span class="st">&quot;bleue&quot;</span>,<span class="st">&quot;blanche&quot;</span>,
+                   <span class="st">&quot;blanche&quot;</span>,<span class="st">&quot;blanche&quot;</span>,<span class="st">&quot;blanche&quot;</span>))
 couleurs          <span class="co"># nous avons un vecteur de charactères, et R reconnait automatiquement les 3 catégories (levels) </span></code></pre></div>
 <pre><code>## [1] rouge   rouge   rouge   bleue   bleue   blanche blanche blanche blanche
 ## Levels: blanche bleue rouge</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(couleurs)  <span class="co"># using the function levels() to return them</span></code></pre></div>
+<p>On voit que <code>couleurs</code> se présente comme un vecteur, mais contient un métadonnée de plus, les <code>levels</code>, qui résument les valeurs uniques du vecteur, et donc qui décrivent les différentes valeurs possible du vecteur.</p>
+<p>La fonction level permet de retrouver les catégories :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(couleurs)</code></pre></div>
 <pre><code>## [1] &quot;blanche&quot; &quot;bleue&quot;   &quot;rouge&quot;</code></pre>
-<p>Les facteurs sont souvent utilisés dans d’autres fonctions comme pour les graphiques ou les modèles. En général, il est préférable d’éviter leur utilisation et de leur préférer un autre type de donnée, à moins d’en avoir un réel besoin.</p>
+<p>Les facteurs sont souvent utilisés dans d’autres fonctions comme pour les graphiques ou les modèles. En général, il est préférable d’éviter leur utilisation et de les remplacer par un autre type de donnée, à moins d’en avoir un réel besoin.</p>
 </div>
 </div>
 <div id="transform_datatype" class="section level2">
 <h2><span class="header-section-number">4.2</span> Les transformations</h2>
-<p>R est un language extrèmement maléable, si bien qu’oil existe des “ponts” entre les types de données. On pourra donc très facilement transformer un type de données en un autre dans certains cas.<br />
-1- integer vers double : il s’agit de la transformation la plus facile. R ne requiert aucun préalable à cette transformation, si bien que celle-ci se fait sans même y réfléchir:</p>
+<p>R est un language extrèmement maléable, si bien qu’il existe des “ponts” entre les types de données. On pourra donc très facilement transformer un type de données en un autre dans certains cas.</p>
+<ol style="list-style-type: decimal">
+<li>integer vers double :<br />
+il s’agit de la transformation la plus facile. R ne requiert aucun préalable à cette transformation, si bien que celle-ci se fait sans même y réfléchir:</li>
+</ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span>1L           <span class="co"># a est déclaré comme un entier égal à 1</span>
 <span class="kw">is.integer</span>(a)   <span class="co"># a est bien considéré comme un entier</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b=<span class="st"> </span>a*<span class="fl">2.5</span>        <span class="co"># on multiplie a par un double et on le stocke dans b</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b=<span class="st"> </span>a<span class="op">*</span><span class="fl">2.5</span>        <span class="co"># on multiplie a par un double et on le stocke dans b</span>
 <span class="kw">is</span>(b)           <span class="co"># b est lui-même un double</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot; &quot;vector&quot;</code></pre>
-<p>2- double to integer L’inverse n’est pas aussi simple et doit se faire en utilisant une fonction de <code>R</code> semblable à la fonction de test (<code>is.integer</code>) que nous avons déjà vu : <code>as.integer</code>. En voici un exemple :</p>
+<ol start="2" style="list-style-type: decimal">
+<li>double to integer :<br />
+L’inverse n’est pas aussi simple et doit se faire en utilisant une fonction de <code>R</code> semblable à la fonction de test (<code>is.integer</code>) que nous avons déjà vu : <code>as.integer</code>. En voici un exemple :</li>
+</ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">2.5</span>,<span class="fl">3.8</span>)   <span class="co"># a est déclaré comme un double</span>
 <span class="kw">is.double</span>(a)      <span class="co"># a est bien considéré comme un double</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b=<span class="st"> </span><span class="kw">as.integer</span>(a)  <span class="co"># on force a à devenir un entier</span>
-<span class="kw">is</span>(b)             <span class="co"># b est maintenant un entier (R à tronqué le chiffre)</span></code></pre></div>
-<pre><code>## [1] &quot;integer&quot;             &quot;numeric&quot;             &quot;vector&quot;             
-## [4] &quot;data.frameRowLabels&quot;</code></pre>
-<p>3- double (ou integer) to character: Cette transformation est aussi assez simple et peut se faire en utilisant la fonction <code>as.character</code> :</p>
+b                 <span class="co"># b est maintenant un integer (R à tronqué le chiffre)</span></code></pre></div>
+<pre><code>## [1] 2 2 3</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>double (ou integer) to character :<br />
+Cette transformation est aussi assez simple et peut se faire en utilisant la fonction <code>as.character</code> :</li>
+</ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">2.5</span>,<span class="fl">3.8</span>)     <span class="co"># a est déclaré comme un double</span>
 <span class="kw">is.double</span>(a)        <span class="co"># a est bien considéré comme un double</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b=<span class="st"> </span><span class="kw">as.character</span>(a)  <span class="co"># on force a à devenir un character</span>
-b                   <span class="co"># b est maintenant un charactère (notez les guillemets qui entourent chaque chiffre)</span></code></pre></div>
+b                   </code></pre></div>
 <pre><code>## [1] &quot;2&quot;   &quot;2.5&quot; &quot;3.8&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is</span>(b)</code></pre></div>
-<pre><code>## [1] &quot;character&quot;           &quot;vector&quot;              &quot;data.frameRowLabels&quot;
-## [4] &quot;SuperClassMethod&quot;</code></pre>
-<p>3- character to double (ou integer) : Comme vous l’avez deviné, cette transformation peut se faire grâce à la fonction <code>as.double</code>. Cependant, il faut être très prudent lorsque l’on fait une transformation dans ce sens, car R peut parfois prendre des décisions que l’on attendais pas lorsque l’on travaille avec des facteurs.</p>
+<p><code>b</code> est maintenant un charactère (notez les guillemets qui entourent chaque chiffre)</p>
+<ol start="4" style="list-style-type: decimal">
+<li>character to double (ou integer) :<br />
+Comme vous l’avez deviné, cette transformation peut se faire grâce à la fonction <code>as.double</code>. Cependant, il faut être très prudent lorsque l’on fait une transformation dans ce sens, car R peut parfois prendre des décisions que l’on attendais pas lorsque l’on travaille avec des facteurs.</li>
+</ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>)   <span class="co"># a est déclaré comme un vecteur de 3 charactères</span>
 <span class="kw">is.character</span>(a)     <span class="co"># a est bien considéré comme un charactère</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
@@ -336,7 +357,7 @@ a</code></pre></div>
 <div id="matrices" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> Matrices</h3>
 <p>Une matrice est en tout point semblable à un vecteur, sauf qu’elle comporte deux dimensions, il s’agit là d’une matrice dans son sens mathématique. Comme les vecteurs, les matrices ne peuvent contenir qu’un seul type de données. Voici un exemple de création de matrice:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="dv">1</span>:<span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)   <span class="co"># une matrice</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)   <span class="co"># une matrice</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    4    7
 ## [2,]    2    5    8
@@ -358,14 +379,14 @@ a</code></pre></div>
 <h3><span class="header-section-number">4.3.3</span> Tableaux</h3>
 <p>Il existe deux types de tableaux dans R: <code>array</code> et <code>data.frame</code>.<br />
 Le premier est rarement utilisé. Il s’agit ni plus ni moins d’un vecteur à n dimensions (englobe donc vecteur et matrices).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">array</span>(<span class="dt">data =</span> <span class="dv">1</span>:<span class="dv">9</span>, <span class="dt">dim =</span> <span class="dv">9</span>)   <span class="co"># un array tel un vecteur</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">array</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">dim =</span> <span class="dv">9</span>)   <span class="co"># un array tel un vecteur</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5 6 7 8 9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">array</span>(<span class="dt">data =</span> <span class="dv">1</span>:<span class="dv">9</span>, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))   <span class="co"># un array tel une matrice 3*3</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">array</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))   <span class="co"># un array tel une matrice 3*3</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    4    7
 ## [2,]    2    5    8
 ## [3,]    3    6    9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">array</span>(<span class="dt">data =</span> <span class="dv">1</span>:<span class="dv">9</span>, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>))   <span class="co"># un array tel une liste de 2 matrices de 3*3 (dimension 3)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">array</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>))   <span class="co"># un array tel une liste de 2 matrices de 3*3 (dimension 3)</span></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2] [,3]
@@ -390,7 +411,7 @@ Le premier est rarement utilisé. Il s’agit ni plus ni moins d’un vecteur à
 <div id="listes" class="section level3">
 <h3><span class="header-section-number">4.3.4</span> Listes</h3>
 <p>Les listes (<code>list</code>) sont aussi un type de structure très important dans R. Il faut penser la liste comme étant au <code>data.frame</code> ce qu’est l’<code>array</code> à la matrice. Il s’agit d’un <code>data.frame</code> de dimension n. On peut mettre n’importe quel type de données de n’importe quelle taille dans une liste, même une autre liste (= nested list).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list</span>(<span class="dt">a=</span> <span class="kw">c</span>(<span class="st">&quot;Jour 1&quot;</span>, <span class="st">&quot;Jour 2&quot;</span>, <span class="st">&quot;Jour 3&quot;</span>), <span class="dt">b=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">45</span>), <span class="dt">c=</span> <span class="dv">1</span>, <span class="dt">d=</span> <span class="kw">list</span>(<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">8</span>:<span class="dv">4</span>, <span class="st">&quot;a&quot;</span>))   <span class="co"># une liste</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list</span>(<span class="dt">a=</span> <span class="kw">c</span>(<span class="st">&quot;Jour 1&quot;</span>, <span class="st">&quot;Jour 2&quot;</span>, <span class="st">&quot;Jour 3&quot;</span>), <span class="dt">b=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">45</span>), <span class="dt">c=</span> <span class="dv">1</span>, <span class="dt">d=</span> <span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">8</span><span class="op">:</span><span class="dv">4</span>, <span class="st">&quot;a&quot;</span>))   <span class="co"># une liste</span></code></pre></div>
 <pre><code>## $a
 ## [1] &quot;Jour 1&quot; &quot;Jour 2&quot; &quot;Jour 3&quot;
 ## 
@@ -421,39 +442,39 @@ Le premier est rarement utilisé. Il s’agit ni plus ni moins d’un vecteur à
 <ul>
 <li>Vecteur</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>:<span class="dv">15</span>) <span class="co"># a est un vecteur numérique de 10 à 20.</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>) <span class="co"># a est un vecteur numérique de 10 à 20.</span>
 a[<span class="dv">3</span>]        <span class="co"># on veut récupérer la troisième valeur du vecteur a</span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">3</span>)] <span class="co"># on veut récupérer la 1e, la 5e et la 3e valeur de a</span></code></pre></div>
 <pre><code>## [1] 10 14 12</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[-<span class="dv">1</span>]       <span class="co"># on veut récupérer toutes les valeurs de a sauf la première.</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="op">-</span><span class="dv">1</span>]       <span class="co"># on veut récupérer toutes les valeurs de a sauf la première.</span></code></pre></div>
 <pre><code>## [1] 11 12 13 14 15</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="kw">c</span>(T,F,F,T,T)] <span class="co"># on veut récupérer toutes les valeurs de a sauf la 2e et 3e valeur qui sont refusées par le FALSE (F).</span></code></pre></div>
 <pre><code>## [1] 10 13 14 15</code></pre>
 <ul>
 <li>matrice:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">10</span>:<span class="dv">21</span>, <span class="dt">nrow=</span> <span class="dv">3</span>) <span class="co"># a est une matrice</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">21</span>, <span class="dt">nrow=</span> <span class="dv">3</span>) <span class="co"># a est une matrice</span>
 a[<span class="dv">3</span>,]                     <span class="co"># on veut récupérer la troisième ligne entière</span></code></pre></div>
 <pre><code>## [1] 12 15 18 21</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dv">1</span>]              <span class="co"># on veut récupérer la 1e et la 3e ligne, mais seulement la 1e colonne</span></code></pre></div>
 <pre><code>## [1] 10 12</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[-<span class="dv">1</span>,-<span class="dv">2</span>]                  <span class="co"># on veut récupérer toutes les lignes sauf la 1e et toutes les colonnes sauf la 2e</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>]                  <span class="co"># on veut récupérer toutes les lignes sauf la 1e et toutes les colonnes sauf la 2e</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   11   17   20
 ## [2,]   12   18   21</code></pre>
 <ul>
 <li>data.frame</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Num=</span> <span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">10</span>), <span class="dt">Prix=</span> <span class="kw">c</span>(<span class="dv">11</span>:<span class="dv">20</span>)) <span class="co"># a est un data.frame</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Num=</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="dt">Prix=</span> <span class="kw">c</span>(<span class="dv">11</span><span class="op">:</span><span class="dv">20</span>)) <span class="co"># a est un data.frame</span>
 a[<span class="dv">3</span>,]         <span class="co"># comme sur les matrices, on veut récupérer la troisième ligne entière</span></code></pre></div>
 <pre><code>##   Num Prix
 ## 3   3   13</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dv">1</span>]  <span class="co"># on veut récupérer la 1e et la 3e ligne, mais seulement la 1e colonne</span></code></pre></div>
 <pre><code>## [1] 1 3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[-<span class="dv">1</span>,-<span class="dv">2</span>]      <span class="co"># on veut récupérer toutes les lignes sauf la 1e et toutes les colonnes sauf la 2e</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>]      <span class="co"># on veut récupérer toutes les lignes sauf la 1e et toutes les colonnes sauf la 2e</span></code></pre></div>
 <pre><code>## [1]  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a$Prix        <span class="co"># on veut récupérer la deuxième colonne par son nom avec la fonction `$`.</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a<span class="op">$</span>Prix        <span class="co"># on veut récupérer la deuxième colonne par son nom avec la fonction `$`.</span></code></pre></div>
 <pre><code>##  [1] 11 12 13 14 15 16 17 18 19 20</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="st">&quot;Num&quot;</span>]      <span class="co"># on veut récupérer la 1e colonne par son nom avec la fonction `[`</span></code></pre></div>
 <pre><code>##    Num
@@ -470,8 +491,8 @@ a[<span class="dv">3</span>,]         <span class="co"># comme sur les matrices,
 <ul>
 <li>liste</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">list</span>(<span class="dt">Num=</span> <span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">3</span>), <span class="dt">Prix=</span> <span class="kw">c</span>(<span class="dv">11</span>:<span class="dv">13</span>), <span class="dt">Id_et_serie=</span> <span class="kw">list</span>(<span class="dt">Id=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">serie=</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)), <span class="dt">Classe=</span> <span class="kw">data.frame</span>(<span class="dt">a=</span><span class="dv">1</span>:<span class="dv">3</span>,<span class="dt">b=</span><span class="dv">1</span>:<span class="dv">3</span>)) <span class="co"># a est un data.frame</span>
-a[<span class="dv">1</span>:<span class="dv">2</span>]        <span class="co"># on veut récupérer une liste des 1er et 2nd objets de la liste</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">list</span>(<span class="dt">Num=</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>), <span class="dt">Prix=</span> <span class="kw">c</span>(<span class="dv">11</span><span class="op">:</span><span class="dv">13</span>), <span class="dt">Id_et_serie=</span> <span class="kw">list</span>(<span class="dt">Id=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">serie=</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)), <span class="dt">Classe=</span> <span class="kw">data.frame</span>(<span class="dt">a=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">b=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)) <span class="co"># a est un data.frame</span>
+a[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]        <span class="co"># on veut récupérer une liste des 1er et 2nd objets de la liste</span></code></pre></div>
 <pre><code>## $Num
 ## [1] 1 2 3
 ## 
@@ -479,7 +500,7 @@ a[<span class="dv">1</span>:<span class="dv">2</span>]        <span class="co">#
 ## [1] 11 12 13</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[[<span class="dv">1</span>]]        <span class="co"># on veut récupérer les valeurs du 1er objet de la liste</span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[-<span class="dv">1</span>]         <span class="co"># on veut récupérer une liste de tous les objets de la liste sauf le 1er</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="op">-</span><span class="dv">1</span>]         <span class="co"># on veut récupérer une liste de tous les objets de la liste sauf le 1er</span></code></pre></div>
 <pre><code>## $Prix
 ## [1] 11 12 13
 ## 
@@ -501,11 +522,11 @@ a[<span class="dv">1</span>:<span class="dv">2</span>]        <span class="co">#
 ## [1] 1 1 1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[[<span class="dv">4</span>]][,<span class="dv">1</span>]    <span class="co"># on veut récupérer les valeurs de la 1e colonne du data.frame en 4e position de la liste a.</span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a$Classe[,<span class="dv">1</span>]  <span class="co"># on mélange l&#39;utilisation des deux fonctions `$` et `[` pour faire de même</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a<span class="op">$</span>Classe[,<span class="dv">1</span>]  <span class="co"># on mélange l&#39;utilisation des deux fonctions `$` et `[` pour faire de même</span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a$Prix        <span class="co"># on veut récupérer les valeurs de l&#39;objet nommé Prix</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a<span class="op">$</span>Prix        <span class="co"># on veut récupérer les valeurs de l&#39;objet nommé Prix</span></code></pre></div>
 <pre><code>## [1] 11 12 13</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a$Id_et_serie$serie <span class="co"># on veut récupérer les valeurs de l&#39;objet nommé serie dans l&#39;objet nommé Id_et_serie</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a<span class="op">$</span>Id_et_serie<span class="op">$</span>serie <span class="co"># on veut récupérer les valeurs de l&#39;objet nommé serie dans l&#39;objet nommé Id_et_serie</span></code></pre></div>
 <pre><code>## [1] 2 2 2</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="kw">c</span>(<span class="st">&quot;Num&quot;</span>,<span class="st">&quot;Classe&quot;</span>)]<span class="co"># on veut récupérer le 1er et 4e objets de la liste a</span></code></pre></div>
 <pre><code>## $Num
@@ -523,19 +544,19 @@ a[<span class="dv">1</span>:<span class="dv">2</span>]        <span class="co">#
 <div id="remplacer-assigner" class="section level3">
 <h3><span class="header-section-number">4.4.2</span> Remplacer, assigner</h3>
 <p>Il est possible de remplacer des valeurs dans une structure en spécifiant l’index de la valeur à remplacer et lui ré-assignant une nouvelle valeur :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>:<span class="dv">15</span>) <span class="co"># a est un vecteur numérique de 10 à 20.</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>) <span class="co"># a est un vecteur numérique de 10 à 20.</span>
 a[<span class="dv">3</span>]        <span class="co"># la troisième valeur de a est de 12</span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># On remplace sa valeur par 5:</span>
-a[<span class="dv">3</span>]=<span class="st"> </span><span class="dv">5</span>     
+<p>On remplace sa valeur par 5:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="dv">3</span>]=<span class="st"> </span><span class="dv">5</span>     
 a           <span class="co"># La 3e valeur est modifiée à 5</span></code></pre></div>
 <pre><code>## [1] 10 11  5 13 14 15</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Attention, si on remplace une valeur par un autre type de données, cela peut changer le type de tout le vecteur:</span>
-a[<span class="dv">1</span>]=<span class="st"> &quot;a&quot;</span>   
+<p>Attention, si on remplace une valeur par un autre type de données, cela peut changer le type de tout le vecteur:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="dv">1</span>]=<span class="st"> &quot;a&quot;</span>   
 a           <span class="co"># a a été modifié en charactere</span></code></pre></div>
 <pre><code>## [1] &quot;a&quot;  &quot;11&quot; &quot;5&quot;  &quot;13&quot; &quot;14&quot; &quot;15&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># On peut aussi modifier plusieurs valeurs à la fois:</span>
-a[<span class="dv">1</span>:<span class="dv">3</span>]=<span class="st"> </span><span class="dv">5</span>
+<p>On peut aussi modifier plusieurs valeurs à la fois:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]=<span class="st"> </span><span class="dv">5</span>
 a</code></pre></div>
 <pre><code>## [1] &quot;5&quot;  &quot;5&quot;  &quot;5&quot;  &quot;13&quot; &quot;14&quot; &quot;15&quot;</code></pre>
 </div>
@@ -559,7 +580,7 @@ a</code></pre></div>
 <div id="mutliplication" class="section level3">
 <h3><span class="header-section-number">4.4.8</span> Mutliplication</h3>
 <p>Chapitres suivants: ## Fonctions Disons que vous êtes en voyage au Brésil, où la monnaie est le Real, mais comme vous êtes habitué à payer Euro, vous aimeriez pouvoir convertir entre les deux simplement.</p>
-<p>A l’heure où cette version du livre à été mis à jour pour la dernière fois, 1 Euro (€) valait 3.6856 Reals (R$)<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. Grâce à R, vous pouvez calculer cela très facilement en créant un objet contenant la conversion :</p>
+<p>A l’heure où cette version du livre à été mis à jour pour la dernière fois, 1 Euro (€) valait 4.208833 Reals (R$)<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. Grâce à R, vous pouvez calculer cela très facilement en créant un objet contenant la conversion :</p>
 </div>
 </div>
 <div id="autres-chapitres" class="section level2">
@@ -601,17 +622,18 @@ a</code></pre></div>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",

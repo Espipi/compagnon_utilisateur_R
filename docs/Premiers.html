@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Le compagnon de l’utilisateur R</title>
   <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Le compagnon de l’utilisateur R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Vezy Rémi">
 
 
-<meta name="date" content="2017-06-18">
+<meta name="date" content="2018-05-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -168,7 +168,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Avant tout, je vous conseille de créer un dossier général nommé “R_Projects” sur votre ordinateur dans un emplacement de votre choix (qui pourra contenir beaucoup de données).<br />
 Ensuite, pour commencer un projet, ouvrez RStudio, et cliquez sur File/New Project/New Directory/Empty project:</p>
 <p>Ici, RStudio vous demande un nom de projet et un emplacement dans lequel ranger votre projet. Le nom de projet doit toujours être court mais le plus explicite possible, tout en évitant les caractères spéciaux (&amp;/%-) ou les espaces (remplacez-les par “_“). Ensuite, cliquer sur browse puis choisissez l’emplacement de votre dossier R_Projects si vous l’avez déjà crée (fortement recommandé). Pour notre exemple, on nommera notre projet”Premiers_Pas_R“, et on le rangera dans le dossier”C:/R_Projects&quot; comme suit:<br />
-<img src="Images/01-New_Project.png" width="319" /><img src="Images/02-New_Directory.png" width="268" /><img src="Images/03-Empty_Project.png" width="267" /><img src="Images/04-New_Project.png" width="266" /></p>
+<img src="Images/01-New_Project.png" /><!-- --><img src="Images/02-New_Directory.png" /><!-- --><img src="Images/03-Empty_Project.png" /><!-- --><img src="Images/04-New_Project.png" /><!-- --></p>
 <p>Tada ! Vous venez de créer un projet RStudio. Maintenant il ne manque plus qu’à travailler.</p>
 </div>
 <div id="organise_project" class="section level2">
@@ -183,9 +183,9 @@ Soit en spécifiant le chemin complet, depuis la racine du disque :</p>
 <p>Cela peut paraître trivial à première vue, mais cette astuce devient très pratique lorsque les chemins deviennent longs (pensez aux chemins de la vie réelle, comme “C:/Users/username/Desktop/Docs_R/Simulations/22-01-1990/test/test2”), ou lorsque l’on partage des scripts entre collègues (pas besoin de modifier les chemins lorsqu’on passe son projet). Pour voir quel est votre répertoire de travail, vous pouvez soit le trouver écrit en haut de la console, soit simplement tapper la commande suivante:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()</code></pre></div>
 <p>Maintenant que le répertoire de travail n’a plus de secret pour vous, nous allons l’organiser. Pour mieux comprendre comment un projet s’organise, il faut d’abord l’ouvrir dans le gestionnaire de fichiers. Pour ouvrir la fenêtre contenant le projet, vous pouvez cliquer sur More/Show Floder in New Window comme suit :<br />
-<img src="Images/05-Show_Floder.png" width="940" /></p>
+<img src="Images/05-Show_Floder.png" /><!-- --></p>
 <p>Vous allez donc voir apparaître le dossier du projet dans une nouvelle fenêtre. Il n’y a rien de très intéressant à l’intérieur du projet pour l’instant: le fichier Premiers_Pas_R.Rproj et un dossier caché “.Rproj.user” (sa visibilité n’est absolument pas requise). Les fichiers .Rproj servent à ouvrir RStudio avec les paramètres du projet. Lorsque vous voulez ré-ouvrir votre projet après l’avoir quitté, il vous faudra double-cliquer sur ce fichier. Maintenant nous allons commencer à pré-organiser ce dossier. Personnellement j’aime créer une suite de dossiers numérotés dans lesquels je range des fichiers triés selon l’avancée du projet comme ceci:</p>
-<p><img src="Images/06-Rproj.png" width="100" /></p>
+<p><img src="Images/06-Rproj.png" /><!-- --></p>
 <p>Le premier dossier 01-DATA contient toutes les données de départ dont à besoin le projet. Il peut s’agir d’images, de fichiers textes ou de tableurs, il seront tous présents dans ce dossier.<br />
 Le second dossier 02-Code contient tous les scripts pour <strong>R</strong> ou pour tout autre logiciel, numérotés eux aussi dans l’ordre d’éxécution. En général je regroupe aussi les fonctions utilisées dans les scripts dans un seul et même script <strong>R</strong> appelé 0-Fonctions, que j’appelle ensuite depuis les autres scripts. Si vous ne comprenez rien à la phrase précédente, ne vous en faites pas nous aborderons les fonctions très vite (référence chapitre fonctions).<br />
 Le troisième dossier 03-Resultats est le dossier qui contient tous les résultats, intermédiaires ou finaux. il peut s’agir de figures, de données, de modèles ou tout autre résultat du projet.<br />
@@ -197,25 +197,25 @@ Je vous incite à créer ces 4 dossiers vides à chaque fois que vous créez un 
 <div id="creer-un-script-r" class="section level2">
 <h2><span class="header-section-number">3.3</span> Créer un script <strong>R</strong></h2>
 <p><strong>R</strong> est un language intérprété, c’est à dire qu’il interprête (exécute) vos commandes en temps réel. Vous pouvez dès à présent intéragir avec <strong>R</strong> dans l’onglet <em>console</em> de RStudio, qui se trouve en bas à gauche. Vous pouvez par exemple taper la commande suivante:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1+3</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">+</span><span class="dv">3</span></code></pre></div>
 <p><strong>R</strong> vous retournera alors le résultat du calcul juste après votre commande :</p>
 <pre><code>## [1] 4</code></pre>
 <p>On vient donc de voir que <strong>R</strong> peut être utilisé comme une calculatrice, mais celui à bien plus à offrir. En effet, vous pouvez par exemple créer des objets que <strong>R</strong> sauvera dans la mémoire vive<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> durant toute votre session<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.<br />
 Voici un premier exemple assez simple et concret: vous êtes partis en mission avec votre collègue qui a payé la totalité des frais. Pour le rembourser vous avez noté toutes les dépenses: 53.26€ de trajet, 108.30€ de repas, et 145.50€ pour la nuitée. Vous devez donc sommer toutes les dépenses et diviser par deux le total pour connaître votre part, comme ceci:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="fl">53.26+108.30+145.50</span>)/<span class="dv">2</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="fl">53.26</span><span class="op">+</span><span class="fl">108.30</span><span class="op">+</span><span class="fl">145.50</span>)<span class="op">/</span><span class="dv">2</span></code></pre></div>
 <pre><code>## [1] 153.53</code></pre>
 <p>Maintenant, si vous partez régulièrement ensemble, il peut être pratique de garder une trace de chaque élément, avec quelques explications pour chacune. Pour celà, il vous suffit de créer un script <strong>R</strong>. Un script est en fait simplement un fichier texte qui présente l’extension <code>.R</code> au lieu de <code>.txt</code>. Ce fichier sert de support pour l’écriture de commandes <strong>R</strong>.<br />
 Pour créer votre premier script <strong>R</strong>, cliquez sur fichier (file) -&gt; nouveau fichier (New File) -&gt; R script, ou alors en utilisant le raccourci clavier (<code>ctrl+shit+N</code>).<br />
 RStudio va alors ouvrir un script vierge sans titre et non sauvegardé. La première chose à faire est d’écrire un titre. Bien sûr vous ne voulez pas que <strong>R</strong> exécute le titre ou les commantaires. Pour celà, vous devez lui indiquer que la ligne que vous insérez ne doit pas être interprétée en commençant la ligne par un <code>#</code>. Voici un exemple, la première ligne est un commentaire, <strong>R</strong> ne l’interprète pas, alors que la seconde oui:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 2+3</span>
-<span class="dv">5+6</span></code></pre></div>
+<span class="dv">5</span><span class="op">+</span><span class="dv">6</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
 <p>Comme vous pouvez le voir <strong>R</strong> retourne 11, qui est le résultat de la deuxième ligne.<br />
 Vous pouvez donc écrire votre titre de la même façon, sans que <strong>R</strong> ne s’en préoccupe:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Script R pour remboursement des frais:</span>
 
 <span class="co"># Lundi 24/04/2017: 53.26€ de trajet, 108.30€ de repas, et 145.50€ pour la nuitée</span>
-(<span class="fl">53.26+108.30+145.50</span>)/<span class="dv">2</span> <span class="co"># Vous pouvez aussi taper un comentaire après une ligne de commande</span></code></pre></div>
+(<span class="fl">53.26</span><span class="op">+</span><span class="fl">108.30</span><span class="op">+</span><span class="fl">145.50</span>)<span class="op">/</span><span class="dv">2</span> <span class="co"># Vous pouvez aussi taper un comentaire après une ligne de commande</span></code></pre></div>
 <pre><code>## [1] 153.53</code></pre>
 <p>Pour éxécuter une ligne de commande (i.e. envoyer une ligne à <strong>R</strong>) depuis votre script, il vous suffit d’utiliser le raccourcis clavier <code>ctrl+r</code>, ou d’utiliser le bouton “run” dans la barre en haut de votre script.</p>
 <p>Vous pouvez maintenant enregistrer votre script en cliquant sur Fichier (File) -&gt; Enregistrer sous (save as), ou par le raccourci clavier <code>Ctrl+s</code>. Ensuite vous devrez nommer votre script, et je vous encourage fortement à l’enregistrer dans le dossier <code>02-Code</code> si vous avez suivi le précédent point: <a href="Premiers.html#organise_project">Organiser son projet</a>.</p>
@@ -233,7 +233,7 @@ hotel=<span class="st"> </span><span class="fl">145.50</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Trajet</code></pre></div>
 <pre><code>## [1] 53.26</code></pre>
 <p>On peut maintenant utiliser des opération mathématiques directement sur nos objets, comme l’addition:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Trajet+repas+hotel</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Trajet<span class="op">+</span>repas<span class="op">+</span>hotel</code></pre></div>
 <pre><code>## [1] 307.06</code></pre>
 <p>Vous remarquerez que <code>Trajet</code> comporte une majuscule. <strong>R</strong> est un language sensible à la casse, c’est à dire qu’il fait la différence entre une majuscule et une minuscule, si bien que <code>Trajet</code> est différent de <code>trajet</code>. Regardez par vous même:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trajet=<span class="st"> </span><span class="dv">8</span>
@@ -242,7 +242,7 @@ Trajet</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trajet</code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p>Ensuite, on peut assigner ce nouveau résultat à un nouvel objet, appelé pour l’occasion <code>Depenses_07_Avril</code>, qui contient les dépenses du 07 du mois d’avril:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril=<span class="st"> </span>Trajet+repas+hotel</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril=<span class="st"> </span>Trajet<span class="op">+</span>repas<span class="op">+</span>hotel</code></pre></div>
 <p>Notez bien la structure du code : l’objet <code>Depenses_07_Avril</code> est suivi d’un <code>=</code>, puis chaque nombre est additionné un à un. Ainsi, <strong>R</strong> fait d’abord le calcul de l’addition des objets à droite, puis assigne le résultat à l’objet nouvellement créé. On peut maintenant demander à <strong>R</strong> la valeur des dépenses :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril</code></pre></div>
 <pre><code>## [1] 307.06</code></pre>
@@ -263,11 +263,11 @@ Les opérations mathématiques usuelles ont toutes leurs propres fonctions:</p>
 <pre><code>## [1] 307.06</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(Depenses_07_Avril) <span class="co"># moyenne des éléments</span></code></pre></div>
 <pre><code>## [1] 102.3533</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril*<span class="dv">2</span>     <span class="co"># multiplication de chaque élément par 2</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril<span class="op">*</span><span class="dv">2</span>     <span class="co"># multiplication de chaque élément par 2</span></code></pre></div>
 <pre><code>## [1] 106.52 216.60 291.00</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril/<span class="dv">2</span>     <span class="co"># division de chaque élément par 2</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril<span class="op">/</span><span class="dv">2</span>     <span class="co"># division de chaque élément par 2</span></code></pre></div>
 <pre><code>## [1] 26.63 54.15 72.75</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril%%<span class="dv">2</span>    <span class="co"># modulo 2 de la divison (retourne le reste de la division par deux)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Depenses_07_Avril<span class="op">%%</span><span class="dv">2</span>    <span class="co"># modulo 2 de la divison (retourne le reste de la division par deux)</span></code></pre></div>
 <pre><code>## [1] 1.26 0.30 1.50</code></pre>
 <p>D’autres objets plus complexes existent dans <strong>R</strong>, comme les matrices, les tableaux, ou les listes. Ils seront détaillés dans le prochain chapitre.</p>
 </div>
@@ -278,10 +278,11 @@ Les opérations mathématiques usuelles ont toutes leurs propres fonctions:</p>
 Une fonction comporte un nom, et est suivie d’arguments entre parenthèse. Nous avons déjà utilisé plusieurs fonctions précédemment: la fonction <code>c</code>, la fonction <code>sum</code> et la fonction <code>mean</code>. Pour connaître les arguments d’une fonction, il vous suffit d’exécuter son nom précédé d’un point d’intérogation, ou bien de surligner son nom et d’appuyer sur la touche <code>F1</code> de votre clavier dans RStudio. Apparaîtra alors la documentation de la fonction, qui est toujours structuré de la même manière: En haut se trouve le nom de la fonction suivi du nom de son package entre crochets (nb: base est le package intégré de base dans R). Ensuite vient une description brève, puis son utilisation. Ici apparaitra donc les différentes façons d’utiliser la fonction, ainsi que les valeurs par défaut de ses paramètres. Vient ensuite une description de chaque arguments (synonyme de paramètres), puis de certains détails d’utilisation, des valeurs retournées par la fonction (Value), puis enfin les notes, les références, les fonctions liées (see also) et, le plus important, d’exemples. Alons voir l’aide de la fonction <code>sum</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?sum</code></pre></div>
 <p>Voici le résultat anotté:<br />
-<img src="Images/08-sum_help.png" width="488" /></p>
+<img src="Images/08-sum_help.png" /><!-- --></p>
 <p>Comme on peut le voir, la fonction <code>sum</code> vient du package <code>base</code>, qui est en fait un package qui est chargé dès l’ouverture de R. De nombreuses fonctions sont disponibles dans d’autres packages. Les packages sont regroupés dans un dossier appelé “libraire”. Pour connaître l’emplacement de votre librairie sur votre ordinateur, vous pouvez exécuter la fonction <code>.libPaths()</code> :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">.libPaths</span>()</code></pre></div>
-<pre><code>## [1] &quot;D:/Logiciels/R-3.3.1/library&quot;</code></pre>
+<pre><code>## [1] &quot;C:/Users/vezyr/Documents/R/win-library/3.5&quot;
+## [2] &quot;C:/Program Files/R/R-3.5.0/library&quot;</code></pre>
 <p>Certains packages sont téléchargés en même temps que votre installation de <strong>R</strong> et placés dans votre librairie. Pour utiliser les fonctions de ces packages, il faut d’abord les importer dans votre session en utilisant la fonction <code>library</code> ou la fonction <code>require</code> comme ceci :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)</code></pre></div>
 <p><code>library</code> va charger le package et retourner des messages d’importation, comme la version de R lors de la compilation du package, ou des avertissements. Si le package n’est pas trouvé, la fonction retourne une erreur. <code>require</code> importe aussi les packages mais retourne <code>TRUE</code> si le package est trouvé et chargé, et <code>FALSE</code> dans l’autre cas. De manière générale, <code>require</code> sera plutôt utilisé à l’intérieur d’autres fonctions, alors que <code>library</code> sera utilisé lors de programmation intéractive.</p>
@@ -315,17 +316,18 @@ Une fonction comporte un nom, et est suivie d’arguments entre parenthèse. Nou
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
