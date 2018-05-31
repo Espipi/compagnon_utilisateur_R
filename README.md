@@ -1,4 +1,4 @@
-# compagnon_utilisateur_R
+# Le compagnon des utilisateurs **R**
 [![DOI](https://zenodo.org/badge/83234321.svg)](https://zenodo.org/badge/latestdoi/83234321)
 
 
@@ -12,7 +12,7 @@ A book about R programming, from the very begining:
 * data.table
 * plotly
 * Rmarkdown/Knitr
-*...
+* ...
 
 
 The book is in french only yet.
