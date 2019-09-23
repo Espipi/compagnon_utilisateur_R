@@ -1,0 +1,11 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Science des données: graphiques{#datascience2}  
+
+  * Base plots
+  * Ggplot2
+  * Interactivité (plotly)

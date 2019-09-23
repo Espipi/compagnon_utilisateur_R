@@ -1,0 +1,9 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Environnements{#environnement}  
+
+Quand on crée un objet dans R, il est sauvegardé dans un environnement particulier. 

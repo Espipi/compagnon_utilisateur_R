@@ -1,4 +1,5 @@
-book_filename: "Le compagnon des utilisateurs R"
+book_filename: "compagnon"
+repo: https://github.com/VEZY/compagnon_utilisateur_R
 chapter_name: "Chapitre "
 output_dir: docs
 clean: [packages.bib, bookdown.bbl]

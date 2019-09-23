@@ -1,0 +1,11 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Science des données: importer, manipuler des données{#datascience1}  
+
+  * La famille des \*apply
+  * tidyverse (+ pipe)
+  * data.table

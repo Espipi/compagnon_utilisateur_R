@@ -1,0 +1,58 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Fonctions{#fonctions}  
+
+
+* Appel de fonction
+* Function scope
+* Programmer une fonction
+* Sourcer un script
+
+Disons que vous êtes en voyage au Brésil, où la monnaie est le Real, mais comme vous êtes habitué à payer Euro, vous aimeriez pouvoir convertir entre les deux simplement.
+```{r currency, echo=FALSE, message=FALSE, warning=FALSE}
+currencyfunc= function(){
+  library(quantmod)
+  EURO_To_BRL= getQuote(paste0("EUR", "BRL", "=X"))[,2]
+  EURO_To_BRL
+}
+```
+
+A l'heure où cette version du livre à été mis à jour pour la dernière fois, 1 Euro (€) valait `r currencyfunc()` Reals (R$)^[données [Yahoo Finance](https://fr.finance.yahoo.com/) téléchargées grâce à la fonction `getQuote` du package `quantmod`]. 
+Grâce à R, vous pouvez calculer cela très facilement en créant un objet contenant la conversion :
+
+
+
+##autres chapitres:
+
+05- Environnements
+
+06- dates   
+
+07- charactères (utiliser les charactères, chercher un charactère, remplacer,...)  
+
+09- Science des données: importer, manipuler des données
+  * La famille des \*apply
+  * tidyverse (+ pipe)
+  * data.table
+
+10- Science des données: graphiques
+  * Base plots
+  * Ggplot2
+  * Interactivité (plotly)
+  
+11- Communications
+  * Rmarkdown (knitr + pandoc)  
+  * Sites web / blogs
+  * Applications Shiny
+  * Présentations
+  
+13- Errors, Warnings and Debugging
+
+14- Packages
+
+15- Git
+

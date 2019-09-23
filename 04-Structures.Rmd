@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Structures et types de données{#Structures}  
 
 Il existe plusieurs types de données dans R, et différentes façons de les manipuler en découle. Le type de structure ou d'objet utilisé dépendra principalement de la nature de l'information à y stocker et des manipulations que l'on veut effectuer dessus.
@@ -248,6 +253,7 @@ data.frame(a= c("Jour 1", "Jour 2", "Jour 3"), b=c(40, 50, 45))   # un data.fram
 Les `data.frame` sont utilisés par la grande majorité des fonctions dans R.  
 
 ### Listes  
+
 Les listes (`list`) sont aussi un type de structure très important dans R. Il faut penser la liste comme étant au `data.frame` ce qu'est l'`array` à la matrice. Il s'agit d'un `data.frame` de dimension n.
 On peut mettre n'importe quel type de données de n'importe quelle taille dans une liste, même une autre liste (= nested list).
 ```{r list}
@@ -256,6 +262,63 @@ list(a= c("Jour 1", "Jour 2", "Jour 3"), b=c(40, 50, 45), c= 1, d= list(1:3, 8:4
 Les listes sont un peu complexe à appréhender mais sont certainement le type de structure le plus maléable, et finalement le plus simple à travailler.
 Il est à noter que le `data.frame` est en fait une liste de vecteurs. On peut donc remplir l'une de ses colonnes par une liste, mais ce type d'utilisation est plutôt déconseillé dans un premier temps car il limite l'utilisation de fonctions spéciales adaptées aux `data.frame`, mais aussi à celles adaptées aux listes.  
 
+### Attributs
+
+Il est possible d'associer n'importe quelle métadonnée à un objet dans R. Ces métadonnées sont appelés attributs. Ces attributs n'ont aucune influence sur la valeur de la donnée elle-même, mais elle peut apporter des informations complémentaires à l'utilisateur ou à une fonction. 
+
+Voici un exemple d'attribut qui permet à l'utilisateur de se rappeler l'unité d'un objet: 
+```{r}
+a= 1   # a vaut 1 cm
+attr(a, "unit")= "cm"
+```
+
+Certains attributs sont utilisés par des fonctions. C'est le cas du nom et de la dimension d'un objet. 
+
+Voici un exemple de la hauteur de 10 arbres dans une forêt: 
+```{r}
+hauteur= rnorm(n = 10, mean = 25)
+```
+Cette hauteur n'a pas de nom (`names()` retourne `NULL`): 
+```{r}
+names(hauteur)
+```
+
+On peut assigner un nom comme suit: 
+
+```{r}
+names(hauteur)= paste0("arbre_",1:10)
+names(hauteur)
+```
+
+On peut aussi retrouver le nom de chaque valeur grâce à la fonction `attributes()`: 
+```{r}
+attributes(hauteur)
+```
+
+Idem pour la dimension d'une matrice avec `dim()`. On crée une matrice de dimension 2,3:
+```{r}
+matrice= matrix(1:8, 2,3)
+matrice
+```
+
+Sa dimension est 2,3:
+```{r}
+dim(matrice)
+```
+
+On peut la modifier comme ceci: 
+```{r}
+dim(matrice)= c(3,2)
+matrice
+```
+
+Ou en utilisant la fonction `attr()`: 
+```{r}
+attr(matrice,"dim")= c(2,3)
+matrice
+```
+
+Les fonctions `names()` et `dim()` sont en fait des raccourcis pour `attr(matrice,"names")` et `attr(matrice,"dim")` respectivement. 
 
 ## Manipuler les structures  
 La manipulation des structures se fait en accord avec les spécificités de chacunes.
@@ -370,38 +433,53 @@ mat_r
 
 ### Transformation
 
-Transformer un charactère en numerique et vice et versa. 
-Transformer une matrice en tableau.
+On peut transformer des structures simples très facilement dan R, comme passer d'un charactère à un numérique par exemple (voir [transform_datatype]), mais aussi pour des structures plus complexes, comme les matrices, les tableaux et les listes. Les structures ont très souvent une fonction associée pour passer de l'une vers l'autre. 
+
+Par exemple pour transformer quelque chose en matrice, on utilisera `as.matrix`, `as.data.frame` pour les tableaux, `as.vector` pour les vecteurs, ou encore `as.list` pour les listes. Bien sûr l'utilisateur doit s'efforcer de présenter les données de façons structurées pour que ces fonctions puissent effectuer la transformation.
+
+Une liste pourra par exemple être tranformée en `data.frame` seulement si son contenu est de même longueur: 
+
+```{r}
+liste= list(a= 1:2, b= 3:4)
+as.data.frame(liste)
+```
+
+Ici le `data.frame` est bien crée car `a` et `b` dans `liste` ont la même longueur. Par contre si `b` était plus long, la fonction `as.data.frame` ne sait pas a priori ce qu'elle doit faire, donc elle retourne une erreur.
 
 ### Transposition
 
-### Sous-divisier 
-
-Indexer depuis un vecteur
-Découper un tableau en listes avec split
-
-### Mutliplication
-
-
-Chapitres suivants: 
-## Fonctions
-Disons que vous êtes en voyage au Brésil, où la monnaie est le Real, mais comme vous êtes habitué à payer Euro, vous aimeriez pouvoir convertir entre les deux simplement.
-```{r currency, echo=FALSE, message=FALSE, warning=FALSE}
-currencyfunc= function(){
-  library(quantmod)
-  EURO_To_BRL= getQuote(paste0("EUR", "BRL", "=X"))[,2]
-  EURO_To_BRL
-}
+Une matrice peut être transposée grâce à la fonction `t()` comme suit: 
+```{r}
+matrice= matrix(1:9, nrow = 3)
+t(matrice)
 ```
 
-A l'heure où cette version du livre à été mis à jour pour la dernière fois, 1 Euro (€) valait `r currencyfunc()` Reals (R$)^[données [Yahoo Finance](https://fr.finance.yahoo.com/) téléchargées grâce à la fonction `getQuote` du package `quantmod`]. 
-Grâce à R, vous pouvez calculer cela très facilement en créant un objet contenant la conversion :
+On peut aussi transposer un `data.frame` avec `t()`, mais celui-ci est alors transformé en matrice:
+```{r}
+df= as.data.frame(matrice)
+t(df)
+```
+La transformation en matrice peut être un problème si l'on utilise des colonnes de types différent, car la fonction va uniformiser le type des données: 
+```{r}
+df= data.frame(a= 1:2, b= c("1","2"))
+t(df)
+```
+Ici toutes les données sont transformées en charactère. 
 
+### Opérations
 
+Il est très simple d'appliquer des opérations mathématiques sur des structures dans R car ces fonctions sont vectorisées, c'est à dire que les fonctions `+`, `-`, `*`, `/`,... peuvent s'appliquer à plusieurs valeurs d'un seul coup. Par exemple on peut multiplier un vecteur par un autre comme ceci:
+```{r}
+a= c(1:5)
+b= c(6:10)
+a * b
+```
 
-##autres chapitres:
+On peut aussi multiplier des colonnes de `data.frame`: 
+```{r}
+df= data.frame(a= c(1:5), b= c(6:10))
+df$a * df$b
+```
 
-05- manipulations: %in%, ==, |, &, || et &&, %*%, etc...
-06- dates 
-07- charactères (utiliser les charctères, chercher un charactère, remplacer,...)
-08- Fonctions et environnement
+Pour plus de détails, voir le chapitre "[datascience1]".
+

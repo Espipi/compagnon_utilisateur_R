@@ -1,0 +1,263 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+editor_options: 
+  chunk_output_type: console
+---
+
+# Structure de contrôle{#control_flow}  
+
+Comme tout language de programmation, R dispose de strcutures de contrôle du flux. Il s'agit principalement des boucles `for` et `while`, et des conditions de type `if` ou `switch`. 
+
+
+
+
+## Logical operators
+
+Les opérateurs logiques permettent de tester des conditions. Il en existe de nombreux, et les principaux sont: 
+
+* `&` et `&&`: `condition1 & condition2` teste si les deux conditions sont vraies. `&` teste les deux conditions à chaque fois, alors que `&&` teste d'abord la première, puis la seconde si la première est **vraie**. Cela permet de mettre des conditions qui pourraient ne pas avoir à être testées si la première condition est déjà fausse, et de gagner du temps. Exemple: 
+    
+    ```{r}
+    a= TRUE ; b= FALSE
+    a&b
+    b&&(b= 2)
+    ```
+    Ici seulement la partie de gauche es executée (b), donc b=2 n'est pas exécutée, b est toujours égal à FALSE.
+    Dans la deuxième expression (`b&&(b= 2)`), b vaut `FALSE` donc `b=2` n'est pas exécuté, donc b reste égal à FALSE:
+    
+    ```{r}
+    b
+    ```
+
+* `|` et `||`: `condition1 | condition2` teste si l'une ou l'autre des deux conditions est vraie. `|` teste les deux conditions à chaque fois, alors que `||` teste d'abord la première, puis la seconde si la première est **fausse**. Exemple: 
+    
+    ```{r}
+    a= TRUE ; b= FALSE
+    a|b
+    a||(b= 2)
+    ```
+
+    Dans la deuxième expression (`a||(b= 2)`), a vaut `TRUE` donc `b=2` n'est pas exécuté, donc b reste égal à FALSE:
+    
+    ```{r}
+    b
+    ```
+
+
+* `==`, `<`, `<=`, `>`, `>=`: tests d'égalité (noteza bien le double `=`), d'infériorité ou de supériorité inclusive ou exclusive. Exemple: 
+    
+    ```{r}
+    a= c(1,2)
+    a==1
+    a<=2
+    ```
+
+
+* `%in%` et `match()`: teste si une valeur est présente dans un vecteur. Exemple: 
+    
+    ```{r}
+    a= c(1,2)
+    a%in%1
+    ```
+
+
+* `all()`: teste si toutes les valeurs d'un vecteur sont vraies. Exemple: 
+    
+    ```{r}
+    a= c(1,1)
+    any(a==1)
+    ```
+
+
+* `any()`: teste si au moins une valeur d'un vecteur est vraie. Exemple: 
+    
+    ```{r}
+    a= c(1,2)
+    any(a==1)
+    ```
+
+
+* `!`: teste si une valeur est fausse (sert aussi à inverser un test). Exemple: 
+
+    ```{r}
+    !FALSE
+    ```
+  ou encore: 
+  
+    ```{r}
+    a= c(1,2)
+    a!=1
+    ```
+
+
+
+
+## Boucles
+
+### Boucle `for`
+
+Une boucle `for` permet d'exécuter une partie de code de façon répétée une nombre de fois donné. Elle présente une structure particulière comme suit: 
+
+```{r eval=FALSE}
+for(variable in vector){
+  ...
+}
+```
+
+On note d'abord le code `for(variable in vector)`. Le `for` sert à déclarer le début de la boucle, et `(variable in vector)` permet de donner le nombre de fois que la boucle sera répétée, ainsi que la valeur de `variable` à chaque pas de temps. Le `...` représente la séquence de code à exécuter.
+
+Voici un exemple pour mieux comprendre:
+
+```{r}
+for(i in 1:3){
+  print(i)
+}
+```
+
+On peut lire cette boucle `for` comme suit: pour tous les i dans la séquence de 1 à 3 (`for(i in 1:3)`), écrit i (`print(i)`) . On peut donc logiquement voir que la fonction a successivement écrit 1, puis 2 puis 3.
+On peut aussi faire des calculs simples: 
+```{r}
+a= 0
+for(i in 1:3){
+  a= a + i
+}
+```
+
+Ici, on crée un objet `a` avec pour valeur 0, puis on lui ajoute cumulativement 1 puis 2 puis 3. Cela revient à faire `a= 1 + 2 + 3`. 
+
+Les boucles `for` sont très utilisées en informatique car elles permettent de répéter des séquences de codes en ne les écrivant qu'une seule fois. Cependant il est préférable d'utiliser d'autres techniques lorsqu'on le peut dans R car celles-ci sont très lentes. On peut par exemple utiliser la famille des `apply`, ou la vecorisation. 
+
+### Boucle while
+
+Une boucle `while` exécute une portion de code tant qu'une condition reste vraie. En voici la construction:
+
+```{r eval=FALSE}
+while(condition){
+  ...
+}
+```
+
+Tant que `condition==TRUE`, alors `while` va itérer l'exécution de `...`. Voici un exemple qui écrit incrémente et écrit la valeur de `a` à chaque itération jusqu'à ce que `a` vaille 3. 
+
+```{r}
+a= 0
+while(a<3){
+  a= a+1
+  print(a)
+}
+```
+
+Notez bien que la condition est exécutée au début et non à la fin de la portion de code. D'où la conditon `a<3` car la boucle ira jusqu'à `a==3`, puis s'arrêtera. 
+
+## Conditions
+
+Il est possible de n'exécuter une séquence de code que lorsqu'une condition est vraie (ou fausse). Pour se faire il existe plusieurs fonctions dans R.
+
+La plus basique est le `if`. Il se construit comme suit:
+```{r eval=FALSE}
+if(condition){
+  ...
+}
+```
+
+`...` représente la séquence de code à exécuter. Cette séquence n'est exécutée que si `condition` est vraie.
+On peut aussi exécuter une autre séquence en ajoutant un `else` : 
+
+```{r eval=FALSE}
+if(condition){
+  # 1e séquence de code
+}else{
+  # 2e séquence de code
+}
+```
+
+Ici, la 1e séquence de code s'exécute si `condition` est vraie, et la 2e s'exécute si elle est fausse.
+
+On peu corser la chose en utilisant des `if else` comme suit: 
+
+```{r eval=FALSE}
+if(condition1){
+  # 1e séquence de code
+}else if(condition2){
+  # 2e séquence de code
+}else{
+  # 3e séquence de code
+}
+```
+
+Dans ce cas on teste d'abord si `condition1` est vrai. Si oui, on exécute la 1e séquence de code, sinon on teste `condition2`. Si elle est vraie on exécute la 2e séquence de code, et si elle est fausse, on exécute la 3e séquence de code. 
+
+Voici un exemple plus concret: 
+
+```{r eval=FALSE}
+Nom= "Louis"
+
+if(Nom == "Jacques"){
+  print("Bonjour Jacques !")
+}else if(Nom=="Louis"){
+  print("Bonsoir Louis!")
+}else{
+  print("Bonsoir monsieur!")
+}
+```
+
+On peut ajouter autant de `else if` que l'on veut, mais il faut garder en tête que cette construction devient rapidement illisible et difficile à tester. 
+
+Pour garder une bonne lisibilité, on peut utiliser le `switch`: 
+
+```{r eval=FALSE}
+switch(object,
+  case = action
+)
+```
+
+Il s'agit d'une fonction dont le premier argument est l'objet à tester (`object`), et les arguments suivants contiennent les cas à tester (`case`) et la valeur à retourner si on est dans ce cas. Donc lorsque `case==object`, alors on exécute l'`action` qui suit. Reprenons notre exemple précédent: 
+
+```{r}
+Nom= "Pierre"
+
+switch(Nom,
+  "Jacques" = print("Bonjour Jacques"),
+  "Pierre"  = print("Bonjour Pierre"),
+  "Louis"   = print("Bonjour Louis")
+)
+```
+
+
+## Fonctions utiles
+
+Voici quelques petites fonctions utiles pour controler le flux d'exécution: 
+
+* `break`: permet de sortir d'une boucle, e.g.: 
+
+    ```{r}
+    for(i in 1:100){
+      if(i>2){
+        print(i)
+      }else{
+        break
+      }
+    }
+    ```
+  
+  Ici on exécute la boucle `for` de 1 à 100, mais lorsque i est supérieur à 2, alors on termine la boucle. Cela revient à déclarer une boucle `for(i in 1:2)` dans ce cas.
+
+* `next`: permet de passer à l'itération suivante de la boucle, e.g.: 
+
+    ```{r}
+    for(i in 1:3){
+      if(i==2){
+        next
+      }else{
+        print(i)
+      }
+    }
+    ```
+  
+  Ici on exécute la boucle `for` de 1 à 3, mais lorsque i est égal à 2, alors on passe directement à `i= 3` sans exécuter le `print`.
+
+
+
+

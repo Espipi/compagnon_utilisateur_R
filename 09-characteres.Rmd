@@ -1,0 +1,14 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Travailler avec des chaînes de charactère {#strings}  
+
+utiliser les charactères, chercher un charactère, remplacer,...
+
+- grep, grepl, match
+- substr
+- stringr
+- ...

@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Le compagnon de l’utilisateur R</title>
-  <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 2 Introduction | Le compagnon de l’utilisateur R</title>
+  <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Le compagnon de l’utilisateur R" />
+  <meta property="og:title" content="Chapitre 2 Introduction | Le compagnon de l’utilisateur R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,25 +16,26 @@
   <meta name="github-repo" content="VEZY/compagnon_utilisateur_R" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Le compagnon de l’utilisateur R" />
+  <meta name="twitter:title" content="Chapitre 2 Introduction | Le compagnon de l’utilisateur R" />
   
   <meta name="twitter:description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
   
 
-<meta name="author" content="Vezy Rémi">
+<meta name="author" content="Vezy Rémi" />
 
 
-<meta name="date" content="2018-05-01">
+<meta name="date" content="2019-09-23" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="Premiers.html">
+<link rel="prev" href="index.html"/>
+<link rel="next" href="Premiers.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -50,41 +50,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -130,6 +155,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.3.2" data-path="Structures.html"><a href="Structures.html#matrices"><i class="fa fa-check"></i><b>4.3.2</b> Matrices</a></li>
 <li class="chapter" data-level="4.3.3" data-path="Structures.html"><a href="Structures.html#tableaux"><i class="fa fa-check"></i><b>4.3.3</b> Tableaux</a></li>
 <li class="chapter" data-level="4.3.4" data-path="Structures.html"><a href="Structures.html#listes"><i class="fa fa-check"></i><b>4.3.4</b> Listes</a></li>
+<li class="chapter" data-level="4.3.5" data-path="Structures.html"><a href="Structures.html#attributs"><i class="fa fa-check"></i><b>4.3.5</b> Attributs</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="Structures.html"><a href="Structures.html#index-et-test"><i class="fa fa-check"></i><b>4.4.1</b> Index et Test</a></li>
@@ -137,11 +163,29 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#concatenation"><i class="fa fa-check"></i><b>4.4.3</b> Concaténation</a></li>
 <li class="chapter" data-level="4.4.4" data-path="Structures.html"><a href="Structures.html#transformation"><i class="fa fa-check"></i><b>4.4.4</b> Transformation</a></li>
 <li class="chapter" data-level="4.4.5" data-path="Structures.html"><a href="Structures.html#transposition"><i class="fa fa-check"></i><b>4.4.5</b> Transposition</a></li>
-<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#sous-divisier"><i class="fa fa-check"></i><b>4.4.6</b> Sous-divisier</a></li>
-<li class="chapter" data-level="4.4.7" data-path="Structures.html"><a href="Structures.html#mutliplication"><i class="fa fa-check"></i><b>4.4.7</b> Mutliplication</a></li>
+<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#operations"><i class="fa fa-check"></i><b>4.4.6</b> Opérations</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="Structures.html"><a href="Structures.html#autres-chapitres"><i class="fa fa-check"></i><b>4.5</b> autres chapitres:</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>5</b> Structure de contrôle</a><ul>
+<li class="chapter" data-level="5.1" data-path="control-flow.html"><a href="control-flow.html#logical-operators"><i class="fa fa-check"></i><b>5.1</b> Logical operators</a></li>
+<li class="chapter" data-level="5.2" data-path="control-flow.html"><a href="control-flow.html#boucles"><i class="fa fa-check"></i><b>5.2</b> Boucles</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="control-flow.html"><a href="control-flow.html#boucle-for"><i class="fa fa-check"></i><b>5.2.1</b> Boucle <code>for</code></a></li>
+<li class="chapter" data-level="5.2.2" data-path="control-flow.html"><a href="control-flow.html#boucle-while"><i class="fa fa-check"></i><b>5.2.2</b> Boucle while</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="control-flow.html"><a href="control-flow.html#conditions"><i class="fa fa-check"></i><b>5.3</b> Conditions</a></li>
+<li class="chapter" data-level="5.4" data-path="control-flow.html"><a href="control-flow.html#fonctions-utiles"><i class="fa fa-check"></i><b>5.4</b> Fonctions utiles</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>6</b> Fonctions</a></li>
+<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements</a></li>
+<li class="chapter" data-level="8" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>8</b> Travailler avec des dates</a></li>
+<li class="chapter" data-level="9" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>9</b> Travailler avec des chaînes de charactère</a></li>
+<li class="chapter" data-level="10" data-path="datascience1.html"><a href="datascience1.html"><i class="fa fa-check"></i><b>10</b> Science des données: importer, manipuler des données</a></li>
+<li class="chapter" data-level="11" data-path="datascience2.html"><a href="datascience2.html"><i class="fa fa-check"></i><b>11</b> Science des données: graphiques</a></li>
+<li class="chapter" data-level="12" data-path="communications.html"><a href="communications.html"><i class="fa fa-check"></i><b>12</b> Communications</a></li>
+<li class="chapter" data-level="13" data-path="error.html"><a href="error.html"><i class="fa fa-check"></i><b>13</b> Errors, Warnings and Debugging</a></li>
+<li class="chapter" data-level="14" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>14</b> Packages</a></li>
+<li class="chapter" data-level="15" data-path="git.html"><a href="git.html"><i class="fa fa-check"></i><b>15</b> GIT</a></li>
+<li class="chapter" data-level="16" data-path="lang.html"><a href="lang.html"><i class="fa fa-check"></i><b>16</b> Interfacing other languages</a></li>
 </ul>
 
       </nav>
@@ -169,7 +213,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 * Un débugger<br />
 * Un profiler<br />
 * Une gestion du contrôle de version (GIT/SVN)</p>
-<p>Avant de commencer donc, il vous faudra installer R et RStudio. R est téléchargeable depuis le site du <a href="https://www.r-project.org/">R-project</a>. Il vous suffit de cliquer sur “download R”, de choisir votre mirroir, qui est le dépôt depuis lequel vous allez le télécharger (si vous avez un doute, prenez n’importe lequel en France), et enfin de cliquer sur “Download R for [votre système d’exploitation]”. Une fois téléchargé, installez-le comme n’importe quel programme.</p>
+<p>Avant de commencer donc, il vous faudra installer R et RStudio. R est téléchargeable depuis le site du <a href="https://www.r-project.org/">R-project</a>. Il vous suffit de cliquer sur “download R”, de choisir votre mirroir, qui est le dépôt depuis lequel vous allez le télécharger (si vous avez un doute, prenez n’importe lequel en France), et enfin de cliquer sur “Download R for [votre système d’exploitation]”.
+Une fois téléchargé, installez-le comme n’importe quel programme.</p>
 </div>
 <div id="oui-mais-cest-quoi-r" class="section level2">
 <h2><span class="header-section-number">2.2</span> Oui, mais c’est quoi R?</h2>
@@ -182,9 +227,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Voilà une grande question, à laquelle on peut répondre de plusieurs façons. Pour commencer, on peut se demander pourquoi utiliser un language de programmation plutôt qu’un outil a priori plus simple ? Utiliser un logiciel comme Excel ou <a href="http://www.openoffice.us.com/openoffice-calc.php">Calc</a> permet par exemple de visualiser ses données, effectuer des calculs, et même faire des graphiques. Alors où est l’intérêt de se compliquer la tâche pour le même résultat ? La réponse tient en deux mots: l’<strong>automatisation</strong>, et la <strong>reproductibilité</strong>.<br />
 En effet, un language de programmation permet à son utilisateur d’automatiser une tâche par la description de processus, de procédures et donc d’algorithmes par l’écriture de code informatique.<br />
 Mais rien de tel qu’un bon exemple pour étayer ses propos:</p>
-<p>Imaginez donc que l’on vous envoi les mêmes données chaque semaine sous la forme de plusieurs fichiers texte, et que vous deviez effectuer des opérations arithmétiques sur certains chiffres, puis calculer quelques statistiques, et enfin envoyer des graphiques récapitulatif différents à Kevin de la compta, Amar du pôle communication ou Amandine votre patrone. Si vous utilisez Excel, vous devrez répéter chaque semaine la même procédure, inlassablement. D’abord vous devrez remplir votre tableur avec les données de chaque fichier, puis appliquer vos formules aux colonnes ou aux lignes concernées, faire plusieurs graphiques, et les envoyer à vos collègues. Peu de place pour l’imaginaire. Maintenant, en utilisant un language de programmation vous avez la possibilité de coder une seule fois un script qui fera tout ceci à votre place, et même bien plus, autant de fois que vous le désirez, instantanément. Ainsi, l’auteur d’un code aura une tâche bien précise en tête, qu’il s’efforcera d’écrire sous la forme d’un script qui contiendra la ou les tâches, et qu’il pourra réexécuter autant de fois que nécessaire, sur son propre ordinateur, ou n’importe lequel. Voici qu’une machine à remplassé la pénibilité de votre travail. Vous pouvez maintenant vous concentrer sur autre chose (d’autres dossiers en attente, la dernière série Netflix, ou la paix dans le monde que sais-je?).</p>
+<p>Imaginez donc que l’on vous envoi les mêmes données chaque semaine sous la forme de plusieurs fichiers texte, et que vous deviez effectuer des opérations arithmétiques sur certains chiffres, puis calculer quelques statistiques, et enfin envoyer des graphiques récapitulatif différents à Kevin de la compta, Amar du pôle communication ou Amandine votre patrone. Si vous utilisez Excel, vous devrez répéter chaque semaine la même procédure, inlassablement. D’abord vous devrez remplir votre tableur avec les données de chaque fichier, puis appliquer vos formules aux colonnes ou aux lignes concernées, faire plusieurs graphiques, et les envoyer à vos collègues. Peu de place pour l’imaginaire.
+Maintenant, en utilisant un language de programmation vous avez la possibilité de coder une seule fois un script qui fera tout ceci à votre place, et même bien plus, autant de fois que vous le désirez, instantanément. Ainsi, l’auteur d’un code aura une tâche bien précise en tête, qu’il s’efforcera d’écrire sous la forme d’un script qui contiendra la ou les tâches, et qu’il pourra réexécuter autant de fois que nécessaire, sur son propre ordinateur, ou n’importe lequel. Voici qu’une machine à remplassé la pénibilité de votre travail. Vous pouvez maintenant vous concentrer sur autre chose (d’autres dossiers en attente, la dernière série Netflix, ou la paix dans le monde que sais-je?).</p>
 <p>Oui mais pourquoi R ? N’existe-t-il pas d’autres languages ?<br />
-Si, bien d’autres. Il existe des languages pour à peu près tout. Il y a des languages généralistes comme C++, FORTRAN, JAVA ou encore PERL, des languages spécialisés comme HTML ou CSS, des languages compilés, des languages interprétés… Mais les languages qui nous intéressent ici sont les languages pour la science des données. Et sur ce créneau c’est la même chose, le choix est très large: SAS, Pyhton, R, Matlab, STATISTICA… Alors, pourquoi R ?? D’abord, R est gratuit, open-source, et utilisable sur Winows, Mac-OS et Linux. Ces trois arguments éliminent déjà beaucoup de concurrents sauf Pyhton, qui est considéré aujourd’hui comme la seule alternative à R. En quelques points, voici les avantages de R :</p>
+Si, bien d’autres. Il existe des languages pour à peu près tout. Il y a des languages généralistes comme C++, FORTRAN, JAVA ou encore PERL, des languages spécialisés comme HTML ou CSS, des languages compilés, des languages interprétés… Mais les languages qui nous intéressent ici sont les languages pour la science des données. Et sur ce créneau c’est la même chose, le choix est très large: SAS, Pyhton, R, Matlab, STATISTICA… Alors, pourquoi R ?? D’abord, R est gratuit, open-source, et utilisable sur Winows, Mac-OS et Linux. Ces trois arguments éliminent déjà beaucoup de concurrents sauf Pyhton, qui est considéré aujourd’hui comme la seule alternative à R.
+En quelques points, voici les avantages de R :</p>
 <ul>
 <li>R devient petit à petit la <em>lingua franca</em> de la science des données, poussé par une énorme communauté de développeurs, toujours grandissante.<br />
 </li>
@@ -237,7 +284,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -250,7 +297,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"history": {
+"link": null,
+"text": null
+},
+"download": ["compagnon.pdf", "compagnon.epub"],
 "toc": {
 "collapse": "subsection"
 }

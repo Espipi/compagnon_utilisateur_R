@@ -1,0 +1,12 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Communications{#communications}  
+
+  * Rmarkdown (knitr + pandoc)  
+  * Sites web / blogs
+  * Applications Shiny
+  * Présentations

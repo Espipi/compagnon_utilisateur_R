@@ -1,0 +1,9 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Interfacing other languages{#lang}  
+
+Using other languages from R such as C, C++ or Julia.
