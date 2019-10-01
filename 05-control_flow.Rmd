@@ -11,8 +11,6 @@ editor_options:
 Comme tout language de programmation, R dispose de strcutures de contrôle du flux. Il s'agit principalement des boucles `for` et `while`, et des conditions de type `if` ou `switch`. 
 
 
-
-
 ## Logical operators
 
 Les opérateurs logiques permettent de tester des conditions. Il en existe de nombreux, et les principaux sont: 

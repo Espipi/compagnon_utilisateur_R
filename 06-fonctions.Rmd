@@ -6,53 +6,270 @@ output:
 
 # Fonctions{#fonctions}  
 
+## Definition
 
-* Appel de fonction
-* Function scope
-* Programmer une fonction
-* Sourcer un script
+Nous avons déjà introduit les fonctions dans [Premiers pas], mais voici tout de même un petit rappel. Une fonction est une suite d'instructions regroupées en un bloc indépendant, qui prend en général des arguments en entrée, et retourne une valeur. Mais sachez qu'il y a aussi des fonctions qui ne prennent pas d'arguments en entrée, et d'autres qui ne retournent pas de valeurs. Nous allons voir ça dans ce chapitre.
 
-Disons que vous êtes en voyage au Brésil, où la monnaie est le Real, mais comme vous êtes habitué à payer Euro, vous aimeriez pouvoir convertir entre les deux simplement.
+## Déclarer une fonction
+
+Voici comment déclarer une fonction:
+
+```{r}
+add_one= function(x){
+  x+1
+}
+```
+
+Il y a beaucoup de nouvelles choses ici ! Alors laissez-moi expliquer étape par étape. D'abord, on a `add_one`. C'est le nom que nous avons décidé de donner à la fonction, parcequ'elle ajoute 1 à l'argument qu'on lui donne. Ensuite on a un `=`, qui dit à R que l'on va assigner quelque chose à ce nouveau nom (ici, la fonction). Puis vient `function(x){...}`. Ici on dit à R que l'on va déclarer une nouvelle fonction, et le code qui y sera associé sera compris entre `{` et `}`. On a aussi un `(x)`: les parenthèses délimitent les arguments de la fonction. Il peut y en avoir 0 avec des parenthèses vides`()`, un seul comme ici, ou plusieurs séparés avec des virgules comme ceci: `(a,b,c)`. Ensuite il y a `x+1`, qui est le code qui sera exécuté à chaque fois que la fonction sera appelée.
+
+
+Pour appeler une fonction (*i.e.* s'en servir), on utilise son nom, suivit des arguments: 
+```{r}
+add_one(1)
+```
+
+Ici, on dit à R que l'on veut utiliser la fonction `add_one`, et que x vaut 1. La fonction assigne donc 1 à x, puis lui ajoute 1, et retourne le résultat: 2.
+
+
+Il est aussi possible de donner des valeurs par défaut aux arguments d'une fonction pour qu'elle utilise toujours cette valeur si on ne donne pas d'argument:
+Pour appeler une fonction (*i.e.* s'en servir), on utilise son nom, suivit des arguments: 
+
+```{r}
+add_a= function(x,a=1){
+  x+a
+}
+```
+
+De cette façon, on peut utiliser la fonction comme avant, puisque `a` vaut 1 par défaut: 
+```{r}
+add_a(1)
+```
+
+Mais aussi utiliser l'argument `a` pour généraliser la fonction: 
+
+```{r}
+add_a(1, 10)
+```
+
+### Appeler une fonction
+
+Jusqu'ici nous avons donné les valeurs des arguments par position. Par example juste au-dessus nous avons appelé la fonction `add_a` et donné 1 comme valeur à `x` et 10 pour `a`. Mais on peut aussi nommer les arguments comme suit:
+```{r}
+add_a(x = 1, a = 10)
+```
+
+Ce qui nous permet de donner des valeurs aux arguments dans l'ordre que l'on veut: 
+```{r}
+add_a(a = 10, x = 1)
+```
+
+On peut aussi nommer certains arguments, et donner les autres par position:
+```{r}
+add_a(10, x = 1)
+```
+Dans ce cas les arguments nommés sont rangés automatiquement au bon endroit, et le reste des arguments non nommés sont donnés dans l'ordre restant. 
+
+### Fonction sans argument
+
+On peut aussi déclarer une fonction sans argument. Cela peut s'avérer utile si la fonction doit toujours retourner la même chose (*e.g.* une liste de courses) ou si elle utilise des informations extérieures. 
+Par example, disons que vous êtes en voyage au Brésil, où la monnaie est le Real, mais comme vous êtes habitué à payer en Euro, vous aimeriez pouvoir convertir entre les deux simplement. Vous pouvez donc écrire une fonction qui le fait pour vous: 
+
 ```{r currency, echo=FALSE, message=FALSE, warning=FALSE}
 currencyfunc= function(){
-  library(quantmod)
-  EURO_To_BRL= getQuote(paste0("EUR", "BRL", "=X"))[,2]
+  EURO_To_BRL= quantmod::getQuote(paste0("EUR", "BRL", "=X"))[,2]
   EURO_To_BRL
 }
 ```
 
 A l'heure où cette version du livre à été mis à jour pour la dernière fois, 1 Euro (€) valait `r currencyfunc()` Reals (R$)^[données [Yahoo Finance](https://fr.finance.yahoo.com/) téléchargées grâce à la fonction `getQuote` du package `quantmod`]. 
-Grâce à R, vous pouvez calculer cela très facilement en créant un objet contenant la conversion :
+
+Cette fonction peut maintenant nous servir à convertir n'importe quelle valeur depuis R, en appliquant la conversion actuelle. Si par example on veut acheter une télévision pour 2506.756 Reals, combien cela fait-il en euro?
+```{r}
+TV= 2506.756  
+TV/currencyfunc()
+```
+Cela fait `r TV/currencyfunc()` euros! 
+
+> Les `::` dans `quantmod::getQuote()` permettent de dire à R d'utiliser la fonction `getQuote()` du package `quantmod`. Il est préférable d'utiliser cette notation dès que possible pour pouvoir se rappeler de quel package l'on a besoin pour utiliser un code en particulier, mais aussi pour éviter d'utiliser des fonctions qui ont le même nom dans deux packages différents, ou dans notre code et un package.
+
+### Fonction anonyme
+
+Une fonction anonyme est une fonction sans nom. On utilise généralement ces fonctions lorsque l'on utilise des fonctions qui prennent en argument d'autres fonctions. Commençons par un example, la fonction `Map()`.
+
+La fonction `Map()` prend comme argument une fonction, et un objet. Elle applique ensuite cette fonction à chaque élément de cet objet. Par exemple si l'on a plusieur prix de TV, on peut appliquer notre conversion `currencyfunc()` à chacune en utilisant une fonction anonyme:
+
+```{r}
+TVs= c(2432.753, 2638.554, 2439.369, 2559.210, 2400.950, 2514.662, 2517.128, 2416.149, 2537.907, 2458.432)
+unlist(Map(function(x)x/currencyfunc(), TVs))
+```
+
+Comme on peut le voir on utilise la fonction `MAP()` avec comme premier argument `function(x)x/currencyfunc()`, qui est une fonction anonyme, et qui est appliquée à chaque élément du deuxième argument, `TVs`.
+
+> NB: on utilise aussi la fonction `unlist()` ici pour re-formater la sortie de `MAP()` (plus adapté pour le livre).  
+
+Bien sûr il s'agit d'un example ici, car sinon nous aurions pu directement avoir le résultat comme ceci: 
+```{r}
+TVs/currencyfunc()
+```
+
+Cette dernière façon de procéder est en général à préférer car R vectorize par défaut toute fonction, ce qui veut dire qu'une fonction peut s'appliquer par défaut à chaque membre d'un objet. Ceci est un aspect très apréciable de R.
+
+### Return
+
+Une fonction retourne par défaut le dernier objet, mais il existe aussi une fonction spéciale pour retourner explicitement un objet particulier. Cette fonction s'appelle `return()`. De manière générale, il vaut mieux eviter de l'utiliser car elle a tendance à ralentir l'exécution (voir ce [style guide](https://style.tidyverse.org/)), et plutôt préférer répéter 
+
+Quelques examples:
+
+La fonction retourne le dernier objet: 
+
+```{r}
+return_10= function(a,b){
+  a*b
+  x= 10
+  x
+}
+
+return_10(20,30)
+```
+
+Ici la fonction calcule bien `a*b`, mais retourne 10 car `x` vaut 10, et il est retourné à la fin. Cette écriture est exactement la même que celle-ci: 
+```{r}
+return_10= function(a,b){
+  a*b
+  x= 10
+  return(x)
+}
+
+return_10(20,30)
+```
+
+Maintenant que ce passe-t-il si l'on met un `return()` à la ligne `a*b` ? 
+```{r}
+return_10= function(a,b){
+  return(a*b)
+  x= 10
+  x
+}
+
+return_10(20,30)
+```
+
+La fonction retourne `a*b` ! En effet, la fonction `return()` stoppe l'exécution de la fonction dans laquelle elle est appelée, et retourne le résultat qui y figure comme argument. Pour forcer une fonction à ne rien retourner, on peut aussi appeler `return()` sans arguments:
+
+```{r}
+return_10= function(a,b){
+  a*b
+  x= 10
+  x
+  return()
+}
+
+return_10(20,30)
+```
+
+Voilà, la fonction calcule bien toutes les lignes avant le `return()`, mais ne retourne rien.
+
+La fonction `return()` peut être très utile lorsque l'on veut retourner un résultat directement si une condition est vraie: 
+
+```{r}
+return_whatever= function(a,b){
+  if(b>a){
+    return(a/b)
+  }
+  truc= a*b
+  truc*10+1
+}
+
+return_10(20,30)
+```
+
+Ici on force un retour de `a/b` si `b>a`, et sinon on exécute une suite d'opérations et on retourne la dernière ligne.
+
+> Pour que la dernière ligne soit retournée automatiquement, il faut qu'elle retourne un résultat, donc il est important qu'elle ne soit pas une assignation (*e.g.* n= a+b), ou une modification (*e.g.* n[1]= a+b), sinon rien ne sera retourné.
+
+## Informations
+
+Pour connaître les arguments d'une fonction, il vous suffit d'exécuter son nom précédé d'un point d'intérogation (*e.g.* `?sum`), ou bien de surligner son nom et appuyer sur la touche `F1` de votre clavier dans RStudio. Apparaîtra alors la documentation de la fonction, qui est toujours structurée de la même manière: en haut se trouve le nom de la fonction suivi du nom du package auquel elle appartient entre crochets (nb: base est le package intégré de base dans R). Ensuite vient une description brève, puis son utilisation. Ici apparaitra donc les différentes façons d'utiliser la fonction, ainsi que les valeurs par défaut de ses paramètres. 
+Vient ensuite une description de chaque arguments, puis de certains détails d'utilisation, des valeurs retournées par la fonction (Value), puis enfin les notes, les références, les fonctions liées (see also) et, le plus important, d'examples.
+
+Pour accéder au code d'une fonction, il suffit de la surligner et d'appuyer sur la touche `F2` de votre clavier. Le code de certaines fonctions n'est pas accessible par ce moyen, il s'agit par example des fonctions primitives (*e.g.* `sum()`) ou les fonctions utilisant des méthodes (e.g. `plot()`). Il vous faudra donc aller le chercher sur un dépôt (e.g. CRAN, Github...). 
 
 
 
-##autres chapitres:
+## Portée (function scope)
 
-05- Environnements
+R fonctionne avec des environnements (voir [Environnements]). Chaque fonction crée son propre environnement lorsqu'elle est appelée, c'est à dire qu'elle n'a accès qu'à son propre environement en priorité, puis ensuite aux environnements aux dessus si elle ne trouve pas un objet dans le sien. 
 
-06- dates   
+Donc a priori un objet crée dans une fonction ne modifie pas celui déclaré auparavant. 
+Voici un example: 
 
-07- charactères (utiliser les charactères, chercher un charactère, remplacer,...)  
+```{r}
+x= 10
 
-09- Science des données: importer, manipuler des données
-  * La famille des \*apply
-  * tidyverse (+ pipe)
-  * data.table
+add_10= function(x){
+  x= x+10
+  return(x)
+}
 
-10- Science des données: graphiques
-  * Base plots
-  * Ggplot2
-  * Interactivité (plotly)
-  
-11- Communications
-  * Rmarkdown (knitr + pandoc)  
-  * Sites web / blogs
-  * Applications Shiny
-  * Présentations
-  
-13- Errors, Warnings and Debugging
+x2= add_10(x)
 
-14- Packages
+c(x= x, x2= x2)
+```
+Ici on voit que l'on a déclaré `x` avec pour valeur 10. Ensuite on passe `x` à la fonction `add_10` qui déclare `x` dans son propre environnement, puis lui ajoute 10, et retourne sa valeur. On peut voir qu'à la fin en dehors de la fonction, le `x` que nous avons crée nous-mêmes est toujours égal à 10 après avoir appelé la fonction.
+Par contre si R ne trouve pas une valeur dans son environnement, il va essayer de chercher dans les environnements au-dessus. L'environnement le plus haut est l'environnement de l'utilisateur. Donc la fonction peut potentiellement avoir accès aux objets que l'utilisateur à crée lui-même: 
 
-15- Git
+```{r}
+a= 2
+x= 10
+
+add_a= function(x){
+  x= a+x
+  return(x)
+}
+
+x2= add_a(x)
+
+c(a= a, x= x, x2= x2)
+```
+
+Comme on peut le voir, `a` n'a pas été donné comme argument de la fonction, pourtant elle s'est débrouillée pour aller le chercher dans l'environnement global tout de même, là où nous l'avons déclaré. Cela peut être dangereux car parfois on oublie tout simplement de passer un objet comme argument, et alors R va utiliser un objet qui n'est pas le même à nos yeux, mais qui portera le même nom. Il faut y faire très attention. A noter que ce phénomène n'est pas valable pour les packages car les objets à l'intérieur d'un package sont isolés de l'environnement global. C'est pourquoi il est préférable de regrouper ses fonctions en un package (voir [Packages]). 
+
+La bonne façon d'écrire la fonction ci-dessus est la suivante: 
+
+```{r}
+a= 2
+x= 10
+
+add_a= function(x,a){
+  x= a+x
+  return(x)
+}
+
+x2= add_a(x, a)
+
+c(a= a, x= x, x2= x2)
+```
+
+De cette façon, on peut réutiliser la fonction avec d'autres objets: 
+```{r}
+b= 15
+x3= add_a(x, b)
+
+c(a= a, b=b,x= x, x2= x2)
+```
+
+
+## Conseils
+
+* Nommer une fonction est difficile, alors voici quelques recommendations: 
+    - toujours écrire en anglais. Celà permet de partager (et demander de l'aide) plus facilement;  
+    - nommer votre fonction avec un verbe suivit d'un nom, séparées par un "_", *e.g.* split_list. Celà permet de comprendre très rapidement ce qu'une fonction fait (ici on divise une liste en morceaux).  
+    
+* Garder le nombre d'arguments au minimum, et nommez-les de façon hommogène par rapport aux fonctions existantes dans R, et dans vos fonctions. 
+
+* Toujours (**toujours !**) écrire l'aide de votre fonction directement après l'avoir écrite. Ce conseil vous évitera des heures de relecture de codes lorsque vous devrez vous replonger dans la fonction dans 6 mois. 
+
+* Une fonction doit faire une seule chose, mais bien. Si une fonction fait plusieurs choses, alors c'est qu'elle doit être divisée en plusieurs fonctions. Ce conseil est très important, plus une fonction est concise, plus elle est facile à ré-utiliser, à débugger, et à lire.  
+
+* Essayer de grouper ses fonctions en un script séparé qui ne sert qu'à déclarer les fonctions (pas d'utilisation) puis l'utiliser pour déclarer toutes les fonctions d'un seul coup et rapidement en utilisant la fonction `source()`. Ou mieux, créer un package.
 

@@ -53,7 +53,7 @@ knitr::include_graphics("Images/06-Rproj.png")
 ```
   
 Le premier dossier 01-DATA contient toutes les données de départ dont à besoin le projet. Il peut s'agir d'images, de fichiers textes ou de tableurs, il seront tous présents dans ce dossier.  
-Le second dossier 02-Code contient tous les scripts pour **R** ou pour tout autre logiciel, numérotés eux aussi dans l'ordre d'éxécution. En général je regroupe aussi les fonctions utilisées dans les scripts dans un seul et même script **R** appelé 0-Fonctions, que j'appelle ensuite depuis les autres scripts. Si vous ne comprenez rien à la phrase précédente, ne vous en faites pas nous aborderons les fonctions très vite (référence chapitre fonctions).  
+Le second dossier 02-Code contient tous les scripts pour **R** ou pour tout autre logiciel, numérotés eux aussi dans l'ordre d'éxécution. En général je regroupe aussi les fonctions utilisées dans les scripts dans un seul et même script **R** appelé 0-Fonctions, que j'appelle ensuite depuis les autres scripts. Si vous ne comprenez rien à la phrase précédente, ne vous en faites pas nous aborderons les fonctions très vite (voir [fonctions]).  
 Le troisième dossier 03-Resultats est le dossier qui contient tous les résultats, intermédiaires ou finaux. il peut s'agir de figures, de données, de modèles ou tout autre résultat du projet.  
 Enfin, le dernier dossier 04-Communications est un dossier contenant les communications sur le projet. En effet, RStudio permet l'édition de documents pdf, word et html afin de faciliter la communication. Ce livre est d'ailleurs écrit avec Rstudio. Nous parlerons des communications dans le chapitre (mettre référence chapitre communications).  
 Je vous incite à créer ces 4 dossiers vides à chaque fois que vous créez un nouveau projet Rstudio. Vous pouvez le faire soit manuellement, soit en utilisant la commande ci-dessous:  
@@ -163,13 +163,14 @@ Depenses_07_Avril%%2    # modulo 2 de la divison (retourne le reste de la divisi
 D'autres objets plus complexes existent dans **R**, comme les matrices, les tableaux, ou les listes. Ils seront détaillés dans le prochain chapitre.  
 
 ## Introduction aux fonctions, aux packages et à l'aide  
-**R** est un language fonctionel, c'est à dire qu'il utilise un paradigme de programmation basé sur les fonctions. **R** est d'ailleurs particulièrement orienté fonctions car pratiquement tout est considéré comme tel (nous verrons cela dans le chapitre dédié aux fonctions).
-Le très grand intérêt de **R** est donc de disposer de nombreuses fonctions qui servent d'utilitaires. On dit qu'avec **R** la question n'est jamais "Est-il possible de ...?" mais toujours "Comment fait-on ...?". La raison est qu'il y a presque toujours une personne qui a déjà fait ce que vous voulez faire, et que la solution est très souvent disponible sous la forme d'une fonction disponible dans un package, sur un dépôt de type Gitlab/Github ou dans des commentaires sur Stackoverflow.com.  
+
+**R** est un language fonctionel, c'est à dire qu'il utilise un paradigme de programmation basé sur les fonctions. **R** est d'ailleurs particulièrement orienté fonctions car pratiquement tout est considéré comme tel (nous verrons cela dans le chapitre dédié aux fonctions, dans [fonctions]).
+Le très grand intérêt de **R** est donc de disposer de nombreuses fonctions qui servent d'utilitaires. On dit qu'avec **R** la question n'est jamais "Est-il possible de ...?" mais toujours "Comment fait-on ...?". La raison est qu'il y a presque toujours une personne qui a déjà fait ce que vous voulez faire, et que la solution est très souvent disponible sous la forme d'une fonction disponible dans un package, sur un dépôt de type [Gitlab](https://about.gitlab.com/)/[Github](https://github.com/) ou dans des commentaires sur [Stackoverflow.com](stackoverflow.com).  
 Une fonction comporte un nom, et est suivie d'arguments entre parenthèse. Nous avons déjà utilisé plusieurs fonctions précédemment: la fonction `c`, la fonction `sum` et la fonction `mean`.
 Pour connaître les arguments d'une fonction, il vous suffit d'exécuter son nom précédé d'un point d'intérogation, ou bien de surligner son nom et d'appuyer sur la touche `F1` de votre clavier dans RStudio. Apparaîtra alors la documentation de la fonction, qui est toujours structuré de la même manière: 
 En haut se trouve le nom de la fonction suivi du nom de son package entre crochets (nb: base est le package intégré de base dans R).
 Ensuite vient une description brève, puis son utilisation. Ici apparaitra donc les différentes façons d'utiliser la fonction, ainsi que les valeurs par défaut de ses paramètres. 
-Vient ensuite une description de chaque arguments (synonyme de paramètres), puis de certains détails d'utilisation, des valeurs retournées par la fonction (Value), puis enfin les notes, les références, les fonctions liées (see also) et, le plus important, d'exemples.
+Vient ensuite une description de chaque arguments (synonyme de paramètres), puis de certains détails d'utilisation, des valeurs retournées par la fonction (Value), puis enfin les notes, les références, les fonctions liées (see also) et, le plus important, d'examples.
 Alons voir l'aide de la fonction `sum`:
 ```{r, eval=FALSE}
 ?sum
