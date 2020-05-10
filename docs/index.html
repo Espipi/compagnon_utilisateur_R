@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Le compagnon de l’utilisateur R</title>
   <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Le compagnon de l’utilisateur R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Vezy Rémi" />
 
 
-<meta name="date" content="2019-10-01" />
+<meta name="date" content="2020-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 
 <link rel="next" href="intro.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,25 +54,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -77,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -125,69 +130,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prérequis</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#oui-mais-cest-quoi-r"><i class="fa fa-check"></i><b>2.2</b> Oui, mais c’est quoi R?</a></li>
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#pourquoi-r"><i class="fa fa-check"></i><b>2.3</b> Pourquoi R?</a></li>
 <li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#apprendre-r-et-trouver-de-laide"><i class="fa fa-check"></i><b>2.4</b> Apprendre R et trouver de l’aide</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
+<li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="Premiers.html"><a href="Premiers.html#ouvrir-un-projet-rstudio"><i class="fa fa-check"></i><b>3.1</b> Ouvrir un projet RStudio</a></li>
 <li class="chapter" data-level="3.2" data-path="Premiers.html"><a href="Premiers.html#organise_project"><i class="fa fa-check"></i><b>3.2</b> Organiser son projet</a></li>
-<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#creer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script <strong>R</strong></a></li>
-<li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#creer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a><ul>
+<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#créer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script <strong>R</strong></a></li>
+<li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#créer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="Premiers.html"><a href="Premiers.html#objet-unique"><i class="fa fa-check"></i><b>3.4.1</b> Objet unique</a></li>
 <li class="chapter" data-level="3.4.2" data-path="Premiers.html"><a href="Premiers.html#vecteur"><i class="fa fa-check"></i><b>3.4.2</b> Vecteur</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="Premiers.html"><a href="Premiers.html#introduction-aux-fonctions-aux-packages-et-a-laide"><i class="fa fa-check"></i><b>3.5</b> Introduction aux fonctions, aux packages et à l’aide</a></li>
+<li class="chapter" data-level="3.5" data-path="Premiers.html"><a href="Premiers.html#introduction-aux-fonctions-aux-packages-et-à-laide"><i class="fa fa-check"></i><b>3.5</b> Introduction aux fonctions, aux packages et à l’aide</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a><ul>
-<li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-donnees"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="Structures.html"><a href="Structures.html#les-characteres-character"><i class="fa fa-check"></i><b>4.1.1</b> Les charactères (character)</a></li>
+<li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-données"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="Structures.html"><a href="Structures.html#les-charactères-character"><i class="fa fa-check"></i><b>4.1.1</b> Les charactères (character)</a></li>
 <li class="chapter" data-level="4.1.2" data-path="Structures.html"><a href="Structures.html#les-doubles-double"><i class="fa fa-check"></i><b>4.1.2</b> Les doubles (double)</a></li>
 <li class="chapter" data-level="4.1.3" data-path="Structures.html"><a href="Structures.html#entiers"><i class="fa fa-check"></i><b>4.1.3</b> Les entiers (integer)</a></li>
-<li class="chapter" data-level="4.1.4" data-path="Structures.html"><a href="Structures.html#les-booleens-boolean-or-logical"><i class="fa fa-check"></i><b>4.1.4</b> Les booléens (boolean or logical)</a></li>
+<li class="chapter" data-level="4.1.4" data-path="Structures.html"><a href="Structures.html#les-booléens-boolean-or-logical"><i class="fa fa-check"></i><b>4.1.4</b> Les booléens (boolean or logical)</a></li>
 <li class="chapter" data-level="4.1.5" data-path="Structures.html"><a href="Structures.html#en-bonus-les-facteurs-factors"><i class="fa fa-check"></i><b>4.1.5</b> En bonus, les facteurs (factors)</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="Structures.html"><a href="Structures.html#transform_datatype"><i class="fa fa-check"></i><b>4.2</b> Les transformations</a></li>
-<li class="chapter" data-level="4.3" data-path="Structures.html"><a href="Structures.html#les-structures-de-donnees"><i class="fa fa-check"></i><b>4.3</b> Les Structures de données</a><ul>
+<li class="chapter" data-level="4.3" data-path="Structures.html"><a href="Structures.html#les-structures-de-données"><i class="fa fa-check"></i><b>4.3</b> Les Structures de données</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="Structures.html"><a href="Structures.html#vecteurs"><i class="fa fa-check"></i><b>4.3.1</b> Vecteurs</a></li>
 <li class="chapter" data-level="4.3.2" data-path="Structures.html"><a href="Structures.html#matrices"><i class="fa fa-check"></i><b>4.3.2</b> Matrices</a></li>
 <li class="chapter" data-level="4.3.3" data-path="Structures.html"><a href="Structures.html#tableaux"><i class="fa fa-check"></i><b>4.3.3</b> Tableaux</a></li>
 <li class="chapter" data-level="4.3.4" data-path="Structures.html"><a href="Structures.html#listes"><i class="fa fa-check"></i><b>4.3.4</b> Listes</a></li>
 <li class="chapter" data-level="4.3.5" data-path="Structures.html"><a href="Structures.html#attributs"><i class="fa fa-check"></i><b>4.3.5</b> Attributs</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a><ul>
+<li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="Structures.html"><a href="Structures.html#index-et-test"><i class="fa fa-check"></i><b>4.4.1</b> Index et Test</a></li>
 <li class="chapter" data-level="4.4.2" data-path="Structures.html"><a href="Structures.html#remplacer-assigner"><i class="fa fa-check"></i><b>4.4.2</b> Remplacer, assigner</a></li>
-<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#concatenation"><i class="fa fa-check"></i><b>4.4.3</b> Concaténation</a></li>
+<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#concaténation"><i class="fa fa-check"></i><b>4.4.3</b> Concaténation</a></li>
 <li class="chapter" data-level="4.4.4" data-path="Structures.html"><a href="Structures.html#transformation"><i class="fa fa-check"></i><b>4.4.4</b> Transformation</a></li>
 <li class="chapter" data-level="4.4.5" data-path="Structures.html"><a href="Structures.html#transposition"><i class="fa fa-check"></i><b>4.4.5</b> Transposition</a></li>
-<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#operations"><i class="fa fa-check"></i><b>4.4.6</b> Opérations</a></li>
+<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#opérations"><i class="fa fa-check"></i><b>4.4.6</b> Opérations</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>5</b> Structure de contrôle</a><ul>
+<li class="chapter" data-level="5" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>5</b> Structure de contrôle</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="control-flow.html"><a href="control-flow.html#logical-operators"><i class="fa fa-check"></i><b>5.1</b> Logical operators</a></li>
-<li class="chapter" data-level="5.2" data-path="control-flow.html"><a href="control-flow.html#boucles"><i class="fa fa-check"></i><b>5.2</b> Boucles</a><ul>
+<li class="chapter" data-level="5.2" data-path="control-flow.html"><a href="control-flow.html#boucles"><i class="fa fa-check"></i><b>5.2</b> Boucles</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="control-flow.html"><a href="control-flow.html#boucle-for"><i class="fa fa-check"></i><b>5.2.1</b> Boucle <code>for</code></a></li>
 <li class="chapter" data-level="5.2.2" data-path="control-flow.html"><a href="control-flow.html#boucle-while"><i class="fa fa-check"></i><b>5.2.2</b> Boucle while</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="control-flow.html"><a href="control-flow.html#conditions"><i class="fa fa-check"></i><b>5.3</b> Conditions</a></li>
 <li class="chapter" data-level="5.4" data-path="control-flow.html"><a href="control-flow.html#fonctions-utiles"><i class="fa fa-check"></i><b>5.4</b> Fonctions utiles</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>6</b> Fonctions</a><ul>
+<li class="chapter" data-level="6" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>6</b> Fonctions</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>6.1</b> Definition</a></li>
-<li class="chapter" data-level="6.2" data-path="fonctions.html"><a href="fonctions.html#declarer-une-fonction"><i class="fa fa-check"></i><b>6.2</b> Déclarer une fonction</a><ul>
+<li class="chapter" data-level="6.2" data-path="fonctions.html"><a href="fonctions.html#déclarer-une-fonction"><i class="fa fa-check"></i><b>6.2</b> Déclarer une fonction</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="fonctions.html"><a href="fonctions.html#appeler-une-fonction"><i class="fa fa-check"></i><b>6.2.1</b> Appeler une fonction</a></li>
 <li class="chapter" data-level="6.2.2" data-path="fonctions.html"><a href="fonctions.html#fonction-sans-argument"><i class="fa fa-check"></i><b>6.2.2</b> Fonction sans argument</a></li>
 <li class="chapter" data-level="6.2.3" data-path="fonctions.html"><a href="fonctions.html#fonction-anonyme"><i class="fa fa-check"></i><b>6.2.3</b> Fonction anonyme</a></li>
 <li class="chapter" data-level="6.2.4" data-path="fonctions.html"><a href="fonctions.html#return"><i class="fa fa-check"></i><b>6.2.4</b> Return</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="fonctions.html"><a href="fonctions.html#informations"><i class="fa fa-check"></i><b>6.3</b> Informations</a></li>
-<li class="chapter" data-level="6.4" data-path="fonctions.html"><a href="fonctions.html#portee-function-scope"><i class="fa fa-check"></i><b>6.4</b> Portée (function scope)</a></li>
+<li class="chapter" data-level="6.4" data-path="fonctions.html"><a href="fonctions.html#portée-function-scope"><i class="fa fa-check"></i><b>6.4</b> Portée (function scope)</a></li>
 <li class="chapter" data-level="6.5" data-path="fonctions.html"><a href="fonctions.html#conseils"><i class="fa fa-check"></i><b>6.5</b> Conseils</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements</a></li>
+<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements and scoping</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="environnement.html"><a href="environnement.html#environments"><i class="fa fa-check"></i><b>7.1</b> Environments</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="environnement.html"><a href="environnement.html#environments-in-functions"><i class="fa fa-check"></i><b>7.1.1</b> Environments in functions</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>8</b> Travailler avec des dates</a></li>
 <li class="chapter" data-level="9" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>9</b> Travailler avec des chaînes de charactère</a></li>
 <li class="chapter" data-level="10" data-path="datascience1.html"><a href="datascience1.html"><i class="fa fa-check"></i><b>10</b> Science des données: importer, manipuler des données</a></li>
@@ -217,14 +239,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Le compagnon de l’utilisateur R</h1>
 <p class="author"><em>Vezy Rémi</em></p>
-<p class="date"><em>2019-10-01</em></p>
+<p class="date"><em>2020-05-10</em></p>
 </div>
-<div id="prere" class="section level1">
+<div id="prere" class="section level1" number="1">
 <h1><span class="header-section-number">Chapitre 1</span> Prérequis</h1>
 <p>Ce livre à pour objectif de vous enseigner le plus rapidement possible comment utiliser R et son environement (RStudio, Rmarkdown, plotly…) pour la science des données. Ainsi, chaque chapitre peut être lu indépendemment des autres, pour que vous puissez aller droit à l’essentiel lorsque vous en avez besoin. Bien sûr, je vous recommande fortement de lire ou au moins de survoler le livre une première fois afin de vous faire gagner du temps par la suite. Pour donner un exemple, même si l’utilisation de plotly ne demande pas explicitement de savoir utiliser les pipes (tubes), leur utilisation ne rendra l’apprentissage que plus rapide.</p>
 <p><strong>R</strong> peut aussi être utilisé seul mais je vous recommande fortement l’utilisation de l’IDE <a href="https://www.rstudio.com/">RStudio</a> car il dispose d’un large panel d’outils rendant l’utilisation de R plus facile. RStudio est gratuit et libre, et la dernière version du logiciel est disponible <a href="https://www.rstudio.com/products/rstudio/#Desktop">ici</a>. Un tutorial d’installation sera décrit en introduction.</p>
 <p>Ce livre est entièrement écrit grâce à RStudio et aux packages R <strong>bookdown</strong> <span class="citation">[@R-bookdown]</span> et <strong>knitr</strong> <span class="citation">[@xie2015]</span>. Vous pouvez donc vous-même télécharger <strong>bookdown</strong> et m’aider à l’écriture du livre en utilisant le lien <a href="">Github</a>. Pour cela, il vous suffit d’exécuter la commande suivante depuis la console <strong>R</strong>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rstudio/bookdown&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rstudio/bookdown&quot;</span>)</span></code></pre></div>
 
 </div>
             </section>
@@ -238,11 +260,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -250,12 +274,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -267,6 +290,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

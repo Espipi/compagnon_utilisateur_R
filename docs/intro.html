@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 2 Introduction | Le compagnon de l’utilisateur R</title>
   <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 2 Introduction | Le compagnon de l’utilisateur R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Vezy Rémi" />
 
 
-<meta name="date" content="2019-10-01" />
+<meta name="date" content="2020-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="Premiers.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,25 +54,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -77,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -125,69 +130,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prérequis</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#oui-mais-cest-quoi-r"><i class="fa fa-check"></i><b>2.2</b> Oui, mais c’est quoi R?</a></li>
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#pourquoi-r"><i class="fa fa-check"></i><b>2.3</b> Pourquoi R?</a></li>
 <li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#apprendre-r-et-trouver-de-laide"><i class="fa fa-check"></i><b>2.4</b> Apprendre R et trouver de l’aide</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
+<li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="Premiers.html"><a href="Premiers.html#ouvrir-un-projet-rstudio"><i class="fa fa-check"></i><b>3.1</b> Ouvrir un projet RStudio</a></li>
 <li class="chapter" data-level="3.2" data-path="Premiers.html"><a href="Premiers.html#organise_project"><i class="fa fa-check"></i><b>3.2</b> Organiser son projet</a></li>
-<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#creer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script <strong>R</strong></a></li>
-<li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#creer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a><ul>
+<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#créer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script <strong>R</strong></a></li>
+<li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#créer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="Premiers.html"><a href="Premiers.html#objet-unique"><i class="fa fa-check"></i><b>3.4.1</b> Objet unique</a></li>
 <li class="chapter" data-level="3.4.2" data-path="Premiers.html"><a href="Premiers.html#vecteur"><i class="fa fa-check"></i><b>3.4.2</b> Vecteur</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="Premiers.html"><a href="Premiers.html#introduction-aux-fonctions-aux-packages-et-a-laide"><i class="fa fa-check"></i><b>3.5</b> Introduction aux fonctions, aux packages et à l’aide</a></li>
+<li class="chapter" data-level="3.5" data-path="Premiers.html"><a href="Premiers.html#introduction-aux-fonctions-aux-packages-et-à-laide"><i class="fa fa-check"></i><b>3.5</b> Introduction aux fonctions, aux packages et à l’aide</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a><ul>
-<li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-donnees"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="Structures.html"><a href="Structures.html#les-characteres-character"><i class="fa fa-check"></i><b>4.1.1</b> Les charactères (character)</a></li>
+<li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-données"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="Structures.html"><a href="Structures.html#les-charactères-character"><i class="fa fa-check"></i><b>4.1.1</b> Les charactères (character)</a></li>
 <li class="chapter" data-level="4.1.2" data-path="Structures.html"><a href="Structures.html#les-doubles-double"><i class="fa fa-check"></i><b>4.1.2</b> Les doubles (double)</a></li>
 <li class="chapter" data-level="4.1.3" data-path="Structures.html"><a href="Structures.html#entiers"><i class="fa fa-check"></i><b>4.1.3</b> Les entiers (integer)</a></li>
-<li class="chapter" data-level="4.1.4" data-path="Structures.html"><a href="Structures.html#les-booleens-boolean-or-logical"><i class="fa fa-check"></i><b>4.1.4</b> Les booléens (boolean or logical)</a></li>
+<li class="chapter" data-level="4.1.4" data-path="Structures.html"><a href="Structures.html#les-booléens-boolean-or-logical"><i class="fa fa-check"></i><b>4.1.4</b> Les booléens (boolean or logical)</a></li>
 <li class="chapter" data-level="4.1.5" data-path="Structures.html"><a href="Structures.html#en-bonus-les-facteurs-factors"><i class="fa fa-check"></i><b>4.1.5</b> En bonus, les facteurs (factors)</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="Structures.html"><a href="Structures.html#transform_datatype"><i class="fa fa-check"></i><b>4.2</b> Les transformations</a></li>
-<li class="chapter" data-level="4.3" data-path="Structures.html"><a href="Structures.html#les-structures-de-donnees"><i class="fa fa-check"></i><b>4.3</b> Les Structures de données</a><ul>
+<li class="chapter" data-level="4.3" data-path="Structures.html"><a href="Structures.html#les-structures-de-données"><i class="fa fa-check"></i><b>4.3</b> Les Structures de données</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="Structures.html"><a href="Structures.html#vecteurs"><i class="fa fa-check"></i><b>4.3.1</b> Vecteurs</a></li>
 <li class="chapter" data-level="4.3.2" data-path="Structures.html"><a href="Structures.html#matrices"><i class="fa fa-check"></i><b>4.3.2</b> Matrices</a></li>
 <li class="chapter" data-level="4.3.3" data-path="Structures.html"><a href="Structures.html#tableaux"><i class="fa fa-check"></i><b>4.3.3</b> Tableaux</a></li>
 <li class="chapter" data-level="4.3.4" data-path="Structures.html"><a href="Structures.html#listes"><i class="fa fa-check"></i><b>4.3.4</b> Listes</a></li>
 <li class="chapter" data-level="4.3.5" data-path="Structures.html"><a href="Structures.html#attributs"><i class="fa fa-check"></i><b>4.3.5</b> Attributs</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a><ul>
+<li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="Structures.html"><a href="Structures.html#index-et-test"><i class="fa fa-check"></i><b>4.4.1</b> Index et Test</a></li>
 <li class="chapter" data-level="4.4.2" data-path="Structures.html"><a href="Structures.html#remplacer-assigner"><i class="fa fa-check"></i><b>4.4.2</b> Remplacer, assigner</a></li>
-<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#concatenation"><i class="fa fa-check"></i><b>4.4.3</b> Concaténation</a></li>
+<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#concaténation"><i class="fa fa-check"></i><b>4.4.3</b> Concaténation</a></li>
 <li class="chapter" data-level="4.4.4" data-path="Structures.html"><a href="Structures.html#transformation"><i class="fa fa-check"></i><b>4.4.4</b> Transformation</a></li>
 <li class="chapter" data-level="4.4.5" data-path="Structures.html"><a href="Structures.html#transposition"><i class="fa fa-check"></i><b>4.4.5</b> Transposition</a></li>
-<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#operations"><i class="fa fa-check"></i><b>4.4.6</b> Opérations</a></li>
+<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#opérations"><i class="fa fa-check"></i><b>4.4.6</b> Opérations</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>5</b> Structure de contrôle</a><ul>
+<li class="chapter" data-level="5" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>5</b> Structure de contrôle</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="control-flow.html"><a href="control-flow.html#logical-operators"><i class="fa fa-check"></i><b>5.1</b> Logical operators</a></li>
-<li class="chapter" data-level="5.2" data-path="control-flow.html"><a href="control-flow.html#boucles"><i class="fa fa-check"></i><b>5.2</b> Boucles</a><ul>
+<li class="chapter" data-level="5.2" data-path="control-flow.html"><a href="control-flow.html#boucles"><i class="fa fa-check"></i><b>5.2</b> Boucles</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="control-flow.html"><a href="control-flow.html#boucle-for"><i class="fa fa-check"></i><b>5.2.1</b> Boucle <code>for</code></a></li>
 <li class="chapter" data-level="5.2.2" data-path="control-flow.html"><a href="control-flow.html#boucle-while"><i class="fa fa-check"></i><b>5.2.2</b> Boucle while</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="control-flow.html"><a href="control-flow.html#conditions"><i class="fa fa-check"></i><b>5.3</b> Conditions</a></li>
 <li class="chapter" data-level="5.4" data-path="control-flow.html"><a href="control-flow.html#fonctions-utiles"><i class="fa fa-check"></i><b>5.4</b> Fonctions utiles</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>6</b> Fonctions</a><ul>
+<li class="chapter" data-level="6" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>6</b> Fonctions</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>6.1</b> Definition</a></li>
-<li class="chapter" data-level="6.2" data-path="fonctions.html"><a href="fonctions.html#declarer-une-fonction"><i class="fa fa-check"></i><b>6.2</b> Déclarer une fonction</a><ul>
+<li class="chapter" data-level="6.2" data-path="fonctions.html"><a href="fonctions.html#déclarer-une-fonction"><i class="fa fa-check"></i><b>6.2</b> Déclarer une fonction</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="fonctions.html"><a href="fonctions.html#appeler-une-fonction"><i class="fa fa-check"></i><b>6.2.1</b> Appeler une fonction</a></li>
 <li class="chapter" data-level="6.2.2" data-path="fonctions.html"><a href="fonctions.html#fonction-sans-argument"><i class="fa fa-check"></i><b>6.2.2</b> Fonction sans argument</a></li>
 <li class="chapter" data-level="6.2.3" data-path="fonctions.html"><a href="fonctions.html#fonction-anonyme"><i class="fa fa-check"></i><b>6.2.3</b> Fonction anonyme</a></li>
 <li class="chapter" data-level="6.2.4" data-path="fonctions.html"><a href="fonctions.html#return"><i class="fa fa-check"></i><b>6.2.4</b> Return</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="fonctions.html"><a href="fonctions.html#informations"><i class="fa fa-check"></i><b>6.3</b> Informations</a></li>
-<li class="chapter" data-level="6.4" data-path="fonctions.html"><a href="fonctions.html#portee-function-scope"><i class="fa fa-check"></i><b>6.4</b> Portée (function scope)</a></li>
+<li class="chapter" data-level="6.4" data-path="fonctions.html"><a href="fonctions.html#portée-function-scope"><i class="fa fa-check"></i><b>6.4</b> Portée (function scope)</a></li>
 <li class="chapter" data-level="6.5" data-path="fonctions.html"><a href="fonctions.html#conseils"><i class="fa fa-check"></i><b>6.5</b> Conseils</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements</a></li>
+<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements and scoping</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="environnement.html"><a href="environnement.html#environments"><i class="fa fa-check"></i><b>7.1</b> Environments</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="environnement.html"><a href="environnement.html#environments-in-functions"><i class="fa fa-check"></i><b>7.1.1</b> Environments in functions</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>8</b> Travailler avec des dates</a></li>
 <li class="chapter" data-level="9" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>9</b> Travailler avec des chaînes de charactère</a></li>
 <li class="chapter" data-level="10" data-path="datascience1.html"><a href="datascience1.html"><i class="fa fa-check"></i><b>10</b> Science des données: importer, manipuler des données</a></li>
@@ -214,9 +236,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="intro" class="section level1">
+<div id="intro" class="section level1" number="2">
 <h1><span class="header-section-number">Chapitre 2</span> Introduction</h1>
-<div id="installation" class="section level2">
+<div id="installation" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Installation</h2>
 <p>Comme dit précédemment dans le prérequis <a href="index.html#prere">1</a>, nous utiliserons <strong>R</strong> depuis <strong>RStudio</strong>, qui est un formidable environnement de développement. Il permet plusieurs choses qui seraient possibles mais plus fastidieuses depuis <strong>R</strong> seul:<br />
 * Le fenêtrage: avoir dans une même fenêtre ses scripts, la console R, les graphiques, les fichiers, les packages chargés et disponibles, l’aide, ainsi que l’environnement et l’historique des commandes<br />
@@ -227,13 +249,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Avant de commencer donc, il vous faudra installer R et RStudio. R est téléchargeable depuis le site du <a href="https://www.r-project.org/">R-project</a>. Il vous suffit de cliquer sur “download R”, de choisir votre mirroir, qui est le dépôt depuis lequel vous allez le télécharger (si vous avez un doute, prenez n’importe lequel en France), et enfin de cliquer sur “Download R for [votre système d’exploitation]”.
 Une fois téléchargé, installez-le comme n’importe quel programme.</p>
 </div>
-<div id="oui-mais-cest-quoi-r" class="section level2">
+<div id="oui-mais-cest-quoi-r" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Oui, mais c’est quoi R?</h2>
 <p>R est un language de programmation dérivé du language S. Un language de programmation est ce qui permet à l’homme (le développeur ou l’utilisateur) de communiquer avec un ordinateur. En effet, les ordinateurs communiquent avec le language binaire, qui n’est composé que de 0 et de 1. Ces 0 et 1 sont agregés par “mots” pour construire des instructions. Par exemple, <code>01010010</code> veut dire <strong>R</strong> en binaire. Difficile de communiquer comme ça, dans un sens comme dans l’autre. Les languages de programmation nous servent en quelque sorte de language commun. Il en existe de nombreux, qui s’utilisent différemments. Je ne m’étendrais pas là-dessus ici, ce n’est pas le but. Mais vous pouvez retenir une chose ici: R vous sert d’outil de communication pour contrôler votre ordinateur, et lui demander d’exécuter des opérations à votre place.</p>
 <p>Je pourrais aussi ajouter que R est un language orienté objet, et un language fonctionnel. Ce sont deux paradigmes qui sont devenus très populaires et sont implémentés dans de nombreux languages informatiques (C++, Java, Python…). Le premier tourne autour de l’idée de classes et d’objets. Prenons par exemple une machine à café. Une cafetière est appelé un <code>objet</code>, qui est de <code>classe</code> cafetière. Mais le nom cafetière est parfois imprécis employé seul, car il en existe plusieurs sortes. Il y a des machines à expresso, des cafetières Italiennes, des cafetières à percolation, des cafetières à piston et j’en passe. Toutes représentent le même <code>objet</code> de <code>classe</code> cafetière. On les différenciera donc par une sous-classe -le type de cafetière-, qui partagera les attribus de la classe supérieure “cafetière”, mais qui se différencieront par d’autres attribus qu’ils n’auront pas en commun. Il existe trois différents systèmes objets orientés dans R: les S3, les S4 et les RC (Reference Classes). Ils découlent de la longue histoire du language R, qui prends ses racines en 1976, quatres ans seulement après l’invention du language orienté objet. Je décris plus en détails ces systèmes dans un autre chapitre du livre. J’ai aussi dit que R est un language fonctionnel, ce qui est entièrement lié au paradigme du language orienté objet. Il faut savoir qur R traite tout comme un objet, y compris les fonctions. Ce fonctionnement à de nombreux avantages, dont celui de pouvoir assigner une fonction à un objet, ou bien une fonction à une autre fonction. Si vous voulez avoir plus d’informations sur ce paragraphe, je vous recommande fortement de jeter un coup d’oeil au MOOC dont il est fortement inspiré, <a href="https://www.coursera.org/learn/advanced-r">Advanced R programming</a> de l’Université Johns-Hopkins (en anglais).</p>
 <p>Lorsqu’on débute en informatique, il arrive très souvent de penser que la machine est bête car elle ne comprends pas ce que l’on veut lui dire. On lui envoi une commande, et elle nous renvoi une erreur ou un avertissement. Si vous oubliez une virgule ou une parenthèse, le mieux qu’il puisse vous arriver est que le language reconnaisse votre erreur et qu’il vous la dise. En effet, un ordinateur n’est bête, ni intelligent. Il ne fait qu’exécuter ce que vous lui demandez. Il vous faudra donc être plus clair que jamais dans votre communication. Et par ça, je veux dire qu’il vous faudra devenir un vrai nazi de la grammaire. Une seule faute d’orthographe, et vous appelez une variable différente de celle que vous pensiez. Une seule parenthèse manquante, et votre code risque d’éxecuter une portion qu’il ne fallait pas. J’insiste beaucoup sur cette partie car vous verrez que la communication avec un ordinateur est parfois très frustante au début. Mais il faudra vous y faire, et vous rendre compte que <strong>vous</strong> et vous seuls faites des erreurs, et que c’est vous qui contrôlez l’ordinateur et non pas le contraire.</p>
 </div>
-<div id="pourquoi-r" class="section level2">
+<div id="pourquoi-r" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Pourquoi R?</h2>
 <p>Voilà une grande question, à laquelle on peut répondre de plusieurs façons. Pour commencer, on peut se demander pourquoi utiliser un language de programmation plutôt qu’un outil a priori plus simple ? Utiliser un logiciel comme Excel ou <a href="http://www.openoffice.us.com/openoffice-calc.php">Calc</a> permet par exemple de visualiser ses données, effectuer des calculs, et même faire des graphiques. Alors où est l’intérêt de se compliquer la tâche pour le même résultat ? La réponse tient en deux mots: l’<strong>automatisation</strong>, et la <strong>reproductibilité</strong>.<br />
 En effet, un language de programmation permet à son utilisateur d’automatiser une tâche par la description de processus, de procédures et donc d’algorithmes par l’écriture de code informatique.<br />
@@ -261,7 +283,7 @@ En quelques points, voici les avantages de R :</p>
 <p>Le principal inconvénient de R est qu’il peut être lent si l’on utilise certains paradigmes pour coder, comme par exemple l’utilisation de boucles <code>for</code>, qui sont pourtant très utilisées dans d’autres languages. Ceci-dit R peut facilement être optimisé pour la rapidité si l’on connaît les bons outils. Ces outils et ses méthodes d’écritures seront détaillés dans le chapitre sur l’optimisation des codes R (mettre ref une fois chapitre existant).</p>
 <p>Enfin, au bout du compte, on peut dire que ce qui compte vraiment n’est pas le choix du language de programmation, mais plutôt ce que vous voulez en faire. Car le meilleur outil est l’outil que vous métrisez. Donc si vous voulez vous lancer dans l’apprentissage de R (ou de Python, ou de C++), lancez vous à fond, apprenez les possibilités qu’offre le language, utilisez-les pour des choses qui vous tiennent à coeur, et alors vous pourrez en faire ce que vous voudrez.</p>
 </div>
-<div id="apprendre-r-et-trouver-de-laide" class="section level2">
+<div id="apprendre-r-et-trouver-de-laide" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Apprendre R et trouver de l’aide</h2>
 <p>Apprendre un language de programmation peut être long. La vitesse à laquelle on apprend un language par rapport à l’expérience peut se représenter grâce à une courbe d’apprentissage. Il se trouve que la courbe d’apprentissage de R n’est pas facile à déterminer, car bien souvent les personnes qui commencent ce language n’ont aucune connaissance des bases en informatique. Cependant R est un language qui dispose de nombreuses ressources d’aides sur différents formats, l’aide de R, mais aussi les livres, blogs, MOOCs, ou autres sites Q&amp;A. Pour faciliter votre apprentissage je ne peux que vous recommander de vous forcer à apprendre un peu tous les jours.<br />
 Pour se faire, vous pouvez commencer par vous abonner à la liste de diffusion du blog <a href="https://www.r-bloggers.com/">R-bloggers</a>, qui est un méta-blog regroupant plusieurs centaines de blogs en une seule et unique source. Vous pourrez trouver tout ce dont vous avez besoin, comme des tutoriels ou des news sur les sorties de packages. Ensuite, lorsque vous recherchez une information, vous pouvez aller faire un tour sur le site <a href="http://stackoverflow.com/questions/tagged/r">stackoverflow</a>, qui est un site qui propose un système de question-réponse très au point, permettant le vote des meilleures réponses, ainsi que ses pages de <a href="http://stackoverflow.com/documentation/r/topics">documentations</a> proposant des exemples ou des tutoriels autour du language R. Enfin, une façon de trouver plus vite des réponses à ses questions est d’utiliser le moteur de recherche <a href="https://duckduckgo.com/">DuckDuckGo</a> que j’affectionne particulièrement car il propose en haut de page la réponse la mieux notée du premier site Q&amp;A qu’il trouve, avec le code associé. Celà permet très souvent de ne même pas avoir besoin d’entrer sur un site pour obtenir une réponse à sa question. Testez vous-même en suivant <a href="https://duckduckgo.com/?q=R+ggpot+mutliple+time-series&amp;t=ffab&amp;ia=qa">ce lien</a> pour un exemple sur comment faire un graphique comprennant plusieurs graphiques de séries temporelles. De plus, ce moteur de recherche est un des seuls qui ne vous piste pas. Aussi dois-je préciser qu’il ne s’agit pas ici de publicité mais seulement de préférence personnelle.</p>
@@ -280,11 +302,13 @@ Pour se faire, vous pouvez commencer par vous abonner à la liste de diffusion d
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -292,12 +316,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -309,6 +332,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

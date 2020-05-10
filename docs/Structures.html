@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 4 Structures et types de données | Le compagnon de l’utilisateur R</title>
   <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 4 Structures et types de données | Le compagnon de l’utilisateur R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Vezy Rémi" />
 
 
-<meta name="date" content="2019-10-01" />
+<meta name="date" content="2020-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="Premiers.html"/>
 <link rel="next" href="control-flow.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,25 +54,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -77,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -125,69 +130,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prérequis</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#oui-mais-cest-quoi-r"><i class="fa fa-check"></i><b>2.2</b> Oui, mais c’est quoi R?</a></li>
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#pourquoi-r"><i class="fa fa-check"></i><b>2.3</b> Pourquoi R?</a></li>
 <li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#apprendre-r-et-trouver-de-laide"><i class="fa fa-check"></i><b>2.4</b> Apprendre R et trouver de l’aide</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
+<li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="Premiers.html"><a href="Premiers.html#ouvrir-un-projet-rstudio"><i class="fa fa-check"></i><b>3.1</b> Ouvrir un projet RStudio</a></li>
 <li class="chapter" data-level="3.2" data-path="Premiers.html"><a href="Premiers.html#organise_project"><i class="fa fa-check"></i><b>3.2</b> Organiser son projet</a></li>
-<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#creer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script <strong>R</strong></a></li>
-<li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#creer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a><ul>
+<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#créer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script <strong>R</strong></a></li>
+<li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#créer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="Premiers.html"><a href="Premiers.html#objet-unique"><i class="fa fa-check"></i><b>3.4.1</b> Objet unique</a></li>
 <li class="chapter" data-level="3.4.2" data-path="Premiers.html"><a href="Premiers.html#vecteur"><i class="fa fa-check"></i><b>3.4.2</b> Vecteur</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="Premiers.html"><a href="Premiers.html#introduction-aux-fonctions-aux-packages-et-a-laide"><i class="fa fa-check"></i><b>3.5</b> Introduction aux fonctions, aux packages et à l’aide</a></li>
+<li class="chapter" data-level="3.5" data-path="Premiers.html"><a href="Premiers.html#introduction-aux-fonctions-aux-packages-et-à-laide"><i class="fa fa-check"></i><b>3.5</b> Introduction aux fonctions, aux packages et à l’aide</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a><ul>
-<li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-donnees"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="Structures.html"><a href="Structures.html#les-characteres-character"><i class="fa fa-check"></i><b>4.1.1</b> Les charactères (character)</a></li>
+<li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-données"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="Structures.html"><a href="Structures.html#les-charactères-character"><i class="fa fa-check"></i><b>4.1.1</b> Les charactères (character)</a></li>
 <li class="chapter" data-level="4.1.2" data-path="Structures.html"><a href="Structures.html#les-doubles-double"><i class="fa fa-check"></i><b>4.1.2</b> Les doubles (double)</a></li>
 <li class="chapter" data-level="4.1.3" data-path="Structures.html"><a href="Structures.html#entiers"><i class="fa fa-check"></i><b>4.1.3</b> Les entiers (integer)</a></li>
-<li class="chapter" data-level="4.1.4" data-path="Structures.html"><a href="Structures.html#les-booleens-boolean-or-logical"><i class="fa fa-check"></i><b>4.1.4</b> Les booléens (boolean or logical)</a></li>
+<li class="chapter" data-level="4.1.4" data-path="Structures.html"><a href="Structures.html#les-booléens-boolean-or-logical"><i class="fa fa-check"></i><b>4.1.4</b> Les booléens (boolean or logical)</a></li>
 <li class="chapter" data-level="4.1.5" data-path="Structures.html"><a href="Structures.html#en-bonus-les-facteurs-factors"><i class="fa fa-check"></i><b>4.1.5</b> En bonus, les facteurs (factors)</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="Structures.html"><a href="Structures.html#transform_datatype"><i class="fa fa-check"></i><b>4.2</b> Les transformations</a></li>
-<li class="chapter" data-level="4.3" data-path="Structures.html"><a href="Structures.html#les-structures-de-donnees"><i class="fa fa-check"></i><b>4.3</b> Les Structures de données</a><ul>
+<li class="chapter" data-level="4.3" data-path="Structures.html"><a href="Structures.html#les-structures-de-données"><i class="fa fa-check"></i><b>4.3</b> Les Structures de données</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="Structures.html"><a href="Structures.html#vecteurs"><i class="fa fa-check"></i><b>4.3.1</b> Vecteurs</a></li>
 <li class="chapter" data-level="4.3.2" data-path="Structures.html"><a href="Structures.html#matrices"><i class="fa fa-check"></i><b>4.3.2</b> Matrices</a></li>
 <li class="chapter" data-level="4.3.3" data-path="Structures.html"><a href="Structures.html#tableaux"><i class="fa fa-check"></i><b>4.3.3</b> Tableaux</a></li>
 <li class="chapter" data-level="4.3.4" data-path="Structures.html"><a href="Structures.html#listes"><i class="fa fa-check"></i><b>4.3.4</b> Listes</a></li>
 <li class="chapter" data-level="4.3.5" data-path="Structures.html"><a href="Structures.html#attributs"><i class="fa fa-check"></i><b>4.3.5</b> Attributs</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a><ul>
+<li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="Structures.html"><a href="Structures.html#index-et-test"><i class="fa fa-check"></i><b>4.4.1</b> Index et Test</a></li>
 <li class="chapter" data-level="4.4.2" data-path="Structures.html"><a href="Structures.html#remplacer-assigner"><i class="fa fa-check"></i><b>4.4.2</b> Remplacer, assigner</a></li>
-<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#concatenation"><i class="fa fa-check"></i><b>4.4.3</b> Concaténation</a></li>
+<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#concaténation"><i class="fa fa-check"></i><b>4.4.3</b> Concaténation</a></li>
 <li class="chapter" data-level="4.4.4" data-path="Structures.html"><a href="Structures.html#transformation"><i class="fa fa-check"></i><b>4.4.4</b> Transformation</a></li>
 <li class="chapter" data-level="4.4.5" data-path="Structures.html"><a href="Structures.html#transposition"><i class="fa fa-check"></i><b>4.4.5</b> Transposition</a></li>
-<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#operations"><i class="fa fa-check"></i><b>4.4.6</b> Opérations</a></li>
+<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#opérations"><i class="fa fa-check"></i><b>4.4.6</b> Opérations</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>5</b> Structure de contrôle</a><ul>
+<li class="chapter" data-level="5" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>5</b> Structure de contrôle</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="control-flow.html"><a href="control-flow.html#logical-operators"><i class="fa fa-check"></i><b>5.1</b> Logical operators</a></li>
-<li class="chapter" data-level="5.2" data-path="control-flow.html"><a href="control-flow.html#boucles"><i class="fa fa-check"></i><b>5.2</b> Boucles</a><ul>
+<li class="chapter" data-level="5.2" data-path="control-flow.html"><a href="control-flow.html#boucles"><i class="fa fa-check"></i><b>5.2</b> Boucles</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="control-flow.html"><a href="control-flow.html#boucle-for"><i class="fa fa-check"></i><b>5.2.1</b> Boucle <code>for</code></a></li>
 <li class="chapter" data-level="5.2.2" data-path="control-flow.html"><a href="control-flow.html#boucle-while"><i class="fa fa-check"></i><b>5.2.2</b> Boucle while</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="control-flow.html"><a href="control-flow.html#conditions"><i class="fa fa-check"></i><b>5.3</b> Conditions</a></li>
 <li class="chapter" data-level="5.4" data-path="control-flow.html"><a href="control-flow.html#fonctions-utiles"><i class="fa fa-check"></i><b>5.4</b> Fonctions utiles</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>6</b> Fonctions</a><ul>
+<li class="chapter" data-level="6" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>6</b> Fonctions</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>6.1</b> Definition</a></li>
-<li class="chapter" data-level="6.2" data-path="fonctions.html"><a href="fonctions.html#declarer-une-fonction"><i class="fa fa-check"></i><b>6.2</b> Déclarer une fonction</a><ul>
+<li class="chapter" data-level="6.2" data-path="fonctions.html"><a href="fonctions.html#déclarer-une-fonction"><i class="fa fa-check"></i><b>6.2</b> Déclarer une fonction</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="fonctions.html"><a href="fonctions.html#appeler-une-fonction"><i class="fa fa-check"></i><b>6.2.1</b> Appeler une fonction</a></li>
 <li class="chapter" data-level="6.2.2" data-path="fonctions.html"><a href="fonctions.html#fonction-sans-argument"><i class="fa fa-check"></i><b>6.2.2</b> Fonction sans argument</a></li>
 <li class="chapter" data-level="6.2.3" data-path="fonctions.html"><a href="fonctions.html#fonction-anonyme"><i class="fa fa-check"></i><b>6.2.3</b> Fonction anonyme</a></li>
 <li class="chapter" data-level="6.2.4" data-path="fonctions.html"><a href="fonctions.html#return"><i class="fa fa-check"></i><b>6.2.4</b> Return</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="fonctions.html"><a href="fonctions.html#informations"><i class="fa fa-check"></i><b>6.3</b> Informations</a></li>
-<li class="chapter" data-level="6.4" data-path="fonctions.html"><a href="fonctions.html#portee-function-scope"><i class="fa fa-check"></i><b>6.4</b> Portée (function scope)</a></li>
+<li class="chapter" data-level="6.4" data-path="fonctions.html"><a href="fonctions.html#portée-function-scope"><i class="fa fa-check"></i><b>6.4</b> Portée (function scope)</a></li>
 <li class="chapter" data-level="6.5" data-path="fonctions.html"><a href="fonctions.html#conseils"><i class="fa fa-check"></i><b>6.5</b> Conseils</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements</a></li>
+<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements and scoping</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="environnement.html"><a href="environnement.html#environments"><i class="fa fa-check"></i><b>7.1</b> Environments</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="environnement.html"><a href="environnement.html#environments-in-functions"><i class="fa fa-check"></i><b>7.1.1</b> Environments in functions</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>8</b> Travailler avec des dates</a></li>
 <li class="chapter" data-level="9" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>9</b> Travailler avec des chaînes de charactère</a></li>
 <li class="chapter" data-level="10" data-path="datascience1.html"><a href="datascience1.html"><i class="fa fa-check"></i><b>10</b> Science des données: importer, manipuler des données</a></li>
@@ -214,11 +236,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Structures" class="section level1">
+<div id="Structures" class="section level1" number="4">
 <h1><span class="header-section-number">Chapitre 4</span> Structures et types de données</h1>
 <p>Il existe plusieurs types de données dans R, et différentes façons de les manipuler en découle. Le type de structure ou d’objet utilisé dépendra principalement de la nature de l’information à y stocker et des manipulations que l’on veut effectuer dessus.
 Trois principaux types de données et quatre principales structures sont utilisées régulièrement dans R.</p>
-<div id="les-types-de-donnees" class="section level2">
+<div id="les-types-de-données" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Les types de données</h2>
 <p>Les principaux types de données sont:</p>
 <ul>
@@ -232,22 +254,22 @@ Trois principaux types de données et quatre principales structures sont utilis�
 Il existe aussi d’autres types, dérivés ou non des types précédents comme les dates <code>as.POSIXct(c("1990-01-01","2017-06-03"))</code>, les complexes, ou les “raw” (séquences de bits), qui ne seront pas discutés tout de suite.<br />
 Il est à noter qu’un manque de donnée se note généralement <code>NA</code> (= not applicable: non applicable) ou bien <code>NULL</code> par exemple pour un vecteur ou une liste de longueur nulle (i.e. vide). Il existe un type de <code>NA</code> pour chaque type de données : <code>NA_character_</code>, <code>NA_real_</code>, <code>NA_integer_</code> et <code>NA_complex_</code>, mais l’utilisateur n’a généralement pas en soucier, car <strong>R</strong> applique automatiquement le type de <code>NA</code> associé au type de donnée.</li>
 </ul>
-<div id="les-characteres-character" class="section level3">
+<div id="les-charactères-character" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Les charactères (character)</h3>
 <p>Les charactères (character) peuvent prendre n’importe quelle forme (même celle d’un chiffre), et comporter n’importe quel charactère, même un espace. Pour créer un charactère, il suffit de le déclarer entre guillemets <code>"</code> (ou <code>'</code>) comme ceci: <code>"character"</code>. Ils peuvent être composés d’un seul charactère <code>"a"</code>, de plusieurs <code>"abc"</code>, ou même d’une phrase <code>"ceci est un seul charactère"</code>. Pour créer un vecteur de plusieurs charactères, il faut utiliser la fonction <code>c()</code> comme nous l’avons déjà vu: <code>c("a","b","c")</code>. Voici un exemple incluant une déclaration et un test :</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">a=<span class="st"> &quot;a&quot;</span>       <span class="co"># a est un charactère</span></a>
-<a class="sourceLine" id="cb46-2" title="2">a</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="Structures.html#cb46-1"></a>a=<span class="st"> &quot;a&quot;</span>       <span class="co"># a est un charactère</span></span>
+<span id="cb46-2"><a href="Structures.html#cb46-2"></a>a</span></code></pre></div>
 <pre><code>## [1] &quot;a&quot;</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">is.character</span>(a)  <span class="co"># on teste si a est un charactère (retourne TRUE si la condition est vraie)</span></a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="Structures.html#cb48-1"></a><span class="kw">is.character</span>(a)  <span class="co"># on teste si a est un charactère (retourne TRUE si la condition est vraie)</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
-<div id="les-doubles-double" class="section level3">
+<div id="les-doubles-double" class="section level3" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Les doubles (double)</h3>
 <p>Les doubles sont des nombres décimaux. Ils sont le type de données que vous utiliserez probablement le plus souvent. Pour les déclarer, rien de plus simple, il suffit d’écrire votre chiffre, puis de l’utiliser comme bon vous semble. Voici un petit exemple :</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">a=<span class="st"> </span><span class="fl">1.56</span>       <span class="co"># a est un double</span></a>
-<a class="sourceLine" id="cb50-2" title="2">a<span class="op">*</span><span class="fl">83.550</span>      <span class="co"># il peut être multiplié par un autre double</span></a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="Structures.html#cb50-1"></a>a=<span class="st"> </span><span class="fl">1.56</span>       <span class="co"># a est un double</span></span>
+<span id="cb50-2"><a href="Structures.html#cb50-2"></a>a<span class="op">*</span><span class="fl">83.550</span>      <span class="co"># il peut être multiplié par un autre double</span></span></code></pre></div>
 <pre><code>## [1] 130.338</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="kw">is.double</span>(a)  <span class="co"># on teste si a est un double (équivalent de is.numeric())</span></a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="Structures.html#cb52-1"></a><span class="kw">is.double</span>(a)  <span class="co"># on teste si a est un double (équivalent de is.numeric())</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Les doubles ont en plus d’autres valeurs possibles qui correspondent plutôt à des erreurs de calculs ou de précision:</p>
 <ul>
@@ -256,153 +278,153 @@ Il est à noter qu’un manque de donnée se note généralement <code>NA</code>
 <li>le <code>-Inf</code> et le <code>Inf</code>, qui sont le résultat d’une opération mathématique qui ne peut pas être calculée car trop grande ou trop petite.
 Exemple :</li>
 </ul>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="kw">log</span>(<span class="op">-</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="Structures.html#cb54-1"></a><span class="kw">log</span>(<span class="op">-</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] NaN</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="dv">10</span><span class="op">^</span><span class="dv">89999</span></a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="Structures.html#cb56-1"></a><span class="dv">10</span><span class="op">^</span><span class="dv">89999</span></span></code></pre></div>
 <pre><code>## [1] Inf</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="dv">-10</span><span class="op">^</span><span class="dv">89999</span></a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="Structures.html#cb58-1"></a><span class="dv">-10</span><span class="op">^</span><span class="dv">89999</span></span></code></pre></div>
 <pre><code>## [1] -Inf</code></pre>
 <p>Pour bien comprendre ce type d’erreurs, et comment ils sont utilisés par R, vous devez d’abord comprendre comment un ordinateur perçoit les doubles. Je comprends que ce type d’information puisse moins vous intéresser, mais je pense fermement que vous devez connaître ceci avant de passer à la suite. Cependant, vous pouvez sauter le paragraphe qui suit pour une première lecture, et aller directement à <a href="Structures.html#entiers">Les entiers (integer)</a>.</p>
 <p>Cette partie peut vous paraître difficile et éloignée du sujet de prime abord, mais vous verrez par la suite à quel point elle peut être importante lors de certains calculs.<br />
 Si vous lisez ce livre depuis un navigateur avec une connexion internet, je vous renvoie à l’article wikipédia sur le sujet <a href="https://fr.wikipedia.org/wiki/Virgule_flottante">en français</a> ou celui <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">en anglais</a> encore plus complet, sinon, je vais vous faire ici un petit résumé simplifié.</p>
 <p>En informatique, un double est un type de donnée utilisé pour représenter les nombres décimaux (nombre à virgule). Comme un ordinateur utilise des suites de bits (0 ou 1) pour fonctionner, il doit représenter les nombres décimaux avec une précision donnée, c’est à dire un nombre de bits donné pour représenter un nombre. Nous les humains faisons de même. En effet, pour écrire en décimale le nombre pi, nous n’écrirons certainement pas tous les chiffres après la virgule (je vous met au défi), mais nous en feront plutôt une approximation. Parfois nous écrirons 3.14 pour aller très vite, parfois lorsque la précision s’impose nous écrirons 3.141593 (ou plus). Comme un ordinateur ne peut pas savoir à l’avance avec quelle précision nous voulons travailler, nous lui imposons une précision fixe, qui aujourd’hui est le format double précision (d’où le nom de double) 64 bits de la norme (<a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>). Ces nombres sont représentés grâce à trois informations: le signe du nombre <code>s</code> (- ou +), la mantisse <code>m</code> (~les chiffres du nombre) et un exposant <code>e</code> (entier relatif qui donne la position de la virgule dans la mantisse, ce qui donne le nom de virgule flottante). Il s’agit un peu d’un équivalent de la notation scientifique.
 Un nombre peut donc être représenté comme ceci<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> :<br />
-<img src="Images/07-Mantisse_exposant_fr.png" /><!-- --></p>
+<img src="Images/07-Mantisse_exposant_fr.png" width="201" /></p>
 <p>En double précision, ces trois informations ensemble ne doivent pas dépasser 64 bits. L’encodage est donc divisé comme suit:
 1 bit pour le signe, 11 bits pour l’exposant et 52 bits pour la mantisse, ce qui donne 53 bits de précision, donc environ 16 chiffres significatifs. Si vous avez bien compris comment les doubles sont encodés, alors vous aurez compris que R peut donc représenter des nombres avec beaucoup de précision, mais pas avec une précision infinie.<br />
 Que vous ayez bien compris ou non, retenez ces deux conclusion:</p>
 <p>1- La précision n’est pas infinie:<br />
 <strong>Il est important de toujours garder en tête que la précision des calculs dans R n’est pas infinie</strong>, et donc que sous certaines conditions R peut présenter un comportement non valide mathématiquement, comme par exemple lors d’une soustraction de nombres extrêmement proches de zéro comme suit :</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="dv">10</span><span class="op">^-</span><span class="dv">325-10</span><span class="op">^-</span><span class="dv">324</span></a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="Structures.html#cb60-1"></a><span class="dv">10</span><span class="op">^-</span><span class="dv">325-10</span><span class="op">^-</span><span class="dv">324</span></span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>Comme vous pouvez le voir R retourne 0, ce qui est faux. Un calcul de cette précision peut paraître superflu mais ce genre d’erreur peut s’accumuler de calculs en calculs et devenir bien plus grande par la suite.<br />
 Bien sûr, il est très rare d’utiliser de telles précisions, et les erreurs engendrées n’auront aucun impact réel sur vos calculs. Pour l’exemple, voici un autre calcul très précis, que R peut gérer (si votre ordinateur le permet) :</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="dv">10</span><span class="op">^-</span><span class="dv">324-10</span><span class="op">^-</span><span class="dv">323</span></a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="Structures.html#cb62-1"></a><span class="dv">10</span><span class="op">^-</span><span class="dv">324-10</span><span class="op">^-</span><span class="dv">323</span></span></code></pre></div>
 <pre><code>## [1] -9.881313e-324</code></pre>
 <p>NB: pour voir quel degré de précision votre ordinateur (et R) peut gérer, vous pouvez regarder le contenu de l’objet <code>.Machine</code> dans la console de R.</p>
 <p>2- La précision en informatique = chiffres significatifs<br />
 Il faut retenir que <strong>les grands nombres ont moins de chiffres après la virgule</strong>. En effet, la précision en informatique se réfère aux chiffres significatifs, c’est à dire au nombre de chiffres que comporte un nombre au <strong>total</strong> (avant ou après la virgule). Ceci est différent de la “précision décimale”, qui se réfère au nombre de chiffres après la virgule.<br />
 Comme la précision ne change pas avec le nombre considéré, plus un nombre est grand (positif ou négatif), moins on peut représenter de chiffres après sa virgule. En effet, 0.003 comporte 4 chiffres, dont 3 après la virgule. 3000 comporte 4 chiffres aussi, mais aucun après la virgule. Ils ont la même précision arithmétique au sens de chiffres significatifs (4), mais pas au sens de “précision décimale” qui donnerait 3000.0000 pour une précision de 4.<br />
 Regardez par vous même, on voit que R est capable de calculer ceci :</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">a=<span class="st"> </span><span class="dv">10</span><span class="op">^-</span><span class="dv">324-10</span><span class="op">^-</span><span class="dv">323</span></a>
-<a class="sourceLine" id="cb64-2" title="2"><span class="co"># On teste si &quot;a&quot; est différent de 0:</span></a>
-<a class="sourceLine" id="cb64-3" title="3">a<span class="op">!=</span><span class="dv">0</span></a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="Structures.html#cb64-1"></a>a=<span class="st"> </span><span class="dv">10</span><span class="op">^-</span><span class="dv">324-10</span><span class="op">^-</span><span class="dv">323</span></span>
+<span id="cb64-2"><a href="Structures.html#cb64-2"></a><span class="co"># On teste si &quot;a&quot; est différent de 0:</span></span>
+<span id="cb64-3"><a href="Structures.html#cb64-3"></a>a<span class="op">!=</span><span class="dv">0</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>(a est bien différent de 0)</p>
 <p>Mais il ne pourra pas calculer ceci :</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">a=<span class="st"> </span><span class="dv">1-10</span><span class="op">^-</span><span class="dv">323</span></a>
-<a class="sourceLine" id="cb66-2" title="2"><span class="co"># On teste si &quot;a&quot; est différent de 1:</span></a>
-<a class="sourceLine" id="cb66-3" title="3">a<span class="op">!=</span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="Structures.html#cb66-1"></a>a=<span class="st"> </span><span class="dv">1-10</span><span class="op">^-</span><span class="dv">323</span></span>
+<span id="cb66-2"><a href="Structures.html#cb66-2"></a><span class="co"># On teste si &quot;a&quot; est différent de 1:</span></span>
+<span id="cb66-3"><a href="Structures.html#cb66-3"></a>a<span class="op">!=</span><span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>(a est considéré égal à 1, donc la soustraction <code>1-10^-323</code> n’est même pas prise en compte)</p>
 <p>On peu aussi noter que même si R arrive à utiliser des nombres avec de grandes précisions, celui-ci arrondi souvent le résultat lorsqu’il l’affiche dans la console. Pour voir un nombre complet, on peut utliser la fonction <code>print()</code> avec son argument <code>digits</code>, qui donne le nombre de décimale voulues, comme ceci:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">print</span>(<span class="dv">1</span><span class="op">+</span><span class="st"> </span><span class="fl">2.2e-14</span>,<span class="dt">digits =</span> <span class="dv">22</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="Structures.html#cb68-1"></a><span class="kw">print</span>(<span class="dv">1</span><span class="op">+</span><span class="st"> </span><span class="fl">2.2e-14</span>,<span class="dt">digits =</span> <span class="dv">22</span>)</span></code></pre></div>
 <pre><code>## [1] 1.000000000000022</code></pre>
 <p>Enfin, si la précision vous importe vraiment et que vous devez utiliser des chiffres plus précis que la double précision, vous pouvez jeter un oeil au package <code>Rmpfr</code> et le package <code>Brobdingnag</code>.</p>
 </div>
-<div id="entiers" class="section level3">
+<div id="entiers" class="section level3" number="4.1.3">
 <h3><span class="header-section-number">4.1.3</span> Les entiers (integer)</h3>
 <p>En informatique, les entiers sont des entiers relatifs (nombre avec signe). Pour être différenciés des doubles, les entiers (integer) sont déclarés suivis de la lettre <code>L</code> comme suit :</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1">a=<span class="st"> </span>1L</a>
-<a class="sourceLine" id="cb70-2" title="2">b=<span class="st"> </span>24L</a>
-<a class="sourceLine" id="cb70-3" title="3">c=<span class="st"> </span><span class="op">-</span>500L</a>
-<a class="sourceLine" id="cb70-4" title="4"><span class="kw">paste</span>(a,b,c)</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="Structures.html#cb70-1"></a>a=<span class="st"> </span>1L</span>
+<span id="cb70-2"><a href="Structures.html#cb70-2"></a>b=<span class="st"> </span>24L</span>
+<span id="cb70-3"><a href="Structures.html#cb70-3"></a>c=<span class="st"> </span><span class="op">-</span>500L</span>
+<span id="cb70-4"><a href="Structures.html#cb70-4"></a><span class="kw">paste</span>(a,b,c)</span></code></pre></div>
 <pre><code>## [1] &quot;1 24 -500&quot;</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">is.integer</span>(a) <span class="co"># teste si a est un entier</span></a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="Structures.html#cb72-1"></a><span class="kw">is.integer</span>(a) <span class="co"># teste si a est un entier</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
-<div id="les-booleens-boolean-or-logical" class="section level3">
+<div id="les-booléens-boolean-or-logical" class="section level3" number="4.1.4">
 <h3><span class="header-section-number">4.1.4</span> Les booléens (boolean or logical)</h3>
 <p>Les booléens sont des nombres logiques, aussi appelés variable d’état. Les booléens ont deux valeurs possibles uniquement, <code>TRUE</code> (vrai) et <code>FALSE</code> (faux).<br />
 Dans R <code>T</code> est un raccourci pour <code>TRUE</code>, et <code>F</code> un raccourci pour <code>FALSE</code>.
 Voici comment déclarer et tester un booléen :</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">a=<span class="st"> </span><span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb74-2" title="2">b=<span class="st"> </span>T          <span class="co"># équivalent de a</span></a>
-<a class="sourceLine" id="cb74-3" title="3">c=<span class="st"> </span><span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb74-4" title="4">d=<span class="st"> </span>F          <span class="co"># équivalent de c</span></a>
-<a class="sourceLine" id="cb74-5" title="5"><span class="kw">is.logical</span>(a) <span class="co"># teste si a est un booléen</span></a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="Structures.html#cb74-1"></a>a=<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb74-2"><a href="Structures.html#cb74-2"></a>b=<span class="st"> </span>T          <span class="co"># équivalent de a</span></span>
+<span id="cb74-3"><a href="Structures.html#cb74-3"></a>c=<span class="st"> </span><span class="ot">FALSE</span></span>
+<span id="cb74-4"><a href="Structures.html#cb74-4"></a>d=<span class="st"> </span>F          <span class="co"># équivalent de c</span></span>
+<span id="cb74-5"><a href="Structures.html#cb74-5"></a><span class="kw">is.logical</span>(a) <span class="co"># teste si a est un booléen</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
-<div id="en-bonus-les-facteurs-factors" class="section level3">
+<div id="en-bonus-les-facteurs-factors" class="section level3" number="4.1.5">
 <h3><span class="header-section-number">4.1.5</span> En bonus, les facteurs (factors)</h3>
 <p>Les facteurs sont un type de données un peu spéciaux. Ils permettent d’utiliser des catégories de données dans une même variable. On peut prendre l’exemple d’une personne qui regarde de quelle couleur sont les voitures qui passent devant son entrée, s’il relève 3 voitures rouges, deux bleues et quatre blanches, alors on peut dire que nous avons trois catégories de couleurs de voitures: rouge, bleue, blanche. Pour déclarer ceci dans R, nous ferions comme suit :</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">couleurs=<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;bleue&quot;</span>,<span class="st">&quot;bleue&quot;</span>,<span class="st">&quot;blanche&quot;</span>,</a>
-<a class="sourceLine" id="cb76-2" title="2">                   <span class="st">&quot;blanche&quot;</span>,<span class="st">&quot;blanche&quot;</span>,<span class="st">&quot;blanche&quot;</span>))</a>
-<a class="sourceLine" id="cb76-3" title="3">couleurs          <span class="co"># nous avons un vecteur de charactères, et R reconnait automatiquement les 3 catégories (levels) </span></a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="Structures.html#cb76-1"></a>couleurs=<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;rouge&quot;</span>,<span class="st">&quot;bleue&quot;</span>,<span class="st">&quot;bleue&quot;</span>,<span class="st">&quot;blanche&quot;</span>,</span>
+<span id="cb76-2"><a href="Structures.html#cb76-2"></a>                   <span class="st">&quot;blanche&quot;</span>,<span class="st">&quot;blanche&quot;</span>,<span class="st">&quot;blanche&quot;</span>))</span>
+<span id="cb76-3"><a href="Structures.html#cb76-3"></a>couleurs          <span class="co"># nous avons un vecteur de charactères, et R reconnait automatiquement les 3 catégories (levels) </span></span></code></pre></div>
 <pre><code>## [1] rouge   rouge   rouge   bleue   bleue   blanche blanche blanche blanche
 ## Levels: blanche bleue rouge</code></pre>
 <p>On voit que <code>couleurs</code> se présente comme un vecteur, mais contient un métadonnée de plus, les <code>levels</code>, qui résument les valeurs uniques du vecteur, et donc qui décrivent les différentes valeurs possible du vecteur.</p>
 <p>La fonction level permet de retrouver les catégories :</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw">levels</span>(couleurs)</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="Structures.html#cb78-1"></a><span class="kw">levels</span>(couleurs)</span></code></pre></div>
 <pre><code>## [1] &quot;blanche&quot; &quot;bleue&quot;   &quot;rouge&quot;</code></pre>
 <p>Les facteurs sont souvent utilisés dans d’autres fonctions comme pour les graphiques ou les modèles. En général, il est préférable d’éviter leur utilisation et de les remplacer par un autre type de donnée, à moins d’en avoir un réel besoin.</p>
 </div>
 </div>
-<div id="transform_datatype" class="section level2">
+<div id="transform_datatype" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Les transformations</h2>
 <p>R est un language extrèmement maléable, si bien qu’il existe des “ponts” entre les types de données. On pourra donc très facilement transformer un type de données en un autre dans certains cas.</p>
 <ol style="list-style-type: decimal">
 <li>integer vers double :<br />
 il s’agit de la transformation la plus facile. R ne requiert aucun préalable à cette transformation, si bien que celle-ci se fait sans même y réfléchir:</li>
 </ol>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1">a=<span class="st"> </span>1L           <span class="co"># a est déclaré comme un entier égal à 1</span></a>
-<a class="sourceLine" id="cb80-2" title="2"><span class="kw">is.integer</span>(a)   <span class="co"># a est bien considéré comme un entier</span></a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="Structures.html#cb80-1"></a>a=<span class="st"> </span>1L           <span class="co"># a est déclaré comme un entier égal à 1</span></span>
+<span id="cb80-2"><a href="Structures.html#cb80-2"></a><span class="kw">is.integer</span>(a)   <span class="co"># a est bien considéré comme un entier</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">b=<span class="st"> </span>a<span class="op">*</span><span class="fl">2.5</span>        <span class="co"># on multiplie a par un double et on le stocke dans b</span></a>
-<a class="sourceLine" id="cb82-2" title="2"><span class="kw">is</span>(b)           <span class="co"># b est lui-même un double</span></a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="Structures.html#cb82-1"></a>b=<span class="st"> </span>a<span class="op">*</span><span class="fl">2.5</span>        <span class="co"># on multiplie a par un double et on le stocke dans b</span></span>
+<span id="cb82-2"><a href="Structures.html#cb82-2"></a><span class="kw">is</span>(b)           <span class="co"># b est lui-même un double</span></span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot; &quot;vector&quot;</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>double to integer :<br />
 L’inverse n’est pas aussi simple et doit se faire en utilisant une fonction de <code>R</code> semblable à la fonction de test (<code>is.integer</code>) que nous avons déjà vu : <code>as.integer</code>. En voici un exemple :</li>
 </ol>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">2.5</span>,<span class="fl">3.8</span>)   <span class="co"># a est déclaré comme un double</span></a>
-<a class="sourceLine" id="cb84-2" title="2"><span class="kw">is.double</span>(a)      <span class="co"># a est bien considéré comme un double</span></a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="Structures.html#cb84-1"></a>a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">2.5</span>,<span class="fl">3.8</span>)   <span class="co"># a est déclaré comme un double</span></span>
+<span id="cb84-2"><a href="Structures.html#cb84-2"></a><span class="kw">is.double</span>(a)      <span class="co"># a est bien considéré comme un double</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1">b=<span class="st"> </span><span class="kw">as.integer</span>(a)  <span class="co"># on force a à devenir un entier</span></a>
-<a class="sourceLine" id="cb86-2" title="2">b                 <span class="co"># b est maintenant un integer (R à tronqué le chiffre)</span></a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="Structures.html#cb86-1"></a>b=<span class="st"> </span><span class="kw">as.integer</span>(a)  <span class="co"># on force a à devenir un entier</span></span>
+<span id="cb86-2"><a href="Structures.html#cb86-2"></a>b                 <span class="co"># b est maintenant un integer (R à tronqué le chiffre)</span></span></code></pre></div>
 <pre><code>## [1] 2 2 3</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>double (ou integer) to character :<br />
 Cette transformation est aussi assez simple et peut se faire en utilisant la fonction <code>as.character</code> :</li>
 </ol>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">2.5</span>,<span class="fl">3.8</span>)     <span class="co"># a est déclaré comme un double</span></a>
-<a class="sourceLine" id="cb88-2" title="2"><span class="kw">is.double</span>(a)        <span class="co"># a est bien considéré comme un double</span></a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="Structures.html#cb88-1"></a>a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">2.5</span>,<span class="fl">3.8</span>)     <span class="co"># a est déclaré comme un double</span></span>
+<span id="cb88-2"><a href="Structures.html#cb88-2"></a><span class="kw">is.double</span>(a)        <span class="co"># a est bien considéré comme un double</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">b=<span class="st"> </span><span class="kw">as.character</span>(a)  <span class="co"># on force a à devenir un character</span></a>
-<a class="sourceLine" id="cb90-2" title="2">b                   </a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="Structures.html#cb90-1"></a>b=<span class="st"> </span><span class="kw">as.character</span>(a)  <span class="co"># on force a à devenir un character</span></span>
+<span id="cb90-2"><a href="Structures.html#cb90-2"></a>b                   </span></code></pre></div>
 <pre><code>## [1] &quot;2&quot;   &quot;2.5&quot; &quot;3.8&quot;</code></pre>
 <p><code>b</code> est maintenant un charactère (notez les guillemets qui entourent chaque chiffre)</p>
 <ol start="4" style="list-style-type: decimal">
 <li>character to double (ou integer) :<br />
 Comme vous l’avez deviné, cette transformation peut se faire grâce à la fonction <code>as.double</code>. Cependant, il faut être très prudent lorsque l’on fait une transformation dans ce sens, car R peut parfois présenter des comportements inattendus.</li>
 </ol>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1">a=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>)   <span class="co"># a est déclaré comme un vecteur de 3 charactères</span></a>
-<a class="sourceLine" id="cb92-2" title="2"><span class="kw">is.character</span>(a)     <span class="co"># a est bien considéré comme un charactère</span></a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="Structures.html#cb92-1"></a>a=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>)   <span class="co"># a est déclaré comme un vecteur de 3 charactères</span></span>
+<span id="cb92-2"><a href="Structures.html#cb92-2"></a><span class="kw">is.character</span>(a)     <span class="co"># a est bien considéré comme un charactère</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1">b=<span class="st"> </span><span class="kw">as.double</span>(a)     <span class="co"># on force a à devenir un double</span></a>
-<a class="sourceLine" id="cb94-2" title="2">b                   <span class="co"># b est une version de a en double</span></a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="Structures.html#cb94-1"></a>b=<span class="st"> </span><span class="kw">as.double</span>(a)     <span class="co"># on force a à devenir un double</span></span>
+<span id="cb94-2"><a href="Structures.html#cb94-2"></a>b                   <span class="co"># b est une version de a en double</span></span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
 <p>Maintenant un exemple avec des facteurs, qui peuvent donner des résultats inattendus lorsqu’ils sont composés de charactères comportant des chiffres et des lettres :</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1">a=<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;3&quot;</span>))   <span class="co"># a est déclaré comme un facteur de logueur 3</span></a>
-<a class="sourceLine" id="cb96-2" title="2">b=<span class="st"> </span><span class="kw">as.numeric</span>(a)            <span class="co"># on force a à devenir un double</span></a>
-<a class="sourceLine" id="cb96-3" title="3">b                           <span class="co"># b est bien un double, mais le résultat est quelque peu déroutant</span></a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="Structures.html#cb96-1"></a>a=<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;3&quot;</span>))   <span class="co"># a est déclaré comme un facteur de logueur 3</span></span>
+<span id="cb96-2"><a href="Structures.html#cb96-2"></a>b=<span class="st"> </span><span class="kw">as.numeric</span>(a)            <span class="co"># on force a à devenir un double</span></span>
+<span id="cb96-3"><a href="Structures.html#cb96-3"></a>b                           <span class="co"># b est bien un double, mais le résultat est quelque peu déroutant</span></span></code></pre></div>
 <pre><code>## [1] 1 3 2</code></pre>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="kw">is</span>(b)</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="Structures.html#cb98-1"></a><span class="kw">is</span>(b)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot; &quot;vector&quot;</code></pre>
 <p>Comme on peut le voir, la transformation est déroutante : le “3” du facteur est devenu un 2, et le “a” un 3. Pour comprendre ce qu’il s’est passé, il faut savoir que pour transformer un facteur en numérique, R prends les catégories comme des charactères, puis les trie alphanumériquement (i.e. de 0 à 9 puis de A à Z), puis alloue l’index de chaque catégorie comme nouvelle valeur. Donc ici R à décidé de l’ordre suivant dans les catégories : “1”&lt;“3”&lt;“a”, puis leur à alloué un index : “1”=1, “3”=2, “a”=3, et a remplacé les valeurs de chaque catégorie par son index pour que “1”,“a”,“3” devienne 1,3,2.
 Ce type d’erreur peut être évité en utilisant la combinaison de fonctions suivantes :</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1">a=<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;3&quot;</span>))   <span class="co"># a est déclaré comme un facteur de longueur 3</span></a>
-<a class="sourceLine" id="cb100-2" title="2">b=<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">levels</span>(a))[a] <span class="co"># on force a à devenir un double</span></a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="Structures.html#cb100-1"></a>a=<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;3&quot;</span>))   <span class="co"># a est déclaré comme un facteur de longueur 3</span></span>
+<span id="cb100-2"><a href="Structures.html#cb100-2"></a>b=<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">levels</span>(a))[a] <span class="co"># on force a à devenir un double</span></span></code></pre></div>
 <pre><code>## Warning: NAs introduits lors de la conversion automatique</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1">b                           </a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="Structures.html#cb102-1"></a>b                           </span></code></pre></div>
 <pre><code>## [1]  1 NA  3</code></pre>
 <p><code>b</code> est bien un double, le résultat est bon, et le charactère “a” est transformé en <code>NA</code>.</p>
 <p>Maintenant que vous connaissez mieux les charactères, les doubles, les entiers, et les booléens, vous allez voir comment les organiser dans des structures de données qui vous permettront de les stocker dans des objets plus ou moins complexes.</p>
 </div>
-<div id="les-structures-de-donnees" class="section level2">
+<div id="les-structures-de-données" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Les Structures de données</h2>
 <p>R met à disposition de ses utilisateurs quatre grands types de structures de données plus ou moins liées: les vecteurs, les matrices, les tableaux et les listes.</p>
-<div id="vecteurs" class="section level3">
+<div id="vecteurs" class="section level3" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Vecteurs</h3>
 <p>Nous avons déjà vu un premier exemple de vecteurs dans le chapitre précédent (<a href="Premiers.html#Premiers">Premiers pas</a>), qui introduisait la fabrication d’un vecteur contenant des chiffres.
 Les vecteurs sont une structure de données à une dimension, c’est à dire qu’il s’agit d’une suite de données rangées en “ligne”. Un vecteur ne peut contenir qu’un seul type de données à la fois (charactère, booléen…). Si l’on construit un vecteur avec plusieurs types de données consécutifs, ils sont alors transformés de la même façon que nous avons vu les tranformations précédement dans <a href="Structures.html#transform_datatype">Les transformations</a>. Il est à retenir que <strong>R</strong> essaye toujours de prendre le types de donnée qui gardera le plus d’information. Par exemple un mélange de charactères et de doubles sera transformé en charactère pour ne pas perdre l’information des charactères (qui seraient transformés en NA autrement).<br />
@@ -410,32 +432,32 @@ Il existe plusieurs moyens de créer un vecteur. Tous ont un avantage associé, 
 <ul>
 <li>En utilisant as.vector pour créer un vecteur de la taille désirée, que l’on remplira par la suite. Comme les vecteurs ne peuvent contenir qu’un seul type de données, il faut déclarer le type dès la création grâce à l’argument “mode”. Les différents modes sont <code>logical</code> (= booléen), <code>integer</code> (= entier), <code>numeric</code> (= double), <code>complex</code> (= complexe), <code>character</code> (= charactère) and <code>raw</code> (= bits). Voici un exemple de vecteur numérique:</li>
 </ul>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1">a=<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode =</span> <span class="st">&quot;numeric&quot;</span>, <span class="dt">length =</span> <span class="dv">10</span>)   <span class="co"># a est un vecteur de longueur 10</span></a>
-<a class="sourceLine" id="cb104-2" title="2">a</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="Structures.html#cb104-1"></a>a=<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode =</span> <span class="st">&quot;numeric&quot;</span>, <span class="dt">length =</span> <span class="dv">10</span>)   <span class="co"># a est un vecteur de longueur 10</span></span>
+<span id="cb104-2"><a href="Structures.html#cb104-2"></a>a</span></code></pre></div>
 <pre><code>##  [1] 0 0 0 0 0 0 0 0 0 0</code></pre>
 <ul>
 <li>En utilisant la fonction <code>c()</code>, qui concatène ses arguments :</li>
 </ul>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">8</span>)</a>
-<a class="sourceLine" id="cb106-2" title="2">a</a></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="Structures.html#cb106-1"></a>a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">8</span>)</span>
+<span id="cb106-2"><a href="Structures.html#cb106-2"></a>a</span></code></pre></div>
 <pre><code>## [1]  1 10  8</code></pre>
 <ul>
 <li>En utilisant d’autres fonction comme <code>seq()</code>, <code>rep()</code>, <code>:</code> etc… :</li>
 </ul>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1">a=<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb108-2" title="2">a=<span class="st"> </span><span class="kw">rep</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">times=</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb108-3" title="3">a=<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">1</span>, <span class="dt">sd =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="Structures.html#cb108-1"></a>a=<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">1</span>)</span>
+<span id="cb108-2"><a href="Structures.html#cb108-2"></a>a=<span class="st"> </span><span class="kw">rep</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">times=</span> <span class="dv">10</span>)</span>
+<span id="cb108-3"><a href="Structures.html#cb108-3"></a>a=<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">1</span>, <span class="dt">sd =</span> <span class="dv">2</span>)</span></code></pre></div>
 </div>
-<div id="matrices" class="section level3">
+<div id="matrices" class="section level3" number="4.3.2">
 <h3><span class="header-section-number">4.3.2</span> Matrices</h3>
 <p>Une matrice est très semblable à un vecteur, sauf qu’elle comporte deux dimensions, il s’agit là d’une matrice dans son sens mathématique. Comme les vecteurs, les matrices ne peuvent contenir qu’un seul type de données. Voici un exemple de création de matrice:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)   <span class="co"># une matrice</span></a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="Structures.html#cb109-1"></a><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)   <span class="co"># une matrice</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    4    7
 ## [2,]    2    5    8
 ## [3,]    3    6    9</code></pre>
 <p>La fonction <code>matrix</code> est très utile car on peut choisir le nombre de lignes et/ou de colonnes, ainsi que le sens de remplissage des données avec l’argument <code>by.row</code>. La fonction <code>matrix</code> est un très bon utilitaire pour construire des structures 2D vides notemment, comme suit:</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="ot">NA</span>, <span class="dt">nrow =</span> <span class="dv">8</span>, <span class="dt">ncol=</span><span class="dv">2</span>)   <span class="co"># une matrice 8*2 comportant la valeur NA</span></a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="Structures.html#cb111-1"></a><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="ot">NA</span>, <span class="dt">nrow =</span> <span class="dv">8</span>, <span class="dt">ncol=</span><span class="dv">2</span>)   <span class="co"># une matrice 8*2 comportant la valeur NA</span></span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   NA   NA
 ## [2,]   NA   NA
@@ -447,18 +469,18 @@ Il existe plusieurs moyens de créer un vecteur. Tous ont un avantage associé, 
 ## [8,]   NA   NA</code></pre>
 <p>Une matrice peut aussi comporter une seule colonne, ou une seule ligne.</p>
 </div>
-<div id="tableaux" class="section level3">
+<div id="tableaux" class="section level3" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> Tableaux</h3>
 <p>Il existe deux types de tableaux dans R: <code>array</code> et <code>data.frame</code>.<br />
 Le premier est rarement utilisé. Il s’agit ni plus ni moins d’un vecteur à n dimensions (englobe donc vecteur et matrices).</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="kw">array</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">dim =</span> <span class="dv">9</span>)   <span class="co"># un array tel un vecteur</span></a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="Structures.html#cb113-1"></a><span class="kw">array</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">dim =</span> <span class="dv">9</span>)   <span class="co"># un array tel un vecteur</span></span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5 6 7 8 9</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1"><span class="kw">array</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))   <span class="co"># un array tel une matrice 3*3</span></a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="Structures.html#cb115-1"></a><span class="kw">array</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))   <span class="co"># un array tel une matrice 3*3</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    4    7
 ## [2,]    2    5    8
 ## [3,]    3    6    9</code></pre>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1"><span class="kw">array</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>))   <span class="co"># un array tel une liste de 2 matrices de 3*3 (dimension 3)</span></a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="Structures.html#cb117-1"></a><span class="kw">array</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>))   <span class="co"># un array tel une liste de 2 matrices de 3*3 (dimension 3)</span></span></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2] [,3]
@@ -473,18 +495,18 @@ Le premier est rarement utilisé. Il s’agit ni plus ni moins d’un vecteur à
 ## [2,]    2    5    8
 ## [3,]    3    6    9</code></pre>
 <p>Le second, le <code>data.frame</code>, est peut-être la structure la plus utilisée dans R. Cette structure représente le sens commun que l’on se fait d’un tableau. Structurellement, le <code>data.frame</code> se présente donc comme un tableau comportant un nombre défini de colonnes et de lignes. Chaque colonne comporte le même nombre de lignes. Dans <strong>R</strong>, un <code>data.frame</code> est une liste de vecteurs de même longueur. Le plus grand avantage du <code>data.frame</code> est que chaque colonne peut contenir un type de donnée différent.</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1"><span class="kw">data.frame</span>(<span class="dt">a=</span> <span class="kw">c</span>(<span class="st">&quot;Jour 1&quot;</span>, <span class="st">&quot;Jour 2&quot;</span>, <span class="st">&quot;Jour 3&quot;</span>), <span class="dt">b=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">45</span>))   <span class="co"># un data.frame</span></a></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="Structures.html#cb119-1"></a><span class="kw">data.frame</span>(<span class="dt">a=</span> <span class="kw">c</span>(<span class="st">&quot;Jour 1&quot;</span>, <span class="st">&quot;Jour 2&quot;</span>, <span class="st">&quot;Jour 3&quot;</span>), <span class="dt">b=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">45</span>))   <span class="co"># un data.frame</span></span></code></pre></div>
 <pre><code>##        a  b
 ## 1 Jour 1 40
 ## 2 Jour 2 50
 ## 3 Jour 3 45</code></pre>
 <p>Les <code>data.frame</code> sont utilisés par la grande majorité des fonctions dans R.</p>
 </div>
-<div id="listes" class="section level3">
+<div id="listes" class="section level3" number="4.3.4">
 <h3><span class="header-section-number">4.3.4</span> Listes</h3>
 <p>Les listes (<code>list</code>) sont aussi un type de structure très important dans R. Il faut penser la liste comme étant au <code>data.frame</code> ce qu’est l’<code>array</code> à la matrice. Il s’agit d’un <code>data.frame</code> de dimension n.
 On peut mettre n’importe quel type de données de n’importe quelle taille dans une liste, même une autre liste (= nested list).</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1"><span class="kw">list</span>(<span class="dt">a=</span> <span class="kw">c</span>(<span class="st">&quot;Jour 1&quot;</span>, <span class="st">&quot;Jour 2&quot;</span>, <span class="st">&quot;Jour 3&quot;</span>), <span class="dt">b=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">45</span>), <span class="dt">c=</span> <span class="dv">1</span>, <span class="dt">d=</span> <span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">8</span><span class="op">:</span><span class="dv">4</span>, <span class="st">&quot;a&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="Structures.html#cb121-1"></a><span class="kw">list</span>(<span class="dt">a=</span> <span class="kw">c</span>(<span class="st">&quot;Jour 1&quot;</span>, <span class="st">&quot;Jour 2&quot;</span>, <span class="st">&quot;Jour 3&quot;</span>), <span class="dt">b=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">45</span>), <span class="dt">c=</span> <span class="dv">1</span>, <span class="dt">d=</span> <span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">8</span><span class="op">:</span><span class="dv">4</span>, <span class="st">&quot;a&quot;</span>))</span></code></pre></div>
 <pre><code>## $a
 ## [1] &quot;Jour 1&quot; &quot;Jour 2&quot; &quot;Jour 3&quot;
 ## 
@@ -506,59 +528,59 @@ On peut mettre n’importe quel type de données de n’importe quelle taille da
 <p>Les listes sont un peu complexe à appréhender mais sont certainement le type de structure le plus maléable, et finalement le plus simple à travailler.
 Il est à noter que le <code>data.frame</code> est en fait une liste de vecteurs. On peut donc remplir l’une de ses colonnes par une liste, mais ce type d’utilisation est plutôt déconseillé dans un premier temps car il limite l’utilisation de fonctions spéciales adaptées aux <code>data.frame</code>, mais aussi à celles adaptées aux listes.</p>
 </div>
-<div id="attributs" class="section level3">
+<div id="attributs" class="section level3" number="4.3.5">
 <h3><span class="header-section-number">4.3.5</span> Attributs</h3>
 <p>Il est possible d’associer n’importe quelle métadonnée à un objet dans R. Ces métadonnées sont appelés attributs. Ces attributs n’ont aucune influence sur la valeur de la donnée elle-même, mais elle peut apporter des informations complémentaires à l’utilisateur ou à une fonction.</p>
 <p>Voici un exemple d’attribut qui permet à l’utilisateur de se rappeler l’unité d’un objet:</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">a=<span class="st"> </span><span class="dv">1</span>   <span class="co"># a vaut 1 cm</span></a>
-<a class="sourceLine" id="cb123-2" title="2"><span class="kw">attr</span>(a, <span class="st">&quot;unit&quot;</span>)=<span class="st"> &quot;cm&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="Structures.html#cb123-1"></a>a=<span class="st"> </span><span class="dv">1</span>   <span class="co"># a vaut 1 cm</span></span>
+<span id="cb123-2"><a href="Structures.html#cb123-2"></a><span class="kw">attr</span>(a, <span class="st">&quot;unit&quot;</span>)=<span class="st"> &quot;cm&quot;</span></span></code></pre></div>
 <p>Certains attributs sont utilisés par des fonctions. C’est le cas du nom et de la dimension d’un objet.</p>
 <p>Voici un exemple de la hauteur de 10 arbres dans une forêt:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1">hauteur=<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">25</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="Structures.html#cb124-1"></a>hauteur=<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">25</span>)</span></code></pre></div>
 <p>Cette hauteur n’a pas de nom (<code>names()</code> retourne <code>NULL</code>):</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="kw">names</span>(hauteur)</a></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="Structures.html#cb125-1"></a><span class="kw">names</span>(hauteur)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>On peut assigner un nom comme suit:</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1"><span class="kw">names</span>(hauteur)=<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;arbre_&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb127-2" title="2"><span class="kw">names</span>(hauteur)</a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="Structures.html#cb127-1"></a><span class="kw">names</span>(hauteur)=<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;arbre_&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span>
+<span id="cb127-2"><a href="Structures.html#cb127-2"></a><span class="kw">names</span>(hauteur)</span></code></pre></div>
 <pre><code>##  [1] &quot;arbre_1&quot;  &quot;arbre_2&quot;  &quot;arbre_3&quot;  &quot;arbre_4&quot;  &quot;arbre_5&quot;  &quot;arbre_6&quot; 
 ##  [7] &quot;arbre_7&quot;  &quot;arbre_8&quot;  &quot;arbre_9&quot;  &quot;arbre_10&quot;</code></pre>
 <p>On peut aussi retrouver le nom de chaque valeur grâce à la fonction <code>attributes()</code>:</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1"><span class="kw">attributes</span>(hauteur)</a></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="Structures.html#cb129-1"></a><span class="kw">attributes</span>(hauteur)</span></code></pre></div>
 <pre><code>## $names
 ##  [1] &quot;arbre_1&quot;  &quot;arbre_2&quot;  &quot;arbre_3&quot;  &quot;arbre_4&quot;  &quot;arbre_5&quot;  &quot;arbre_6&quot; 
 ##  [7] &quot;arbre_7&quot;  &quot;arbre_8&quot;  &quot;arbre_9&quot;  &quot;arbre_10&quot;</code></pre>
 <p>Idem pour la dimension d’une matrice avec <code>dim()</code>. On crée une matrice de dimension 2,3:</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1">matrice=<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dv">2</span>,<span class="dv">3</span>)</a></code></pre></div>
-<pre><code>## Warning in matrix(1:8, 2, 3): la longueur des données [8] n&#39;est pas un
-## diviseur ni un multiple du nombre de colonnes [3]</code></pre>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1">matrice</a></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="Structures.html#cb131-1"></a>matrice=<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## Warning in matrix(1:8, 2, 3): la longueur des données [8] n&#39;est pas un diviseur
+## ni un multiple du nombre de colonnes [3]</code></pre>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="Structures.html#cb133-1"></a>matrice</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    3    5
 ## [2,]    2    4    6</code></pre>
 <p>Sa dimension est 2,3:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="kw">dim</span>(matrice)</a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="Structures.html#cb135-1"></a><span class="kw">dim</span>(matrice)</span></code></pre></div>
 <pre><code>## [1] 2 3</code></pre>
 <p>On peut la modifier comme ceci:</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1"><span class="kw">dim</span>(matrice)=<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb137-2" title="2">matrice</a></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="Structures.html#cb137-1"></a><span class="kw">dim</span>(matrice)=<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)</span>
+<span id="cb137-2"><a href="Structures.html#cb137-2"></a>matrice</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    4
 ## [2,]    2    5
 ## [3,]    3    6</code></pre>
 <p>Ou en utilisant la fonction <code>attr()</code>:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1"><span class="kw">attr</span>(matrice,<span class="st">&quot;dim&quot;</span>)=<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb139-2" title="2">matrice</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="Structures.html#cb139-1"></a><span class="kw">attr</span>(matrice,<span class="st">&quot;dim&quot;</span>)=<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb139-2"><a href="Structures.html#cb139-2"></a>matrice</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    3    5
 ## [2,]    2    4    6</code></pre>
 <p>Les fonctions <code>names()</code> et <code>dim()</code> sont en fait des raccourcis pour <code>attr(matrice,"names")</code> et <code>attr(matrice,"dim")</code> respectivement.</p>
 </div>
 </div>
-<div id="manipuler-les-structures" class="section level2">
+<div id="manipuler-les-structures" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Manipuler les structures</h2>
 <p>La manipulation des structures se fait en accord avec les spécificités de chacunes.</p>
-<div id="index-et-test" class="section level3">
+<div id="index-et-test" class="section level3" number="4.4.1">
 <h3><span class="header-section-number">4.4.1</span> Index et Test</h3>
 <p>La manipulation la plus courante est l’indexage. En d’autres termes, il s’agit là de récupérer les valeurs d’une structure en fonction de sa position, de son nom ou d’une condition.
 L’index se fait le plus souvent en utilisant la fonction <code>[</code>, appelée fonction <code>extract</code>. Par exemple, pour récupérer la troisième valeur d’un vecteur, on utilisera la fonction comme suit: <code>a[3]</code>. Il est à noter que l’indexage se fait à partir de 1, car la première valeur du vecteur est en position 1. Cela peut porter à confusion pour les utilisateurs venant d’autres languages de programmation tels que Python, qui indexe à partir de 0. Une autre particularité de R est l’utilisation du <code>-</code> comme un <strong>sauf</strong>. Donc <code>a[-3]</code> récupèrera le vecteur <code>a</code> sauf sa troisième valeur. Lorsque l’on a plus d’une dimension (e.g. matrice ou data.frame), on sépare l’index de chaque dimension par une virgule (e.g. [ligne,colonne]). Pour récupérer les objets d’une liste, on utilisera la fonction <code>[[</code>. On peut aussi indexer un vecteur par le nom de son objet comme suit <code>a["nom de l'objet"]</code> mais aussi en testant une condition comme ceci <code>a[c(T,T,F)]</code>.
@@ -566,41 +588,41 @@ Une deuxième fonction que l’on peut utiliser pour le <code>data.frame</code> 
 <ul>
 <li>Vecteur</li>
 </ul>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>) <span class="co"># a est un vecteur numérique de 10 à 20.</span></a>
-<a class="sourceLine" id="cb141-2" title="2">a[<span class="dv">3</span>]        <span class="co"># on veut récupérer la troisième valeur du vecteur a</span></a></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="Structures.html#cb141-1"></a>a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>) <span class="co"># a est un vecteur numérique de 10 à 20.</span></span>
+<span id="cb141-2"><a href="Structures.html#cb141-2"></a>a[<span class="dv">3</span>]        <span class="co"># on veut récupérer la troisième valeur du vecteur a</span></span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1">a[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">3</span>)] <span class="co"># on veut récupérer la 1e, la 5e et la 3e valeur de a</span></a></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="Structures.html#cb143-1"></a>a[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">3</span>)] <span class="co"># on veut récupérer la 1e, la 5e et la 3e valeur de a</span></span></code></pre></div>
 <pre><code>## [1] 10 14 12</code></pre>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1">a[<span class="op">-</span><span class="dv">1</span>]       <span class="co"># on veut récupérer toutes les valeurs de a sauf la première.</span></a></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="Structures.html#cb145-1"></a>a[<span class="op">-</span><span class="dv">1</span>]       <span class="co"># on veut récupérer toutes les valeurs de a sauf la première.</span></span></code></pre></div>
 <pre><code>## [1] 11 12 13 14 15</code></pre>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1">a[<span class="kw">c</span>(T,F,F,T,T)] <span class="co"># on veut récupérer toutes les valeurs de a sauf la 2e et 3e valeur qui sont refusées par le FALSE (F).</span></a></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="Structures.html#cb147-1"></a>a[<span class="kw">c</span>(T,F,F,T,T)] <span class="co"># on veut récupérer toutes les valeurs de a sauf la 2e et 3e valeur qui sont refusées par le FALSE (F).</span></span></code></pre></div>
 <pre><code>## [1] 10 13 14 15</code></pre>
 <ul>
 <li>matrice:</li>
 </ul>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1">a=<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">21</span>, <span class="dt">nrow=</span> <span class="dv">3</span>) <span class="co"># a est une matrice</span></a>
-<a class="sourceLine" id="cb149-2" title="2">a[<span class="dv">3</span>,]                     <span class="co"># on veut récupérer la troisième ligne entière</span></a></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="Structures.html#cb149-1"></a>a=<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">21</span>, <span class="dt">nrow=</span> <span class="dv">3</span>) <span class="co"># a est une matrice</span></span>
+<span id="cb149-2"><a href="Structures.html#cb149-2"></a>a[<span class="dv">3</span>,]                     <span class="co"># on veut récupérer la troisième ligne entière</span></span></code></pre></div>
 <pre><code>## [1] 12 15 18 21</code></pre>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1">a[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dv">1</span>]              <span class="co"># on veut récupérer la 1e et la 3e ligne, mais seulement la 1e colonne</span></a></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="Structures.html#cb151-1"></a>a[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dv">1</span>]              <span class="co"># on veut récupérer la 1e et la 3e ligne, mais seulement la 1e colonne</span></span></code></pre></div>
 <pre><code>## [1] 10 12</code></pre>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1">a[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>]                  <span class="co"># on veut récupérer toutes les lignes sauf la 1e et toutes les colonnes sauf la 2e</span></a></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="Structures.html#cb153-1"></a>a[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>]                  <span class="co"># on veut récupérer toutes les lignes sauf la 1e et toutes les colonnes sauf la 2e</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   11   17   20
 ## [2,]   12   18   21</code></pre>
 <ul>
 <li>data.frame</li>
 </ul>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1">a=<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Num=</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="dt">Prix=</span> <span class="kw">c</span>(<span class="dv">11</span><span class="op">:</span><span class="dv">20</span>)) <span class="co"># a est un data.frame</span></a>
-<a class="sourceLine" id="cb155-2" title="2">a[<span class="dv">3</span>,]         <span class="co"># comme sur les matrices, on veut récupérer la troisième ligne entière</span></a></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="Structures.html#cb155-1"></a>a=<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Num=</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="dt">Prix=</span> <span class="kw">c</span>(<span class="dv">11</span><span class="op">:</span><span class="dv">20</span>)) <span class="co"># a est un data.frame</span></span>
+<span id="cb155-2"><a href="Structures.html#cb155-2"></a>a[<span class="dv">3</span>,]         <span class="co"># comme sur les matrices, on veut récupérer la troisième ligne entière</span></span></code></pre></div>
 <pre><code>##   Num Prix
 ## 3   3   13</code></pre>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1">a[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dv">1</span>]  <span class="co"># on veut récupérer la 1e et la 3e ligne, mais seulement la 1e colonne</span></a></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="Structures.html#cb157-1"></a>a[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dv">1</span>]  <span class="co"># on veut récupérer la 1e et la 3e ligne, mais seulement la 1e colonne</span></span></code></pre></div>
 <pre><code>## [1] 1 3</code></pre>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1">a[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>]      <span class="co"># on veut récupérer toutes les lignes sauf la 1e et toutes les colonnes sauf la 2e</span></a></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="Structures.html#cb159-1"></a>a[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>]      <span class="co"># on veut récupérer toutes les lignes sauf la 1e et toutes les colonnes sauf la 2e</span></span></code></pre></div>
 <pre><code>## [1]  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1">a<span class="op">$</span>Prix        <span class="co"># on veut récupérer la deuxième colonne par son nom avec la fonction `$`.</span></a></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="Structures.html#cb161-1"></a>a<span class="op">$</span>Prix        <span class="co"># on veut récupérer la deuxième colonne par son nom avec la fonction `$`.</span></span></code></pre></div>
 <pre><code>##  [1] 11 12 13 14 15 16 17 18 19 20</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1">a[<span class="st">&quot;Num&quot;</span>]      <span class="co"># on veut récupérer la 1e colonne par son nom avec la fonction `[`</span></a></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="Structures.html#cb163-1"></a>a[<span class="st">&quot;Num&quot;</span>]      <span class="co"># on veut récupérer la 1e colonne par son nom avec la fonction `[`</span></span></code></pre></div>
 <pre><code>##    Num
 ## 1    1
 ## 2    2
@@ -615,16 +637,16 @@ Une deuxième fonction que l’on peut utiliser pour le <code>data.frame</code> 
 <ul>
 <li>liste</li>
 </ul>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" title="1">a=<span class="st"> </span><span class="kw">list</span>(<span class="dt">Num=</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>), <span class="dt">Prix=</span> <span class="kw">c</span>(<span class="dv">11</span><span class="op">:</span><span class="dv">13</span>), <span class="dt">Id_et_serie=</span> <span class="kw">list</span>(<span class="dt">Id=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">serie=</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)), <span class="dt">Classe=</span> <span class="kw">data.frame</span>(<span class="dt">a=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">b=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)) <span class="co"># a est un data.frame</span></a>
-<a class="sourceLine" id="cb165-2" title="2">a[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]        <span class="co"># on veut récupérer une liste des 1er et 2nd objets de la liste</span></a></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="Structures.html#cb165-1"></a>a=<span class="st"> </span><span class="kw">list</span>(<span class="dt">Num=</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>), <span class="dt">Prix=</span> <span class="kw">c</span>(<span class="dv">11</span><span class="op">:</span><span class="dv">13</span>), <span class="dt">Id_et_serie=</span> <span class="kw">list</span>(<span class="dt">Id=</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">serie=</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)), <span class="dt">Classe=</span> <span class="kw">data.frame</span>(<span class="dt">a=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">b=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)) <span class="co"># a est un data.frame</span></span>
+<span id="cb165-2"><a href="Structures.html#cb165-2"></a>a[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]        <span class="co"># on veut récupérer une liste des 1er et 2nd objets de la liste</span></span></code></pre></div>
 <pre><code>## $Num
 ## [1] 1 2 3
 ## 
 ## $Prix
 ## [1] 11 12 13</code></pre>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1">a[[<span class="dv">1</span>]]        <span class="co"># on veut récupérer les valeurs du 1er objet de la liste</span></a></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="Structures.html#cb167-1"></a>a[[<span class="dv">1</span>]]        <span class="co"># on veut récupérer les valeurs du 1er objet de la liste</span></span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1">a[<span class="op">-</span><span class="dv">1</span>]         <span class="co"># on veut récupérer une liste de tous les objets de la liste sauf le 1er</span></a></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="Structures.html#cb169-1"></a>a[<span class="op">-</span><span class="dv">1</span>]         <span class="co"># on veut récupérer une liste de tous les objets de la liste sauf le 1er</span></span></code></pre></div>
 <pre><code>## $Prix
 ## [1] 11 12 13
 ## 
@@ -641,18 +663,18 @@ Une deuxième fonction que l’on peut utiliser pour le <code>data.frame</code> 
 ## 1 1 1
 ## 2 2 2
 ## 3 3 3</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1">a[[<span class="dv">3</span>]][<span class="dv">1</span>]     <span class="co"># on veut récupérer les valeurs du premier objet de la liste en 3e position de la liste a.</span></a></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="Structures.html#cb171-1"></a>a[[<span class="dv">3</span>]][<span class="dv">1</span>]     <span class="co"># on veut récupérer les valeurs du premier objet de la liste en 3e position de la liste a.</span></span></code></pre></div>
 <pre><code>## $Id
 ## [1] 1 1 1</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1">a[[<span class="dv">4</span>]][,<span class="dv">1</span>]    <span class="co"># on veut récupérer les valeurs de la 1e colonne du data.frame en 4e position de la liste a.</span></a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="Structures.html#cb173-1"></a>a[[<span class="dv">4</span>]][,<span class="dv">1</span>]    <span class="co"># on veut récupérer les valeurs de la 1e colonne du data.frame en 4e position de la liste a.</span></span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1">a<span class="op">$</span>Classe[,<span class="dv">1</span>]  <span class="co"># on mélange l&#39;utilisation des deux fonctions `$` et `[` pour faire de même</span></a></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="Structures.html#cb175-1"></a>a<span class="op">$</span>Classe[,<span class="dv">1</span>]  <span class="co"># on mélange l&#39;utilisation des deux fonctions `$` et `[` pour faire de même</span></span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1">a<span class="op">$</span>Prix        <span class="co"># on veut récupérer les valeurs de l&#39;objet nommé Prix</span></a></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="Structures.html#cb177-1"></a>a<span class="op">$</span>Prix        <span class="co"># on veut récupérer les valeurs de l&#39;objet nommé Prix</span></span></code></pre></div>
 <pre><code>## [1] 11 12 13</code></pre>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1">a<span class="op">$</span>Id_et_serie<span class="op">$</span>serie <span class="co"># on veut récupérer les valeurs de l&#39;objet nommé serie dans l&#39;objet nommé Id_et_serie</span></a></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="Structures.html#cb179-1"></a>a<span class="op">$</span>Id_et_serie<span class="op">$</span>serie <span class="co"># on veut récupérer les valeurs de l&#39;objet nommé serie dans l&#39;objet nommé Id_et_serie</span></span></code></pre></div>
 <pre><code>## [1] 2 2 2</code></pre>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1">a[<span class="kw">c</span>(<span class="st">&quot;Num&quot;</span>,<span class="st">&quot;Classe&quot;</span>)]<span class="co"># on veut récupérer le 1er et 4e objets de la liste a</span></a></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="Structures.html#cb181-1"></a>a[<span class="kw">c</span>(<span class="st">&quot;Num&quot;</span>,<span class="st">&quot;Classe&quot;</span>)]<span class="co"># on veut récupérer le 1er et 4e objets de la liste a</span></span></code></pre></div>
 <pre><code>## $Num
 ## [1] 1 2 3
 ## 
@@ -669,51 +691,51 @@ Pour indexer plusieurs éléments:</p>
 <li>selon condition test [c(T,T,F,T)]</li>
 </ul>
 </div>
-<div id="remplacer-assigner" class="section level3">
+<div id="remplacer-assigner" class="section level3" number="4.4.2">
 <h3><span class="header-section-number">4.4.2</span> Remplacer, assigner</h3>
 <p>Il est possible de remplacer des valeurs dans une structure en spécifiant l’index de la valeur à remplacer et lui ré-assignant une nouvelle valeur :</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>) <span class="co"># a est un vecteur numérique de 10 à 20.</span></a>
-<a class="sourceLine" id="cb183-2" title="2">a[<span class="dv">3</span>]        <span class="co"># la troisième valeur de a est de 12</span></a></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="Structures.html#cb183-1"></a>a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>) <span class="co"># a est un vecteur numérique de 10 à 20.</span></span>
+<span id="cb183-2"><a href="Structures.html#cb183-2"></a>a[<span class="dv">3</span>]        <span class="co"># la troisième valeur de a est de 12</span></span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <p>On remplace sa valeur par 5:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1">a[<span class="dv">3</span>]=<span class="st"> </span><span class="dv">5</span>     </a>
-<a class="sourceLine" id="cb185-2" title="2">a           <span class="co"># La 3e valeur est modifiée à 5</span></a></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="Structures.html#cb185-1"></a>a[<span class="dv">3</span>]=<span class="st"> </span><span class="dv">5</span>     </span>
+<span id="cb185-2"><a href="Structures.html#cb185-2"></a>a           <span class="co"># La 3e valeur est modifiée à 5</span></span></code></pre></div>
 <pre><code>## [1] 10 11  5 13 14 15</code></pre>
 <p>Attention, si on remplace une valeur par un autre type de données, cela peut changer le type de tout le vecteur:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1">a[<span class="dv">1</span>]=<span class="st"> &quot;a&quot;</span>   </a>
-<a class="sourceLine" id="cb187-2" title="2">a           <span class="co"># a a été modifié en charactere</span></a></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="Structures.html#cb187-1"></a>a[<span class="dv">1</span>]=<span class="st"> &quot;a&quot;</span>   </span>
+<span id="cb187-2"><a href="Structures.html#cb187-2"></a>a           <span class="co"># a a été modifié en charactere</span></span></code></pre></div>
 <pre><code>## [1] &quot;a&quot;  &quot;11&quot; &quot;5&quot;  &quot;13&quot; &quot;14&quot; &quot;15&quot;</code></pre>
 <p>On peut aussi modifier plusieurs valeurs à la fois:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1">a[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]=<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb189-2" title="2">a</a></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="Structures.html#cb189-1"></a>a[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]=<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb189-2"><a href="Structures.html#cb189-2"></a>a</span></code></pre></div>
 <pre><code>## [1] &quot;5&quot;  &quot;5&quot;  &quot;5&quot;  &quot;13&quot; &quot;14&quot; &quot;15&quot;</code></pre>
 </div>
-<div id="concatenation" class="section level3">
+<div id="concaténation" class="section level3" number="4.4.3">
 <h3><span class="header-section-number">4.4.3</span> Concaténation</h3>
 <p>On peut aussi concaténer les différentes structures de données:</p>
 <ul>
 <li>vecteur, en utilisant la fonction <code>c()</code> :</li>
 </ul>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1">a=<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb191-2" title="2">b=<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>)</a>
-<a class="sourceLine" id="cb191-3" title="3">vec=<span class="st"> </span><span class="kw">c</span>(a,b)</a>
-<a class="sourceLine" id="cb191-4" title="4">vec</a></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="Structures.html#cb191-1"></a>a=<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
+<span id="cb191-2"><a href="Structures.html#cb191-2"></a>b=<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>)</span>
+<span id="cb191-3"><a href="Structures.html#cb191-3"></a>vec=<span class="st"> </span><span class="kw">c</span>(a,b)</span>
+<span id="cb191-4"><a href="Structures.html#cb191-4"></a>vec</span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10  2  8</code></pre>
 <ul>
 <li>matrice/data.frame en utilisant <code>rbind</code> pour concatener par lignes, <code>cbind</code> pour concatener par colonnes :</li>
 </ul>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1">a=<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data=</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb193-2" title="2">b=<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data=</span> <span class="dv">10</span><span class="op">:</span><span class="dv">18</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb193-3" title="3">mat_c=<span class="st"> </span><span class="kw">cbind</span>(a,b)</a>
-<a class="sourceLine" id="cb193-4" title="4">mat_c</a></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="Structures.html#cb193-1"></a>a=<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data=</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb193-2"><a href="Structures.html#cb193-2"></a>b=<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data=</span> <span class="dv">10</span><span class="op">:</span><span class="dv">18</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb193-3"><a href="Structures.html#cb193-3"></a>mat_c=<span class="st"> </span><span class="kw">cbind</span>(a,b)</span>
+<span id="cb193-4"><a href="Structures.html#cb193-4"></a>mat_c</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
 ## [1,]    1    4    7   10   13   16
 ## [2,]    2    5    8   11   14   17
 ## [3,]    3    6    9   12   15   18</code></pre>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1">a=<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data=</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb195-2" title="2">b=<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data=</span> <span class="dv">10</span><span class="op">:</span><span class="dv">18</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb195-3" title="3">mat_r=<span class="st"> </span><span class="kw">rbind</span>(a,b)</a>
-<a class="sourceLine" id="cb195-4" title="4">mat_r</a></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="Structures.html#cb195-1"></a>a=<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data=</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb195-2"><a href="Structures.html#cb195-2"></a>b=<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data=</span> <span class="dv">10</span><span class="op">:</span><span class="dv">18</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb195-3"><a href="Structures.html#cb195-3"></a>mat_r=<span class="st"> </span><span class="kw">rbind</span>(a,b)</span>
+<span id="cb195-4"><a href="Structures.html#cb195-4"></a>mat_r</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    4    7
 ## [2,]    2    5    8
@@ -722,52 +744,52 @@ Pour indexer plusieurs éléments:</p>
 ## [5,]   11   14   17
 ## [6,]   12   15   18</code></pre>
 </div>
-<div id="transformation" class="section level3">
+<div id="transformation" class="section level3" number="4.4.4">
 <h3><span class="header-section-number">4.4.4</span> Transformation</h3>
 <p>On peut transformer des structures simples très facilement dan R, comme passer d’un charactère à un numérique par exemple (voir [transform_datatype]), mais aussi pour des structures plus complexes, comme les matrices, les tableaux et les listes. Les structures ont très souvent une fonction associée pour passer de l’une vers l’autre.</p>
 <p>Par exemple pour transformer quelque chose en matrice, on utilisera <code>as.matrix</code>, <code>as.data.frame</code> pour les tableaux, <code>as.vector</code> pour les vecteurs, ou encore <code>as.list</code> pour les listes. Bien sûr l’utilisateur doit s’efforcer de présenter les données de façons structurées pour que ces fonctions puissent effectuer la transformation.</p>
 <p>Une liste pourra par exemple être tranformée en <code>data.frame</code> seulement si son contenu est de même longueur:</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1">liste=<span class="st"> </span><span class="kw">list</span>(<span class="dt">a=</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">b=</span> <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb197-2" title="2"><span class="kw">as.data.frame</span>(liste)</a></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="Structures.html#cb197-1"></a>liste=<span class="st"> </span><span class="kw">list</span>(<span class="dt">a=</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">b=</span> <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>)</span>
+<span id="cb197-2"><a href="Structures.html#cb197-2"></a><span class="kw">as.data.frame</span>(liste)</span></code></pre></div>
 <pre><code>##   a b
 ## 1 1 3
 ## 2 2 4</code></pre>
 <p>Ici le <code>data.frame</code> est bien crée car <code>a</code> et <code>b</code> dans <code>liste</code> ont la même longueur. Par contre si <code>b</code> était plus long, la fonction <code>as.data.frame</code> ne sait pas a priori ce qu’elle doit faire, donc elle retourne une erreur.</p>
 </div>
-<div id="transposition" class="section level3">
+<div id="transposition" class="section level3" number="4.4.5">
 <h3><span class="header-section-number">4.4.5</span> Transposition</h3>
 <p>Une matrice peut être transposée grâce à la fonction <code>t()</code> comme suit:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1">matrice=<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb199-2" title="2"><span class="kw">t</span>(matrice)</a></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="Structures.html#cb199-1"></a>matrice=<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb199-2"><a href="Structures.html#cb199-2"></a><span class="kw">t</span>(matrice)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    2    3
 ## [2,]    4    5    6
 ## [3,]    7    8    9</code></pre>
 <p>On peut aussi transposer un <code>data.frame</code> avec <code>t()</code>, mais celui-ci est alors transformé en matrice:</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1">df=<span class="st"> </span><span class="kw">as.data.frame</span>(matrice)</a>
-<a class="sourceLine" id="cb201-2" title="2"><span class="kw">t</span>(df)</a></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="Structures.html#cb201-1"></a>df=<span class="st"> </span><span class="kw">as.data.frame</span>(matrice)</span>
+<span id="cb201-2"><a href="Structures.html#cb201-2"></a><span class="kw">t</span>(df)</span></code></pre></div>
 <pre><code>##    [,1] [,2] [,3]
 ## V1    1    2    3
 ## V2    4    5    6
 ## V3    7    8    9</code></pre>
 <p>La transformation en matrice peut être un problème si l’on utilise des colonnes de types différent, car la fonction va uniformiser le type des données:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" title="1">df=<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a=</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">b=</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>))</a>
-<a class="sourceLine" id="cb203-2" title="2"><span class="kw">t</span>(df)</a></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="Structures.html#cb203-1"></a>df=<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a=</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">b=</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>))</span>
+<span id="cb203-2"><a href="Structures.html#cb203-2"></a><span class="kw">t</span>(df)</span></code></pre></div>
 <pre><code>##   [,1] [,2]
 ## a &quot;1&quot;  &quot;2&quot; 
 ## b &quot;1&quot;  &quot;2&quot;</code></pre>
 <p>Ici toutes les données sont transformées en charactère.</p>
 </div>
-<div id="operations" class="section level3">
+<div id="opérations" class="section level3" number="4.4.6">
 <h3><span class="header-section-number">4.4.6</span> Opérations</h3>
 <p>Il est très simple d’appliquer des opérations mathématiques sur des structures dans R car ces fonctions sont vectorisées, c’est à dire que les fonctions <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>,… peuvent s’appliquer à plusieurs valeurs d’un seul coup. Par exemple on peut multiplier un vecteur par un autre comme ceci:</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb205-2" title="2">b=<span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb205-3" title="3">a <span class="op">*</span><span class="st"> </span>b</a></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="Structures.html#cb205-1"></a>a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
+<span id="cb205-2"><a href="Structures.html#cb205-2"></a>b=<span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>)</span>
+<span id="cb205-3"><a href="Structures.html#cb205-3"></a>a <span class="op">*</span><span class="st"> </span>b</span></code></pre></div>
 <pre><code>## [1]  6 14 24 36 50</code></pre>
 <p>On peut aussi multiplier des colonnes de <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" title="1">df=<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a=</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dt">b=</span> <span class="kw">c</span>(<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb207-2" title="2">df<span class="op">$</span>a <span class="op">*</span><span class="st"> </span>df<span class="op">$</span>b</a></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="Structures.html#cb207-1"></a>df=<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a=</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dt">b=</span> <span class="kw">c</span>(<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>))</span>
+<span id="cb207-2"><a href="Structures.html#cb207-2"></a>df<span class="op">$</span>a <span class="op">*</span><span class="st"> </span>df<span class="op">$</span>b</span></code></pre></div>
 <pre><code>## [1]  6 14 24 36 50</code></pre>
 <p>Pour plus de détails, voir le chapitre “[datascience1]”.</p>
 
@@ -777,7 +799,7 @@ Pour indexer plusieurs éléments:</p>
 <div class="footnotes">
 <hr />
 <ol start="3">
-<li id="fn3"><p><a href="https://commons.wikimedia.org/wiki/File:Mantisse_exposant_fr.svg?uselang=fr">Source de l’image</a><a href="Structures.html#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p><a href="https://commons.wikimedia.org/wiki/File:Mantisse_exposant_fr.svg?uselang=fr">Source de l’image</a><a href="Structures.html#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -791,11 +813,13 @@ Pour indexer plusieurs éléments:</p>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -803,12 +827,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -820,6 +843,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

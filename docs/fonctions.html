@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 6 Fonctions | Le compagnon de l’utilisateur R</title>
   <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 6 Fonctions | Le compagnon de l’utilisateur R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Vezy Rémi" />
 
 
-<meta name="date" content="2019-10-01" />
+<meta name="date" content="2020-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="control-flow.html"/>
 <link rel="next" href="environnement.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,25 +54,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -77,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -125,69 +130,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prérequis</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#oui-mais-cest-quoi-r"><i class="fa fa-check"></i><b>2.2</b> Oui, mais c’est quoi R?</a></li>
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#pourquoi-r"><i class="fa fa-check"></i><b>2.3</b> Pourquoi R?</a></li>
 <li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#apprendre-r-et-trouver-de-laide"><i class="fa fa-check"></i><b>2.4</b> Apprendre R et trouver de l’aide</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
+<li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="Premiers.html"><a href="Premiers.html#ouvrir-un-projet-rstudio"><i class="fa fa-check"></i><b>3.1</b> Ouvrir un projet RStudio</a></li>
 <li class="chapter" data-level="3.2" data-path="Premiers.html"><a href="Premiers.html#organise_project"><i class="fa fa-check"></i><b>3.2</b> Organiser son projet</a></li>
-<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#creer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script <strong>R</strong></a></li>
-<li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#creer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a><ul>
+<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#créer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script <strong>R</strong></a></li>
+<li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#créer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="Premiers.html"><a href="Premiers.html#objet-unique"><i class="fa fa-check"></i><b>3.4.1</b> Objet unique</a></li>
 <li class="chapter" data-level="3.4.2" data-path="Premiers.html"><a href="Premiers.html#vecteur"><i class="fa fa-check"></i><b>3.4.2</b> Vecteur</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="Premiers.html"><a href="Premiers.html#introduction-aux-fonctions-aux-packages-et-a-laide"><i class="fa fa-check"></i><b>3.5</b> Introduction aux fonctions, aux packages et à l’aide</a></li>
+<li class="chapter" data-level="3.5" data-path="Premiers.html"><a href="Premiers.html#introduction-aux-fonctions-aux-packages-et-à-laide"><i class="fa fa-check"></i><b>3.5</b> Introduction aux fonctions, aux packages et à l’aide</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a><ul>
-<li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-donnees"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="Structures.html"><a href="Structures.html#les-characteres-character"><i class="fa fa-check"></i><b>4.1.1</b> Les charactères (character)</a></li>
+<li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-données"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="Structures.html"><a href="Structures.html#les-charactères-character"><i class="fa fa-check"></i><b>4.1.1</b> Les charactères (character)</a></li>
 <li class="chapter" data-level="4.1.2" data-path="Structures.html"><a href="Structures.html#les-doubles-double"><i class="fa fa-check"></i><b>4.1.2</b> Les doubles (double)</a></li>
 <li class="chapter" data-level="4.1.3" data-path="Structures.html"><a href="Structures.html#entiers"><i class="fa fa-check"></i><b>4.1.3</b> Les entiers (integer)</a></li>
-<li class="chapter" data-level="4.1.4" data-path="Structures.html"><a href="Structures.html#les-booleens-boolean-or-logical"><i class="fa fa-check"></i><b>4.1.4</b> Les booléens (boolean or logical)</a></li>
+<li class="chapter" data-level="4.1.4" data-path="Structures.html"><a href="Structures.html#les-booléens-boolean-or-logical"><i class="fa fa-check"></i><b>4.1.4</b> Les booléens (boolean or logical)</a></li>
 <li class="chapter" data-level="4.1.5" data-path="Structures.html"><a href="Structures.html#en-bonus-les-facteurs-factors"><i class="fa fa-check"></i><b>4.1.5</b> En bonus, les facteurs (factors)</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="Structures.html"><a href="Structures.html#transform_datatype"><i class="fa fa-check"></i><b>4.2</b> Les transformations</a></li>
-<li class="chapter" data-level="4.3" data-path="Structures.html"><a href="Structures.html#les-structures-de-donnees"><i class="fa fa-check"></i><b>4.3</b> Les Structures de données</a><ul>
+<li class="chapter" data-level="4.3" data-path="Structures.html"><a href="Structures.html#les-structures-de-données"><i class="fa fa-check"></i><b>4.3</b> Les Structures de données</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="Structures.html"><a href="Structures.html#vecteurs"><i class="fa fa-check"></i><b>4.3.1</b> Vecteurs</a></li>
 <li class="chapter" data-level="4.3.2" data-path="Structures.html"><a href="Structures.html#matrices"><i class="fa fa-check"></i><b>4.3.2</b> Matrices</a></li>
 <li class="chapter" data-level="4.3.3" data-path="Structures.html"><a href="Structures.html#tableaux"><i class="fa fa-check"></i><b>4.3.3</b> Tableaux</a></li>
 <li class="chapter" data-level="4.3.4" data-path="Structures.html"><a href="Structures.html#listes"><i class="fa fa-check"></i><b>4.3.4</b> Listes</a></li>
 <li class="chapter" data-level="4.3.5" data-path="Structures.html"><a href="Structures.html#attributs"><i class="fa fa-check"></i><b>4.3.5</b> Attributs</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a><ul>
+<li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="Structures.html"><a href="Structures.html#index-et-test"><i class="fa fa-check"></i><b>4.4.1</b> Index et Test</a></li>
 <li class="chapter" data-level="4.4.2" data-path="Structures.html"><a href="Structures.html#remplacer-assigner"><i class="fa fa-check"></i><b>4.4.2</b> Remplacer, assigner</a></li>
-<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#concatenation"><i class="fa fa-check"></i><b>4.4.3</b> Concaténation</a></li>
+<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#concaténation"><i class="fa fa-check"></i><b>4.4.3</b> Concaténation</a></li>
 <li class="chapter" data-level="4.4.4" data-path="Structures.html"><a href="Structures.html#transformation"><i class="fa fa-check"></i><b>4.4.4</b> Transformation</a></li>
 <li class="chapter" data-level="4.4.5" data-path="Structures.html"><a href="Structures.html#transposition"><i class="fa fa-check"></i><b>4.4.5</b> Transposition</a></li>
-<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#operations"><i class="fa fa-check"></i><b>4.4.6</b> Opérations</a></li>
+<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#opérations"><i class="fa fa-check"></i><b>4.4.6</b> Opérations</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>5</b> Structure de contrôle</a><ul>
+<li class="chapter" data-level="5" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>5</b> Structure de contrôle</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="control-flow.html"><a href="control-flow.html#logical-operators"><i class="fa fa-check"></i><b>5.1</b> Logical operators</a></li>
-<li class="chapter" data-level="5.2" data-path="control-flow.html"><a href="control-flow.html#boucles"><i class="fa fa-check"></i><b>5.2</b> Boucles</a><ul>
+<li class="chapter" data-level="5.2" data-path="control-flow.html"><a href="control-flow.html#boucles"><i class="fa fa-check"></i><b>5.2</b> Boucles</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="control-flow.html"><a href="control-flow.html#boucle-for"><i class="fa fa-check"></i><b>5.2.1</b> Boucle <code>for</code></a></li>
 <li class="chapter" data-level="5.2.2" data-path="control-flow.html"><a href="control-flow.html#boucle-while"><i class="fa fa-check"></i><b>5.2.2</b> Boucle while</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="control-flow.html"><a href="control-flow.html#conditions"><i class="fa fa-check"></i><b>5.3</b> Conditions</a></li>
 <li class="chapter" data-level="5.4" data-path="control-flow.html"><a href="control-flow.html#fonctions-utiles"><i class="fa fa-check"></i><b>5.4</b> Fonctions utiles</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>6</b> Fonctions</a><ul>
+<li class="chapter" data-level="6" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>6</b> Fonctions</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>6.1</b> Definition</a></li>
-<li class="chapter" data-level="6.2" data-path="fonctions.html"><a href="fonctions.html#declarer-une-fonction"><i class="fa fa-check"></i><b>6.2</b> Déclarer une fonction</a><ul>
+<li class="chapter" data-level="6.2" data-path="fonctions.html"><a href="fonctions.html#déclarer-une-fonction"><i class="fa fa-check"></i><b>6.2</b> Déclarer une fonction</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="fonctions.html"><a href="fonctions.html#appeler-une-fonction"><i class="fa fa-check"></i><b>6.2.1</b> Appeler une fonction</a></li>
 <li class="chapter" data-level="6.2.2" data-path="fonctions.html"><a href="fonctions.html#fonction-sans-argument"><i class="fa fa-check"></i><b>6.2.2</b> Fonction sans argument</a></li>
 <li class="chapter" data-level="6.2.3" data-path="fonctions.html"><a href="fonctions.html#fonction-anonyme"><i class="fa fa-check"></i><b>6.2.3</b> Fonction anonyme</a></li>
 <li class="chapter" data-level="6.2.4" data-path="fonctions.html"><a href="fonctions.html#return"><i class="fa fa-check"></i><b>6.2.4</b> Return</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="fonctions.html"><a href="fonctions.html#informations"><i class="fa fa-check"></i><b>6.3</b> Informations</a></li>
-<li class="chapter" data-level="6.4" data-path="fonctions.html"><a href="fonctions.html#portee-function-scope"><i class="fa fa-check"></i><b>6.4</b> Portée (function scope)</a></li>
+<li class="chapter" data-level="6.4" data-path="fonctions.html"><a href="fonctions.html#portée-function-scope"><i class="fa fa-check"></i><b>6.4</b> Portée (function scope)</a></li>
 <li class="chapter" data-level="6.5" data-path="fonctions.html"><a href="fonctions.html#conseils"><i class="fa fa-check"></i><b>6.5</b> Conseils</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements</a></li>
+<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements and scoping</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="environnement.html"><a href="environnement.html#environments"><i class="fa fa-check"></i><b>7.1</b> Environments</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="environnement.html"><a href="environnement.html#environments-in-functions"><i class="fa fa-check"></i><b>7.1.1</b> Environments in functions</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>8</b> Travailler avec des dates</a></li>
 <li class="chapter" data-level="9" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>9</b> Travailler avec des chaînes de charactère</a></li>
 <li class="chapter" data-level="10" data-path="datascience1.html"><a href="datascience1.html"><i class="fa fa-check"></i><b>10</b> Science des données: importer, manipuler des données</a></li>
@@ -214,131 +236,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="fonctions" class="section level1">
+<div id="fonctions" class="section level1" number="6">
 <h1><span class="header-section-number">Chapitre 6</span> Fonctions</h1>
-<div id="definition" class="section level2">
+<div id="definition" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Definition</h2>
 <p>Nous avons déjà introduit les fonctions dans <a href="Premiers.html#Premiers">Premiers pas</a>, mais voici tout de même un petit rappel. Une fonction est une suite d’instructions regroupées en un bloc indépendant, qui prend en général des arguments en entrée, et retourne une valeur. Mais sachez qu’il y a aussi des fonctions qui ne prennent pas d’arguments en entrée, et d’autres qui ne retournent pas de valeurs. Nous allons voir ça dans ce chapitre.</p>
 </div>
-<div id="declarer-une-fonction" class="section level2">
+<div id="déclarer-une-fonction" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Déclarer une fonction</h2>
 <p>Voici comment déclarer une fonction:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" title="1">add_one=<span class="st"> </span><span class="cf">function</span>(x){</a>
-<a class="sourceLine" id="cb252-2" title="2">  x<span class="op">+</span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb252-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="fonctions.html#cb252-1"></a>add_one=<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb252-2"><a href="fonctions.html#cb252-2"></a>  x<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb252-3"><a href="fonctions.html#cb252-3"></a>}</span></code></pre></div>
 <p>Il y a beaucoup de nouvelles choses ici ! Alors laissez-moi expliquer étape par étape. D’abord, on a <code>add_one</code>. C’est le nom que nous avons décidé de donner à la fonction, parcequ’elle ajoute 1 à l’argument qu’on lui donne. Ensuite on a un <code>=</code>, qui dit à R que l’on va assigner quelque chose à ce nouveau nom (ici, la fonction). Puis vient <code>function(x){...}</code>. Ici on dit à R que l’on va déclarer une nouvelle fonction, et le code qui y sera associé sera compris entre <code>{</code> et <code>}</code>. On a aussi un <code>(x)</code>: les parenthèses délimitent les arguments de la fonction. Il peut y en avoir 0 avec des parenthèses vides<code>()</code>, un seul comme ici, ou plusieurs séparés avec des virgules comme ceci: <code>(a,b,c)</code>. Ensuite il y a <code>x+1</code>, qui est le code qui sera exécuté à chaque fois que la fonction sera appelée.</p>
 <p>Pour appeler une fonction (<em>i.e.</em> s’en servir), on utilise son nom, suivit des arguments:</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" title="1"><span class="kw">add_one</span>(<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="fonctions.html#cb253-1"></a><span class="kw">add_one</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>Ici, on dit à R que l’on veut utiliser la fonction <code>add_one</code>, et que x vaut 1. La fonction assigne donc 1 à x, puis lui ajoute 1, et retourne le résultat: 2.</p>
 <p>Il est aussi possible de donner des valeurs par défaut aux arguments d’une fonction pour qu’elle utilise toujours cette valeur si on ne donne pas d’argument:
 Pour appeler une fonction (<em>i.e.</em> s’en servir), on utilise son nom, suivit des arguments:</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" title="1">add_a=<span class="st"> </span><span class="cf">function</span>(x,<span class="dt">a=</span><span class="dv">1</span>){</a>
-<a class="sourceLine" id="cb255-2" title="2">  x<span class="op">+</span>a</a>
-<a class="sourceLine" id="cb255-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="fonctions.html#cb255-1"></a>add_a=<span class="st"> </span><span class="cf">function</span>(x,<span class="dt">a=</span><span class="dv">1</span>){</span>
+<span id="cb255-2"><a href="fonctions.html#cb255-2"></a>  x<span class="op">+</span>a</span>
+<span id="cb255-3"><a href="fonctions.html#cb255-3"></a>}</span></code></pre></div>
 <p>De cette façon, on peut utiliser la fonction comme avant, puisque <code>a</code> vaut 1 par défaut:</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" title="1"><span class="kw">add_a</span>(<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="fonctions.html#cb256-1"></a><span class="kw">add_a</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>Mais aussi utiliser l’argument <code>a</code> pour généraliser la fonction:</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" title="1"><span class="kw">add_a</span>(<span class="dv">1</span>, <span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="fonctions.html#cb258-1"></a><span class="kw">add_a</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
-<div id="appeler-une-fonction" class="section level3">
+<div id="appeler-une-fonction" class="section level3" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Appeler une fonction</h3>
 <p>Jusqu’ici nous avons donné les valeurs des arguments par position. Par example juste au-dessus nous avons appelé la fonction <code>add_a</code> et donné 1 comme valeur à <code>x</code> et 10 pour <code>a</code>. Mais on peut aussi nommer les arguments comme suit:</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" title="1"><span class="kw">add_a</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">a =</span> <span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="fonctions.html#cb260-1"></a><span class="kw">add_a</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">a =</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
 <p>Ce qui nous permet de donner des valeurs aux arguments dans l’ordre que l’on veut:</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" title="1"><span class="kw">add_a</span>(<span class="dt">a =</span> <span class="dv">10</span>, <span class="dt">x =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="fonctions.html#cb262-1"></a><span class="kw">add_a</span>(<span class="dt">a =</span> <span class="dv">10</span>, <span class="dt">x =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
 <p>On peut aussi nommer certains arguments, et donner les autres par position:</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" title="1"><span class="kw">add_a</span>(<span class="dv">10</span>, <span class="dt">x =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="fonctions.html#cb264-1"></a><span class="kw">add_a</span>(<span class="dv">10</span>, <span class="dt">x =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
 <p>Dans ce cas les arguments nommés sont rangés automatiquement au bon endroit, et le reste des arguments non nommés sont donnés dans l’ordre restant.</p>
 </div>
-<div id="fonction-sans-argument" class="section level3">
+<div id="fonction-sans-argument" class="section level3" number="6.2.2">
 <h3><span class="header-section-number">6.2.2</span> Fonction sans argument</h3>
 <p>On peut aussi déclarer une fonction sans argument. Cela peut s’avérer utile si la fonction doit toujours retourner la même chose (<em>e.g.</em> une liste de courses) ou si elle utilise des informations extérieures.
 Par example, disons que vous êtes en voyage au Brésil, où la monnaie est le Real, mais comme vous êtes habitué à payer en Euro, vous aimeriez pouvoir convertir entre les deux simplement. Vous pouvez donc écrire une fonction qui le fait pour vous:</p>
-<p>A l’heure où cette version du livre à été mis à jour pour la dernière fois, 1 Euro (€) valait 4.526 Reals (R$)<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<p>A l’heure où cette version du livre à été mis à jour pour la dernière fois, 1 Euro (€) valait 6.2124 Reals (R$)<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
 <p>Cette fonction peut maintenant nous servir à convertir n’importe quelle valeur depuis R, en appliquant la conversion actuelle. Si par example on veut acheter une télévision pour 2506.756 Reals, combien cela fait-il en euro?</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" title="1">TV=<span class="st"> </span><span class="fl">2506.756</span>  </a>
-<a class="sourceLine" id="cb266-2" title="2">TV<span class="op">/</span><span class="kw">currencyfunc</span>()</a></code></pre></div>
-<pre><code>## [1] 553.8568</code></pre>
-<p>Cela fait 553.8568272 euros!</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="fonctions.html#cb266-1"></a>TV=<span class="st"> </span><span class="fl">2506.756</span>  </span>
+<span id="cb266-2"><a href="fonctions.html#cb266-2"></a>TV<span class="op">/</span><span class="kw">currencyfunc</span>()</span></code></pre></div>
+<pre><code>## [1] 403.5085</code></pre>
+<p>Cela fait 403.5084669 euros!</p>
 <blockquote>
 <p>Les <code>::</code> dans <code>quantmod::getQuote()</code> permettent de dire à R d’utiliser la fonction <code>getQuote()</code> du package <code>quantmod</code>. Il est préférable d’utiliser cette notation dès que possible pour pouvoir se rappeler de quel package l’on a besoin pour utiliser un code en particulier, mais aussi pour éviter d’utiliser des fonctions qui ont le même nom dans deux packages différents, ou dans notre code et un package.</p>
 </blockquote>
 </div>
-<div id="fonction-anonyme" class="section level3">
+<div id="fonction-anonyme" class="section level3" number="6.2.3">
 <h3><span class="header-section-number">6.2.3</span> Fonction anonyme</h3>
 <p>Une fonction anonyme est une fonction sans nom. On utilise généralement ces fonctions lorsque l’on utilise des fonctions qui prennent en argument d’autres fonctions. Commençons par un example, la fonction <code>Map()</code>.</p>
 <p>La fonction <code>Map()</code> prend comme argument une fonction, et un objet. Elle applique ensuite cette fonction à chaque élément de cet objet. Par exemple si l’on a plusieur prix de TV, on peut appliquer notre conversion <code>currencyfunc()</code> à chacune en utilisant une fonction anonyme:</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" title="1">TVs=<span class="st"> </span><span class="kw">c</span>(<span class="fl">2432.753</span>, <span class="fl">2638.554</span>, <span class="fl">2439.369</span>, <span class="fl">2559.210</span>, <span class="fl">2400.950</span>, <span class="fl">2514.662</span>, <span class="fl">2517.128</span>, <span class="fl">2416.149</span>, <span class="fl">2537.907</span>, <span class="fl">2458.432</span>)</a>
-<a class="sourceLine" id="cb268-2" title="2"><span class="kw">unlist</span>(<span class="kw">Map</span>(<span class="cf">function</span>(x)x<span class="op">/</span><span class="kw">currencyfunc</span>(), TVs))</a></code></pre></div>
-<pre><code>##  [1] 537.5062 582.9770 538.9680 565.4463 530.4795 555.6036 556.1485
-##  [8] 533.8376 560.7395 543.1798</code></pre>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="fonctions.html#cb268-1"></a>TVs=<span class="st"> </span><span class="kw">c</span>(<span class="fl">2432.753</span>, <span class="fl">2638.554</span>, <span class="fl">2439.369</span>, <span class="fl">2559.210</span>, <span class="fl">2400.950</span>, <span class="fl">2514.662</span>, <span class="fl">2517.128</span>, <span class="fl">2416.149</span>, <span class="fl">2537.907</span>, <span class="fl">2458.432</span>)</span>
+<span id="cb268-2"><a href="fonctions.html#cb268-2"></a><span class="kw">unlist</span>(<span class="kw">Map</span>(<span class="cf">function</span>(x)x<span class="op">/</span><span class="kw">currencyfunc</span>(), TVs))</span></code></pre></div>
+<pre><code>##  [1] 391.5963 424.7238 392.6613 411.9519 386.4770 404.7811 405.1780 388.9236
+##  [9] 408.5228 395.7298</code></pre>
 <p>Comme on peut le voir on utilise la fonction <code>MAP()</code> avec comme premier argument <code>function(x)x/currencyfunc()</code>, qui est une fonction anonyme, et qui est appliquée à chaque élément du deuxième argument, <code>TVs</code>.</p>
 <blockquote>
 <p>NB: on utilise aussi la fonction <code>unlist()</code> ici pour re-formater la sortie de <code>MAP()</code> (plus adapté pour le livre).</p>
 </blockquote>
 <p>Bien sûr il s’agit d’un example ici, car sinon nous aurions pu directement avoir le résultat comme ceci:</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" title="1">TVs<span class="op">/</span><span class="kw">currencyfunc</span>()</a></code></pre></div>
-<pre><code>##  [1] 537.5062 582.9770 538.9680 565.4463 530.4795 555.6036 556.1485
-##  [8] 533.8376 560.7395 543.1798</code></pre>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="fonctions.html#cb270-1"></a>TVs<span class="op">/</span><span class="kw">currencyfunc</span>()</span></code></pre></div>
+<pre><code>##  [1] 391.5963 424.7238 392.6613 411.9519 386.4770 404.7811 405.1780 388.9236
+##  [9] 408.5228 395.7298</code></pre>
 <p>Cette dernière façon de procéder est en général à préférer car R vectorize par défaut toute fonction, ce qui veut dire qu’une fonction peut s’appliquer par défaut à chaque membre d’un objet. Ceci est un aspect très apréciable de R.</p>
 </div>
-<div id="return" class="section level3">
+<div id="return" class="section level3" number="6.2.4">
 <h3><span class="header-section-number">6.2.4</span> Return</h3>
 <p>Une fonction retourne par défaut le dernier objet, mais il existe aussi une fonction spéciale pour retourner explicitement un objet particulier. Cette fonction s’appelle <code>return()</code>. De manière générale, il vaut mieux eviter de l’utiliser car elle a tendance à ralentir l’exécution (voir ce <a href="https://style.tidyverse.org/">style guide</a>), et plutôt préférer répéter</p>
 <p>Quelques examples:</p>
 <p>La fonction retourne le dernier objet:</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" title="1">return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</a>
-<a class="sourceLine" id="cb272-2" title="2">  a<span class="op">*</span>b</a>
-<a class="sourceLine" id="cb272-3" title="3">  x=<span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb272-4" title="4">  x</a>
-<a class="sourceLine" id="cb272-5" title="5">}</a>
-<a class="sourceLine" id="cb272-6" title="6"></a>
-<a class="sourceLine" id="cb272-7" title="7"><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="fonctions.html#cb272-1"></a>return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
+<span id="cb272-2"><a href="fonctions.html#cb272-2"></a>  a<span class="op">*</span>b</span>
+<span id="cb272-3"><a href="fonctions.html#cb272-3"></a>  x=<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb272-4"><a href="fonctions.html#cb272-4"></a>  x</span>
+<span id="cb272-5"><a href="fonctions.html#cb272-5"></a>}</span>
+<span id="cb272-6"><a href="fonctions.html#cb272-6"></a></span>
+<span id="cb272-7"><a href="fonctions.html#cb272-7"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>Ici la fonction calcule bien <code>a*b</code>, mais retourne 10 car <code>x</code> vaut 10, et il est retourné à la fin. Cette écriture est exactement la même que celle-ci:</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" title="1">return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</a>
-<a class="sourceLine" id="cb274-2" title="2">  a<span class="op">*</span>b</a>
-<a class="sourceLine" id="cb274-3" title="3">  x=<span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb274-4" title="4">  <span class="kw">return</span>(x)</a>
-<a class="sourceLine" id="cb274-5" title="5">}</a>
-<a class="sourceLine" id="cb274-6" title="6"></a>
-<a class="sourceLine" id="cb274-7" title="7"><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="fonctions.html#cb274-1"></a>return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
+<span id="cb274-2"><a href="fonctions.html#cb274-2"></a>  a<span class="op">*</span>b</span>
+<span id="cb274-3"><a href="fonctions.html#cb274-3"></a>  x=<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb274-4"><a href="fonctions.html#cb274-4"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb274-5"><a href="fonctions.html#cb274-5"></a>}</span>
+<span id="cb274-6"><a href="fonctions.html#cb274-6"></a></span>
+<span id="cb274-7"><a href="fonctions.html#cb274-7"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>Maintenant que ce passe-t-il si l’on met un <code>return()</code> à la ligne <code>a*b</code> ?</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" title="1">return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</a>
-<a class="sourceLine" id="cb276-2" title="2">  <span class="kw">return</span>(a<span class="op">*</span>b)</a>
-<a class="sourceLine" id="cb276-3" title="3">  x=<span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb276-4" title="4">  x</a>
-<a class="sourceLine" id="cb276-5" title="5">}</a>
-<a class="sourceLine" id="cb276-6" title="6"></a>
-<a class="sourceLine" id="cb276-7" title="7"><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="fonctions.html#cb276-1"></a>return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
+<span id="cb276-2"><a href="fonctions.html#cb276-2"></a>  <span class="kw">return</span>(a<span class="op">*</span>b)</span>
+<span id="cb276-3"><a href="fonctions.html#cb276-3"></a>  x=<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb276-4"><a href="fonctions.html#cb276-4"></a>  x</span>
+<span id="cb276-5"><a href="fonctions.html#cb276-5"></a>}</span>
+<span id="cb276-6"><a href="fonctions.html#cb276-6"></a></span>
+<span id="cb276-7"><a href="fonctions.html#cb276-7"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## [1] 600</code></pre>
 <p>La fonction retourne <code>a*b</code> ! En effet, la fonction <code>return()</code> stoppe l’exécution de la fonction dans laquelle elle est appelée, et retourne le résultat qui y figure comme argument. Pour forcer une fonction à ne rien retourner, on peut aussi appeler <code>return()</code> sans arguments:</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" title="1">return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</a>
-<a class="sourceLine" id="cb278-2" title="2">  a<span class="op">*</span>b</a>
-<a class="sourceLine" id="cb278-3" title="3">  x=<span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb278-4" title="4">  x</a>
-<a class="sourceLine" id="cb278-5" title="5">  <span class="kw">return</span>()</a>
-<a class="sourceLine" id="cb278-6" title="6">}</a>
-<a class="sourceLine" id="cb278-7" title="7"></a>
-<a class="sourceLine" id="cb278-8" title="8"><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="fonctions.html#cb278-1"></a>return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
+<span id="cb278-2"><a href="fonctions.html#cb278-2"></a>  a<span class="op">*</span>b</span>
+<span id="cb278-3"><a href="fonctions.html#cb278-3"></a>  x=<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb278-4"><a href="fonctions.html#cb278-4"></a>  x</span>
+<span id="cb278-5"><a href="fonctions.html#cb278-5"></a>  <span class="kw">return</span>()</span>
+<span id="cb278-6"><a href="fonctions.html#cb278-6"></a>}</span>
+<span id="cb278-7"><a href="fonctions.html#cb278-7"></a></span>
+<span id="cb278-8"><a href="fonctions.html#cb278-8"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>Voilà, la fonction calcule bien toutes les lignes avant le <code>return()</code>, mais ne retourne rien.</p>
 <p>La fonction <code>return()</code> peut être très utile lorsque l’on veut retourner un résultat directement si une condition est vraie:</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" title="1">return_whatever=<span class="st"> </span><span class="cf">function</span>(a,b){</a>
-<a class="sourceLine" id="cb280-2" title="2">  <span class="cf">if</span>(b<span class="op">&gt;</span>a){</a>
-<a class="sourceLine" id="cb280-3" title="3">    <span class="kw">return</span>(a<span class="op">/</span>b)</a>
-<a class="sourceLine" id="cb280-4" title="4">  }</a>
-<a class="sourceLine" id="cb280-5" title="5">  truc=<span class="st"> </span>a<span class="op">*</span>b</a>
-<a class="sourceLine" id="cb280-6" title="6">  truc<span class="op">*</span><span class="dv">10</span><span class="op">+</span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb280-7" title="7">}</a>
-<a class="sourceLine" id="cb280-8" title="8"></a>
-<a class="sourceLine" id="cb280-9" title="9"><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="fonctions.html#cb280-1"></a>return_whatever=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
+<span id="cb280-2"><a href="fonctions.html#cb280-2"></a>  <span class="cf">if</span>(b<span class="op">&gt;</span>a){</span>
+<span id="cb280-3"><a href="fonctions.html#cb280-3"></a>    <span class="kw">return</span>(a<span class="op">/</span>b)</span>
+<span id="cb280-4"><a href="fonctions.html#cb280-4"></a>  }</span>
+<span id="cb280-5"><a href="fonctions.html#cb280-5"></a>  truc=<span class="st"> </span>a<span class="op">*</span>b</span>
+<span id="cb280-6"><a href="fonctions.html#cb280-6"></a>  truc<span class="op">*</span><span class="dv">10</span><span class="op">+</span><span class="dv">1</span></span>
+<span id="cb280-7"><a href="fonctions.html#cb280-7"></a>}</span>
+<span id="cb280-8"><a href="fonctions.html#cb280-8"></a></span>
+<span id="cb280-9"><a href="fonctions.html#cb280-9"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>Ici on force un retour de <code>a/b</code> si <code>b&gt;a</code>, et sinon on exécute une suite d’opérations et on retourne la dernière ligne.</p>
 <blockquote>
@@ -346,71 +368,71 @@ Par example, disons que vous êtes en voyage au Brésil, où la monnaie est le R
 </blockquote>
 </div>
 </div>
-<div id="informations" class="section level2">
+<div id="informations" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Informations</h2>
 <p>Pour connaître les arguments d’une fonction, il vous suffit d’exécuter son nom précédé d’un point d’intérogation (<em>e.g.</em> <code>?sum</code>), ou bien de surligner son nom et appuyer sur la touche <code>F1</code> de votre clavier dans RStudio. Apparaîtra alors la documentation de la fonction, qui est toujours structurée de la même manière: en haut se trouve le nom de la fonction suivi du nom du package auquel elle appartient entre crochets (nb: base est le package intégré de base dans R). Ensuite vient une description brève, puis son utilisation. Ici apparaitra donc les différentes façons d’utiliser la fonction, ainsi que les valeurs par défaut de ses paramètres.
 Vient ensuite une description de chaque arguments, puis de certains détails d’utilisation, des valeurs retournées par la fonction (Value), puis enfin les notes, les références, les fonctions liées (see also) et, le plus important, d’examples.</p>
 <p>Pour accéder au code d’une fonction, il suffit de la surligner et d’appuyer sur la touche <code>F2</code> de votre clavier. Le code de certaines fonctions n’est pas accessible par ce moyen, il s’agit par example des fonctions primitives (<em>e.g.</em> <code>sum()</code>) ou les fonctions utilisant des méthodes (e.g. <code>plot()</code>). Il vous faudra donc aller le chercher sur un dépôt (e.g. CRAN, Github…).</p>
 </div>
-<div id="portee-function-scope" class="section level2">
+<div id="portée-function-scope" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Portée (function scope)</h2>
-<p>R fonctionne avec des environnements (voir <a href="environnement.html#environnement">Environnements</a>). Chaque fonction crée son propre environnement lorsqu’elle est appelée, c’est à dire qu’elle n’a accès qu’à son propre environement en priorité, puis ensuite aux environnements aux dessus si elle ne trouve pas un objet dans le sien.</p>
+<p>R fonctionne avec des environnements (voir [Environnements]). Chaque fonction crée son propre environnement lorsqu’elle est appelée, c’est à dire qu’elle n’a accès qu’à son propre environement en priorité, puis ensuite aux environnements aux dessus si elle ne trouve pas un objet dans le sien.</p>
 <p>Donc a priori un objet crée dans une fonction ne modifie pas celui déclaré auparavant.
 Voici un example:</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" title="1">x=<span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb282-2" title="2"></a>
-<a class="sourceLine" id="cb282-3" title="3">add_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(x){</a>
-<a class="sourceLine" id="cb282-4" title="4">  x=<span class="st"> </span>x<span class="op">+</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb282-5" title="5">  <span class="kw">return</span>(x)</a>
-<a class="sourceLine" id="cb282-6" title="6">}</a>
-<a class="sourceLine" id="cb282-7" title="7"></a>
-<a class="sourceLine" id="cb282-8" title="8">x2=<span class="st"> </span><span class="kw">add_10</span>(x)</a>
-<a class="sourceLine" id="cb282-9" title="9"></a>
-<a class="sourceLine" id="cb282-10" title="10"><span class="kw">c</span>(<span class="dt">x=</span> x, <span class="dt">x2=</span> x2)</a></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="fonctions.html#cb282-1"></a>x=<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb282-2"><a href="fonctions.html#cb282-2"></a></span>
+<span id="cb282-3"><a href="fonctions.html#cb282-3"></a>add_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb282-4"><a href="fonctions.html#cb282-4"></a>  x=<span class="st"> </span>x<span class="op">+</span><span class="dv">10</span></span>
+<span id="cb282-5"><a href="fonctions.html#cb282-5"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb282-6"><a href="fonctions.html#cb282-6"></a>}</span>
+<span id="cb282-7"><a href="fonctions.html#cb282-7"></a></span>
+<span id="cb282-8"><a href="fonctions.html#cb282-8"></a>x2=<span class="st"> </span><span class="kw">add_10</span>(x)</span>
+<span id="cb282-9"><a href="fonctions.html#cb282-9"></a></span>
+<span id="cb282-10"><a href="fonctions.html#cb282-10"></a><span class="kw">c</span>(<span class="dt">x=</span> x, <span class="dt">x2=</span> x2)</span></code></pre></div>
 <pre><code>##  x x2 
 ## 10 20</code></pre>
 <p>Ici on voit que l’on a déclaré <code>x</code> avec pour valeur 10. Ensuite on passe <code>x</code> à la fonction <code>add_10</code> qui déclare <code>x</code> dans son propre environnement, puis lui ajoute 10, et retourne sa valeur. On peut voir qu’à la fin en dehors de la fonction, le <code>x</code> que nous avons crée nous-mêmes est toujours égal à 10 après avoir appelé la fonction.
 Par contre si R ne trouve pas une valeur dans son environnement, il va essayer de chercher dans les environnements au-dessus. L’environnement le plus haut est l’environnement de l’utilisateur. Donc la fonction peut potentiellement avoir accès aux objets que l’utilisateur à crée lui-même:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" title="1">a=<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb284-2" title="2">x=<span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb284-3" title="3"></a>
-<a class="sourceLine" id="cb284-4" title="4">add_a=<span class="st"> </span><span class="cf">function</span>(x){</a>
-<a class="sourceLine" id="cb284-5" title="5">  x=<span class="st"> </span>a<span class="op">+</span>x</a>
-<a class="sourceLine" id="cb284-6" title="6">  <span class="kw">return</span>(x)</a>
-<a class="sourceLine" id="cb284-7" title="7">}</a>
-<a class="sourceLine" id="cb284-8" title="8"></a>
-<a class="sourceLine" id="cb284-9" title="9">x2=<span class="st"> </span><span class="kw">add_a</span>(x)</a>
-<a class="sourceLine" id="cb284-10" title="10"></a>
-<a class="sourceLine" id="cb284-11" title="11"><span class="kw">c</span>(<span class="dt">a=</span> a, <span class="dt">x=</span> x, <span class="dt">x2=</span> x2)</a></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="fonctions.html#cb284-1"></a>a=<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb284-2"><a href="fonctions.html#cb284-2"></a>x=<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb284-3"><a href="fonctions.html#cb284-3"></a></span>
+<span id="cb284-4"><a href="fonctions.html#cb284-4"></a>add_a=<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb284-5"><a href="fonctions.html#cb284-5"></a>  x=<span class="st"> </span>a<span class="op">+</span>x</span>
+<span id="cb284-6"><a href="fonctions.html#cb284-6"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb284-7"><a href="fonctions.html#cb284-7"></a>}</span>
+<span id="cb284-8"><a href="fonctions.html#cb284-8"></a></span>
+<span id="cb284-9"><a href="fonctions.html#cb284-9"></a>x2=<span class="st"> </span><span class="kw">add_a</span>(x)</span>
+<span id="cb284-10"><a href="fonctions.html#cb284-10"></a></span>
+<span id="cb284-11"><a href="fonctions.html#cb284-11"></a><span class="kw">c</span>(<span class="dt">a=</span> a, <span class="dt">x=</span> x, <span class="dt">x2=</span> x2)</span></code></pre></div>
 <pre><code>##  a  x x2 
 ##  2 10 12</code></pre>
 <p>Comme on peut le voir, <code>a</code> n’a pas été donné comme argument de la fonction, pourtant elle s’est débrouillée pour aller le chercher dans l’environnement global tout de même, là où nous l’avons déclaré. Cela peut être dangereux car parfois on oublie tout simplement de passer un objet comme argument, et alors R va utiliser un objet qui n’est pas le même à nos yeux, mais qui portera le même nom. Il faut y faire très attention. A noter que ce phénomène n’est pas valable pour les packages car les objets à l’intérieur d’un package sont isolés de l’environnement global. C’est pourquoi il est préférable de regrouper ses fonctions en un package (voir <a href="packages.html#packages">Packages</a>).</p>
 <p>La bonne façon d’écrire la fonction ci-dessus est la suivante:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" title="1">a=<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb286-2" title="2">x=<span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb286-3" title="3"></a>
-<a class="sourceLine" id="cb286-4" title="4">add_a=<span class="st"> </span><span class="cf">function</span>(x,a){</a>
-<a class="sourceLine" id="cb286-5" title="5">  x=<span class="st"> </span>a<span class="op">+</span>x</a>
-<a class="sourceLine" id="cb286-6" title="6">  <span class="kw">return</span>(x)</a>
-<a class="sourceLine" id="cb286-7" title="7">}</a>
-<a class="sourceLine" id="cb286-8" title="8"></a>
-<a class="sourceLine" id="cb286-9" title="9">x2=<span class="st"> </span><span class="kw">add_a</span>(x, a)</a>
-<a class="sourceLine" id="cb286-10" title="10"></a>
-<a class="sourceLine" id="cb286-11" title="11"><span class="kw">c</span>(<span class="dt">a=</span> a, <span class="dt">x=</span> x, <span class="dt">x2=</span> x2)</a></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="fonctions.html#cb286-1"></a>a=<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb286-2"><a href="fonctions.html#cb286-2"></a>x=<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb286-3"><a href="fonctions.html#cb286-3"></a></span>
+<span id="cb286-4"><a href="fonctions.html#cb286-4"></a>add_a=<span class="st"> </span><span class="cf">function</span>(x,a){</span>
+<span id="cb286-5"><a href="fonctions.html#cb286-5"></a>  x=<span class="st"> </span>a<span class="op">+</span>x</span>
+<span id="cb286-6"><a href="fonctions.html#cb286-6"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb286-7"><a href="fonctions.html#cb286-7"></a>}</span>
+<span id="cb286-8"><a href="fonctions.html#cb286-8"></a></span>
+<span id="cb286-9"><a href="fonctions.html#cb286-9"></a>x2=<span class="st"> </span><span class="kw">add_a</span>(x, a)</span>
+<span id="cb286-10"><a href="fonctions.html#cb286-10"></a></span>
+<span id="cb286-11"><a href="fonctions.html#cb286-11"></a><span class="kw">c</span>(<span class="dt">a=</span> a, <span class="dt">x=</span> x, <span class="dt">x2=</span> x2)</span></code></pre></div>
 <pre><code>##  a  x x2 
 ##  2 10 12</code></pre>
 <p>De cette façon, on peut réutiliser la fonction avec d’autres objets:</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" title="1">b=<span class="st"> </span><span class="dv">15</span></a>
-<a class="sourceLine" id="cb288-2" title="2">x3=<span class="st"> </span><span class="kw">add_a</span>(x, b)</a>
-<a class="sourceLine" id="cb288-3" title="3"></a>
-<a class="sourceLine" id="cb288-4" title="4"><span class="kw">c</span>(<span class="dt">a=</span> a, <span class="dt">b=</span>b,<span class="dt">x=</span> x, <span class="dt">x2=</span> x2)</a></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="fonctions.html#cb288-1"></a>b=<span class="st"> </span><span class="dv">15</span></span>
+<span id="cb288-2"><a href="fonctions.html#cb288-2"></a>x3=<span class="st"> </span><span class="kw">add_a</span>(x, b)</span>
+<span id="cb288-3"><a href="fonctions.html#cb288-3"></a></span>
+<span id="cb288-4"><a href="fonctions.html#cb288-4"></a><span class="kw">c</span>(<span class="dt">a=</span> a, <span class="dt">b=</span>b,<span class="dt">x=</span> x, <span class="dt">x2=</span> x2)</span></code></pre></div>
 <pre><code>##  a  b  x x2 
 ##  2 15 10 12</code></pre>
 </div>
-<div id="conseils" class="section level2">
+<div id="conseils" class="section level2" number="6.5">
 <h2><span class="header-section-number">6.5</span> Conseils</h2>
 <ul>
-<li>Nommer une fonction est difficile, alors voici quelques recommendations:
+<li><p>Nommer une fonction est difficile, alors voici quelques recommendations:</p>
 <ul>
 <li>toujours écrire en anglais. Celà permet de partager (et demander de l’aide) plus facilement;<br />
 </li>
@@ -427,7 +449,7 @@ Par contre si R ne trouve pas une valeur dans son environnement, il va essayer d
 <div class="footnotes">
 <hr />
 <ol start="4">
-<li id="fn4"><p>données <a href="https://fr.finance.yahoo.com/">Yahoo Finance</a> téléchargées grâce à la fonction <code>getQuote</code> du package <code>quantmod</code><a href="fonctions.html#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>données <a href="https://fr.finance.yahoo.com/">Yahoo Finance</a> téléchargées grâce à la fonction <code>getQuote</code> du package <code>quantmod</code><a href="fonctions.html#fnref4" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -441,11 +463,13 @@ Par contre si R ne trouve pas une valeur dans son environnement, il va essayer d
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -453,12 +477,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -470,6 +493,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 5 Structure de contrôle | Le compagnon de l’utilisateur R</title>
   <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 5 Structure de contrôle | Le compagnon de l’utilisateur R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Vezy Rémi" />
 
 
-<meta name="date" content="2019-10-01" />
+<meta name="date" content="2020-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="Structures.html"/>
 <link rel="next" href="fonctions.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,25 +54,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -77,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -125,69 +130,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prérequis</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#oui-mais-cest-quoi-r"><i class="fa fa-check"></i><b>2.2</b> Oui, mais c’est quoi R?</a></li>
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#pourquoi-r"><i class="fa fa-check"></i><b>2.3</b> Pourquoi R?</a></li>
 <li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#apprendre-r-et-trouver-de-laide"><i class="fa fa-check"></i><b>2.4</b> Apprendre R et trouver de l’aide</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
+<li class="chapter" data-level="3" data-path="Premiers.html"><a href="Premiers.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="Premiers.html"><a href="Premiers.html#ouvrir-un-projet-rstudio"><i class="fa fa-check"></i><b>3.1</b> Ouvrir un projet RStudio</a></li>
 <li class="chapter" data-level="3.2" data-path="Premiers.html"><a href="Premiers.html#organise_project"><i class="fa fa-check"></i><b>3.2</b> Organiser son projet</a></li>
-<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#creer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script <strong>R</strong></a></li>
-<li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#creer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a><ul>
+<li class="chapter" data-level="3.3" data-path="Premiers.html"><a href="Premiers.html#créer-un-script-r"><i class="fa fa-check"></i><b>3.3</b> Créer un script <strong>R</strong></a></li>
+<li class="chapter" data-level="3.4" data-path="Premiers.html"><a href="Premiers.html#créer-des-objets-et-les-manipuler"><i class="fa fa-check"></i><b>3.4</b> Créer des objets et les manipuler</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="Premiers.html"><a href="Premiers.html#objet-unique"><i class="fa fa-check"></i><b>3.4.1</b> Objet unique</a></li>
 <li class="chapter" data-level="3.4.2" data-path="Premiers.html"><a href="Premiers.html#vecteur"><i class="fa fa-check"></i><b>3.4.2</b> Vecteur</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="Premiers.html"><a href="Premiers.html#introduction-aux-fonctions-aux-packages-et-a-laide"><i class="fa fa-check"></i><b>3.5</b> Introduction aux fonctions, aux packages et à l’aide</a></li>
+<li class="chapter" data-level="3.5" data-path="Premiers.html"><a href="Premiers.html#introduction-aux-fonctions-aux-packages-et-à-laide"><i class="fa fa-check"></i><b>3.5</b> Introduction aux fonctions, aux packages et à l’aide</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a><ul>
-<li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-donnees"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="Structures.html"><a href="Structures.html#les-characteres-character"><i class="fa fa-check"></i><b>4.1.1</b> Les charactères (character)</a></li>
+<li class="chapter" data-level="4" data-path="Structures.html"><a href="Structures.html"><i class="fa fa-check"></i><b>4</b> Structures et types de données</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Structures.html"><a href="Structures.html#les-types-de-données"><i class="fa fa-check"></i><b>4.1</b> Les types de données</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="Structures.html"><a href="Structures.html#les-charactères-character"><i class="fa fa-check"></i><b>4.1.1</b> Les charactères (character)</a></li>
 <li class="chapter" data-level="4.1.2" data-path="Structures.html"><a href="Structures.html#les-doubles-double"><i class="fa fa-check"></i><b>4.1.2</b> Les doubles (double)</a></li>
 <li class="chapter" data-level="4.1.3" data-path="Structures.html"><a href="Structures.html#entiers"><i class="fa fa-check"></i><b>4.1.3</b> Les entiers (integer)</a></li>
-<li class="chapter" data-level="4.1.4" data-path="Structures.html"><a href="Structures.html#les-booleens-boolean-or-logical"><i class="fa fa-check"></i><b>4.1.4</b> Les booléens (boolean or logical)</a></li>
+<li class="chapter" data-level="4.1.4" data-path="Structures.html"><a href="Structures.html#les-booléens-boolean-or-logical"><i class="fa fa-check"></i><b>4.1.4</b> Les booléens (boolean or logical)</a></li>
 <li class="chapter" data-level="4.1.5" data-path="Structures.html"><a href="Structures.html#en-bonus-les-facteurs-factors"><i class="fa fa-check"></i><b>4.1.5</b> En bonus, les facteurs (factors)</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="Structures.html"><a href="Structures.html#transform_datatype"><i class="fa fa-check"></i><b>4.2</b> Les transformations</a></li>
-<li class="chapter" data-level="4.3" data-path="Structures.html"><a href="Structures.html#les-structures-de-donnees"><i class="fa fa-check"></i><b>4.3</b> Les Structures de données</a><ul>
+<li class="chapter" data-level="4.3" data-path="Structures.html"><a href="Structures.html#les-structures-de-données"><i class="fa fa-check"></i><b>4.3</b> Les Structures de données</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="Structures.html"><a href="Structures.html#vecteurs"><i class="fa fa-check"></i><b>4.3.1</b> Vecteurs</a></li>
 <li class="chapter" data-level="4.3.2" data-path="Structures.html"><a href="Structures.html#matrices"><i class="fa fa-check"></i><b>4.3.2</b> Matrices</a></li>
 <li class="chapter" data-level="4.3.3" data-path="Structures.html"><a href="Structures.html#tableaux"><i class="fa fa-check"></i><b>4.3.3</b> Tableaux</a></li>
 <li class="chapter" data-level="4.3.4" data-path="Structures.html"><a href="Structures.html#listes"><i class="fa fa-check"></i><b>4.3.4</b> Listes</a></li>
 <li class="chapter" data-level="4.3.5" data-path="Structures.html"><a href="Structures.html#attributs"><i class="fa fa-check"></i><b>4.3.5</b> Attributs</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a><ul>
+<li class="chapter" data-level="4.4" data-path="Structures.html"><a href="Structures.html#manipuler-les-structures"><i class="fa fa-check"></i><b>4.4</b> Manipuler les structures</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="Structures.html"><a href="Structures.html#index-et-test"><i class="fa fa-check"></i><b>4.4.1</b> Index et Test</a></li>
 <li class="chapter" data-level="4.4.2" data-path="Structures.html"><a href="Structures.html#remplacer-assigner"><i class="fa fa-check"></i><b>4.4.2</b> Remplacer, assigner</a></li>
-<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#concatenation"><i class="fa fa-check"></i><b>4.4.3</b> Concaténation</a></li>
+<li class="chapter" data-level="4.4.3" data-path="Structures.html"><a href="Structures.html#concaténation"><i class="fa fa-check"></i><b>4.4.3</b> Concaténation</a></li>
 <li class="chapter" data-level="4.4.4" data-path="Structures.html"><a href="Structures.html#transformation"><i class="fa fa-check"></i><b>4.4.4</b> Transformation</a></li>
 <li class="chapter" data-level="4.4.5" data-path="Structures.html"><a href="Structures.html#transposition"><i class="fa fa-check"></i><b>4.4.5</b> Transposition</a></li>
-<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#operations"><i class="fa fa-check"></i><b>4.4.6</b> Opérations</a></li>
+<li class="chapter" data-level="4.4.6" data-path="Structures.html"><a href="Structures.html#opérations"><i class="fa fa-check"></i><b>4.4.6</b> Opérations</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>5</b> Structure de contrôle</a><ul>
+<li class="chapter" data-level="5" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>5</b> Structure de contrôle</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="control-flow.html"><a href="control-flow.html#logical-operators"><i class="fa fa-check"></i><b>5.1</b> Logical operators</a></li>
-<li class="chapter" data-level="5.2" data-path="control-flow.html"><a href="control-flow.html#boucles"><i class="fa fa-check"></i><b>5.2</b> Boucles</a><ul>
+<li class="chapter" data-level="5.2" data-path="control-flow.html"><a href="control-flow.html#boucles"><i class="fa fa-check"></i><b>5.2</b> Boucles</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="control-flow.html"><a href="control-flow.html#boucle-for"><i class="fa fa-check"></i><b>5.2.1</b> Boucle <code>for</code></a></li>
 <li class="chapter" data-level="5.2.2" data-path="control-flow.html"><a href="control-flow.html#boucle-while"><i class="fa fa-check"></i><b>5.2.2</b> Boucle while</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="control-flow.html"><a href="control-flow.html#conditions"><i class="fa fa-check"></i><b>5.3</b> Conditions</a></li>
 <li class="chapter" data-level="5.4" data-path="control-flow.html"><a href="control-flow.html#fonctions-utiles"><i class="fa fa-check"></i><b>5.4</b> Fonctions utiles</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>6</b> Fonctions</a><ul>
+<li class="chapter" data-level="6" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>6</b> Fonctions</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="fonctions.html"><a href="fonctions.html#definition"><i class="fa fa-check"></i><b>6.1</b> Definition</a></li>
-<li class="chapter" data-level="6.2" data-path="fonctions.html"><a href="fonctions.html#declarer-une-fonction"><i class="fa fa-check"></i><b>6.2</b> Déclarer une fonction</a><ul>
+<li class="chapter" data-level="6.2" data-path="fonctions.html"><a href="fonctions.html#déclarer-une-fonction"><i class="fa fa-check"></i><b>6.2</b> Déclarer une fonction</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="fonctions.html"><a href="fonctions.html#appeler-une-fonction"><i class="fa fa-check"></i><b>6.2.1</b> Appeler une fonction</a></li>
 <li class="chapter" data-level="6.2.2" data-path="fonctions.html"><a href="fonctions.html#fonction-sans-argument"><i class="fa fa-check"></i><b>6.2.2</b> Fonction sans argument</a></li>
 <li class="chapter" data-level="6.2.3" data-path="fonctions.html"><a href="fonctions.html#fonction-anonyme"><i class="fa fa-check"></i><b>6.2.3</b> Fonction anonyme</a></li>
 <li class="chapter" data-level="6.2.4" data-path="fonctions.html"><a href="fonctions.html#return"><i class="fa fa-check"></i><b>6.2.4</b> Return</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="fonctions.html"><a href="fonctions.html#informations"><i class="fa fa-check"></i><b>6.3</b> Informations</a></li>
-<li class="chapter" data-level="6.4" data-path="fonctions.html"><a href="fonctions.html#portee-function-scope"><i class="fa fa-check"></i><b>6.4</b> Portée (function scope)</a></li>
+<li class="chapter" data-level="6.4" data-path="fonctions.html"><a href="fonctions.html#portée-function-scope"><i class="fa fa-check"></i><b>6.4</b> Portée (function scope)</a></li>
 <li class="chapter" data-level="6.5" data-path="fonctions.html"><a href="fonctions.html#conseils"><i class="fa fa-check"></i><b>6.5</b> Conseils</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements</a></li>
+<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements and scoping</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="environnement.html"><a href="environnement.html#environments"><i class="fa fa-check"></i><b>7.1</b> Environments</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="environnement.html"><a href="environnement.html#environments-in-functions"><i class="fa fa-check"></i><b>7.1.1</b> Environments in functions</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>8</b> Travailler avec des dates</a></li>
 <li class="chapter" data-level="9" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>9</b> Travailler avec des chaînes de charactère</a></li>
 <li class="chapter" data-level="10" data-path="datascience1.html"><a href="datascience1.html"><i class="fa fa-check"></i><b>10</b> Science des données: importer, manipuler des données</a></li>
@@ -214,172 +236,172 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="control_flow" class="section level1">
+<div id="control_flow" class="section level1" number="5">
 <h1><span class="header-section-number">Chapitre 5</span> Structure de contrôle</h1>
 <p>Comme tout language de programmation, R dispose de strcutures de contrôle du flux. Il s’agit principalement des boucles <code>for</code> et <code>while</code>, et des conditions de type <code>if</code> ou <code>switch</code>.</p>
-<div id="logical-operators" class="section level2">
+<div id="logical-operators" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Logical operators</h2>
 <p>Les opérateurs logiques permettent de tester des conditions. Il en existe de nombreux, et les principaux sont:</p>
 <ul>
 <li><p><code>&amp;</code> et <code>&amp;&amp;</code>: <code>condition1 &amp; condition2</code> teste si les deux conditions sont vraies. <code>&amp;</code> teste les deux conditions à chaque fois, alors que <code>&amp;&amp;</code> teste d’abord la première, puis la seconde si la première est <strong>vraie</strong>. Cela permet de mettre des conditions qui pourraient ne pas avoir à être testées si la première condition est déjà fausse, et de gagner du temps. Exemple:</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" title="1">a=<span class="st"> </span><span class="ot">TRUE</span> ; b=<span class="st"> </span><span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb209-2" title="2">a<span class="op">&amp;</span>b</a></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="control-flow.html#cb209-1"></a>a=<span class="st"> </span><span class="ot">TRUE</span> ; b=<span class="st"> </span><span class="ot">FALSE</span></span>
+<span id="cb209-2"><a href="control-flow.html#cb209-2"></a>a<span class="op">&amp;</span>b</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" title="1">b<span class="op">&amp;&amp;</span>(<span class="dt">b=</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="control-flow.html#cb211-1"></a>b<span class="op">&amp;&amp;</span>(<span class="dt">b=</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Ici seulement la partie de gauche es executée (b), donc b=2 n’est pas exécutée, b est toujours égal à FALSE.
 Dans la deuxième expression (<code>b&amp;&amp;(b= 2)</code>), b vaut <code>FALSE</code> donc <code>b=2</code> n’est pas exécuté, donc b reste égal à FALSE:</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" title="1">b</a></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="control-flow.html#cb213-1"></a>b</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre></li>
 <li><p><code>|</code> et <code>||</code>: <code>condition1 | condition2</code> teste si l’une ou l’autre des deux conditions est vraie. <code>|</code> teste les deux conditions à chaque fois, alors que <code>||</code> teste d’abord la première, puis la seconde si la première est <strong>fausse</strong>. Exemple:</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" title="1">a=<span class="st"> </span><span class="ot">TRUE</span> ; b=<span class="st"> </span><span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb215-2" title="2">a<span class="op">|</span>b</a></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="control-flow.html#cb215-1"></a>a=<span class="st"> </span><span class="ot">TRUE</span> ; b=<span class="st"> </span><span class="ot">FALSE</span></span>
+<span id="cb215-2"><a href="control-flow.html#cb215-2"></a>a<span class="op">|</span>b</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" title="1">a<span class="op">||</span>(<span class="dt">b=</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="control-flow.html#cb217-1"></a>a<span class="op">||</span>(<span class="dt">b=</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Dans la deuxième expression (<code>a||(b= 2)</code>), a vaut <code>TRUE</code> donc <code>b=2</code> n’est pas exécuté, donc b reste égal à FALSE:</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" title="1">b</a></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="control-flow.html#cb219-1"></a>b</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre></li>
 <li><p><code>==</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>: tests d’égalité (noteza bien le double <code>=</code>), d’infériorité ou de supériorité inclusive ou exclusive. Exemple:</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" title="1">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb221-2" title="2">a<span class="op">==</span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="control-flow.html#cb221-1"></a>a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb221-2"><a href="control-flow.html#cb221-2"></a>a<span class="op">==</span><span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" title="1">a<span class="op">&lt;=</span><span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="control-flow.html#cb223-1"></a>a<span class="op">&lt;=</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] TRUE TRUE</code></pre></li>
 <li><p><code>%in%</code> et <code>match()</code>: teste si une valeur est présente dans un vecteur. Exemple:</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" title="1">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb225-2" title="2">a<span class="op">%in%</span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="control-flow.html#cb225-1"></a>a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb225-2"><a href="control-flow.html#cb225-2"></a>a<span class="op">%in%</span><span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE</code></pre></li>
 <li><p><code>all()</code>: teste si toutes les valeurs d’un vecteur sont vraies. Exemple:</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" title="1">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb227-2" title="2"><span class="kw">any</span>(a<span class="op">==</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="control-flow.html#cb227-1"></a>a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb227-2"><a href="control-flow.html#cb227-2"></a><span class="kw">any</span>(a<span class="op">==</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre></li>
 <li><p><code>any()</code>: teste si au moins une valeur d’un vecteur est vraie. Exemple:</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" title="1">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb229-2" title="2"><span class="kw">any</span>(a<span class="op">==</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="control-flow.html#cb229-1"></a>a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb229-2"><a href="control-flow.html#cb229-2"></a><span class="kw">any</span>(a<span class="op">==</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre></li>
 <li><p><code>!</code>: teste si une valeur est fausse (sert aussi à inverser un test). Exemple:</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" title="1"><span class="op">!</span><span class="ot">FALSE</span></a></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="control-flow.html#cb231-1"></a><span class="op">!</span><span class="ot">FALSE</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>ou encore:</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" title="1">a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb233-2" title="2">a<span class="op">!=</span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="control-flow.html#cb233-1"></a>a=<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb233-2"><a href="control-flow.html#cb233-2"></a>a<span class="op">!=</span><span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE</code></pre></li>
 </ul>
 </div>
-<div id="boucles" class="section level2">
+<div id="boucles" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Boucles</h2>
-<div id="boucle-for" class="section level3">
+<div id="boucle-for" class="section level3" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> Boucle <code>for</code></h3>
 <p>Une boucle <code>for</code> permet d’exécuter une partie de code de façon répétée une nombre de fois donné. Elle présente une structure particulière comme suit:</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" title="1"><span class="cf">for</span>(variable <span class="cf">in</span> vector){</a>
-<a class="sourceLine" id="cb235-2" title="2">  ...</a>
-<a class="sourceLine" id="cb235-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="control-flow.html#cb235-1"></a><span class="cf">for</span>(variable <span class="cf">in</span> vector){</span>
+<span id="cb235-2"><a href="control-flow.html#cb235-2"></a>  ...</span>
+<span id="cb235-3"><a href="control-flow.html#cb235-3"></a>}</span></code></pre></div>
 <p>On note d’abord le code <code>for(variable in vector)</code>. Le <code>for</code> sert à déclarer le début de la boucle, et <code>(variable in vector)</code> permet de donner le nombre de fois que la boucle sera répétée, ainsi que la valeur de <code>variable</code> à chaque pas de temps. Le <code>...</code> représente la séquence de code à exécuter.</p>
 <p>Voici un exemple pour mieux comprendre:</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){</a>
-<a class="sourceLine" id="cb236-2" title="2">  <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb236-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="control-flow.html#cb236-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){</span>
+<span id="cb236-2"><a href="control-flow.html#cb236-2"></a>  <span class="kw">print</span>(i)</span>
+<span id="cb236-3"><a href="control-flow.html#cb236-3"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3</code></pre>
 <p>On peut lire cette boucle <code>for</code> comme suit: pour tous les i dans la séquence de 1 à 3 (<code>for(i in 1:3)</code>), écrit i (<code>print(i)</code>) . On peut donc logiquement voir que la fonction a successivement écrit 1, puis 2 puis 3.
 On peut aussi faire des calculs simples:</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" title="1">a=<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb238-2" title="2"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){</a>
-<a class="sourceLine" id="cb238-3" title="3">  a=<span class="st"> </span>a <span class="op">+</span><span class="st"> </span>i</a>
-<a class="sourceLine" id="cb238-4" title="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="control-flow.html#cb238-1"></a>a=<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb238-2"><a href="control-flow.html#cb238-2"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){</span>
+<span id="cb238-3"><a href="control-flow.html#cb238-3"></a>  a=<span class="st"> </span>a <span class="op">+</span><span class="st"> </span>i</span>
+<span id="cb238-4"><a href="control-flow.html#cb238-4"></a>}</span></code></pre></div>
 <p>Ici, on crée un objet <code>a</code> avec pour valeur 0, puis on lui ajoute cumulativement 1 puis 2 puis 3. Cela revient à faire <code>a= 1 + 2 + 3</code>.</p>
 <p>Les boucles <code>for</code> sont très utilisées en informatique car elles permettent de répéter des séquences de codes en ne les écrivant qu’une seule fois. Cependant il est préférable d’utiliser d’autres techniques lorsqu’on le peut dans R car celles-ci sont très lentes. On peut par exemple utiliser la famille des <code>apply</code>, ou la vecorisation.</p>
 </div>
-<div id="boucle-while" class="section level3">
+<div id="boucle-while" class="section level3" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> Boucle while</h3>
 <p>Une boucle <code>while</code> exécute une portion de code tant qu’une condition reste vraie. En voici la construction:</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" title="1"><span class="cf">while</span>(condition){</a>
-<a class="sourceLine" id="cb239-2" title="2">  ...</a>
-<a class="sourceLine" id="cb239-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="control-flow.html#cb239-1"></a><span class="cf">while</span>(condition){</span>
+<span id="cb239-2"><a href="control-flow.html#cb239-2"></a>  ...</span>
+<span id="cb239-3"><a href="control-flow.html#cb239-3"></a>}</span></code></pre></div>
 <p>Tant que <code>condition==TRUE</code>, alors <code>while</code> va itérer l’exécution de <code>...</code>. Voici un exemple qui écrit incrémente et écrit la valeur de <code>a</code> à chaque itération jusqu’à ce que <code>a</code> vaille 3.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" title="1">a=<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb240-2" title="2"><span class="cf">while</span>(a<span class="op">&lt;</span><span class="dv">3</span>){</a>
-<a class="sourceLine" id="cb240-3" title="3">  a=<span class="st"> </span>a<span class="op">+</span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb240-4" title="4">  <span class="kw">print</span>(a)</a>
-<a class="sourceLine" id="cb240-5" title="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="control-flow.html#cb240-1"></a>a=<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb240-2"><a href="control-flow.html#cb240-2"></a><span class="cf">while</span>(a<span class="op">&lt;</span><span class="dv">3</span>){</span>
+<span id="cb240-3"><a href="control-flow.html#cb240-3"></a>  a=<span class="st"> </span>a<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb240-4"><a href="control-flow.html#cb240-4"></a>  <span class="kw">print</span>(a)</span>
+<span id="cb240-5"><a href="control-flow.html#cb240-5"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3</code></pre>
 <p>Notez bien que la condition est exécutée au début et non à la fin de la portion de code. D’où la conditon <code>a&lt;3</code> car la boucle ira jusqu’à <code>a==3</code>, puis s’arrêtera.</p>
 </div>
 </div>
-<div id="conditions" class="section level2">
+<div id="conditions" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Conditions</h2>
 <p>Il est possible de n’exécuter une séquence de code que lorsqu’une condition est vraie (ou fausse). Pour se faire il existe plusieurs fonctions dans R.</p>
 <p>La plus basique est le <code>if</code>. Il se construit comme suit:</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" title="1"><span class="cf">if</span>(condition){</a>
-<a class="sourceLine" id="cb242-2" title="2">  ...</a>
-<a class="sourceLine" id="cb242-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="control-flow.html#cb242-1"></a><span class="cf">if</span>(condition){</span>
+<span id="cb242-2"><a href="control-flow.html#cb242-2"></a>  ...</span>
+<span id="cb242-3"><a href="control-flow.html#cb242-3"></a>}</span></code></pre></div>
 <p><code>...</code> représente la séquence de code à exécuter. Cette séquence n’est exécutée que si <code>condition</code> est vraie.
 On peut aussi exécuter une autre séquence en ajoutant un <code>else</code> :</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" title="1"><span class="cf">if</span>(condition){</a>
-<a class="sourceLine" id="cb243-2" title="2">  <span class="co"># 1e séquence de code</span></a>
-<a class="sourceLine" id="cb243-3" title="3">}<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb243-4" title="4">  <span class="co"># 2e séquence de code</span></a>
-<a class="sourceLine" id="cb243-5" title="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="control-flow.html#cb243-1"></a><span class="cf">if</span>(condition){</span>
+<span id="cb243-2"><a href="control-flow.html#cb243-2"></a>  <span class="co"># 1e séquence de code</span></span>
+<span id="cb243-3"><a href="control-flow.html#cb243-3"></a>}<span class="cf">else</span>{</span>
+<span id="cb243-4"><a href="control-flow.html#cb243-4"></a>  <span class="co"># 2e séquence de code</span></span>
+<span id="cb243-5"><a href="control-flow.html#cb243-5"></a>}</span></code></pre></div>
 <p>Ici, la 1e séquence de code s’exécute si <code>condition</code> est vraie, et la 2e s’exécute si elle est fausse.</p>
 <p>On peu corser la chose en utilisant des <code>if else</code> comme suit:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" title="1"><span class="cf">if</span>(condition1){</a>
-<a class="sourceLine" id="cb244-2" title="2">  <span class="co"># 1e séquence de code</span></a>
-<a class="sourceLine" id="cb244-3" title="3">}<span class="cf">else</span> <span class="cf">if</span>(condition2){</a>
-<a class="sourceLine" id="cb244-4" title="4">  <span class="co"># 2e séquence de code</span></a>
-<a class="sourceLine" id="cb244-5" title="5">}<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb244-6" title="6">  <span class="co"># 3e séquence de code</span></a>
-<a class="sourceLine" id="cb244-7" title="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="control-flow.html#cb244-1"></a><span class="cf">if</span>(condition1){</span>
+<span id="cb244-2"><a href="control-flow.html#cb244-2"></a>  <span class="co"># 1e séquence de code</span></span>
+<span id="cb244-3"><a href="control-flow.html#cb244-3"></a>}<span class="cf">else</span> <span class="cf">if</span>(condition2){</span>
+<span id="cb244-4"><a href="control-flow.html#cb244-4"></a>  <span class="co"># 2e séquence de code</span></span>
+<span id="cb244-5"><a href="control-flow.html#cb244-5"></a>}<span class="cf">else</span>{</span>
+<span id="cb244-6"><a href="control-flow.html#cb244-6"></a>  <span class="co"># 3e séquence de code</span></span>
+<span id="cb244-7"><a href="control-flow.html#cb244-7"></a>}</span></code></pre></div>
 <p>Dans ce cas on teste d’abord si <code>condition1</code> est vrai. Si oui, on exécute la 1e séquence de code, sinon on teste <code>condition2</code>. Si elle est vraie on exécute la 2e séquence de code, et si elle est fausse, on exécute la 3e séquence de code.</p>
 <p>Voici un exemple plus concret:</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" title="1">Nom=<span class="st"> &quot;Louis&quot;</span></a>
-<a class="sourceLine" id="cb245-2" title="2"></a>
-<a class="sourceLine" id="cb245-3" title="3"><span class="cf">if</span>(Nom <span class="op">==</span><span class="st"> &quot;Jacques&quot;</span>){</a>
-<a class="sourceLine" id="cb245-4" title="4">  <span class="kw">print</span>(<span class="st">&quot;Bonjour Jacques !&quot;</span>)</a>
-<a class="sourceLine" id="cb245-5" title="5">}<span class="cf">else</span> <span class="cf">if</span>(Nom<span class="op">==</span><span class="st">&quot;Louis&quot;</span>){</a>
-<a class="sourceLine" id="cb245-6" title="6">  <span class="kw">print</span>(<span class="st">&quot;Bonsoir Louis!&quot;</span>)</a>
-<a class="sourceLine" id="cb245-7" title="7">}<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb245-8" title="8">  <span class="kw">print</span>(<span class="st">&quot;Bonsoir monsieur!&quot;</span>)</a>
-<a class="sourceLine" id="cb245-9" title="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="control-flow.html#cb245-1"></a>Nom=<span class="st"> &quot;Louis&quot;</span></span>
+<span id="cb245-2"><a href="control-flow.html#cb245-2"></a></span>
+<span id="cb245-3"><a href="control-flow.html#cb245-3"></a><span class="cf">if</span>(Nom <span class="op">==</span><span class="st"> &quot;Jacques&quot;</span>){</span>
+<span id="cb245-4"><a href="control-flow.html#cb245-4"></a>  <span class="kw">print</span>(<span class="st">&quot;Bonjour Jacques !&quot;</span>)</span>
+<span id="cb245-5"><a href="control-flow.html#cb245-5"></a>}<span class="cf">else</span> <span class="cf">if</span>(Nom<span class="op">==</span><span class="st">&quot;Louis&quot;</span>){</span>
+<span id="cb245-6"><a href="control-flow.html#cb245-6"></a>  <span class="kw">print</span>(<span class="st">&quot;Bonsoir Louis!&quot;</span>)</span>
+<span id="cb245-7"><a href="control-flow.html#cb245-7"></a>}<span class="cf">else</span>{</span>
+<span id="cb245-8"><a href="control-flow.html#cb245-8"></a>  <span class="kw">print</span>(<span class="st">&quot;Bonsoir monsieur!&quot;</span>)</span>
+<span id="cb245-9"><a href="control-flow.html#cb245-9"></a>}</span></code></pre></div>
 <p>On peut ajouter autant de <code>else if</code> que l’on veut, mais il faut garder en tête que cette construction devient rapidement illisible et difficile à tester.</p>
 <p>Pour garder une bonne lisibilité, on peut utiliser le <code>switch</code>:</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" title="1"><span class="cf">switch</span>(object,</a>
-<a class="sourceLine" id="cb246-2" title="2">  <span class="dt">case =</span> action</a>
-<a class="sourceLine" id="cb246-3" title="3">)</a></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="control-flow.html#cb246-1"></a><span class="cf">switch</span>(object,</span>
+<span id="cb246-2"><a href="control-flow.html#cb246-2"></a>  <span class="dt">case =</span> action</span>
+<span id="cb246-3"><a href="control-flow.html#cb246-3"></a>)</span></code></pre></div>
 <p>Il s’agit d’une fonction dont le premier argument est l’objet à tester (<code>object</code>), et les arguments suivants contiennent les cas à tester (<code>case</code>) et la valeur à retourner si on est dans ce cas. Donc lorsque <code>case==object</code>, alors on exécute l’<code>action</code> qui suit. Reprenons notre exemple précédent:</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" title="1">Nom=<span class="st"> &quot;Pierre&quot;</span></a>
-<a class="sourceLine" id="cb247-2" title="2"></a>
-<a class="sourceLine" id="cb247-3" title="3"><span class="cf">switch</span>(Nom,</a>
-<a class="sourceLine" id="cb247-4" title="4">  <span class="st">&quot;Jacques&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="st">&quot;Bonjour Jacques&quot;</span>),</a>
-<a class="sourceLine" id="cb247-5" title="5">  <span class="st">&quot;Pierre&quot;</span>  =<span class="st"> </span><span class="kw">print</span>(<span class="st">&quot;Bonjour Pierre&quot;</span>),</a>
-<a class="sourceLine" id="cb247-6" title="6">  <span class="st">&quot;Louis&quot;</span>   =<span class="st"> </span><span class="kw">print</span>(<span class="st">&quot;Bonjour Louis&quot;</span>)</a>
-<a class="sourceLine" id="cb247-7" title="7">)</a></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="control-flow.html#cb247-1"></a>Nom=<span class="st"> &quot;Pierre&quot;</span></span>
+<span id="cb247-2"><a href="control-flow.html#cb247-2"></a></span>
+<span id="cb247-3"><a href="control-flow.html#cb247-3"></a><span class="cf">switch</span>(Nom,</span>
+<span id="cb247-4"><a href="control-flow.html#cb247-4"></a>  <span class="st">&quot;Jacques&quot;</span> =<span class="st"> </span><span class="kw">print</span>(<span class="st">&quot;Bonjour Jacques&quot;</span>),</span>
+<span id="cb247-5"><a href="control-flow.html#cb247-5"></a>  <span class="st">&quot;Pierre&quot;</span>  =<span class="st"> </span><span class="kw">print</span>(<span class="st">&quot;Bonjour Pierre&quot;</span>),</span>
+<span id="cb247-6"><a href="control-flow.html#cb247-6"></a>  <span class="st">&quot;Louis&quot;</span>   =<span class="st"> </span><span class="kw">print</span>(<span class="st">&quot;Bonjour Louis&quot;</span>)</span>
+<span id="cb247-7"><a href="control-flow.html#cb247-7"></a>)</span></code></pre></div>
 <pre><code>## [1] &quot;Bonjour Pierre&quot;</code></pre>
 </div>
-<div id="fonctions-utiles" class="section level2">
+<div id="fonctions-utiles" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Fonctions utiles</h2>
 <p>Voici quelques petites fonctions utiles pour controler le flux d’exécution:</p>
 <ul>
 <li><p><code>break</code>: permet de sortir d’une boucle, e.g.:</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>){</a>
-<a class="sourceLine" id="cb249-2" title="2">  <span class="cf">if</span>(i<span class="op">&gt;</span><span class="dv">2</span>){</a>
-<a class="sourceLine" id="cb249-3" title="3">    <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb249-4" title="4">  }<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb249-5" title="5">    <span class="cf">break</span></a>
-<a class="sourceLine" id="cb249-6" title="6">  }</a>
-<a class="sourceLine" id="cb249-7" title="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="control-flow.html#cb249-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>){</span>
+<span id="cb249-2"><a href="control-flow.html#cb249-2"></a>  <span class="cf">if</span>(i<span class="op">&gt;</span><span class="dv">2</span>){</span>
+<span id="cb249-3"><a href="control-flow.html#cb249-3"></a>    <span class="kw">print</span>(i)</span>
+<span id="cb249-4"><a href="control-flow.html#cb249-4"></a>  }<span class="cf">else</span>{</span>
+<span id="cb249-5"><a href="control-flow.html#cb249-5"></a>    <span class="cf">break</span></span>
+<span id="cb249-6"><a href="control-flow.html#cb249-6"></a>  }</span>
+<span id="cb249-7"><a href="control-flow.html#cb249-7"></a>}</span></code></pre></div>
 <p>Ici on exécute la boucle <code>for</code> de 1 à 100, mais lorsque i est supérieur à 2, alors on termine la boucle. Cela revient à déclarer une boucle <code>for(i in 1:2)</code> dans ce cas.</p></li>
 <li><p><code>next</code>: permet de passer à l’itération suivante de la boucle, e.g.:</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){</a>
-<a class="sourceLine" id="cb250-2" title="2">  <span class="cf">if</span>(i<span class="op">==</span><span class="dv">2</span>){</a>
-<a class="sourceLine" id="cb250-3" title="3">    <span class="cf">next</span></a>
-<a class="sourceLine" id="cb250-4" title="4">  }<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb250-5" title="5">    <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb250-6" title="6">  }</a>
-<a class="sourceLine" id="cb250-7" title="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="control-flow.html#cb250-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){</span>
+<span id="cb250-2"><a href="control-flow.html#cb250-2"></a>  <span class="cf">if</span>(i<span class="op">==</span><span class="dv">2</span>){</span>
+<span id="cb250-3"><a href="control-flow.html#cb250-3"></a>    <span class="cf">next</span></span>
+<span id="cb250-4"><a href="control-flow.html#cb250-4"></a>  }<span class="cf">else</span>{</span>
+<span id="cb250-5"><a href="control-flow.html#cb250-5"></a>    <span class="kw">print</span>(i)</span>
+<span id="cb250-6"><a href="control-flow.html#cb250-6"></a>  }</span>
+<span id="cb250-7"><a href="control-flow.html#cb250-7"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 3</code></pre>
 <p>Ici on exécute la boucle <code>for</code> de 1 à 3, mais lorsque i est égal à 2, alors on passe directement à <code>i= 3</code> sans exécuter le <code>print</code>.</p></li>
@@ -398,11 +420,13 @@ On peut aussi exécuter une autre séquence en ajoutant un <code>else</code> :</
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -410,12 +434,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -427,6 +450,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
