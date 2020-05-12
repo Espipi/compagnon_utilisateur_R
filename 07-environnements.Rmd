@@ -4,7 +4,7 @@ output:
   html_document: default
 ---
 
-# Environnements and scoping{#environnement}  
+# Environnements et scoping{#environnement}  
 
 ## Environments
 
@@ -16,7 +16,7 @@ R fonctionne avec des environnements. Un environnement peut être pensé comme u
 
 Dès que l'on ouvre R, un nouvel environnement est créé. Il s'agit de l'environnement global, qui est le plus haut environnement de tous (on va y revenir).
 
-Dans les faits, un environnent n'est rien d'autre qu'une liste (voir chapitre \@ref(Structures) pour plus de détails) dans laquelle on enregistre des objets. Lorsque l'on ouvre R et que l'on créé un objet, il est ajouté à l'environnement global. 
+Dans les faits, un environnent n'est rien d'autre qu'une liste avec quelques super-pouvoirs (voir chapitre \@ref(Structures) pour plus de détails) dans laquelle on enregistre des objets. Lorsque l'on ouvre R et que l'on créé un objet, il est ajouté à l'environnement global. 
 
 Au début il n'y a rien dans l'environnement (à moins que vous ayez enregistré votre environnement précédent). Pour vérifier ce qu'il y a dans un environnement, on peut utiliser la fonction `ls()`: 
 
