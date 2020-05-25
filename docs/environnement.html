@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapitre 7 Environnements and scoping | Le compagnon de l’utilisateur R</title>
+  <title>Chapitre 7 Environnements et portée (scoping) | Le compagnon de l’utilisateur R</title>
   <meta name="description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapitre 7 Environnements and scoping | Le compagnon de l’utilisateur R" />
+  <meta property="og:title" content="Chapitre 7 Environnements et portée (scoping) | Le compagnon de l’utilisateur R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="VEZY/compagnon_utilisateur_R" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapitre 7 Environnements and scoping | Le compagnon de l’utilisateur R" />
+  <meta name="twitter:title" content="Chapitre 7 Environnements et portée (scoping) | Le compagnon de l’utilisateur R" />
   
   <meta name="twitter:description" content="Ce livre à pour objectif d’enseigner le language R et son environmenent en très peu de temps." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Vezy Rémi" />
 
 
-<meta name="date" content="2020-05-10" />
+<meta name="date" content="2020-05-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -203,12 +203,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="fonctions.html"><a href="fonctions.html#portée-function-scope"><i class="fa fa-check"></i><b>6.4</b> Portée (function scope)</a></li>
 <li class="chapter" data-level="6.5" data-path="fonctions.html"><a href="fonctions.html#conseils"><i class="fa fa-check"></i><b>6.5</b> Conseils</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements and scoping</a>
+<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements et portée (scoping)</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="environnement.html"><a href="environnement.html#environments"><i class="fa fa-check"></i><b>7.1</b> Environments</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="environnement.html"><a href="environnement.html#environments-in-functions"><i class="fa fa-check"></i><b>7.1.1</b> Environments in functions</a></li>
-</ul></li>
+<li class="chapter" data-level="7.1" data-path="environnement.html"><a href="environnement.html#introduction-aux-environnements"><i class="fa fa-check"></i><b>7.1</b> Introduction aux environnements</a></li>
+<li class="chapter" data-level="7.2" data-path="environnement.html"><a href="environnement.html#utiliser-les-environnements"><i class="fa fa-check"></i><b>7.2</b> Utiliser les environnements</a></li>
+<li class="chapter" data-level="7.3" data-path="environnement.html"><a href="environnement.html#environnements-et-fonctions"><i class="fa fa-check"></i><b>7.3</b> Environnements et fonctions</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>8</b> Travailler avec des dates</a></li>
 <li class="chapter" data-level="9" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>9</b> Travailler avec des chaînes de charactère</a></li>
@@ -237,80 +236,85 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="environnement" class="section level1" number="7">
-<h1><span class="header-section-number">Chapitre 7</span> Environnements and scoping</h1>
-<div id="environments" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Environments</h2>
+<h1><span class="header-section-number">Chapitre 7</span> Environnements et portée (scoping)</h1>
+<div id="introduction-aux-environnements" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Introduction aux environnements</h2>
 <p>R fonctionne avec des environnements. Un environnement peut être pensé comme un espace dans lequel on stocke nos objets (une variable, une fonction…).</p>
 <p>Dès que l’on ouvre R, un nouvel environnement est créé. Il s’agit de l’environnement global, qui est le plus haut environnement de tous (on va y revenir).</p>
-<p>Dans les faits, un environnent n’est rien d’autre qu’une liste (voir chapitre <a href="Structures.html#Structures">4</a> pour plus de détails) dans laquelle on enregistre des objets. Lorsque l’on ouvre R et que l’on créé un objet, il est ajouté à l’environnement global.</p>
+<p>Dans les faits, un environnent n’est rien d’autre qu’une liste avec quelques super-pouvoirs (voir chapitre <a href="Structures.html#Structures">4</a> pour plus de détails) dans laquelle on enregistre des objets. Lorsque l’on ouvre R et que l’on créé un objet, il est ajouté à l’environnement global.</p>
+</div>
+<div id="utiliser-les-environnements" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Utiliser les environnements</h2>
 <p>Au début il n’y a rien dans l’environnement (à moins que vous ayez enregistré votre environnement précédent). Pour vérifier ce qu’il y a dans un environnement, on peut utiliser la fonction <code>ls()</code>:</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="environnement.html#cb290-1"></a><span class="kw">ls</span>() <span class="co"># ls cherche dans l&#39;environement global par défaut</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="environnement.html#cb1-1"></a><span class="kw">ls</span>() <span class="co"># ls cherche dans l&#39;environement global par défaut</span></span></code></pre></div>
 <pre><code>## character(0)</code></pre>
 <p>Mais si l’on créé un objet dans R, alors il s’ajoute à l’environnement global:</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="environnement.html#cb292-1"></a>a=<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb292-2"><a href="environnement.html#cb292-2"></a><span class="kw">ls</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="environnement.html#cb3-1"></a>a=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb3-2"><a href="environnement.html#cb3-2"></a><span class="kw">ls</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;a&quot;</code></pre>
 <p>On peut accéder à la valeur de <code>a</code> en utilisant l’environnement global comme une liste:</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="environnement.html#cb294-1"></a><span class="kw">globalenv</span>()<span class="op">$</span>a</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="environnement.html#cb5-1"></a><span class="kw">globalenv</span>()<span class="op">$</span>a</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>Mais aussi simplement en utilisant son nom comme habituellement:</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="environnement.html#cb296-1"></a>a</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="environnement.html#cb7-1"></a>a</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>R est un langage avec des environnements de “première classe” (first-class environments), ce qui signifie que l’on peut créer des environnements, mais aussi les modifier.</p>
 <p>On peut créer un nouvel environnement comme ceci:</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="environnement.html#cb298-1"></a>b=<span class="st"> </span><span class="kw">new.env</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="environnement.html#cb9-1"></a>b=<span class="st"> </span><span class="kw">new.env</span>()</span></code></pre></div>
 <p>Pour l’instant il est vide:</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="environnement.html#cb299-1"></a><span class="kw">ls</span>(b)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="environnement.html#cb10-1"></a><span class="kw">ls</span>(b)</span></code></pre></div>
 <pre><code>## character(0)</code></pre>
 <p>Mais comme plus haut, on peut y ajouter des objets, comme on le ferait avec une liste:</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="environnement.html#cb301-1"></a>b<span class="op">$</span>a=<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb301-2"><a href="environnement.html#cb301-2"></a></span>
-<span id="cb301-3"><a href="environnement.html#cb301-3"></a><span class="kw">ls</span>(a)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="environnement.html#cb12-1"></a>b<span class="op">$</span>a=<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb12-2"><a href="environnement.html#cb12-2"></a></span>
+<span id="cb12-3"><a href="environnement.html#cb12-3"></a><span class="kw">ls</span>(a)</span></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot;</code></pre>
 <blockquote>
 <p>On peut aussi ajouter des objets avec la fonction <code>assign</code>, comme ceci:</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="environnement.html#cb303-1"></a>   <span class="kw">assign</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">2</span>, <span class="dt">envir=</span>b)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="environnement.html#cb14-1"></a>   <span class="kw">assign</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">2</span>, <span class="dt">envir=</span>b)</span></code></pre></div>
 </blockquote>
-<div id="environments-in-functions" class="section level3" number="7.1.1">
-<h3><span class="header-section-number">7.1.1</span> Environments in functions</h3>
+</div>
+<div id="environnements-et-fonctions" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Environnements et fonctions</h2>
 <p>Le code R d’une fonction est exécuté dans un environnement propre à la fonction. Donc un environnement est créé à chaque fois que l’on appelle une fonction. Cette méthode sert à isoler l’environnement de l’utilisateur avec celui de la fonction (mais pas complètement). Cela permet d’éviter de créer de nouveaux objets dans l’environnement de l’utilisateur dès que l’on appelle une fonction, et normalement aussi d’éviter de modifier la valeur d’un objet créé par un utilisateur dans une fonction.</p>
 <p>Pour mieux comprendre, créons une fonction qui créé un objet appellé “a”, et qui lui assigne la valeur 10:</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="environnement.html#cb304-1"></a>assign_a=<span class="st"> </span><span class="cf">function</span>(){</span>
-<span id="cb304-2"><a href="environnement.html#cb304-2"></a>  a=<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb304-3"><a href="environnement.html#cb304-3"></a>  </span>
-<span id="cb304-4"><a href="environnement.html#cb304-4"></a>  <span class="kw">return</span>(a)</span>
-<span id="cb304-5"><a href="environnement.html#cb304-5"></a>}</span></code></pre></div>
-<p>Mais nous avons déjà un objet “a” dans notre environnement global! Comment est-ce que R va se débrouiller ? Va-t-il modifier la valeur de notre “a” à 10 dès que la fonction sera appelée ? Essayons:</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="environnement.html#cb305-1"></a><span class="kw">assign_a</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="environnement.html#cb15-1"></a>assign_a=<span class="st"> </span><span class="cf">function</span>(){</span>
+<span id="cb15-2"><a href="environnement.html#cb15-2"></a>  a=<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb15-3"><a href="environnement.html#cb15-3"></a>  </span>
+<span id="cb15-4"><a href="environnement.html#cb15-4"></a>  <span class="kw">return</span>(a)</span>
+<span id="cb15-5"><a href="environnement.html#cb15-5"></a>}</span></code></pre></div>
+<p>Mais nous avons déjà un objet “a” dans notre environnement global ! Comment est-ce que R va se débrouiller ? Va-t-il modifier la valeur de notre “a” à 10 dès que la fonction sera appelée ? Essayons:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="environnement.html#cb16-1"></a><span class="kw">assign_a</span>()</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<p>Ok, la fonction retourne <code>10</code>, la valeur de “a”, dans cette fonction. Et qu’en est-il de notre “a” qui est dans l’environnement global?</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="environnement.html#cb307-1"></a>a</span></code></pre></div>
+<p>Ok, la fonction retourne <code>10</code>, ce qui est bien la valeur de “a” dans cette fonction. Et qu’en est-il de notre “a” qui est dans l’environnement global ?</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="environnement.html#cb18-1"></a>a</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<p>Il est toujours égal à <code>1</code>! Donc la fonction ne l’a pas modifié! Pourtant elle a bien créé un objet qui s’appelle aussi “a” ? Explications: comme la fonction créé son propre environnement lorsqu’elle est appelée, tous les objets créés au sein de cette fonction sont assignés à cet environnement, et pas à celui de l’utilisateur. Lorsque la fonction a fini son travail, elle supprime son environnement local, et ne retourne que des valeurs.</p>
+<p>Il est toujours égal à <code>1</code> ! Donc la fonction ne l’a pas modifié ! Pourtant elle a bien créé un objet qui s’appelle aussi “a” ?</p>
+<p><strong>Explications</strong>: comme la fonction crée son propre environnement lorsqu’elle est appelée, tous les objets créés au sein de cette fonction sont assignés à cet environnement, et pas à celui de l’utilisateur. Lorsque la fonction a fini son travail, elle retourne ce qu’elle doit retourner, puis supprime son environnement local.</p>
 <p>En suivant la même logique, si on défini un objet dans une fonction, il n’existera pas dans notre environnement:</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="environnement.html#cb309-1"></a>assign_test=<span class="st"> </span><span class="cf">function</span>(){</span>
-<span id="cb309-2"><a href="environnement.html#cb309-2"></a>  test=<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb309-3"><a href="environnement.html#cb309-3"></a>  </span>
-<span id="cb309-4"><a href="environnement.html#cb309-4"></a>  <span class="kw">return</span>(test)</span>
-<span id="cb309-5"><a href="environnement.html#cb309-5"></a>}</span>
-<span id="cb309-6"><a href="environnement.html#cb309-6"></a></span>
-<span id="cb309-7"><a href="environnement.html#cb309-7"></a><span class="kw">assign_test</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="environnement.html#cb20-1"></a>assign_test=<span class="st"> </span><span class="cf">function</span>(){</span>
+<span id="cb20-2"><a href="environnement.html#cb20-2"></a>  test=<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb20-3"><a href="environnement.html#cb20-3"></a>  </span>
+<span id="cb20-4"><a href="environnement.html#cb20-4"></a>  <span class="kw">return</span>(test)</span>
+<span id="cb20-5"><a href="environnement.html#cb20-5"></a>}</span>
+<span id="cb20-6"><a href="environnement.html#cb20-6"></a></span>
+<span id="cb20-7"><a href="environnement.html#cb20-7"></a><span class="kw">assign_test</span>()</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>La fonction <code>assign_test</code> retourne 10, mais test n’est pas disponible dans l’environnement global:</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="environnement.html#cb311-1"></a><span class="kw">ls</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="environnement.html#cb22-1"></a><span class="kw">ls</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;a&quot;           &quot;assign_a&quot;    &quot;assign_test&quot; &quot;b&quot;</code></pre>
-<p>OK, essayons quelque chose de plus compliqué: que se passe-t-il si l’on essaye d’utiliser l’objet “a” de l’environnement global dans une fonction, de le multiplier par <code>2</code>, et d’assigner se résultat à un objet “a” dans la fonction ? Voyons cela:</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="environnement.html#cb313-1"></a>multiplie_a=<span class="st"> </span><span class="cf">function</span>(){</span>
-<span id="cb313-2"><a href="environnement.html#cb313-2"></a>  a=<span class="st"> </span>a<span class="op">*</span><span class="dv">2</span></span>
-<span id="cb313-3"><a href="environnement.html#cb313-3"></a>  <span class="kw">return</span>(a)</span>
-<span id="cb313-4"><a href="environnement.html#cb313-4"></a>}</span>
-<span id="cb313-5"><a href="environnement.html#cb313-5"></a></span>
-<span id="cb313-6"><a href="environnement.html#cb313-6"></a><span class="kw">multiplie_a</span>()</span></code></pre></div>
+<p>OK, essayons quelque chose de plus compliqué: que se passe-t-il si l’on essaye d’utiliser l’objet “a” de l’environnement global dans une fonction, de le multiplier par <code>2</code>, et d’assigner ce résultat à un objet “a” dans la fonction ? Voyons cela:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="environnement.html#cb24-1"></a>multiplie_a=<span class="st"> </span><span class="cf">function</span>(){</span>
+<span id="cb24-2"><a href="environnement.html#cb24-2"></a>  a=<span class="st"> </span>a<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb24-3"><a href="environnement.html#cb24-3"></a>  <span class="kw">return</span>(a)</span>
+<span id="cb24-4"><a href="environnement.html#cb24-4"></a>}</span>
+<span id="cb24-5"><a href="environnement.html#cb24-5"></a></span>
+<span id="cb24-6"><a href="environnement.html#cb24-6"></a><span class="kw">multiplie_a</span>()</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<p>La fonction a résussi à trouver la valeur de “a” de l’environnement global! Puis elle l’a multiplié par deux, et nous retourne le résultat. Mais est-ce que le “a” de l’environnement global est-t-il modifié ?</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="environnement.html#cb315-1"></a>a</span></code></pre></div>
+<p>La fonction a résussi à trouver la valeur de “a” de l’environnement global ! Puis elle l’a multiplié par deux, et nous retourne le résultat. Mais est-ce que le “a” de l’environnement global est-t-il modifié ?</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="environnement.html#cb26-1"></a>a</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<p>Non. Magique ! Donc notre fonction est exécutée dans un environnement cloisonné, mais à quand même accès à l’environnement global si elle en a besoin. Mais comment est-ce que R sait quel “a” appeler ? Essayons d’en apprendre un peu plus en (re)lisant la définition officielle d’un environnement:</p>
+<p>Non. Magique ! Donc notre fonction est exécutée dans un environnement cloisonné, mais elle a quand même accès à l’environnement global si elle ne trouve pas une objet dans son propre environnement. Mais comment est-ce que R sait quel “a” appeler ? Essayons d’en apprendre un peu plus en (re)lisant la définition officielle d’un environnement:</p>
 <blockquote>
 <p>Les environnements peuvent être considérés comme étant composés de deux choses : un cadre, qui est un ensemble de paires symbole-valeur, et un “enclos” (enclosure en anglais), qui est un pointeur vers un environnement englobant. Lorsque R recherche la valeur d’un symbole, le cadre est examiné et si un symbole correspondant est trouvé, sa valeur sera renvoyée. Si ce n’est pas le cas, on accède alors à l’environnement englobant et le processus est répété. Les environnements forment une structure arborescente dans laquelle les enclos jouent le rôle de parents. L’arbre des environnements est enraciné dans un environnement vide, disponible via emptyenv(), qui n’a pas de parent.</p>
 </blockquote>
@@ -318,70 +322,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Bon, laissez moi reformuler en d’autres termes. Je vous parlais plus haut de l’environnement global. Cet environnement permet de stocker et lister des objets qui sont créés par l’utlisateur depuis R. Lorsque l’on a créé notre objet “a” de valeur <code>1</code> ci-dessus, R a ajouté cet objet dans l’environnement global. C’est ça le concept symbole-valeur: le symbole est le nom de l’objet, “a”, et sa valeur est <code>1</code>.</p>
 <p>On apprends ensuite que les environnements forment une structure arborescente. Ici les auteurs essayent de nous expliquer qu’un environnement peut lui-même être contenu dans un autre environnement “parent” (dit englobant). Et lorsque R cherche la valeur d’un symbole (e.g. “a”), il cherche d’abord dans l’environnement dans lequel il est, puis il remonte successivement les environnement (d’enfant à parent) jusqu’à trouver l’objet qu’il cherche. L’environnement le plus basique (qui n’a pas de parent) est l’environnement vide, que l’on peut voir grâce à la fonction <code>emptyenv()</code>. Juste au dessous de l’environnement vide se situe l’environnement des packages importés, par ordre d’import. Le package <code>base</code> est importé automatiquement par R, il est donc juste au dessous de l’environnement vide, et les autres arrivent après successivement. Après les environnements des packages viens l’environnement global, celui de l’utilisateur. Et enfin, ceux créés par l’utilisateur.</p>
 <p>Pour simplifier, on peut essayer de conceptualiser les environnements comme des boîtes. L’environnement vide serait une toute petite boîte dans laquelle on ne peut rien ranger. Cette petite boîte est elle-même rangée dans la boîte du package <code>base</code>, qui est lui-même rangé dans la boîte du premier package chargé, etc…. Une boîte a accès à tous les objets des boîtes plus petites qu’elle englobe.</p>
-<p>Une fonction appelée depuis l’environnement global crée une nouvelle poupée, plus grosse que celle de l’environnement global.</p>
-<p>Mais voyons plutôt cela par l’exemple. Si l’on ignore les boîtes des packages pour l’exemple, alors l’environnement vide est la boîte 1, l’environnement global est la boîte 2, une première fonction créé par l’utilisateur définirait la boîte 3. Mais que se passe-t-il si l’on ajoute une nouvelle fonction ? Est-ce qu’elle aura d’abord accès à l’environnement global ou à l’environnement de la fonction qui l’appelle ?</p>
+<p>Une fonction appelée depuis l’environnement global crée une nouvelle boîte, plus grosse que celle de l’environnement global (elle l’englobe).</p>
+<p>Mais voyons plutôt cela par l’exemple. Si l’on ignore les boîtes des packages pour l’exemple, alors l’environnement vide est la boîte 1, l’environnement global est la boîte 2, et une première fonction créé par l’utilisateur définirait la boîte 3. Mais que se passe-t-il si l’on ajoute une nouvelle fonction ? Est-ce qu’elle aura d’abord accès à l’environnement global ou à l’environnement de la fonction qui l’appelle ?</p>
 <p>Pour répondre à cette question, il faut d’abord savoir qu’une fonction est composée en trois parties:</p>
 <ul>
 <li><p>la liste de ses arguments (<code>formals()</code>)</p></li>
 <li><p>le corps de la fonction (<code>body()</code>)</p></li>
 <li><p>l’environnement (<code>environment</code>).</p></li>
 </ul>
-<p>L’environnement qui compose la fonction est créé en même temps que la fonction. C’est très important de bien comprendre ceci. Cela veut dire que l’environnement de la fonction n’est pas créé lorsqu’elle est appellée, mais lorsque elle est déclarée. Donc si on déclare deux fonction dans l’environnement global, et que la première appelle la seconde, la seconde n’aura pas accès à l’environnement de la première. Par contre si la seconde est crée <em>dans</em> la première, alors elle y aura accès.</p>
+<p>L’environnement qui compose la fonction est créé en même temps que la fonction. C’est très important de bien comprendre ceci. Cela veut dire que l’environnement de la fonction n’est pas créé lorsqu’elle est appellée, mais lorsque elle est déclarée. Donc si l’on déclare deux fonctions dans l’environnement global, et que la première appelle la seconde, alors la seconde n’aura pas accès à l’environnement de la première. Par contre si la seconde est crée <em>dans</em> la première, alors elle y aura accès.</p>
 <p>Preuve par l’exemple:</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="environnement.html#cb317-1"></a>fonction_<span class="dv">1</span>=<span class="st"> </span><span class="cf">function</span>(){</span>
-<span id="cb317-2"><a href="environnement.html#cb317-2"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; de l&#39;environnement global:&quot;</span>,a))</span>
-<span id="cb317-3"><a href="environnement.html#cb317-3"></a>  <span class="co"># la fonction print permet d&#39;afficher son contenu à l&#39;écran, et la fonction paste permet de </span></span>
-<span id="cb317-4"><a href="environnement.html#cb317-4"></a>  <span class="co"># concatener notre phrase avec la valeur trouvée dans l&#39;objet a.</span></span>
-<span id="cb317-5"><a href="environnement.html#cb317-5"></a>  </span>
-<span id="cb317-6"><a href="environnement.html#cb317-6"></a>  a =<span class="st"> </span><span class="dv">2</span> </span>
-<span id="cb317-7"><a href="environnement.html#cb317-7"></a>  test=<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb317-8"><a href="environnement.html#cb317-8"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; dans fonction_1:&quot;</span>,a))</span>
-<span id="cb317-9"><a href="environnement.html#cb317-9"></a>  </span>
-<span id="cb317-10"><a href="environnement.html#cb317-10"></a>  fonction_<span class="dv">2</span>=<span class="st"> </span><span class="cf">function</span>(){</span>
-<span id="cb317-11"><a href="environnement.html#cb317-11"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; dans l&#39;environnement au dessus  au dessus de fonction_2:&quot;</span>,a))</span>
-<span id="cb317-12"><a href="environnement.html#cb317-12"></a>  a =<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb317-13"><a href="environnement.html#cb317-13"></a>  </span>
-<span id="cb317-14"><a href="environnement.html#cb317-14"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; dans fonction_2:&quot;</span>,a))</span>
-<span id="cb317-15"><a href="environnement.html#cb317-15"></a>  }</span>
-<span id="cb317-16"><a href="environnement.html#cb317-16"></a>  </span>
-<span id="cb317-17"><a href="environnement.html#cb317-17"></a>  <span class="kw">fonction_2</span>()</span>
-<span id="cb317-18"><a href="environnement.html#cb317-18"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="environnement.html#cb28-1"></a>fonction_<span class="dv">1</span>=<span class="st"> </span><span class="cf">function</span>(){</span>
+<span id="cb28-2"><a href="environnement.html#cb28-2"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; de l&#39;environnement global:&quot;</span>,a))</span>
+<span id="cb28-3"><a href="environnement.html#cb28-3"></a>  <span class="co"># la fonction print permet d&#39;afficher son contenu à l&#39;écran, et la fonction paste permet de </span></span>
+<span id="cb28-4"><a href="environnement.html#cb28-4"></a>  <span class="co"># concatener notre phrase avec la valeur trouvée dans l&#39;objet a.</span></span>
+<span id="cb28-5"><a href="environnement.html#cb28-5"></a>  </span>
+<span id="cb28-6"><a href="environnement.html#cb28-6"></a>  a =<span class="st"> </span><span class="dv">2</span> </span>
+<span id="cb28-7"><a href="environnement.html#cb28-7"></a>  test=<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb28-8"><a href="environnement.html#cb28-8"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; dans fonction_1:&quot;</span>,a))</span>
+<span id="cb28-9"><a href="environnement.html#cb28-9"></a>  </span>
+<span id="cb28-10"><a href="environnement.html#cb28-10"></a>  fonction_<span class="dv">2</span>=<span class="st"> </span><span class="cf">function</span>(){</span>
+<span id="cb28-11"><a href="environnement.html#cb28-11"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; dans l&#39;environnement au dessus  au dessus de fonction_2:&quot;</span>,a))</span>
+<span id="cb28-12"><a href="environnement.html#cb28-12"></a>  a =<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb28-13"><a href="environnement.html#cb28-13"></a>  </span>
+<span id="cb28-14"><a href="environnement.html#cb28-14"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; dans fonction_2:&quot;</span>,a))</span>
+<span id="cb28-15"><a href="environnement.html#cb28-15"></a>  }</span>
+<span id="cb28-16"><a href="environnement.html#cb28-16"></a>  </span>
+<span id="cb28-17"><a href="environnement.html#cb28-17"></a>  <span class="kw">fonction_2</span>()</span>
+<span id="cb28-18"><a href="environnement.html#cb28-18"></a>}</span></code></pre></div>
 <p>Si on regarde les valeurs de “a” renvoyées par <code>fonction_1</code>:</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="environnement.html#cb318-1"></a><span class="kw">fonction_1</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="environnement.html#cb29-1"></a><span class="kw">fonction_1</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;Valeur de &#39;a&#39; de l&#39;environnement global: 1&quot;
 ## [1] &quot;Valeur de &#39;a&#39; dans fonction_1: 2&quot;
 ## [1] &quot;Valeur de &#39;a&#39; dans l&#39;environnement au dessus  au dessus de fonction_2: 2&quot;
 ## [1] &quot;Valeur de &#39;a&#39; dans fonction_2: 3&quot;</code></pre>
-<p><code>fonction_1()</code> a accès à “a” de l’environnement global, qui est égal à 1. Ensuite elle déclare son propre “a” égal à 2, qui devient prioritaire lorsque l’on cherche “a” dans la fonction, donc “a” dans <code>fonction_1()</code> devient égal à 2. Ensuite on déclare la fonction <code>fonction_2()</code>, on regarde la valeur de “a”, qui est égale à la valeur trouvée dans l’environnement juste au dessus, celui de <code>fonction_1()</code>, “a” est donc égal à 2. Puis on déclare un nouveau “a” dans <code>fonction_2()</code>, qui est égal à 3, et qui devient donc prioritaire lorsque l’on cherche “a” dans <code>fonction_2()</code>.</p>
-<p>Mais si <code>fonction_2()</code> était déclarée en dehors de <code>fonction_1()</code>, elle retournerais d’abord le “a” de l’environnement global car son environnement parent serait le global, et pas celui de <code>fonction_1()</code>:</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="environnement.html#cb320-1"></a>fonction_<span class="dv">1</span>=<span class="st"> </span><span class="cf">function</span>(){</span>
-<span id="cb320-2"><a href="environnement.html#cb320-2"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; de l&#39;environnement global:&quot;</span>,a))</span>
-<span id="cb320-3"><a href="environnement.html#cb320-3"></a>  <span class="co"># la fonction print permet d&#39;afficher son contenu à l&#39;écran, et la fonction paste permet de </span></span>
-<span id="cb320-4"><a href="environnement.html#cb320-4"></a>  <span class="co"># concatener notre phrase avec la valeur trouvée dans l&#39;objet a.</span></span>
-<span id="cb320-5"><a href="environnement.html#cb320-5"></a>  </span>
-<span id="cb320-6"><a href="environnement.html#cb320-6"></a>  a =<span class="st"> </span><span class="dv">2</span> </span>
-<span id="cb320-7"><a href="environnement.html#cb320-7"></a>  test=<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb320-8"><a href="environnement.html#cb320-8"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; dans fonction_1:&quot;</span>,a))</span>
-<span id="cb320-9"><a href="environnement.html#cb320-9"></a>  </span>
-<span id="cb320-10"><a href="environnement.html#cb320-10"></a>  <span class="kw">fonction_2</span>()</span>
-<span id="cb320-11"><a href="environnement.html#cb320-11"></a>}</span>
-<span id="cb320-12"><a href="environnement.html#cb320-12"></a></span>
-<span id="cb320-13"><a href="environnement.html#cb320-13"></a>fonction_<span class="dv">2</span>=<span class="st"> </span><span class="cf">function</span>(){</span>
-<span id="cb320-14"><a href="environnement.html#cb320-14"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; dans l&#39;environnement au dessus de fonction_2:&quot;</span>,a))</span>
-<span id="cb320-15"><a href="environnement.html#cb320-15"></a>  a =<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb320-16"><a href="environnement.html#cb320-16"></a>  </span>
-<span id="cb320-17"><a href="environnement.html#cb320-17"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; dans fonction_2:&quot;</span>,a))</span>
-<span id="cb320-18"><a href="environnement.html#cb320-18"></a>}</span>
-<span id="cb320-19"><a href="environnement.html#cb320-19"></a></span>
-<span id="cb320-20"><a href="environnement.html#cb320-20"></a></span>
-<span id="cb320-21"><a href="environnement.html#cb320-21"></a><span class="kw">fonction_1</span>()</span></code></pre></div>
+<p><code>fonction_1()</code> a accès à l’objet “a” de l’environnement global, qui est égal à 1. Ensuite elle déclare son propre “a” égal à 2, qui devient prioritaire lorsque l’on cherche “a” dans la fonction, donc “a” dans <code>fonction_1()</code> devient égal à 2. Ensuite on déclare la fonction <code>fonction_2()</code>, on regarde la valeur de “a”, qui est égale à la valeur trouvée dans l’environnement juste au dessus, celui de <code>fonction_1()</code>, “a” est donc égal à 2. Puis on déclare un nouveau “a” dans <code>fonction_2()</code>, qui est égal à 3, et qui devient donc prioritaire lorsque l’on cherche “a” dans <code>fonction_2()</code>.</p>
+<p>Je vous laisse relire le paragraphe du dessus pour être certain de comprendre. En d’autres termes, une fonction a accès à son propre environnement, mais aussi aux environnements au-dessus d’elle (qu’elle englobe). Si une fonction est déclarée à l’intérieur d’une autre fonction, alors son environnement englobe cette fonction, et elle a donc accès à ses objets.</p>
+<p>Mais si <code>fonction_2()</code> était déclarée en dehors de <code>fonction_1()</code> ? Alors celle-ci n’aurais pas accès à l’environnement de <code>fonction_1()</code>, donc elle retournerais d’abord l’objet “a” de l’environnement global, car son environnement parent serait le global, et pas celui de <code>fonction_1()</code>:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="environnement.html#cb31-1"></a>fonction_<span class="dv">1</span>=<span class="st"> </span><span class="cf">function</span>(){</span>
+<span id="cb31-2"><a href="environnement.html#cb31-2"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; de l&#39;environnement global:&quot;</span>,a))</span>
+<span id="cb31-3"><a href="environnement.html#cb31-3"></a>  <span class="co"># la fonction print permet d&#39;afficher son contenu à l&#39;écran, et la fonction paste permet de </span></span>
+<span id="cb31-4"><a href="environnement.html#cb31-4"></a>  <span class="co"># concatener notre phrase avec la valeur trouvée dans l&#39;objet a.</span></span>
+<span id="cb31-5"><a href="environnement.html#cb31-5"></a>  </span>
+<span id="cb31-6"><a href="environnement.html#cb31-6"></a>  a =<span class="st"> </span><span class="dv">2</span> </span>
+<span id="cb31-7"><a href="environnement.html#cb31-7"></a>  test=<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb31-8"><a href="environnement.html#cb31-8"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; dans fonction_1:&quot;</span>,a))</span>
+<span id="cb31-9"><a href="environnement.html#cb31-9"></a>  </span>
+<span id="cb31-10"><a href="environnement.html#cb31-10"></a>  <span class="kw">fonction_2</span>()</span>
+<span id="cb31-11"><a href="environnement.html#cb31-11"></a>}</span>
+<span id="cb31-12"><a href="environnement.html#cb31-12"></a></span>
+<span id="cb31-13"><a href="environnement.html#cb31-13"></a>fonction_<span class="dv">2</span>=<span class="st"> </span><span class="cf">function</span>(){</span>
+<span id="cb31-14"><a href="environnement.html#cb31-14"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; dans l&#39;environnement au dessus de fonction_2:&quot;</span>,a))</span>
+<span id="cb31-15"><a href="environnement.html#cb31-15"></a>  a =<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb31-16"><a href="environnement.html#cb31-16"></a>  </span>
+<span id="cb31-17"><a href="environnement.html#cb31-17"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Valeur de &#39;a&#39; dans fonction_2:&quot;</span>,a))</span>
+<span id="cb31-18"><a href="environnement.html#cb31-18"></a>}</span>
+<span id="cb31-19"><a href="environnement.html#cb31-19"></a></span>
+<span id="cb31-20"><a href="environnement.html#cb31-20"></a></span>
+<span id="cb31-21"><a href="environnement.html#cb31-21"></a><span class="kw">fonction_1</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;Valeur de &#39;a&#39; de l&#39;environnement global: 1&quot;
 ## [1] &quot;Valeur de &#39;a&#39; dans fonction_1: 2&quot;
 ## [1] &quot;Valeur de &#39;a&#39; dans l&#39;environnement au dessus de fonction_2: 1&quot;
 ## [1] &quot;Valeur de &#39;a&#39; dans fonction_2: 3&quot;</code></pre>
 <p>En effet, ici <code>fonction_2()</code> retourne d’abord <code>a=1</code>, car son environnement parent est l’environnement global car elle a été déclarée dans celui-ci.</p>
 
-</div>
 </div>
 </div>
             </section>

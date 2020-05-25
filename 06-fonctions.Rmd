@@ -198,13 +198,14 @@ Pour accéder au code d'une fonction, il suffit de la surligner et d'appuyer sur
 
 ## Portée (function scope)
 
-R fonctionne avec des environnements (voir [Environnements]). Chaque fonction crée son propre environnement lorsqu'elle est appelée, c'est à dire qu'elle n'a accès qu'à son propre environement en priorité, puis ensuite aux environnements aux dessus si elle ne trouve pas un objet dans le sien. 
+R fonctionne avec des environnements (voir chapitre \@ref(environnement)). Chaque fonction crée son propre environnement lorsqu'elle est appelée, c'est à dire qu'elle n'a accès qu'à son propre environement en priorité, puis ensuite aux environnements aux dessus si elle ne trouve pas un objet dans le sien. 
 
-Donc a priori un objet crée dans une fonction ne modifie pas celui déclaré auparavant. 
-Voici un example: 
+Un objet créé par un utilisateur dans l'environnement global (e.g. dans la console) est appellé objet global. Cet objet est acessible par toutes les fonctions que l'utilisateur va créer. 
+
+Cependant, un objet créé dans une fonction ne modifie pas celui déclaré auparavant. Voici un example: 
 
 ```{r}
-x= 10
+x= 10 # x est une variable globale, il est déclaré dans l'environnement global
 
 add_10= function(x){
   x= x+10
@@ -213,15 +214,19 @@ add_10= function(x){
 
 x2= add_10(x)
 
-c(x= x, x2= x2)
+c(x= x, x2= x2) # x n'est pas modifié ! Et x2 est bien égal au résultat de la fonction.
 ```
-Ici on voit que l'on a déclaré `x` avec pour valeur 10. Ensuite on passe `x` à la fonction `add_10` qui déclare `x` dans son propre environnement, puis lui ajoute 10, et retourne sa valeur. On peut voir qu'à la fin en dehors de la fonction, le `x` que nous avons crée nous-mêmes est toujours égal à 10 après avoir appelé la fonction.
-Par contre si R ne trouve pas une valeur dans son environnement, il va essayer de chercher dans les environnements au-dessus. L'environnement le plus haut est l'environnement de l'utilisateur. Donc la fonction peut potentiellement avoir accès aux objets que l'utilisateur à crée lui-même: 
+
+Ici on voit que l'on a déclaré `x` avec pour valeur 10. Ce `x` est une variable globale.
+Ensuite on passe ce `x` comme argument à la fonction `add_10`. `add_10` créé ensuite son propre `x`, puis lui ajoute 10, et retourne la valeur calculée. Le `x` que nous avons créé en dehors de la fonction n'a pas été modifié (il est toujours égal à 10) malgrès l'exécution de la fonction.
+
+Par contre si l'on utilise un objet dans une fonction qui n'est pas déclaré dans cette fonction, alors la fonction va essayer de chercher cet objet dans l'environnement au dessus d'elle. Elle peut donc avoir accès aux objets que l'utilisateur à crée lui-même: 
 
 ```{r}
-a= 2
-x= 10
+a= 2   # a est une variable globale
+x= 10  # x aussi
 
+# On crée une fonction add_a qui utilise x (passé comme argument), mais aussi a, qui n'est ni déclaré dans la fonction, ni passé comme argument:
 add_a= function(x){
   x= a+x
   return(x)
@@ -229,28 +234,24 @@ add_a= function(x){
 
 x2= add_a(x)
 
-c(a= a, x= x, x2= x2)
+c(a= a, x= x, x2= x2) # La fonction a utilisé le "a" déclaré par l'utilisateur !
 ```
 
-Comme on peut le voir, `a` n'a pas été donné comme argument de la fonction, pourtant elle s'est débrouillée pour aller le chercher dans l'environnement global tout de même, là où nous l'avons déclaré. Cela peut être dangereux car parfois on oublie tout simplement de passer un objet comme argument, et alors R va utiliser un objet qui n'est pas le même à nos yeux, mais qui portera le même nom. Il faut y faire très attention. A noter que ce phénomène n'est pas valable pour les packages car les objets à l'intérieur d'un package sont isolés de l'environnement global. C'est pourquoi il est préférable de regrouper ses fonctions en un package (voir [Packages]). 
+Comme on peut le voir, `a` n'a pas été donné comme argument et n'est pas délcaré dans la fonction non plus. La fonction a tout de même fonctionné car elle a trouvé un objet "a" dans l'environnement global, celui que nous avons déclaré. 
 
-La bonne façon d'écrire la fonction ci-dessus est la suivante: 
+Cette pratique est à éviter de manière générale car elle peut amener à faire des erreurs. On préfèrera toujours passer une variable comme argument de la fonction, e.g.:
 
 ```{r}
-a= 2
-x= 10
-
 add_a= function(x,a){
   x= a+x
   return(x)
 }
 
-x2= add_a(x, a)
-
-c(a= a, x= x, x2= x2)
+x2= add_a(11,3)
 ```
 
-De cette façon, on peut réutiliser la fonction avec d'autres objets: 
+De cette façon, on peut réutiliser la même fonction avec d'autres objets: 
+
 ```{r}
 b= 15
 x3= add_a(x, b)
@@ -258,6 +259,7 @@ x3= add_a(x, b)
 c(a= a, b=b,x= x, x2= x2)
 ```
 
+A noter que ce phénomène n'est pas valable pour les packages car les objets à l'intérieur d'un package sont isolés de l'environnement global car l'environnement des packages est au-dessus de l'environnement global. C'est pourquoi il est préférable de regrouper ses propres fonctions en un package (voir \@ref{Packages}), ou de faire attention de ne pas utiliser d'objets globaux dans les fonctions. 
 
 ## Conseils
 

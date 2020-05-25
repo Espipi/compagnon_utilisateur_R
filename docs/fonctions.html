@@ -24,7 +24,7 @@
 <meta name="author" content="Vezy Rémi" />
 
 
-<meta name="date" content="2020-05-10" />
+<meta name="date" content="2020-05-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -203,7 +203,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="fonctions.html"><a href="fonctions.html#portée-function-scope"><i class="fa fa-check"></i><b>6.4</b> Portée (function scope)</a></li>
 <li class="chapter" data-level="6.5" data-path="fonctions.html"><a href="fonctions.html#conseils"><i class="fa fa-check"></i><b>6.5</b> Conseils</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements and scoping</a>
+<li class="chapter" data-level="7" data-path="environnement.html"><a href="environnement.html"><i class="fa fa-check"></i><b>7</b> Environnements et scoping</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="environnement.html"><a href="environnement.html#environments"><i class="fa fa-check"></i><b>7.1</b> Environments</a>
 <ul>
@@ -245,35 +245,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="déclarer-une-fonction" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Déclarer une fonction</h2>
 <p>Voici comment déclarer une fonction:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="fonctions.html#cb252-1"></a>add_one=<span class="st"> </span><span class="cf">function</span>(x){</span>
-<span id="cb252-2"><a href="fonctions.html#cb252-2"></a>  x<span class="op">+</span><span class="dv">1</span></span>
-<span id="cb252-3"><a href="fonctions.html#cb252-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="fonctions.html#cb1-1"></a>add_one=<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb1-2"><a href="fonctions.html#cb1-2"></a>  x<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb1-3"><a href="fonctions.html#cb1-3"></a>}</span></code></pre></div>
 <p>Il y a beaucoup de nouvelles choses ici ! Alors laissez-moi expliquer étape par étape. D’abord, on a <code>add_one</code>. C’est le nom que nous avons décidé de donner à la fonction, parcequ’elle ajoute 1 à l’argument qu’on lui donne. Ensuite on a un <code>=</code>, qui dit à R que l’on va assigner quelque chose à ce nouveau nom (ici, la fonction). Puis vient <code>function(x){...}</code>. Ici on dit à R que l’on va déclarer une nouvelle fonction, et le code qui y sera associé sera compris entre <code>{</code> et <code>}</code>. On a aussi un <code>(x)</code>: les parenthèses délimitent les arguments de la fonction. Il peut y en avoir 0 avec des parenthèses vides<code>()</code>, un seul comme ici, ou plusieurs séparés avec des virgules comme ceci: <code>(a,b,c)</code>. Ensuite il y a <code>x+1</code>, qui est le code qui sera exécuté à chaque fois que la fonction sera appelée.</p>
 <p>Pour appeler une fonction (<em>i.e.</em> s’en servir), on utilise son nom, suivit des arguments:</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="fonctions.html#cb253-1"></a><span class="kw">add_one</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="fonctions.html#cb2-1"></a><span class="kw">add_one</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>Ici, on dit à R que l’on veut utiliser la fonction <code>add_one</code>, et que x vaut 1. La fonction assigne donc 1 à x, puis lui ajoute 1, et retourne le résultat: 2.</p>
 <p>Il est aussi possible de donner des valeurs par défaut aux arguments d’une fonction pour qu’elle utilise toujours cette valeur si on ne donne pas d’argument:
 Pour appeler une fonction (<em>i.e.</em> s’en servir), on utilise son nom, suivit des arguments:</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="fonctions.html#cb255-1"></a>add_a=<span class="st"> </span><span class="cf">function</span>(x,<span class="dt">a=</span><span class="dv">1</span>){</span>
-<span id="cb255-2"><a href="fonctions.html#cb255-2"></a>  x<span class="op">+</span>a</span>
-<span id="cb255-3"><a href="fonctions.html#cb255-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="fonctions.html#cb4-1"></a>add_a=<span class="st"> </span><span class="cf">function</span>(x,<span class="dt">a=</span><span class="dv">1</span>){</span>
+<span id="cb4-2"><a href="fonctions.html#cb4-2"></a>  x<span class="op">+</span>a</span>
+<span id="cb4-3"><a href="fonctions.html#cb4-3"></a>}</span></code></pre></div>
 <p>De cette façon, on peut utiliser la fonction comme avant, puisque <code>a</code> vaut 1 par défaut:</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="fonctions.html#cb256-1"></a><span class="kw">add_a</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="fonctions.html#cb5-1"></a><span class="kw">add_a</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>Mais aussi utiliser l’argument <code>a</code> pour généraliser la fonction:</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="fonctions.html#cb258-1"></a><span class="kw">add_a</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="fonctions.html#cb7-1"></a><span class="kw">add_a</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
 <div id="appeler-une-fonction" class="section level3" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Appeler une fonction</h3>
 <p>Jusqu’ici nous avons donné les valeurs des arguments par position. Par example juste au-dessus nous avons appelé la fonction <code>add_a</code> et donné 1 comme valeur à <code>x</code> et 10 pour <code>a</code>. Mais on peut aussi nommer les arguments comme suit:</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="fonctions.html#cb260-1"></a><span class="kw">add_a</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">a =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="fonctions.html#cb9-1"></a><span class="kw">add_a</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">a =</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
 <p>Ce qui nous permet de donner des valeurs aux arguments dans l’ordre que l’on veut:</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="fonctions.html#cb262-1"></a><span class="kw">add_a</span>(<span class="dt">a =</span> <span class="dv">10</span>, <span class="dt">x =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="fonctions.html#cb11-1"></a><span class="kw">add_a</span>(<span class="dt">a =</span> <span class="dv">10</span>, <span class="dt">x =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
 <p>On peut aussi nommer certains arguments, et donner les autres par position:</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="fonctions.html#cb264-1"></a><span class="kw">add_a</span>(<span class="dv">10</span>, <span class="dt">x =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="fonctions.html#cb13-1"></a><span class="kw">add_a</span>(<span class="dv">10</span>, <span class="dt">x =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
 <p>Dans ce cas les arguments nommés sont rangés automatiquement au bon endroit, et le reste des arguments non nommés sont donnés dans l’ordre restant.</p>
 </div>
@@ -281,12 +281,12 @@ Pour appeler une fonction (<em>i.e.</em> s’en servir), on utilise son nom, sui
 <h3><span class="header-section-number">6.2.2</span> Fonction sans argument</h3>
 <p>On peut aussi déclarer une fonction sans argument. Cela peut s’avérer utile si la fonction doit toujours retourner la même chose (<em>e.g.</em> une liste de courses) ou si elle utilise des informations extérieures.
 Par example, disons que vous êtes en voyage au Brésil, où la monnaie est le Real, mais comme vous êtes habitué à payer en Euro, vous aimeriez pouvoir convertir entre les deux simplement. Vous pouvez donc écrire une fonction qui le fait pour vous:</p>
-<p>A l’heure où cette version du livre à été mis à jour pour la dernière fois, 1 Euro (€) valait 6.2124 Reals (R$)<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<p>A l’heure où cette version du livre à été mis à jour pour la dernière fois, 1 Euro (€) valait 6.2502 Reals (R$)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
 <p>Cette fonction peut maintenant nous servir à convertir n’importe quelle valeur depuis R, en appliquant la conversion actuelle. Si par example on veut acheter une télévision pour 2506.756 Reals, combien cela fait-il en euro?</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="fonctions.html#cb266-1"></a>TV=<span class="st"> </span><span class="fl">2506.756</span>  </span>
-<span id="cb266-2"><a href="fonctions.html#cb266-2"></a>TV<span class="op">/</span><span class="kw">currencyfunc</span>()</span></code></pre></div>
-<pre><code>## [1] 403.5085</code></pre>
-<p>Cela fait 403.5084669 euros!</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="fonctions.html#cb15-1"></a>TV=<span class="st"> </span><span class="fl">2506.756</span>  </span>
+<span id="cb15-2"><a href="fonctions.html#cb15-2"></a>TV<span class="op">/</span><span class="kw">currencyfunc</span>()</span></code></pre></div>
+<pre><code>## [1] 401.0681</code></pre>
+<p>Cela fait 401.0681258 euros!</p>
 <blockquote>
 <p>Les <code>::</code> dans <code>quantmod::getQuote()</code> permettent de dire à R d’utiliser la fonction <code>getQuote()</code> du package <code>quantmod</code>. Il est préférable d’utiliser cette notation dès que possible pour pouvoir se rappeler de quel package l’on a besoin pour utiliser un code en particulier, mais aussi pour éviter d’utiliser des fonctions qui ont le même nom dans deux packages différents, ou dans notre code et un package.</p>
 </blockquote>
@@ -295,18 +295,18 @@ Par example, disons que vous êtes en voyage au Brésil, où la monnaie est le R
 <h3><span class="header-section-number">6.2.3</span> Fonction anonyme</h3>
 <p>Une fonction anonyme est une fonction sans nom. On utilise généralement ces fonctions lorsque l’on utilise des fonctions qui prennent en argument d’autres fonctions. Commençons par un example, la fonction <code>Map()</code>.</p>
 <p>La fonction <code>Map()</code> prend comme argument une fonction, et un objet. Elle applique ensuite cette fonction à chaque élément de cet objet. Par exemple si l’on a plusieur prix de TV, on peut appliquer notre conversion <code>currencyfunc()</code> à chacune en utilisant une fonction anonyme:</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="fonctions.html#cb268-1"></a>TVs=<span class="st"> </span><span class="kw">c</span>(<span class="fl">2432.753</span>, <span class="fl">2638.554</span>, <span class="fl">2439.369</span>, <span class="fl">2559.210</span>, <span class="fl">2400.950</span>, <span class="fl">2514.662</span>, <span class="fl">2517.128</span>, <span class="fl">2416.149</span>, <span class="fl">2537.907</span>, <span class="fl">2458.432</span>)</span>
-<span id="cb268-2"><a href="fonctions.html#cb268-2"></a><span class="kw">unlist</span>(<span class="kw">Map</span>(<span class="cf">function</span>(x)x<span class="op">/</span><span class="kw">currencyfunc</span>(), TVs))</span></code></pre></div>
-<pre><code>##  [1] 391.5963 424.7238 392.6613 411.9519 386.4770 404.7811 405.1780 388.9236
-##  [9] 408.5228 395.7298</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="fonctions.html#cb17-1"></a>TVs=<span class="st"> </span><span class="kw">c</span>(<span class="fl">2432.753</span>, <span class="fl">2638.554</span>, <span class="fl">2439.369</span>, <span class="fl">2559.210</span>, <span class="fl">2400.950</span>, <span class="fl">2514.662</span>, <span class="fl">2517.128</span>, <span class="fl">2416.149</span>, <span class="fl">2537.907</span>, <span class="fl">2458.432</span>)</span>
+<span id="cb17-2"><a href="fonctions.html#cb17-2"></a><span class="kw">unlist</span>(<span class="kw">Map</span>(<span class="cf">function</span>(x)x<span class="op">/</span><span class="kw">currencyfunc</span>(), TVs))</span></code></pre></div>
+<pre><code>##  [1] 389.2280 422.1551 390.2866 409.4605 384.1397 402.3330 402.7276 386.5715 406.0521
+## [10] 393.3365</code></pre>
 <p>Comme on peut le voir on utilise la fonction <code>MAP()</code> avec comme premier argument <code>function(x)x/currencyfunc()</code>, qui est une fonction anonyme, et qui est appliquée à chaque élément du deuxième argument, <code>TVs</code>.</p>
 <blockquote>
 <p>NB: on utilise aussi la fonction <code>unlist()</code> ici pour re-formater la sortie de <code>MAP()</code> (plus adapté pour le livre).</p>
 </blockquote>
 <p>Bien sûr il s’agit d’un example ici, car sinon nous aurions pu directement avoir le résultat comme ceci:</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="fonctions.html#cb270-1"></a>TVs<span class="op">/</span><span class="kw">currencyfunc</span>()</span></code></pre></div>
-<pre><code>##  [1] 391.5963 424.7238 392.6613 411.9519 386.4770 404.7811 405.1780 388.9236
-##  [9] 408.5228 395.7298</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="fonctions.html#cb19-1"></a>TVs<span class="op">/</span><span class="kw">currencyfunc</span>()</span></code></pre></div>
+<pre><code>##  [1] 389.2280 422.1551 390.2866 409.4605 384.1397 402.3330 402.7276 386.5715 406.0521
+## [10] 393.3365</code></pre>
 <p>Cette dernière façon de procéder est en général à préférer car R vectorize par défaut toute fonction, ce qui veut dire qu’une fonction peut s’appliquer par défaut à chaque membre d’un objet. Ceci est un aspect très apréciable de R.</p>
 </div>
 <div id="return" class="section level3" number="6.2.4">
@@ -314,53 +314,53 @@ Par example, disons que vous êtes en voyage au Brésil, où la monnaie est le R
 <p>Une fonction retourne par défaut le dernier objet, mais il existe aussi une fonction spéciale pour retourner explicitement un objet particulier. Cette fonction s’appelle <code>return()</code>. De manière générale, il vaut mieux eviter de l’utiliser car elle a tendance à ralentir l’exécution (voir ce <a href="https://style.tidyverse.org/">style guide</a>), et plutôt préférer répéter</p>
 <p>Quelques examples:</p>
 <p>La fonction retourne le dernier objet:</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="fonctions.html#cb272-1"></a>return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
-<span id="cb272-2"><a href="fonctions.html#cb272-2"></a>  a<span class="op">*</span>b</span>
-<span id="cb272-3"><a href="fonctions.html#cb272-3"></a>  x=<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb272-4"><a href="fonctions.html#cb272-4"></a>  x</span>
-<span id="cb272-5"><a href="fonctions.html#cb272-5"></a>}</span>
-<span id="cb272-6"><a href="fonctions.html#cb272-6"></a></span>
-<span id="cb272-7"><a href="fonctions.html#cb272-7"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="fonctions.html#cb21-1"></a>return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
+<span id="cb21-2"><a href="fonctions.html#cb21-2"></a>  a<span class="op">*</span>b</span>
+<span id="cb21-3"><a href="fonctions.html#cb21-3"></a>  x=<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb21-4"><a href="fonctions.html#cb21-4"></a>  x</span>
+<span id="cb21-5"><a href="fonctions.html#cb21-5"></a>}</span>
+<span id="cb21-6"><a href="fonctions.html#cb21-6"></a></span>
+<span id="cb21-7"><a href="fonctions.html#cb21-7"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>Ici la fonction calcule bien <code>a*b</code>, mais retourne 10 car <code>x</code> vaut 10, et il est retourné à la fin. Cette écriture est exactement la même que celle-ci:</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="fonctions.html#cb274-1"></a>return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
-<span id="cb274-2"><a href="fonctions.html#cb274-2"></a>  a<span class="op">*</span>b</span>
-<span id="cb274-3"><a href="fonctions.html#cb274-3"></a>  x=<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb274-4"><a href="fonctions.html#cb274-4"></a>  <span class="kw">return</span>(x)</span>
-<span id="cb274-5"><a href="fonctions.html#cb274-5"></a>}</span>
-<span id="cb274-6"><a href="fonctions.html#cb274-6"></a></span>
-<span id="cb274-7"><a href="fonctions.html#cb274-7"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="fonctions.html#cb23-1"></a>return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
+<span id="cb23-2"><a href="fonctions.html#cb23-2"></a>  a<span class="op">*</span>b</span>
+<span id="cb23-3"><a href="fonctions.html#cb23-3"></a>  x=<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb23-4"><a href="fonctions.html#cb23-4"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb23-5"><a href="fonctions.html#cb23-5"></a>}</span>
+<span id="cb23-6"><a href="fonctions.html#cb23-6"></a></span>
+<span id="cb23-7"><a href="fonctions.html#cb23-7"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>Maintenant que ce passe-t-il si l’on met un <code>return()</code> à la ligne <code>a*b</code> ?</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="fonctions.html#cb276-1"></a>return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
-<span id="cb276-2"><a href="fonctions.html#cb276-2"></a>  <span class="kw">return</span>(a<span class="op">*</span>b)</span>
-<span id="cb276-3"><a href="fonctions.html#cb276-3"></a>  x=<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb276-4"><a href="fonctions.html#cb276-4"></a>  x</span>
-<span id="cb276-5"><a href="fonctions.html#cb276-5"></a>}</span>
-<span id="cb276-6"><a href="fonctions.html#cb276-6"></a></span>
-<span id="cb276-7"><a href="fonctions.html#cb276-7"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="fonctions.html#cb25-1"></a>return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
+<span id="cb25-2"><a href="fonctions.html#cb25-2"></a>  <span class="kw">return</span>(a<span class="op">*</span>b)</span>
+<span id="cb25-3"><a href="fonctions.html#cb25-3"></a>  x=<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb25-4"><a href="fonctions.html#cb25-4"></a>  x</span>
+<span id="cb25-5"><a href="fonctions.html#cb25-5"></a>}</span>
+<span id="cb25-6"><a href="fonctions.html#cb25-6"></a></span>
+<span id="cb25-7"><a href="fonctions.html#cb25-7"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## [1] 600</code></pre>
 <p>La fonction retourne <code>a*b</code> ! En effet, la fonction <code>return()</code> stoppe l’exécution de la fonction dans laquelle elle est appelée, et retourne le résultat qui y figure comme argument. Pour forcer une fonction à ne rien retourner, on peut aussi appeler <code>return()</code> sans arguments:</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="fonctions.html#cb278-1"></a>return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
-<span id="cb278-2"><a href="fonctions.html#cb278-2"></a>  a<span class="op">*</span>b</span>
-<span id="cb278-3"><a href="fonctions.html#cb278-3"></a>  x=<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb278-4"><a href="fonctions.html#cb278-4"></a>  x</span>
-<span id="cb278-5"><a href="fonctions.html#cb278-5"></a>  <span class="kw">return</span>()</span>
-<span id="cb278-6"><a href="fonctions.html#cb278-6"></a>}</span>
-<span id="cb278-7"><a href="fonctions.html#cb278-7"></a></span>
-<span id="cb278-8"><a href="fonctions.html#cb278-8"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="fonctions.html#cb27-1"></a>return_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
+<span id="cb27-2"><a href="fonctions.html#cb27-2"></a>  a<span class="op">*</span>b</span>
+<span id="cb27-3"><a href="fonctions.html#cb27-3"></a>  x=<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb27-4"><a href="fonctions.html#cb27-4"></a>  x</span>
+<span id="cb27-5"><a href="fonctions.html#cb27-5"></a>  <span class="kw">return</span>()</span>
+<span id="cb27-6"><a href="fonctions.html#cb27-6"></a>}</span>
+<span id="cb27-7"><a href="fonctions.html#cb27-7"></a></span>
+<span id="cb27-8"><a href="fonctions.html#cb27-8"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>Voilà, la fonction calcule bien toutes les lignes avant le <code>return()</code>, mais ne retourne rien.</p>
 <p>La fonction <code>return()</code> peut être très utile lorsque l’on veut retourner un résultat directement si une condition est vraie:</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="fonctions.html#cb280-1"></a>return_whatever=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
-<span id="cb280-2"><a href="fonctions.html#cb280-2"></a>  <span class="cf">if</span>(b<span class="op">&gt;</span>a){</span>
-<span id="cb280-3"><a href="fonctions.html#cb280-3"></a>    <span class="kw">return</span>(a<span class="op">/</span>b)</span>
-<span id="cb280-4"><a href="fonctions.html#cb280-4"></a>  }</span>
-<span id="cb280-5"><a href="fonctions.html#cb280-5"></a>  truc=<span class="st"> </span>a<span class="op">*</span>b</span>
-<span id="cb280-6"><a href="fonctions.html#cb280-6"></a>  truc<span class="op">*</span><span class="dv">10</span><span class="op">+</span><span class="dv">1</span></span>
-<span id="cb280-7"><a href="fonctions.html#cb280-7"></a>}</span>
-<span id="cb280-8"><a href="fonctions.html#cb280-8"></a></span>
-<span id="cb280-9"><a href="fonctions.html#cb280-9"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="fonctions.html#cb29-1"></a>return_whatever=<span class="st"> </span><span class="cf">function</span>(a,b){</span>
+<span id="cb29-2"><a href="fonctions.html#cb29-2"></a>  <span class="cf">if</span>(b<span class="op">&gt;</span>a){</span>
+<span id="cb29-3"><a href="fonctions.html#cb29-3"></a>    <span class="kw">return</span>(a<span class="op">/</span>b)</span>
+<span id="cb29-4"><a href="fonctions.html#cb29-4"></a>  }</span>
+<span id="cb29-5"><a href="fonctions.html#cb29-5"></a>  truc=<span class="st"> </span>a<span class="op">*</span>b</span>
+<span id="cb29-6"><a href="fonctions.html#cb29-6"></a>  truc<span class="op">*</span><span class="dv">10</span><span class="op">+</span><span class="dv">1</span></span>
+<span id="cb29-7"><a href="fonctions.html#cb29-7"></a>}</span>
+<span id="cb29-8"><a href="fonctions.html#cb29-8"></a></span>
+<span id="cb29-9"><a href="fonctions.html#cb29-9"></a><span class="kw">return_10</span>(<span class="dv">20</span>,<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>Ici on force un retour de <code>a/b</code> si <code>b&gt;a</code>, et sinon on exécute une suite d’opérations et on retourne la dernière ligne.</p>
 <blockquote>
@@ -376,58 +376,54 @@ Vient ensuite une description de chaque arguments, puis de certains détails d�
 </div>
 <div id="portée-function-scope" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Portée (function scope)</h2>
-<p>R fonctionne avec des environnements (voir [Environnements]). Chaque fonction crée son propre environnement lorsqu’elle est appelée, c’est à dire qu’elle n’a accès qu’à son propre environement en priorité, puis ensuite aux environnements aux dessus si elle ne trouve pas un objet dans le sien.</p>
-<p>Donc a priori un objet crée dans une fonction ne modifie pas celui déclaré auparavant.
-Voici un example:</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="fonctions.html#cb282-1"></a>x=<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb282-2"><a href="fonctions.html#cb282-2"></a></span>
-<span id="cb282-3"><a href="fonctions.html#cb282-3"></a>add_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(x){</span>
-<span id="cb282-4"><a href="fonctions.html#cb282-4"></a>  x=<span class="st"> </span>x<span class="op">+</span><span class="dv">10</span></span>
-<span id="cb282-5"><a href="fonctions.html#cb282-5"></a>  <span class="kw">return</span>(x)</span>
-<span id="cb282-6"><a href="fonctions.html#cb282-6"></a>}</span>
-<span id="cb282-7"><a href="fonctions.html#cb282-7"></a></span>
-<span id="cb282-8"><a href="fonctions.html#cb282-8"></a>x2=<span class="st"> </span><span class="kw">add_10</span>(x)</span>
-<span id="cb282-9"><a href="fonctions.html#cb282-9"></a></span>
-<span id="cb282-10"><a href="fonctions.html#cb282-10"></a><span class="kw">c</span>(<span class="dt">x=</span> x, <span class="dt">x2=</span> x2)</span></code></pre></div>
+<p>R fonctionne avec des environnements (voir chapitre <a href="environnement.html#environnement">7</a>). Chaque fonction crée son propre environnement lorsqu’elle est appelée, c’est à dire qu’elle n’a accès qu’à son propre environement en priorité, puis ensuite aux environnements aux dessus si elle ne trouve pas un objet dans le sien.</p>
+<p>Un objet créé par un utilisateur dans l’environnement global (e.g. dans la console) est appellé objet global. Cet objet est acessible par toutes les fonctions que l’utilisateur va créer.</p>
+<p>Cependant, un objet créé dans une fonction ne modifie pas celui déclaré auparavant. Voici un example:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="fonctions.html#cb31-1"></a>x=<span class="st"> </span><span class="dv">10</span> <span class="co"># x est une variable globale, il est déclaré dans l&#39;environnement global</span></span>
+<span id="cb31-2"><a href="fonctions.html#cb31-2"></a></span>
+<span id="cb31-3"><a href="fonctions.html#cb31-3"></a>add_<span class="dv">10</span>=<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb31-4"><a href="fonctions.html#cb31-4"></a>  x=<span class="st"> </span>x<span class="op">+</span><span class="dv">10</span></span>
+<span id="cb31-5"><a href="fonctions.html#cb31-5"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb31-6"><a href="fonctions.html#cb31-6"></a>}</span>
+<span id="cb31-7"><a href="fonctions.html#cb31-7"></a></span>
+<span id="cb31-8"><a href="fonctions.html#cb31-8"></a>x2=<span class="st"> </span><span class="kw">add_10</span>(x)</span>
+<span id="cb31-9"><a href="fonctions.html#cb31-9"></a></span>
+<span id="cb31-10"><a href="fonctions.html#cb31-10"></a><span class="kw">c</span>(<span class="dt">x=</span> x, <span class="dt">x2=</span> x2) <span class="co"># x n&#39;est pas modifié ! Et x2 est bien égal au résultat de la fonction.</span></span></code></pre></div>
 <pre><code>##  x x2 
 ## 10 20</code></pre>
-<p>Ici on voit que l’on a déclaré <code>x</code> avec pour valeur 10. Ensuite on passe <code>x</code> à la fonction <code>add_10</code> qui déclare <code>x</code> dans son propre environnement, puis lui ajoute 10, et retourne sa valeur. On peut voir qu’à la fin en dehors de la fonction, le <code>x</code> que nous avons crée nous-mêmes est toujours égal à 10 après avoir appelé la fonction.
-Par contre si R ne trouve pas une valeur dans son environnement, il va essayer de chercher dans les environnements au-dessus. L’environnement le plus haut est l’environnement de l’utilisateur. Donc la fonction peut potentiellement avoir accès aux objets que l’utilisateur à crée lui-même:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="fonctions.html#cb284-1"></a>a=<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb284-2"><a href="fonctions.html#cb284-2"></a>x=<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb284-3"><a href="fonctions.html#cb284-3"></a></span>
-<span id="cb284-4"><a href="fonctions.html#cb284-4"></a>add_a=<span class="st"> </span><span class="cf">function</span>(x){</span>
-<span id="cb284-5"><a href="fonctions.html#cb284-5"></a>  x=<span class="st"> </span>a<span class="op">+</span>x</span>
-<span id="cb284-6"><a href="fonctions.html#cb284-6"></a>  <span class="kw">return</span>(x)</span>
-<span id="cb284-7"><a href="fonctions.html#cb284-7"></a>}</span>
-<span id="cb284-8"><a href="fonctions.html#cb284-8"></a></span>
-<span id="cb284-9"><a href="fonctions.html#cb284-9"></a>x2=<span class="st"> </span><span class="kw">add_a</span>(x)</span>
-<span id="cb284-10"><a href="fonctions.html#cb284-10"></a></span>
-<span id="cb284-11"><a href="fonctions.html#cb284-11"></a><span class="kw">c</span>(<span class="dt">a=</span> a, <span class="dt">x=</span> x, <span class="dt">x2=</span> x2)</span></code></pre></div>
+<p>Ici on voit que l’on a déclaré <code>x</code> avec pour valeur 10. Ce <code>x</code> est une variable globale.
+Ensuite on passe ce <code>x</code> comme argument à la fonction <code>add_10</code>. <code>add_10</code> créé ensuite son propre <code>x</code>, puis lui ajoute 10, et retourne la valeur calculée. Le <code>x</code> que nous avons créé en dehors de la fonction n’a pas été modifié (il est toujours égal à 10) malgrès l’exécution de la fonction.</p>
+<p>Par contre si l’on utilise un objet dans une fonction qui n’est pas déclaré dans cette fonction, alors la fonction va essayer de chercher cet objet dans l’environnement au dessus d’elle. Elle peut donc avoir accès aux objets que l’utilisateur à crée lui-même:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="fonctions.html#cb33-1"></a>a=<span class="st"> </span><span class="dv">2</span>   <span class="co"># a est une variable globale</span></span>
+<span id="cb33-2"><a href="fonctions.html#cb33-2"></a>x=<span class="st"> </span><span class="dv">10</span>  <span class="co"># x aussi</span></span>
+<span id="cb33-3"><a href="fonctions.html#cb33-3"></a></span>
+<span id="cb33-4"><a href="fonctions.html#cb33-4"></a><span class="co"># On crée une fonction add_a qui utilise x (passé comme argument), mais aussi a, qui n&#39;est ni déclaré dans la fonction, ni passé comme argument:</span></span>
+<span id="cb33-5"><a href="fonctions.html#cb33-5"></a>add_a=<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb33-6"><a href="fonctions.html#cb33-6"></a>  x=<span class="st"> </span>a<span class="op">+</span>x</span>
+<span id="cb33-7"><a href="fonctions.html#cb33-7"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb33-8"><a href="fonctions.html#cb33-8"></a>}</span>
+<span id="cb33-9"><a href="fonctions.html#cb33-9"></a></span>
+<span id="cb33-10"><a href="fonctions.html#cb33-10"></a>x2=<span class="st"> </span><span class="kw">add_a</span>(x)</span>
+<span id="cb33-11"><a href="fonctions.html#cb33-11"></a></span>
+<span id="cb33-12"><a href="fonctions.html#cb33-12"></a><span class="kw">c</span>(<span class="dt">a=</span> a, <span class="dt">x=</span> x, <span class="dt">x2=</span> x2) <span class="co"># La fonction a utilisé le &quot;a&quot; déclaré par l&#39;utilisateur !</span></span></code></pre></div>
 <pre><code>##  a  x x2 
 ##  2 10 12</code></pre>
-<p>Comme on peut le voir, <code>a</code> n’a pas été donné comme argument de la fonction, pourtant elle s’est débrouillée pour aller le chercher dans l’environnement global tout de même, là où nous l’avons déclaré. Cela peut être dangereux car parfois on oublie tout simplement de passer un objet comme argument, et alors R va utiliser un objet qui n’est pas le même à nos yeux, mais qui portera le même nom. Il faut y faire très attention. A noter que ce phénomène n’est pas valable pour les packages car les objets à l’intérieur d’un package sont isolés de l’environnement global. C’est pourquoi il est préférable de regrouper ses fonctions en un package (voir <a href="packages.html#packages">Packages</a>).</p>
-<p>La bonne façon d’écrire la fonction ci-dessus est la suivante:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="fonctions.html#cb286-1"></a>a=<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb286-2"><a href="fonctions.html#cb286-2"></a>x=<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb286-3"><a href="fonctions.html#cb286-3"></a></span>
-<span id="cb286-4"><a href="fonctions.html#cb286-4"></a>add_a=<span class="st"> </span><span class="cf">function</span>(x,a){</span>
-<span id="cb286-5"><a href="fonctions.html#cb286-5"></a>  x=<span class="st"> </span>a<span class="op">+</span>x</span>
-<span id="cb286-6"><a href="fonctions.html#cb286-6"></a>  <span class="kw">return</span>(x)</span>
-<span id="cb286-7"><a href="fonctions.html#cb286-7"></a>}</span>
-<span id="cb286-8"><a href="fonctions.html#cb286-8"></a></span>
-<span id="cb286-9"><a href="fonctions.html#cb286-9"></a>x2=<span class="st"> </span><span class="kw">add_a</span>(x, a)</span>
-<span id="cb286-10"><a href="fonctions.html#cb286-10"></a></span>
-<span id="cb286-11"><a href="fonctions.html#cb286-11"></a><span class="kw">c</span>(<span class="dt">a=</span> a, <span class="dt">x=</span> x, <span class="dt">x2=</span> x2)</span></code></pre></div>
-<pre><code>##  a  x x2 
-##  2 10 12</code></pre>
-<p>De cette façon, on peut réutiliser la fonction avec d’autres objets:</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="fonctions.html#cb288-1"></a>b=<span class="st"> </span><span class="dv">15</span></span>
-<span id="cb288-2"><a href="fonctions.html#cb288-2"></a>x3=<span class="st"> </span><span class="kw">add_a</span>(x, b)</span>
-<span id="cb288-3"><a href="fonctions.html#cb288-3"></a></span>
-<span id="cb288-4"><a href="fonctions.html#cb288-4"></a><span class="kw">c</span>(<span class="dt">a=</span> a, <span class="dt">b=</span>b,<span class="dt">x=</span> x, <span class="dt">x2=</span> x2)</span></code></pre></div>
+<p>Comme on peut le voir, <code>a</code> n’a pas été donné comme argument et n’est pas délcaré dans la fonction non plus. La fonction a tout de même fonctionné car elle a trouvé un objet “a” dans l’environnement global, celui que nous avons déclaré.</p>
+<p>Cette pratique est à éviter de manière générale car elle peut amener à faire des erreurs. On préfèrera toujours passer une variable comme argument de la fonction, e.g.:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="fonctions.html#cb35-1"></a>add_a=<span class="st"> </span><span class="cf">function</span>(x,a){</span>
+<span id="cb35-2"><a href="fonctions.html#cb35-2"></a>  x=<span class="st"> </span>a<span class="op">+</span>x</span>
+<span id="cb35-3"><a href="fonctions.html#cb35-3"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb35-4"><a href="fonctions.html#cb35-4"></a>}</span>
+<span id="cb35-5"><a href="fonctions.html#cb35-5"></a></span>
+<span id="cb35-6"><a href="fonctions.html#cb35-6"></a>x2=<span class="st"> </span><span class="kw">add_a</span>(<span class="dv">11</span>,<span class="dv">3</span>)</span></code></pre></div>
+<p>De cette façon, on peut réutiliser la même fonction avec d’autres objets:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="fonctions.html#cb36-1"></a>b=<span class="st"> </span><span class="dv">15</span></span>
+<span id="cb36-2"><a href="fonctions.html#cb36-2"></a>x3=<span class="st"> </span><span class="kw">add_a</span>(x, b)</span>
+<span id="cb36-3"><a href="fonctions.html#cb36-3"></a></span>
+<span id="cb36-4"><a href="fonctions.html#cb36-4"></a><span class="kw">c</span>(<span class="dt">a=</span> a, <span class="dt">b=</span>b,<span class="dt">x=</span> x, <span class="dt">x2=</span> x2)</span></code></pre></div>
 <pre><code>##  a  b  x x2 
-##  2 15 10 12</code></pre>
+##  2 15 10 14</code></pre>
+<p>A noter que ce phénomène n’est pas valable pour les packages car les objets à l’intérieur d’un package sont isolés de l’environnement global car l’environnement des packages est au-dessus de l’environnement global. C’est pourquoi il est préférable de regrouper ses propres fonctions en un package (voir @ref{Packages}), ou de faire attention de ne pas utiliser d’objets globaux dans les fonctions.</p>
 </div>
 <div id="conseils" class="section level2" number="6.5">
 <h2><span class="header-section-number">6.5</span> Conseils</h2>
@@ -448,8 +444,8 @@ Par contre si R ne trouve pas une valeur dans son environnement, il va essayer d
 </div>
 <div class="footnotes">
 <hr />
-<ol start="4">
-<li id="fn4"><p>données <a href="https://fr.finance.yahoo.com/">Yahoo Finance</a> téléchargées grâce à la fonction <code>getQuote</code> du package <code>quantmod</code><a href="fonctions.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<ol start="1">
+<li id="fn1"><p>données <a href="https://fr.finance.yahoo.com/">Yahoo Finance</a> téléchargées grâce à la fonction <code>getQuote</code> du package <code>quantmod</code><a href="fonctions.html#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

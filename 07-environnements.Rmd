@@ -4,9 +4,9 @@ output:
   html_document: default
 ---
 
-# Environnements et scoping{#environnement}  
+# Environnements et portée (scoping){#environnement}  
 
-## Environments
+## Introduction aux environnements
 
 ```{r include=FALSE}
 rm(list = ls())
@@ -17,6 +17,8 @@ R fonctionne avec des environnements. Un environnement peut être pensé comme u
 Dès que l'on ouvre R, un nouvel environnement est créé. Il s'agit de l'environnement global, qui est le plus haut environnement de tous (on va y revenir).
 
 Dans les faits, un environnent n'est rien d'autre qu'une liste avec quelques super-pouvoirs (voir chapitre \@ref(Structures) pour plus de détails) dans laquelle on enregistre des objets. Lorsque l'on ouvre R et que l'on créé un objet, il est ajouté à l'environnement global. 
+
+## Utiliser les environnements
 
 Au début il n'y a rien dans l'environnement (à moins que vous ayez enregistré votre environnement précédent). Pour vérifier ce qu'il y a dans un environnement, on peut utiliser la fonction `ls()`: 
 
@@ -69,7 +71,7 @@ ls(a)
    assign("a", 2, envir=b)
   ```
 
-### Environments in functions
+## Environnements et fonctions
 
 Le code R d'une fonction est exécuté dans un environnement propre à la fonction. Donc un environnement est créé à chaque fois que l'on appelle une fonction. Cette méthode sert à isoler l'environnement de l'utilisateur avec celui de la fonction (mais pas complètement). Cela permet d'éviter de créer de nouveaux objets dans l'environnement de l'utilisateur dès que l'on appelle une fonction, et normalement aussi d'éviter de modifier la valeur d'un objet créé par un utilisateur dans une fonction. 
 
@@ -83,17 +85,19 @@ assign_a= function(){
 }
 ```
 
-Mais nous avons déjà un objet "a" dans notre environnement global! Comment est-ce que R va se débrouiller ? Va-t-il modifier la valeur de notre "a" à 10 dès que la fonction sera appelée ? Essayons:
+Mais nous avons déjà un objet "a" dans notre environnement global ! Comment est-ce que R va se débrouiller ? Va-t-il modifier la valeur de notre "a" à 10 dès que la fonction sera appelée ? Essayons:
 
 ```{r}
 assign_a()
 ```
-Ok, la fonction retourne `10`, la valeur de "a", dans cette fonction. Et qu'en est-il de notre "a" qui est dans l'environnement global? 
+Ok, la fonction retourne `10`, ce qui est bien la valeur de "a" dans cette fonction. Et qu'en est-il de notre "a" qui est dans l'environnement global ? 
 
 ```{r}
 a
 ```
-Il est toujours égal à `1`! Donc la fonction ne l'a pas modifié! Pourtant elle a bien créé un objet qui s'appelle aussi "a" ? Explications: comme la fonction créé son propre environnement lorsqu'elle est appelée, tous les objets créés au sein de cette fonction sont assignés à cet environnement, et pas à celui de l'utilisateur. Lorsque la fonction a fini son travail, elle supprime son environnement local, et ne retourne que des valeurs. 
+Il est toujours égal à `1` ! Donc la fonction ne l'a pas modifié ! Pourtant elle a bien créé un objet qui s'appelle aussi "a" ? 
+
+**Explications**: comme la fonction crée son propre environnement lorsqu'elle est appelée, tous les objets créés au sein de cette fonction sont assignés à cet environnement, et pas à celui de l'utilisateur. Lorsque la fonction a fini son travail, elle retourne ce qu'elle doit retourner, puis supprime son environnement local. 
 
 En suivant la même logique, si on défini un objet dans une fonction, il n'existera pas dans notre environnement: 
 
@@ -114,7 +118,7 @@ ls()
 ```
 
 
-OK, essayons quelque chose de plus compliqué: que se passe-t-il si l'on essaye d'utiliser l'objet "a" de l'environnement global dans une fonction, de le multiplier par `2`, et d'assigner se résultat à un objet "a" dans la fonction ? Voyons cela: 
+OK, essayons quelque chose de plus compliqué: que se passe-t-il si l'on essaye d'utiliser l'objet "a" de l'environnement global dans une fonction, de le multiplier par `2`, et d'assigner ce résultat à un objet "a" dans la fonction ? Voyons cela: 
 
 ```{r}
 multiplie_a= function(){
@@ -124,12 +128,12 @@ multiplie_a= function(){
 
 multiplie_a()
 ```
-La fonction a résussi à trouver la valeur de "a" de l'environnement global! Puis elle l'a multiplié par deux, et nous retourne le résultat. Mais est-ce que le "a" de l'environnement global est-t-il modifié ? 
+La fonction a résussi à trouver la valeur de "a" de l'environnement global ! Puis elle l'a multiplié par deux, et nous retourne le résultat. Mais est-ce que le "a" de l'environnement global est-t-il modifié ? 
 
 ```{r}
 a
 ```
-Non. Magique ! Donc notre fonction est exécutée dans un environnement cloisonné, mais à quand même accès à l'environnement global si elle en a besoin. Mais comment est-ce que R sait quel "a" appeler ? Essayons d'en apprendre un peu plus en (re)lisant la définition officielle d'un environnement:
+Non. Magique ! Donc notre fonction est exécutée dans un environnement cloisonné, mais elle a quand même accès à l'environnement global si elle ne trouve pas une objet dans son propre environnement. Mais comment est-ce que R sait quel "a" appeler ? Essayons d'en apprendre un peu plus en (re)lisant la définition officielle d'un environnement:
 
 > Les environnements peuvent être considérés comme étant composés de deux choses : un cadre, qui est un ensemble de paires symbole-valeur, et un "enclos" (enclosure en anglais), qui est un pointeur vers un environnement englobant. Lorsque R recherche la valeur d'un symbole, le cadre est examiné et si un symbole correspondant est trouvé, sa valeur sera renvoyée. Si ce n'est pas le cas, on accède alors à l'environnement englobant et le processus est répété. Les environnements forment une structure arborescente dans laquelle les enclos jouent le rôle de parents. L'arbre des environnements est enraciné dans un environnement vide, disponible via emptyenv(), qui n'a pas de parent.
 
@@ -141,9 +145,9 @@ On apprends ensuite que les environnements forment une structure arborescente. I
 
 Pour simplifier, on peut essayer de conceptualiser les environnements comme des boîtes. L'environnement vide serait une toute petite boîte dans laquelle on ne peut rien ranger. Cette petite boîte est elle-même rangée dans la boîte du package `base`, qui est lui-même rangé dans la boîte du premier package chargé, etc.... Une boîte a accès à tous les objets des boîtes plus petites qu'elle englobe.
 
-Une fonction appelée depuis l'environnement global crée une nouvelle poupée, plus grosse que celle de l'environnement global. 
+Une fonction appelée depuis l'environnement global crée une nouvelle boîte, plus grosse que celle de l'environnement global (elle l'englobe). 
 
-Mais voyons plutôt cela par l'exemple. Si l'on ignore les boîtes des packages pour l'exemple, alors l'environnement vide est la boîte 1, l'environnement global est la boîte 2, une première fonction créé par l'utilisateur définirait la boîte 3. Mais que se passe-t-il si l'on ajoute une nouvelle fonction ? Est-ce qu'elle aura d'abord accès à l'environnement global ou à l'environnement de la fonction qui l'appelle ? 
+Mais voyons plutôt cela par l'exemple. Si l'on ignore les boîtes des packages pour l'exemple, alors l'environnement vide est la boîte 1, l'environnement global est la boîte 2, et une première fonction créé par l'utilisateur définirait la boîte 3. Mais que se passe-t-il si l'on ajoute une nouvelle fonction ? Est-ce qu'elle aura d'abord accès à l'environnement global ou à l'environnement de la fonction qui l'appelle ? 
 
 Pour répondre à cette question, il faut d'abord savoir qu'une fonction est composée en trois parties: 
 
@@ -153,7 +157,7 @@ Pour répondre à cette question, il faut d'abord savoir qu'une fonction est com
 
 * l'environnement (`environment`).
 
-L'environnement qui compose la fonction est créé en même temps que la fonction. C'est très important de bien comprendre ceci. Cela veut dire que l'environnement de la fonction n'est pas créé lorsqu'elle est appellée, mais lorsque elle est déclarée. Donc si on déclare deux fonction dans l'environnement global, et que la première appelle la seconde, la seconde n'aura pas accès à l'environnement de la première. Par contre si la seconde est crée *dans* la première, alors elle y aura accès. 
+L'environnement qui compose la fonction est créé en même temps que la fonction. C'est très important de bien comprendre ceci. Cela veut dire que l'environnement de la fonction n'est pas créé lorsqu'elle est appellée, mais lorsque elle est déclarée. Donc si l'on déclare deux fonctions dans l'environnement global, et que la première appelle la seconde, alors la seconde n'aura pas accès à l'environnement de la première. Par contre si la seconde est crée *dans* la première, alors elle y aura accès. 
 
 Preuve par l'exemple: 
 
@@ -184,9 +188,11 @@ Si on regarde les valeurs de "a" renvoyées par `fonction_1`:
 ```{r}
 fonction_1()
 ```
-`fonction_1()` a accès à "a" de l'environnement global, qui est égal à 1. Ensuite elle déclare son propre "a" égal à 2, qui devient prioritaire lorsque l'on cherche "a" dans la fonction, donc "a" dans `fonction_1()` devient égal à 2. Ensuite on déclare la fonction `fonction_2()`, on regarde la valeur de "a", qui est égale à la valeur trouvée dans l'environnement juste au dessus, celui de `fonction_1()`, "a" est donc égal à 2. Puis on déclare un nouveau "a" dans `fonction_2()`, qui est égal à 3, et qui devient donc prioritaire lorsque l'on cherche "a" dans `fonction_2()`. 
+`fonction_1()` a accès à l'objet "a" de l'environnement global, qui est égal à 1. Ensuite elle déclare son propre "a" égal à 2, qui devient prioritaire lorsque l'on cherche "a" dans la fonction, donc "a" dans `fonction_1()` devient égal à 2. Ensuite on déclare la fonction `fonction_2()`, on regarde la valeur de "a", qui est égale à la valeur trouvée dans l'environnement juste au dessus, celui de `fonction_1()`, "a" est donc égal à 2. Puis on déclare un nouveau "a" dans `fonction_2()`, qui est égal à 3, et qui devient donc prioritaire lorsque l'on cherche "a" dans `fonction_2()`. 
 
-Mais si `fonction_2()` était déclarée en dehors de `fonction_1()`, elle retournerais d'abord le "a" de l'environnement global car son environnement parent serait le global, et pas celui de `fonction_1()`:
+Je vous laisse relire le paragraphe du dessus pour être certain de comprendre. En d'autres termes, une fonction a accès à son propre environnement, mais aussi aux environnements au-dessus d'elle (qu'elle englobe). Si une fonction est déclarée à l'intérieur d'une autre fonction, alors son environnement englobe cette fonction, et elle a donc accès à ses objets.
+
+Mais si `fonction_2()` était déclarée en dehors de `fonction_1()` ? Alors celle-ci n'aurais pas accès à l'environnement de `fonction_1()`, donc elle retournerais d'abord l'objet "a" de l'environnement global, car son environnement parent serait le global, et pas celui de `fonction_1()`:
 
 
 ```{r}
